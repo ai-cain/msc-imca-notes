@@ -1,0 +1,753 @@
+\noindent Dado un conjunto base \(X\), una de las preguntas más fundamentales en distintas áreas del álgebra es cómo construir, a partir de sus elementos, una estructura algebraica con ciertas propiedades deseadas. Es decir, ¿cómo dotar a \(X\) de operaciones que satisfagan ciertos axiomas, de la manera más general posible? Por ejemplo:
+
+\begin{itemize}
+	\item ¿Cómo obtener el magma generado por \(X\)?
+	\item ¿Cómo construir el semigrupo?
+	\item ¿Cómo formar el monoide o el grupo sobre \(X\)?
+	\item ¿Cómo generar, en general, otras estructuras algebraicas a partir de $X$?
+\end{itemize}
+
+\noindent Es importante resaltar que no se asume que \(X\) esté contenido en una estructura algebraica preexistente. \(X\) es simplemente un conjunto de símbolos formales sin relaciones entre ellos.\\
+
+\noindent El objetivo es construir una estructura algebraica que:
+
+\begin{itemize}
+	\item contenga a \(X\), y
+	\item esté generada por los elementos de \(X\) de manera puramente formal, sin imponer más relaciones que las necesarias para satisfacer los axiomas correspondientes.
+\end{itemize}
+
+\noindent A este tipo de construcción se le llama \emph{objeto libre}. Su rasgo distintivo es ser la estructura más general (o universal) posible generada por \(X\), en el sentido de que no introducen identificaciones ni relaciones adicionales entre sus elementos más allá de las que son estrictamente obligatorias por la definición de la estructura. Por esta razón, también se les considera el menor objeto que satisface esas propiedades a partir de \(X\).\\
+
+\noindent Los objetos libres desempeñan un papel central en álgebra y teoría de categorías, al proporcionar un método sistemático para generar estructuras desde sus generadores, y entender cómo se extienden funciones desde conjuntos a morfismos algebraicos.
+
+
+
+
+
+
+\section{Magma libre}
+
+\noindent Sea \(X\) un conjunto. Construimos el \emph{magma libre generado por \(X\)} de la siguiente manera.\\
+
+\noindent Definimos inductivamente una sucesión de conjuntos \(X_1, X_2, X_3, \dots\):
+
+\begin{itemize}
+	\item \(X_1 := X\),
+	\item para \(n \geq 2\), 
+	\[
+	X_n := \bigsqcup_{\substack{i + j = n \\ i,j \geq 1}} X_i \times X_j.
+	\]
+\end{itemize}
+
+\begin{observacion}
+	\upshape
+	Los primeros términos se expresan como:
+\begin{itemize}
+	\item \(X_2 \:\,= X_1 \times X_1 = X \times X\)
+	\item \(X_3 \:\,= (X_1 \times X_2) \sqcup (X_2 \times X_1) = (X \times (X \times X)) \sqcup ((X \times X) \times X)\)
+	\item \(X_4 \:\,= (X_1 \times X_3) \sqcup (X_2 \times X_2) \sqcup (X_3 \times X_1)\)
+	
+	\quad\ \, \(= \left[X \times ((X \times (X \times X)) \sqcup ((X \times X) \times X))\right]\)
+	
+	\quad	\quad\ \, \(\sqcup\ \left[(X \times X) \times (X \times X)\right]\)
+	
+	\quad\quad\ \, \(\sqcup\ \left[((X \times (X \times X)) \sqcup ((X \times X) \times X)) \times X\right]\).
+\end{itemize}
+\end{observacion}
+
+\noindent Notemos que si \(a \in X_i\) y \(b \in X_j\), entonces \((a,b) \in X_i \times X_j \subseteq X_{i+j}\). \\
+
+\noindent Definimos entonces
+\[
+M_X := \bigsqcup_{n \geq 1} X_n,
+\]
+y la operación interna llamada \emph{concatenación}
+\[
+M_X \times M_X \longrightarrow  M_X, \quad (a,b) \longmapsto (a,b).
+\]
+
+\begin{definicion}
+	\upshape
+	Dado un conjunto no vacío \(X\), el par \(\bigl(M_X, \text{concatenación}\bigr)\) se denomina el \emph{magma libre generado por \(X\)}. Además, es habitual escribir \(\mathrm{Mag}(X)\) para referirse a dicho magma libre.
+\end{definicion}
+
+
+\begin{observacion}
+	\upshape
+	El magma libre generado por \(X\) no es asociativo en general. Esto se debe a que, dados \(a,b,c \in M_X\), las dos expresiones \(((a,b),c)\) y \((a,(b,c))\) son elementos distintos de \(M_X\), ya que difieren en la forma de agrupar los paréntesis y, por tanto, no se identifican en la construcción. En otras palabras, la operación de concatenación definida como par ordenado no satisface la propiedad asociativa, porque
+	\[
+	((a,b),c) \neq (a,(b,c)).
+	\]
+\end{observacion}
+
+
+
+\section{Semigrupo libre}
+
+
+\noindent Los conjuntos \(X \times (Y \times Z)\) y \((X \times Y) \times Z\) son, por la naturaleza de los productos cartesianos, naturalmente isomorfos. Es decir, existe una biyección canónica
+	\[
+	(x, (y, z)) \mapsto ((x, y), z),
+	\]
+	que permite identificar de forma coherente elementos que difieren únicamente en la agrupación de paréntesis. Esta identificación es esencial para fundamentar la imposición de la asociatividad en la operación.\\
+	
+	\noindent A partir de esta identificación, definiremos una relación de equivalencia sobre el magma libre \(M_X\) que formaliza la equivalencia entre diferentes agrupaciones. Así, al considerar las clases de equivalencia, la operación se vuelve asociativa, lo que conduce a la construcción del semigrupo libre generado por \(X\).
+
+
+\begin{definicion}
+	\upshape
+	Definimos una relación de equivalencia \(\sim\) en \(M_X = \bigsqcup_{n \geq 1} X_n\) por:
+	\[
+	a \sim b \iff \exists\, n \geq 1,\ a, b \in X_n,\ \text{y}\ b = \phi(a)
+	\]
+	donde \(\phi : X_n \to X_n\) es una biyección obtenida por reagrupación de paréntesis en el producto cartesiano.
+\end{definicion}
+
+
+
+
+
+Definimos ahora
+$$
+S_X := \frac{M_X}{\sim}.
+$$
+Para \(a \in M_X\), si por ejemplo \(a = \bigl((a_1, a_2), a_3\bigr) \in X_3\), escribiremos su clase de equivalencia como
+$$
+[a] = a_1 a_2 a_3.
+$$
+Entonces, la concatenación en \(M_X\) induce una operación interna en \(S_X\), también llamada \emph{concatenación}, definida por
+$$
+\begin{aligned}
+	S_X \times S_X &\longrightarrow S_X \\
+	(p, q) &\longmapsto p \bullet q,
+\end{aligned}
+$$
+donde, por ejemplo, si \(p, q \in S_X\) con \(p = p_1 p_2 p_3 p_4\) y \(q = q_1 q_2\), se tiene
+$$
+p \bullet q = p_1 p_2 p_3 p_4 q_1 q_2.
+$$
+
+\begin{observacion}
+	\upshape{
+		La operación \(\bullet\) es asociativa, pues la relación de equivalencia \(\sim\) identifica las distintas maneras de agrupar la concatenación, eliminando así la ambigüedad en el orden de evaluación.
+	}
+\end{observacion}
+
+\begin{observacion}
+	\upshape{
+		La operación \(\bullet\) es asociativa. Por ejemplo, consideremos \(p, q, r \in S_X\) con
+		$$
+		p = p_1 p_2 p_3 p_4 p_5, \quad q = q_1 q_2 q_3, \quad r = r_1 r_2.
+		$$
+		Entonces,
+		$$
+		(p \bullet q) \bullet r = (p_1 p_2 p_3 p_4 p_5 q_1 q_2 q_3) \bullet r = p_1 p_2 p_3 p_4 p_5 q_1 q_2 q_3 r_1 r_2,
+		$$
+		y de forma similar,
+		$$
+		p \bullet (q \bullet r) = p \bullet (q_1 q_2 q_3 r_1 r_2) = p_1 p_2 p_3 p_4 p_5 q_1 q_2 q_3 r_1 r_2.
+		$$
+		Ambas expresiones coinciden, lo que muestra que \(\bullet\) es asociativa.
+	}
+\end{observacion}
+
+
+\begin{definicion}
+	\upshape{
+		Dado un conjunto no vacío \(X\), el par \(\left(S_X, \bullet\right)\) se denomina \emph{semigrupo libre generado por \(X\)}.
+	}
+\end{definicion}
+
+
+
+\begin{definicion}
+	\upshape
+	Sea \(X\) un conjunto no vacío, llamado \emph{alfabeto} o \emph{conjunto generador}. El semigrupo libre \(S_X\) está generado por \(X\), y sus elementos se llaman \emph{palabras} sobre \(X\).\\
+	
+	\noindent Una palabra \(p \in S_X\) puede representarse como una concatenación linealizada
+	$$
+	p = p_1 p_2 \cdots p_n,
+	$$
+	donde cada \(p_i \in X\).
+\end{definicion}
+
+\begin{definicion}
+	\upshape
+	La \emph{longitud} de una palabra \(p = p_1 p_2 \cdots p_n \in S_X\) es el número \(n\) de generadores que la componen,
+	$$
+	|p| := n.
+	$$
+	Esta longitud está bien definida debido a que la relación de equivalencia \(\sim\) solo identifica distintas formas de agrupar la concatenación, sin alterar el número ni el orden de los elementos.
+\end{definicion}
+
+
+\begin{observacion}
+	\upshape{
+		Como $M_X := X \sqcup X_2 \sqcup X_3 \sqcup X_4 \sqcup \dotsb$, entonces
+		$$
+		S_X = \dfrac{M_X}{\sim} = X \sqcup X^2 \sqcup X^3 \sqcup X^4 \sqcup \dotsb,
+		$$
+		donde, para cada $n \geq 1$,
+		$$
+		X^n := \{\,p \in S_X : |p| = n\}.
+		$$
+	}
+\end{observacion}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Monoide libre}
+
+\noindent El semigrupo libre $S_X$, construido a partir de las clases de equivalencia de tuplas no vacías de elementos de $X$, es inherentemente una estructura sin un elemento identidad con respecto a la concatenación. Esto significa que, por su definición, no existe en $S_X$ una palabra que, al concatenarse con cualquier otra, la deje inalterada. Para trascender esta limitación y construir un monoide libre generado por $X$, es esencial introducir artificialmente un elemento que cumpla el rol de identidad.\\
+
+\begin{definicion}
+	\upshape{
+		La \textit{palabra vacía} es un elemento especial, denotado por $\mathbf{1}$ ($\mathrm{e}$,$\emptyset$), que no pertenece al semigrupo libre $S_X$. Se introduce formalmente como el elemento identidad para extender $S_X$ a un monoide. Representa la ``ausencia'' de elementos de $X$ y tiene la propiedad de que, para cualquier palabra $w \in S_X$, $w \bullet \mathbf{1} = \mathbf{1} \bullet w = w$.
+	}
+\end{definicion}
+\begin{observacion}
+	\upshape{
+	La palabra vacía \(1\) tiene longitud cero, pues representa la ausencia de elementos.
+	}
+\end{observacion}
+
+Definimos ahora  
+$$
+\mathrm{Mon}(X) := \{1\} \sqcup S_X = \{1\} \sqcup X \sqcup X^2 \sqcup X^3 \sqcup X^4 \sqcup \dotsb,
+$$  
+donde el símbolo \(1\) representa la \emph{palabra vacía}.\\
+
+\noindent Entonces, la concatenación en \(S_X\) se extiende naturalmente a una operación interna en \(\mathrm{Mon}(X)\), también llamada \emph{concatenación}, definida por  
+$$
+\begin{aligned}
+	\mathrm{Mon}(X) \times \mathrm{Mon}(X) &\longrightarrow \mathrm{Mon}(X) \\
+	(p, q) &\longmapsto p \bullet q,
+\end{aligned}
+$$  
+donde \(1 \bullet p = p \bullet 1 = p\) para todo \(p \in \mathrm{Mon}(X)\).
+
+\begin{definicion}
+	\upshape{
+		El par \((\mathrm{Mon}(X), \bullet)\) se denomina \emph{monoide libre generado por \(X\)}.
+	}
+\end{definicion}
+\begin{observacion}
+	\upshape{
+	Si $X$ es vació, entonces $\mathrm{Mon}(\emptyset)=\{1\}$.
+	}
+\end{observacion}
+
+
+
+
+\section{Grupo libre}
+
+\noindent Hemos visto que, dado un conjunto \(X\), el monoide libre \(\mathrm{Mon}(X)\) es la estructura más general con operación asociativa e identidad que puede construirse a partir de \(X\), sin imponer relaciones adicionales. Sus elementos son palabras formadas con símbolos de \(X\), incluida la palabra vacía.\\
+
+\noindent Sin embargo, en un monoide no se exige la existencia de inversos. Por ejemplo, si \(x \in X \subseteq \mathrm{Mon}(X)\) es una palabra no vacía, en general no existe una palabra \(y \in \mathrm{Mon}(X)\) tal que \(x \cdot y = \mathbf{1}\).\\
+
+\noindent Nuestro siguiente objetivo es construir un grupo a partir de \(X\), lo que requiere dotar a cada generador de un inverso. Para ello, introduciremos \emph{inversas formales} para cada elemento de \(X\) y definiremos una relación de equivalencia que exprese la cancelación entre elementos y sus inversos. Esta construcción nos llevará al \emph{grupo libre} generado por \(X\).
+
+
+\begin{proposicion}\label{lkjhgkjhg}
+	\upshape{
+		Dado un conjunto no vacío \(X\), existe un conjunto \(X'\), también no vacío y biyectivo con \(X\), tal que \(X \cap X' = \emptyset\).
+	}
+\end{proposicion}
+
+
+\begin{proof}
+	Dado que \(X\) es no vacío, existe algún elemento \(x_0 \in X\). Definimos entonces
+	\[
+	X' := X \times \{x_0\}.
+	\]
+	Como el producto cartesiano con un conjunto unitario preserva la cardinalidad, el conjunto \(X'\) es no vacío y existe una biyectiva natural
+	\[
+	\begin{aligned}
+		\varphi : X &\longrightarrow X' \\
+		x &\longmapsto (x,x_0),
+	\end{aligned}
+	\]
+	por lo que \(X'\) es biyectivo con \(X\).Finalmente, los elementos de \(X'\) tienen la forma \((x,x_0)\), mientras que los de \(X\) no son pares ordenados, por lo que \(X \cap X' = \emptyset\).
+\end{proof}
+
+
+
+
+\begin{definicion}
+	\upshape{
+		Dado un elemento \(a \in X\), definimos su \emph{inversa formal} como el elemento correspondiente \(a^{-1} := \varphi(a) \in X'\), donde \(\varphi : X \to X'\) es la biyección establecida anteriormente.
+	}
+\end{definicion}
+ De esta manera, el conjunto
+\[
+X^{\pm 1} := X \cup X'
+\]
+denota el conjunto de generadores extendido con sus inversas formales, es decir, los símbolos que representan tanto los elementos de $X$ como sus inversos formales.
+
+\begin{observacion}
+	\upshape{
+		Note que la palabra 
+		\[
+		abcdd^{-1}c^{-1}b^{-1}a^{-1}
+		\]
+		no es necesariamente la palabra vacía, pues en \(\mathrm{Mon}(X^{\pm 1})\), que es el monoide libre generado por \(X \cup X'\), sólo está definida la concatenación de palabras, sin ninguna regla de cancelación.
+	}
+\end{observacion}
+
+
+
+
+
+\begin{definicion}
+	\upshape{
+		Definimos la relación de equivalencia \(\sim\) en \(\mathrm{Mon}(X^{\pm 1})\) como la relación que identifica dos palabras si una puede obtenerse de la otra eliminando una o varias veces subpalabras consecutivas de la forma \(a \cdot a^{-1}\) o \(a^{-1} \cdot a\), para algún \(a \in X\).\\
+		
+		\noindent Es decir, para toda palabra \(w_1, w_2 \in \mathrm{Mon}(X^{\pm 1})\) y todo \(a \in X\), se tiene
+		\[
+		w_1 \cdot a \cdot a^{-1} \cdot w_2 \sim w_1 \cdot w_2, \quad \text{y} \quad
+		w_1 \cdot a^{-1} \cdot a \cdot w_2 \sim w_1 \cdot w_2.
+		\] Esta relación formaliza la cancelación de pares de elementos inversos consecutivos en las palabras.
+	}
+\end{definicion}
+
+\begin{definicion}\label{def:grupolibrerelacion}
+	\upshape{
+		Definimos la relación de equivalencia \(\sim\) en \(\mathrm{Mon}(X^{\pm 1})\) como la relación que identifica dos palabras \(w, w' \in \mathrm{Mon}(X^{\pm 1})\) si \(w'\) puede obtenerse a partir de \(w\) mediante unasecuencia finita de inserciones o eliminaciones de subpalabras consecutivas de la forma \(a \cdot a^{-1}\) o \(a^{-1} \cdot a\), con \(a \in X\).\\
+		
+		\noindent Dichas operaciones elementales son de la forma:
+		\[
+		w_1 \cdot a \cdot a^{-1} \cdot w_2 \longleftrightarrow w_1 \cdot w_2, \quad \text{y} \quad
+		w_1 \cdot a^{-1} \cdot a \cdot w_2 \longleftrightarrow w_1 \cdot w_2,
+		\]
+		donde \(w_1, w_2 \in \mathrm{Mon}(X^{\pm 1})\) y \(a \in X\).\\
+		
+		\noindent Esta relación formaliza la cancelación de pares consecutivos de elementos inversos, permitiendo también su inserción. 
+	}
+\end{definicion}
+
+
+
+
+
+\begin{proposicion}
+	\upshape{
+	La relación $\sim$ de la Definición \ref{def:grupolibrerelacion} es una relación de equivalencia.
+	}
+\end{proposicion}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{proof}
+	Verificamos que la relación \(\sim\) definida en \(\mathrm{Mon}(X^{\pm1})\) es una relación de equivalencia.
+	
+	\begin{itemize}
+		\item \textbf{Reflexividad:} Sea \(w \in \mathrm{Mon}(X^{\pm1})\). Como no se requiere realizar ninguna operación para obtener \(w\) a partir de sí mismo, se tiene
+		\[
+		w \sim w.
+		\]
+		
+		\item \textbf{Simetría:} Supongamos que \(w \sim v\). Entonces existe una secuencia finita de palabras
+		\[
+		w = w_0 \rightarrow w_1 \rightarrow \cdots \rightarrow w_k = v,
+		\]
+		donde cada paso corresponde a la inserción o eliminación de una subpalabra de la forma \(a a^{-1}\) o \(a^{-1} a\), con \(a \in X\).\\
+		Invirtiendo la secuencia:
+		\[
+		v = w_k \rightarrow w_{k-1} \rightarrow \cdots \rightarrow w_0 = w,
+		\]
+		por lo tanto,
+		\[
+		v \sim w.
+		\]
+		
+		\item \textbf{Transitividad:} Supongamos que \(w \sim v\) y \(v \sim u\). Entonces existen secuencias finitas:
+		\[
+		w = w_0 \rightarrow w_1 \rightarrow \cdots \rightarrow w_k = v, \quad
+		v = v_0 \rightarrow v_1 \rightarrow \cdots \rightarrow v_m = u.
+		\]
+		Concatenando ambas secuencias, obtenemos:
+		\[
+		w = w_0 \rightarrow \cdots \rightarrow w_k = v = v_0 \rightarrow \cdots \rightarrow v_m = u,
+		\]
+		y por lo tanto,
+		\[
+		w \sim u.
+		\]
+	\end{itemize}
+	
+	Luego, \(\sim\) es una relación de equivalencia.
+\end{proof}
+
+
+\begin{observacion}
+	\upshape{
+		Dada una palabra \(u \in \mathrm{Mon}(X^{\pm 1})\), la palabra concatenada \(u \bullet u^{-1}\) es equivalente a la palabra vacía \(1_{\mathrm{Mon}(X^{\pm 1})}\) bajo la relación \(\sim\), es decir,
+		\[
+		u \bullet u^{-1} \sim 1_{\mathrm{Mon}(X^{\pm 1})}.
+		\]
+	}
+\end{observacion}
+
+
+
+
+Definimos  $$G_X:=\dfrac{\mathrm{Mon}(X^{\pm 1})}{\sim}$$
+
+\begin{definicion}\label{def:palabrareducida}
+	\upshape{
+		Una palabra \( w \in \mathrm{Mon}(X^{\pm 1}) \) se dice \emph{reducida} si no contiene ninguna subpalabra consecutiva de la forma \(a a^{-1}\) o \(a^{-1} a\), para algún \(a \in X\).\\
+			
+		}
+\end{definicion}
+
+\begin{observacion}
+	\upshape{
+		Por definición, los elementos de \(G_X ) \) son clases de equivalencia de palabras en \(\mathrm{Mon}(X^{\pm 1})\). Sin embargo, debido a que cada clase contiene exactamente una palabra reducida (Definición \ref{def:palabrareducida}), se establece una identificación natural entre cada elemento \(g \in G_X\) y su representante reducido \(w \in \mathrm{Mon}(X^{\pm 1})\).\\
+		
+		\noindent Por lo tanto, aunque formalmente los elementos de \(G_X\) son clases de equivalencia, en la práctica los denominamos \emph{palabras reducidas} mediante esta identificación. Así, se puede escribir simplemente
+		\[
+		[g] = w,
+		\]
+		donde \(w\) es la palabra reducida representante de la clase \([g]\).
+	}
+\end{observacion}
+La concatenación en \(\mathrm{Mon}(X^{\pm 1})\)
+\[
+\begin{aligned}
+	\mathrm{Mon}(X^{\pm 1}) \times \mathrm{Mon}(X^{\pm 1}) &\longrightarrow \mathrm{Mon}(X^{\pm 1}) \\
+	(p, q) &\longmapsto p \bullet q,
+\end{aligned}
+\]
+induce una operación interna (también llamada concatenación) en el cociente $G_X $:
+\[
+\begin{aligned}
+	G_X \times G_X &\longrightarrow G_X \\
+	([p], [q]) &\longmapsto [p]\bullet[q]:=[p \bullet q].
+\end{aligned}
+\]
+
+
+
+\begin{proposicion}
+	\upshape{
+		En \((G_X, \bullet)\) existe un elemento identidad \(1 \in G_X\), y todo elemento \( [p] \in G_X \) admite un inverso \( [p]^{-1} \in G_X \) tal que
+		\[
+		[p] \bullet [p]^{-1} = 1 \quad \text{y} \quad [p]^{-1} \bullet [p] = 1.
+		\]
+	}
+\end{proposicion}
+
+
+\begin{proof}
+	En efecto.
+	\begin{itemize}
+		\item \textbf{Existencia de la identidad:} Definamos
+		\[
+		1 := [1_{\mathrm{Mon}(X^{\pm 1})}],
+		\]
+		donde \(1_{\mathrm{Mon}(X^{\pm 1})}\) es la palabra vacía en \(\mathrm{Mon}(X^{\pm 1})\). Para toda palabra reducida \(p \in \mathrm{Mon}(X^{\pm 1})\) se cumple
+		\[
+		[p] \bullet 1 = [p \bullet 1_{\mathrm{Mon}(X^{\pm 1})}] = [p], \quad 1 \bullet [p] = [1_{\mathrm{Mon}(X^{\pm 1})} \bullet p] = [p].
+		\]
+		Por lo tanto, \(1\) es el elemento identidad en \(G_X\).
+		
+		\item \textbf{Existencia de inversos:} Sea \([p] \in G_X\) con \(p = x_1 x_2 \cdots x_n\) palabra reducida. Definimos
+		\[
+		[p]^{-1} := [x_n^{-1} x_{n-1}^{-1} \cdots x_1^{-1}].
+		\]
+		Entonces se cumple
+		\[
+		[p] \bullet [p]^{-1} = [p \bullet (x_n^{-1} x_{n-1}^{-1} \cdots x_1^{-1})] = [1_{\mathrm{Mon}(X^{\pm 1})}] = 1,
+		\]
+		y análogamente,
+		\[
+		[p]^{-1} \bullet [p] = 1.
+		\]
+	\end{itemize}
+\end{proof}
+
+
+
+\begin{definicion}
+	\upshape{
+		Sea \(X\) un conjunto. El grupo \(G_X\) se denomina \emph{grupo libre generado por \(X\)}. Sus elementos se llaman \emph{palabras reducidas}.
+	}
+\end{definicion}
+
+\begin{observacion}
+	\upshape{
+		Si \(X = \emptyset\), entonces el grupo libre generado por \(X\) es trivial: $$G_{\emptyset} = \{1\}.$$
+	}
+\end{observacion}
+
+
+\section{Functor libre y propiedad universal de los objetos libres}
+
+
+\noindent Recordemos que si \(\mathcal{C}\) es una categoría de cierta estructura algebraica, por ejemplo, magmas, semigrupos, monoides o grupos, entonces existe un funtor olvidadizo
+
+
+
+\[
+\begin{aligned}
+	\mathcal{C} & \longrightarrow \mathbf{Set} \\
+	(M, \cdot) & \longmapsto M \\
+	\left(f : (M, \cdot) \to (N, \star)\right) & \longmapsto \left(f : M \to N\right)
+\end{aligned}
+\]que a cada objeto \((M, \cdot)\) de \(\mathcal{C}\) le asigna su conjunto subyacente \(M\), y a cada morfismo \(f\) en \(\mathcal{C}\) la función subyacente \(f\).\\
+
+\noindent Ahora queremos hacer lo opuesto, es decir, queremos definir el \textit{funtor libre} 
+\[
+F : \mathbf{Set} \longrightarrow \mathcal{C}
+\]que a cada conjunto \(X\) le asigna un objeto \(F(X)\) de \(\mathcal{C}\), llamado \emph{objeto libre}. Lo que queda pendiente es determinar cómo se asignan los morfismos. Para ello, analizaremos el caso en el que \(\mathcal{C}\) es la categoría de los grupos. En este contexto, utilizamos la propiedad universal del grupo libre.
+
+
+
+
+\begin{definicion}
+	\upshape{
+		Sean \( M \) y \( N \) dos grupos. Un \textit{homomorfismo de grupos} es una función \( f : M \to N \) tal que 
+		\[
+		f(xy) = f(x) f(y),\quad \forall x, y \in M.
+		\]
+		Si además \( f \) es biyectiva, se dice que es un \textit{isomorfismo de grupos}.
+	}
+\end{definicion}
+
+\begin{proposicion}
+	\upshape{
+		Sea \( f : M \to N \) un homomorfismo de grupos. Entonces:
+		\begin{enumerate}
+			\item \( f(1_M) = 1_N \).
+			\item \( f(x^{-1}) = f(x)^{-1} \) para todo \( x \in M \).
+		\end{enumerate}
+	}
+\end{proposicion}
+
+
+\begin{proof}
+	En efecto.
+	\begin{enumerate}
+		\item Como \( 1_M = 1_M \cdot 1_M \), se tiene
+		\[
+		f(1_M) = f(1_M \cdot 1_M) = f(1_M) \cdot f(1_M).
+		\]	Multiplicando a ambos lados por \( f(1_M)^{-1} \), se obtiene
+		\[
+		1_N = f(1_M).
+		\]
+		
+		\item Para todo \( x \in M \),
+		\[
+		1_N = f(1_M) = f(x x^{-1}) = f(x) f(x^{-1}),
+		\]
+		por lo que \( f(x^{-1}) = f(x)^{-1} \), ya que el inverso en \( N \) es único.
+	\end{enumerate}
+\end{proof}
+
+
+
+
+
+\begin{proposicion}[Propiedad universal del grupo libre]
+	\upshape{
+		Sea \(X\) un conjunto y \(G_X\) el grupo libre generado por \(X\), con la función de inclusión o \textit{aplicación canónica}
+		\[
+		\iota : X \hookrightarrow G_X, \quad x \mapsto [x].
+		\] Para todo grupo \(G\) y toda función \( j : X \to G \), existe un único homomorfismo de grupos \( f : G_X \to G \) que hace conmutar el siguiente diagrama:
+		
+		
+		
+		\[
+		\xymatrix{
+			X \ar[rr]^{\displaystyle j} \ar@{^(->}[dd]_{\displaystyle \iota } & & G \\
+			&&\\
+			G_X \ar@{-->}[rruu]_{\displaystyle \exists !f} &&
+		}
+		\] Es decir, \( f \circ \iota = j \).
+	}
+\end{proposicion}
+
+
+\begin{proof}
+	\upshape{
+		Sea \( X \) un conjunto y sea \( G \) un grupo. Dada una función \( j : X \to G \), construiremos un único homomorfismo \( f : G_X \to G \) tal que \( f \circ \iota = j \).
+		
+		\begin{itemize}
+			\item \textbf{Extensión de \(j\):}  
+			Extendemos \(j\) a \(X^{\pm 1} := X \sqcup X^{-1}\), preservando la estructura inversa:
+			
+			
+			\[
+			\widetilde{j}(x) :=
+			\begin{cases}
+				j(x), & \text{si } x \in X, \\
+				j(x')^{-1}, & \text{si } x = (x')^{-1} \in X^{-1}.
+			\end{cases}
+			\]
+			
+			
+			Esta es la única forma de extender \( j \) respetando la inversibilidad en \( G \).
+			
+			\item \textbf{Definición de \(f\):}  
+			Dada una clase \([x_1 \cdots x_n] \in G_X\), donde la palabra es reducida, definimos:
+			
+			
+			\[
+			f([x_1 \cdots x_n]) := \widetilde{j}(x_1) \cdots \widetilde{j}(x_n), \quad f(1_{G_X}) := 1_G.
+			\]
+			
+			
+			
+			\item \textbf{Bien definida:}  
+			La palabra reducida en \( G_X \) es única, lo que garantiza que \( f([w]) \) está bien definida.  
+			Además, la única relación en \( G_X \) es la cancelación \( x x^{-1} \sim 1 \), y en \( G \) se cumple \( \widetilde{j}(x) \widetilde{j}(x^{-1}) = 1_G \), asegurando la coherencia entre \( G_X \) y \( G \).
+			
+			\item \textbf{Homomorfismo:} Sean \([p], [q] \in G_X\), con \(p = x_1 \cdots x_n\), \(q = y_1 \cdots y_m\). Entonces,
+			\[
+			f([p] \bullet [q]) = f([x_1 \cdots x_n y_1 \cdots y_m]) = \widetilde{j}(x_1) \cdots \widetilde{j}(x_n)\widetilde{j}(y_1) \cdots \widetilde{j}(y_m) = f([p]) \cdot f([q]),
+			\]
+			lo que garantiza que \( f \) respeta la estructura de grupo.
+			
+			\item \textbf{Conmutatividad:}  
+			Para \( x \in X \), \(\iota(x) = [x]\), y por definición,
+			
+			
+			\[
+			f(\iota(x)) = f([x]) = \widetilde{j}(x) = j(x).
+			\]
+			
+			
+			Por lo tanto, \( f \circ \iota = j \).
+			
+			\item \textbf{Unicidad:}  
+			Sea \( g : G_X \to G \) otro homomorfismo con \( g \circ \iota = j \). Como ambos asignan los mismos valores a los generadores y respetan la estructura de grupo,
+			
+			
+			\[
+			g([x_1 \cdots x_n]) = g([x_1]) \cdots g([x_n]) = \widetilde{j}(x_1) \cdots \widetilde{j}(x_n) = f([x_1 \cdots x_n]).
+			\]
+			
+			
+			Por lo tanto, \( g = f \) y la unicidad está probada.
+		\end{itemize}
+	}
+\end{proof}
+
+%\begin{proposicion}[Unicidad del grupo libre salvo isomorfismo]
+%	\upshape{
+	%		Dado un conjunto \(X\), el grupo libre \(G_X\) generado por \(X\) es \textbf{único salvo isomorfismo natural}.\\
+	
+	%		\noindent Es decir, si \( (H, k) \) es cualquier otro par que satisface la propiedad universal del grupo libre para el conjunto \( X \) (donde \( H \) es un grupo y \( k: X \to H \) es una función), entonces existe un \textbf{único isomorfismo de grupos} \( \varphi: G_X \to H \) tal que el siguiente diagrama conmuta:
+	
+	
+	
+	%		\[
+	%		\xymatrix{
+		%			X \ar[rrdd]_{\displaystyle \iota} \ar[rr]^{\displaystyle k} && H \\
+		%			&&\\
+		%			&& G_X \ar[uu]_{\displaystyle \exists ! \varphi}
+		%		}
+	%		\]
+	
+	
+	%		Es decir, \( \varphi \circ \iota = k \).
+	%	}
+%\end{proposicion}
+
+
+%\begin{proof}
+%	\upshape{
+	%		Sea \( (H, k) \) un par que satisface la propiedad universal del grupo libre para el conjunto \( X \). Como \( (G_X, \iota) \) también la satisface, aplicamos la propiedad universal de \( G_X \) con respecto a la función \( k : X \to H \), y obtenemos un único homomorfismo
+	%		\[
+	%		\varphi : G_X \to H \quad \text{tal que} \quad \varphi \circ \iota = k.
+	%		\]
+	
+	%		Del mismo modo, aplicamos la propiedad universal de \( H \) con respecto a la función \( \iota : X \to G_X \), y obtenemos un único homomorfismo
+	%		\[
+	%		\psi : H \to G_X \quad \text{tal que} \quad \psi \circ k = \iota.
+	%		\]
+	
+	%		Ahora probamos que \( \varphi \) y \( \psi \) son inversos uno del otro. Primero, para todo \( x \in X \),
+	%		\[
+	%		(\psi \circ \varphi)(\iota(x)) = \psi(k(x)) = \iota(x),
+	%		\]
+	%		y como \( \iota(X) \) genera \( G_X \), se deduce que \( \psi \circ \varphi = \mathrm{id}_{G_X} \).
+	
+	%		Análogamente, para todo \( x \in X \),
+	%		\[
+	%		(\varphi \circ \psi)(k(x)) = \varphi(\iota(x)) = k(x),
+	%		\]
+	%		y como \( k(X) \) genera \( H \), se deduce que \( \varphi \circ \psi = \mathrm{id}_H \).
+	
+	%		Por lo tanto, \( \varphi \) es un isomorfismo de grupos, y satisface \( \varphi \circ \iota = k \). La unicidad de \( \varphi \) se sigue de la unicidad en la propiedad universal del grupo libre.
+	
+	%		Así, el grupo libre sobre \( X \) es único salvo isomorfismo natural.
+	%	}
+%\end{proof}
+
+
+
+
+
+Pues veamos ahora cómo es la asigmación de morfismos:  Sea $\varphi_ A\to B $, entonces $$  j:=A \xrightarrow{ \varphi} B \xhookrightarrow{\displaystyle \iota_B} G_B .$$ Para $A$ y $j: A\to G_B$ por la propiedad universal existe un único morfismo $G_A\to G_B$, es decir, $G(\varphi)=G_A \to G_B$.\\
+
+\noindent Por lo que finalmente tenemos 
+
+
+\[
+\begin{aligned}
+	G:\mathbf{Set} & \longrightarrow \mathcal{C}  \\
+	X & \longmapsto G_X \\
+	\left(\varphi : A\to B \right)& \longmapsto \left(G(\varphi) : G_A \to G_B\right) .
+\end{aligned}
+\]
+
+\vspace{1cm}
+La propiedad universal del grupo libre es un caso particular de una construcción más general en el contexto de las \emph{categorías algebraicas}. Este principio no se limita a los grupos, sino que se extiende a otras estructuras algebraicas como magmas, semigrupos, monoides, anillos y módulos. En una categoría algebraica \( \mathcal{C} \), el objeto libre generado por un conjunto \( X \) satisface una propiedad universal análoga.
+
+
+\begin{proposicion}[Propiedad universal de los objetos libres en categorías algebraicas]
+	\upshape{
+		El par \( (X, \iota) \), donde \( X \) es un conjunto y \( \iota: X \hookrightarrow F(X) \) es la función de inclusión o apliación canónica en el objeto libre \( F(X) \), cumple la siguiente propiedad universal: \\ 
+		
+		\noindent Para todo objeto \( M \) en \( \mathcal{C} \) y toda función \( j : X \to M \), existe un único morfismo \( f : F(X) \to M \) en \( \mathcal{C} \) tal que el siguiente diagrama conmuta:
+		
+		
+		\[
+		\xymatrix{
+			X \ar[rr]^{\displaystyle j} \ar@{^(->}[dd]_{\displaystyle \iota } & & M \\
+			&&\\
+			F(X) \ar@{-->}[rruu]_{\displaystyle \exists !f} &&
+		}
+		\] Es decir, \( f \circ \iota = j \).
+	}
+\end{proposicion}
+
+
+En la construcción de un objeto libre, la inclusión o apliación canónica \( \iota : X \hookrightarrow F(X) \) surge de forma natural como parte intrínseca del proceso que inserta los generadores en la estructura algebraica, sin imponerse externamente. En los casos ya estudiados:
+\begin{itemize}
+	\item En el \textbf{magma libre} \( M_X \), \( \iota : X \hookrightarrow M_X \) introduce los generadores como símbolos sin restricciones.
+	\item En el \textbf{semigrupo libre} \( S_X \), \( \iota : X \hookrightarrow S_X \) respeta la asociatividad mediante una relación de equivalencia.
+	\item En el \textbf{monoide libre} \( \mathrm{Mon}(X) \), \( \iota : X \hookrightarrow \mathrm{Mon}(X) \) incorpora los generadores junto con la palabra vacía como identidad.
+	\item En el \textbf{grupo libre} \( G_X \), \( \iota : X \hookrightarrow G_X \) da una representación que permite inversos formales.
+\end{itemize} 

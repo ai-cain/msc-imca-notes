@@ -1,0 +1,876 @@
+
+
+\section{Producto directo}
+
+Sean \( G \) y \( H \) dos grupos. En \( G \times H \) se define la siguiente operación:
+
+
+\[
+(g,h)(g',h') := (gg', hh'), \quad \text{para todo } g, g' \in G; \, h, h' \in H.
+\]
+
+
+Esta operación define una operación interna en \( G \times H \). Además:
+
+\begin{itemize}
+	\item Es asociativa: Para todo \( g, g', g'' \in G \) y \( h, h', h'' \in H \), se cumple:
+	
+	
+	\[
+	(g,h)((g',h')(g'',h'')) = ((g,h)(g',h'))(g'',h'').
+	\]
+	
+	
+	
+	\item \( (e_G, e_H) \) es la identidad en \( G \times H \), pues para todo \( (g,h) \in G \times H \), se cumple:
+	
+	
+	\[
+	(e_G, e_H) (g,h) = (g,h) \quad \text{y} \quad (g,h) (e_G, e_H) = (g,h).
+	\]
+	
+	
+	
+	\item Todo elemento \( (g,h) \in G \times H \) admite un inverso. Existe \( (g^{-1}, h^{-1}) \in G \times H \) tal que:
+	\[
+	(g,h)(g^{-1}, h^{-1}) = (e_G, e_H).
+	\]
+	Por lo que el inverso de \( (g,h) \) está dado por:
+	\[
+	(g,h)^{-1} := (g^{-1}, h^{-1}).
+	\]	
+\end{itemize}
+Por lo tanto, \( G \times H \) tiene una estructura de grupo.
+
+\begin{definicion}
+	\upshape{
+		Dado \( G \) y \( H \) dos grupos, el producto directo de \( G \) y \( H \) es el grupo \( G \times H \), con la operación definida por:
+		
+		
+		\[
+		(g,h)(g',h') := (gg', hh').
+		\]
+		
+		
+	}
+\end{definicion}
+
+
+\begin{ejemplo}
+	\upshape{
+		Sean los grupos \( (\mathbb{Z}/3\mathbb{Z}, +) \) y \( (\langle i \rangle, \cdot) \). Entonces el producto directo es
+		\[
+		\begin{array}{rllll}
+			\mathbb{Z}/3\mathbb{Z} \times \langle i \rangle = \Bigl\{ & (\overline{0}, 1), & (\overline{1}, 1), & (\overline{2}, 1),&(\overline{0}, i),\\[4pt]
+			& (\overline{1}, i), & (\overline{2}, i), &(\overline{0}, -1), & (\overline{1}, -1),\\[4pt]
+			& (\overline{2}, -1), &(\overline{0}, -i), & (\overline{1}, -i), & (\overline{2}, -i)\:\: \Bigr\}
+		\end{array}
+		\]	
+		Además, este grupo es cíclico, ya que puede ser generado por el elemento \( (\,\overline{1}, i) \):
+		
+		\[
+		\mathbb{Z}/3\mathbb{Z} \times \langle i \rangle = \left\langle (\overline{1}, i) \right\rangle.
+		\]
+		Pero en general, el producto directo de dos grupos cíclicos no es cíclico.
+	}
+\end{ejemplo}
+
+\begin{observacion}
+	\upshape{
+		Solo cuando \( G \) y \( H \) son grupos abelianos aditivos se suele escribir \( G \oplus H := G \times H \) y lo denominamos \textit{suma directa} de \( G \) y \( H \).
+	}
+\end{observacion}
+
+
+
+
+
+
+
+\section{Producto semidirecto}
+
+Sea \( G \) un grupo, entonces  
+\[
+\operatorname{Aut}(G) := \bigl\{\,f: G \to G \mid f \text{ es un isomorfismo de grupos}\bigr\},
+\]  
+con la operación de composición, es un grupo llamado \emph{grupo de automorfismos} de \(G\).
+
+\medskip
+
+Sea \(\varphi: H \to \operatorname{Aut}(G)\). Definimos una operación interna en \(G \times H\) (visto como conjunto, no como producto directo) por
+\[
+(g,h)\,\rtimes_{\varphi}\,(g',h')
+: = \bigl(g\,\varphi_h(g'),\,h h'\bigr),
+\quad
+\text{para todo }g,g'\in G,\;h,h'\in H,
+\]
+donde \(\varphi_h := \varphi(h)\in \operatorname{Aut}(G)\). Además 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{itemize}
+	\item Es asociativa: Dado \((g,h),(g',h'),(g'',h'')\in G\times H\),  
+	\begin{align*}
+		\bigl((g,h)\!\rtimes_{\varphi}\!(g',h')\bigr)\!\rtimes_{\varphi}\!(g'',h'')
+		&=
+		\bigl(g\,\varphi_h(g'),\,h\,h'\bigr)\!\rtimes_{\varphi}\!(g'',h'')
+		\\
+		&=
+		\bigl(\,g\,\varphi_h(g')\;\varphi_{h h'}(g''),\;(h\,h')\,h''\bigr),
+		\\
+		(g,h)\!\rtimes_{\varphi}\!\bigl((g',h')\!\rtimes_{\varphi}\!(g'',h'')\bigr)
+		&=
+		(g,h)\!\rtimes_{\varphi}\!\bigl(g'\,\varphi_{h'}(g''),\,h'\,h''\bigr)
+		\\
+		&=
+		\bigl(\,g\;\varphi_h\bigl(g'\,\varphi_{h'}(g'')\bigr),\;h\,(h'\,h'')\bigr).
+	\end{align*}
+	Por la propiedad de que \(\varphi_h\) es un homomorfismo y \(\varphi_{h h'}=\varphi_h\circ\varphi_{h'}\), ambas expresiones coinciden, garantizando la asociatividad.
+	
+	\item Elemento identidad: Sea \((e_G,e_H)\). Para cualquier \((g,h)\),  
+	\begin{align*}
+		(e_G,e_H)\!\rtimes_{\varphi}\!(g,h)
+		&=
+		\bigl(e_G\,\varphi_{e_H}(g),\,e_H\,h\bigr)
+		=
+		(e_G\,g,\,h)
+		=
+		(g,h),
+		\\
+		(g,h)\!\rtimes_{\varphi}\!(e_G,e_H)
+		&=
+		\bigl(g\,\varphi_h(e_G),\,h\,e_H\bigr)
+		=
+		(g\,e_G,\,h)
+		=
+		(g,h),
+	\end{align*}
+	puesto que \(\varphi_{e_H}=\mathrm{id}_G\) y \(\varphi_h(e_G)=e_G\).
+	
+	\item Inverso: Dados \((g,h)\), definimos
+	\[
+	(g,h)^{-1}
+	:=
+	\bigl(\varphi_{h^{-1}}(g^{-1}),\,h^{-1}\bigr).
+	\]
+	Verifiquemos:
+	\begin{align*}
+		(g,h)\!\rtimes_{\varphi}\!(g,h)^{-1}
+		&=
+		\bigl(g\,\varphi_h\bigl(\varphi_{h^{-1}}(g^{-1})\bigr),\,h\,h^{-1}\bigr)
+		=
+		\bigl(g\,(g^{-1}),\,e_H\bigr)
+		=
+		(e_G,e_H),
+		\\
+		(g,h)^{-1}\!\rtimes_{\varphi}\!(g,h)
+		&=
+		\bigl(\varphi_{h^{-1}}(g^{-1})\,\varphi_{h^{-1}}(g),\,h^{-1}\,h\bigr)
+		=
+		\bigl(\varphi_{h^{-1}}(g^{-1}g),\,e_H\bigr)
+		=
+		(e_G,e_H),
+	\end{align*}
+	puesto que \(\varphi_{h^{-1}}\) es un isomorfismo de grupos.
+\end{itemize}
+Por lo tanto, \(\bigl(G\times H,\rtimes_{\varphi}\bigr)\) es un grupo.
+
+
+\begin{definicion}
+	\upshape{
+		Dados \(G\) y \(H\) grupos y un homomorfismo \(\varphi\colon H\to\operatorname{Aut}(G)\), el \textit{producto semidirecto} de $G$ y $H$ via $\varphi$ es el grupo  \(\left(G\times H, \rtimes_{\varphi}\right)\). Se denota 
+		\[
+		G\rtimes_{\varphi} H.
+		\]
+	}
+\end{definicion}
+
+
+\begin{observacion}
+	\upshape{
+		A diferencia del producto directo, en el producto semidirecto uno de los grupos actúa sobre el otro. En efecto, si $G$ y $H$ son grupos y $\varphi: H \to \operatorname{Aut}(G)$ es un homomorfismo, entonces $H$ actúa  sobre $G$ por medio de automorfismos (inducen una acción), y esta interacción se refleja en la operación de $G \rtimes_\varphi H$. De este modo, el producto semidirecto incorpora no solo la estructura de $G$ y $H$, sino también cómo $H$ transforma a $G$.
+	}
+\end{observacion}
+
+
+
+\begin{proposicion}\label{ñlkjhgfhjkwwwwww}
+	\upshape{
+		Sean \( G \) un grupo, \( N \trianglelefteq G \) y \( H \leq G \) dos subgrupos. Supongamos que:
+		\begin{enumerate}
+			\item Para todo \( g \in G \) existen únicos \( n' \in N \) y \( h' \in H \) tales que \( g = n'h' \), \label{lkjhgf.kjhg}
+			\item Existe un homomorfismo \( \varphi: H \to \operatorname{Aut}(N) \) tal que \( \varphi_h(n) = hnh^{-1} \) para todo \( n \in N \) y \( h \in H \), donde \( \varphi_h := \varphi(h) \in \operatorname{Aut}(N) \).
+		\end{enumerate}
+		Entonces 
+		\[
+		G \cong N \rtimes_{\varphi} H.
+		\]
+	}
+\end{proposicion}
+
+\medskip
+\begin{proof}
+	Definamos la aplicación
+	\begin{align*}
+			\theta: N \rtimes_{\varphi} H &\longrightarrow G \\
+			 (n, h) &\longmapsto n h
+	\end{align*}
+	
+	\smallskip
+	\noindent Verificamos que \( \theta \) es un homomorfismo. Sean \( (n, h), (n', h') \in N \rtimes_{\varphi} H \). Entonces:
+	\begin{align*}
+		\theta\big((n,h)\rtimes_{\varphi}(n',h')\big) &= \theta\big(n \varphi_h(n'), hh'\big) \\
+		&= n \varphi_h(n') \cdot hh' \\
+		&= n \cdot h n' h^{-1} \cdot hh' \\
+		&= n h n' h' \\
+		&= (nh)(n'h') = \theta(n,h)\cdot \theta(n',h').
+	\end{align*}
+	Por lo tanto, \( \theta \) es un homomorfismo de grupos.
+	
+	\smallskip
+	\noindent Ahora mostramos que \( \theta \) es biyectiva:	
+	\begin{itemize}
+		\item Inyectividad: Supongamos que \( \theta(n,h) = \theta(n',h') \), es decir, \( nh = n'h' \). Como por hipótesis la descomposición \( g = n''h'' \) es única para cada elemento de \( G \), se concluye que \( n = n' \) y \( h = h' \), por lo tanto \( (n,h) = (n',h') \).
+		
+		\item Sobreyectividad: Por hipótesis, todo \( g \in G \) se puede escribir como \( g = n h \) con \( n \in N \), \( h \in H \), lo cual implica que \( g = \theta(n,h) \) para algún \( (n,h) \in N \rtimes_{\varphi} H \). Así, \( \theta \) es sobreyectiva.
+	\end{itemize}
+	Concluimos que \( \theta \) es un isomorfismo de grupos, es decir,
+	\[
+	G \cong N \rtimes_{\varphi} H.
+	\]
+\end{proof}
+
+\begin{observacion}\label{equiv-condicion-descomposicion}
+	\upshape
+	En la Proposici\'on \ref{ñlkjhgfhjkwwwwww}, la condici\'on \ref{lkjhgf.kjhg} (descomposici\'on \'unica) puede sustituirse de manera equivalente por:  
+	\[  
+	N \cap H = \{e\} \quad \text{y} \quad NH = G.  
+	\]  
+	Es decir, $N$ y $H$ tienen intersecci\'on trivial y generan $G$.  
+\end{observacion}
+
+\begin{definicion}\label{kljhgf}
+	\upshape{
+		Sean \( A \), \( B \) y \( C \) tres grupos. Una \emph{sucesión exacta corta de grupos} es una secuencia de morfismos de grupos
+		\[
+		1 \longrightarrow A \xrightarrow{\:\:f\:} B \xrightarrow{\:\:g\:} C \longrightarrow 1
+		\]
+		tales que:
+		\begin{enumerate}
+			\item \( f \) es inyectivo,
+			\item \( g \) es suprayectivo,
+			\item \( \operatorname{Im}(f) = \ker(g) \).
+		\end{enumerate}
+		Aquí, \( 1 \) denota a cualquier grupo trivial.
+	}
+\end{definicion}
+
+\begin{observacion}
+	\upshape{
+		De la Definición \ref{kljhgf},
+		\begin{enumerate}
+			\item  \( A \) se identifica con un subgrupo normal de \( B \), es decir, $A\cong f(A)\trianglelefteq B$.
+			\item  \( C \) es isomorfo al cociente \( B / f(A) \).
+		\end{enumerate}
+	}
+\end{observacion}
+\begin{proof}[Justificación]
+	\textcolor{white}{text}
+	
+	\noindent $[1]$ Por la Proposición \ref{oikhugfd} tenemos que $\ker g \trianglelefteq B$. Entonces $$f(A)=\operatorname{Im}f=\ker g \trianglelefteq B.$$
+	\noindent $[2]$ Aplicando el Teorema Fundamnetal de Homomorfismo de grupos para $g: B\to C$ tenemos que $$C\cong \dfrac{B}{\ker g}=\dfrac{B}{f(A)}.$$
+\end{proof}
+
+
+
+
+
+
+\begin{proposicion}
+	\upshape{
+		Sean \( G \) un grupo, \( N \leq G \) y \( H \leq G \) dos subgrupos. Son equivalentes:
+		\begin{enumerate}
+			\item \( G \cong N \rtimes_{\varphi} H \) para algún homomorfismo \(\varphi: H \to \operatorname{Aut}(N)\).
+			\item Existe una sucesión exacta corta escindida:
+			\[
+			1 \to N \xrightarrow{\:\:\beta\:} G \xrightarrow{\:\:\alpha\:} H \to 1,
+			\]
+			con \(\alpha \circ \gamma = \text{id}_H\) para algún \(\gamma: H \to G\).
+		\end{enumerate}
+	}
+\end{proposicion}
+
+
+
+
+
+
+
+\begin{proof}
+	\textcolor{white}{text} % Espacio invisible para alineación
+	
+	\medskip
+	\noindent
+	$[1 \Rightarrow 2]$ Consideremos 
+	$$\begin{array}{rl}
+		\beta': N&\longrightarrow N\rtimes_{\varphi}H\\
+		n&\longmapsto (n,e_H)
+	\end{array}\quad\text{y}\quad\begin{array}{rl}
+		\alpha': N\rtimes_{\varphi}H&\longrightarrow H\\
+		(n,h)&\longmapsto h
+	\end{array}$$
+	Entonces
+	\begin{itemize}
+		\item $\beta'$ es inyectiva: pues $\ker \beta'=\{e_N\}$.
+		\item $\alpha'$ es sobreyectiva: dado $h\in H$ existe $(e_N,h) \in N\rtimes_{\varphi}H$ tal que $\alpha'(e_N,h)=h$.
+		\item $\ker \alpha'=\{(n,e_H):n\in N\}=\operatorname{Im}\beta'$
+	\end{itemize}
+	Sea ahora $\rho: G \to N \rtimes_\varphi H$ un isomorfismo (dado por la hipótesis). Entonces:
+	\[
+	\beta := \rho^{-1} \circ \beta', \quad \alpha := \alpha' \circ \rho,
+	\]
+	Verifiquemos que $\ker \alpha = \operatorname{Im} \beta$:
+	\begin{align*}
+		\ker \alpha &= \{ g \in G \mid \alpha(g) = e_H \} \\
+		&= \{ g \in G \mid \alpha'(\rho(g)) = e_H \} \\
+		&= \{ g \in G \mid \rho(g) \in \ker \alpha' \} \\
+		&= \{ g \in G \mid \rho(g) \in \operatorname{Im} \beta' \} \\
+		&= \{ g \in G \mid \exists n \in N \text{ tal que } \rho(g) = \beta'(n) = (n, e_H) \} \\
+		&= \{ g \in G \mid \exists n \in N \text{ con } g = \rho^{-1}(n, e_H) = \beta(n) \} \\
+		&= \operatorname{Im} \beta.
+	\end{align*}
+	Así, obtenemos la sucesión exacta corta:
+	\[
+	1 \to N \xrightarrow{\:\:\beta\:} G \xrightarrow{\:\:\alpha\:} H \to 1,
+	\]
+	Definimos además:
+	\[
+	\gamma': H \to N \rtimes_\varphi H,\quad h \mapsto (e_N, h), \quad \text{y} \quad \gamma := \rho^{-1} \circ \gamma'.
+	\]
+	Entonces $\alpha \circ \gamma = \operatorname{id}_H$, como se requería.\\
+	
+	\noindent
+	$[2 \Rightarrow 1]$ Sea $g\in G$, entonces $\alpha(g)\in H$. Así, $\alpha(g)=h$ para algún $h\in H$. Consideremos $g\gamma(h^{-1})\in G$, entonces
+	$$\alpha\left(g\gamma(h^{-1})\right)=\alpha(g)\alpha\left(\gamma(h^{-1})\right)=h\operatorname{id}_H(h^{-1})=hh^{-1}=e_H.$$ 
+	Por lo que $g\gamma(h^{-1})\in \ker \alpha=\operatorname{Im}\beta$, entonces $g\gamma(h^{-1})=\beta(n)$ para algún $n\in N$. Así, $$g=\beta(n)\gamma(h).$$ 
+	Supongamos que existe $n'\in N$ y $h'\in H$ tales que $$g=\beta(n)\gamma(h)=\beta(n')\gamma(h'),$$ luego $\gamma(hh'^{-1})=\beta(n'n^{-1})$, y como $\ker \alpha =\operatorname{Im}\beta$ tenemos que $$hh'^{-1}=\alpha\left(\gamma\left(hh'^{-1}\right)\right)=\alpha\left(\beta(n'n^{-1})\right)=e_H,$$ por lo que $$h=h'.$$ 
+	Esto implica que $\beta(n)=\beta(n')$, y dado que $\beta$ es inyectiva, entonces $n=n'$.
+	
+	\medskip
+	\noindent Entonces tenemos que cada $g\in G$ se escribe como 
+	\begin{equation}\label{poiuhygf}
+		g=\beta(n)\gamma(h),\quad \text{con }n\in N\text{ único y }h\in H\text{ único.}
+	\end{equation}
+	
+	\medskip
+	\noindent
+	Definamos
+	\begin{align*}
+		\varphi: H &\longrightarrow \operatorname{Aut}(N) \\[4pt]
+		h &\longmapsto \left(  
+		\begin{array}{rcl}
+			\varphi_h : N &\to& N \\[2pt]
+			n &\mapsto& \varphi_h(n)
+		\end{array} \right),
+	\end{align*}
+	donde $\varphi_h(n):=\beta^{-1}\left(\gamma(h)\beta(n)\gamma(h^{-1})\right)$ y el homomorfismo inverso $\beta^{-1}: \beta(N)\to N$.
+	
+	\medskip
+	\noindent Esta aplicación está bien definida pues $\operatorname{Im}\beta=\ker \alpha \trianglelefteq G$, con lo que $$\gamma(h)\beta(n)\gamma(h^{-1})\in \operatorname{Im}\beta.$$ 
+	Y para cada $h\in H$ se tiene que $\varphi_h: N\to N$ es un isomorfismo. En efecto,
+	
+	\begin{itemize}
+		\item Homomorfismo:
+		\begin{align*}
+			\varphi_h(nn')    & =\beta^{-1}\left(\gamma(h)\beta(nn')\gamma(h^{-1})\right)\\
+			& =\beta^{-1}\left(\gamma(h)\beta(n)\gamma(h^{-1})\gamma(h)\beta(n')\gamma(h^{-1})\right) \\
+			&= \beta^{-1}\left(\gamma(h)\beta(n)\gamma(h^{-1})\right) \beta^{-1}\left(\gamma(h)\beta(n')\gamma(h^{-1})\right)\\
+			&=\varphi_h(n)\varphi_h(n')
+		\end{align*}
+		
+		\item Biyectiva: Considere $\varphi_{h^{-1}}$. Entonces 
+		\begin{align*}
+			\varphi_{h^{-1}}\left(\varphi_h(n)\right)&=\varphi_{h^{-1}} \left(\beta^{-1}\left(\gamma(h)\beta(n)\gamma(h^{-1})\right)\right)\\[4pt]
+			&=\beta^{-1}\left(\gamma(h^{-1})\beta\left(\beta^{-1}\left(\gamma(h)\beta(n)\gamma(h^{-1})\right)\right)\gamma(h)\right)\\[4pt]
+			&=\beta^{-1}\left(\gamma(h^{-1}h)\beta(n)\gamma(h^{-1}h)\right)\\[4pt]
+			&=\beta^{-1}(\beta(n))=n\\[4pt]
+			&=\operatorname{id}_N(n).
+		\end{align*}
+		De manera análoga tenemos que $\varphi_h\left(\varphi_{h^{-1}}(n)\right)=\operatorname{id}_N(n)$ para todo $n\in N$. Con lo cual $\varphi_h$ es biyectiva.
+	\end{itemize}
+	Así, para todo $h\in H$ tenemos que $\varphi_h \in\operatorname{Aut}(N)$.
+	
+	\medskip
+	\noindent
+	Ahora debemos ver que $\varphi: H\to \operatorname{Aut}(N)$ es un homomorfismo de grupos. En efecto,
+	\begin{align*}
+		\varphi_{h_1 h_2}(n) 
+		&= \beta^{-1}\left( \gamma(h_1 h_2)\, \beta(n)\, \gamma\left((h_1 h_2)^{-1}\right) \right) \\[4pt]
+		&= \beta^{-1}\left( \gamma(h_1)\gamma(h_2)\, \beta(n)\, \gamma\left(h_2^{-1}\right)\gamma\left(h_1^{-1}\right) \right) \\[4pt]
+		&= \beta^{-1}\left( \gamma(h_1)\, \left( \gamma(h_2)\, \beta(n)\, \gamma\left(h_2^{-1}\right) \right)\, \gamma\left(h_1^{-1}\right) \right) \\[4pt]
+		&= \beta^{-1}\left( \gamma(h_1)\, \beta\left( \varphi_{h_2}(n) \right)\, \gamma\left(h_1^{-1}\right) \right) \\[4pt]
+		&= \varphi_{h_1}\left( \varphi_{h_2}(n) \right) \\[4pt]
+		&= \left( \varphi_{h_1} \circ \varphi_{h_2} \right)(n).
+	\end{align*}
+	
+	\noindent Ahora estamos en condiciones de finalmente mostrar que $$G\cong N\rtimes_\varphi H.$$
+	
+	\noindent
+	Definamos la aplicación
+	\begin{align*}
+		\theta: N \rtimes_{\varphi} H &\longrightarrow G \\
+		(n, h) &\longmapsto \beta(n)\gamma(h)
+	\end{align*}
+	
+	\smallskip
+	\noindent
+	Verificamos que $\theta$ es un homomorfismo. Sean $(n, h), (n', h') \in N \rtimes_{\varphi} H$. Entonces:
+	\begin{align*}
+		\theta\left( (n,h)\rtimes_\varphi (n',h') \right) 
+		&= \theta\left( \left( n \cdot \varphi_h(n'),\, hh' \right) \right) \\[4pt]
+		&= \beta\left( n \cdot \varphi_h(n') \right)\gamma(hh') \\[4pt]
+		&= \beta(n)\beta\left( \varphi_h(n') \right)\gamma(h)\gamma(h') \\[4pt]
+		&= \beta(n)\gamma(h)\beta(n')\gamma(h^{-1})\gamma(h)\gamma(h') \\[4pt]
+		&= \beta(n)\gamma(h)\beta(n')\gamma(h') \\[4pt]
+		&= \theta(n,h)\cdot\theta(n',h').
+	\end{align*}
+	
+	\noindent
+	Por lo tanto, $\theta$ es un homomorfismo de grupos.\\
+	
+	\noindent
+	Ahora mostramos que $\theta$ es biyectiva:    
+	\begin{itemize}
+		\item Inyectividad: Supongamos que $\theta(n,h) = \theta(n',h')$, es decir,
+		\[
+		\beta(n)\gamma(h) = \beta(n')\gamma(h').
+		\]
+		Por la unicidad de la descomposición en \eqref{poiuhygf} se tiene que $n = n'$ y $h = h'$, por lo tanto $(n,h) = (n',h')$.
+		
+		\item Sobreyectividad: Por \eqref{poiuhygf}, todo $g \in G$ se puede escribir de manera única como $g = \beta(n)\gamma(h)$ con $n \in N$, $h \in H$. Esto implica que $g = \theta(n,h)$, y por tanto $\theta$ es sobreyectiva.
+	\end{itemize}
+	
+	\noindent
+	Concluimos que $\theta$ es un isomorfismo de grupos, es decir,
+	\[
+	G \cong N \rtimes_{\varphi} H.
+	\]
+\end{proof}
+
+
+\begin{proposicion}\label{ñlkjhgfhjk}
+	\upshape
+	Sea \( n \geq 3 \). Consideremos el producto semidirecto \( \mathbb{Z}/n\mathbb{Z} \rtimes_{\varphi} \mathbb{Z}/2\mathbb{Z} \), para algún homomorfismo \( \varphi: \mathbb{Z}/2\mathbb{Z} \to \operatorname{Aut}(\mathbb{Z}/n\mathbb{Z}) \), y consideremos al grupo diedral $D_n$. Entonces,
+	\[
+	D_n \cong \mathbb{Z}/n\mathbb{Z} \rtimes_{\varphi} \mathbb{Z}/2\mathbb{Z}.
+	\]
+\end{proposicion}
+
+
+
+\begin{proof}
+	Recordemos de la Definición \ref{deiugv} y la Proposición \ref{lkjhgjkl} que  \(D_n=\langle a,b\rangle\), donde \(a\) es un \(n\)-ciclo tal que \(a^n=I\), y \(b\) es una permutación tal que \(b^2=I\). Consideremos \(N:=\langle a\rangle\), un grupo cíclico de orden \(n\), y \(H:=\langle b\rangle\), un grupo cíclico de orden \(2\). Entonces \(N\trianglelefteq D_n\), \(N\cap H = \{I\}\), y \(NH = D_n\).
+	
+	\medskip
+	\noindent Definimos la acción
+	\[
+	\rho: \langle b \rangle \longrightarrow \operatorname{Aut}(\langle a\rangle), \quad h \longmapsto \left(  
+	\begin{array}{rcl}
+		\rho_h : \langle a\rangle &\to& \langle a\rangle \\
+		n &\mapsto& hnh^{-1}
+	\end{array} \right).
+	\]
+	Esta aplicación está bien definida porque \(N \trianglelefteq D_n\). Así, la conjugación por elementos de \(H\) induce automorfismos de \(N\). Además, \(\rho\) es un homomorfismo de grupos.
+	
+	\medskip
+	\noindent
+	Entonces, por la Proposición \ref{ñlkjhgfhjkwwwwww} y la Observación \ref{equiv-condicion-descomposicion}, tenemos que
+	\[
+	D_n \cong \langle a\rangle\rtimes_{\rho} \langle b \rangle.
+	\]
+	Por otro lado, sabemos por la Proposición \ref{lkjhghjklñ} que
+	\[
+	\langle a\rangle \cong \mathbb{Z}/n\mathbb{Z} \quad \text{y} \quad \langle b\rangle \cong \mathbb{Z}/2\mathbb{Z}.
+	\]
+	Definimos ahora 	
+	\begin{align*}
+		\varphi: \dfrac{\mathbb{Z}}{2\mathbb{Z}} &\longrightarrow  \operatorname{Aut}\left(\dfrac{\mathbb{Z}}{n\mathbb{Z}}\right)\\[5pt]
+		\overline{O}& \longmapsto \varphi_{\overline{0}}: =\operatorname{id}_{\mathbb{Z}/n\mathbb{Z}}\\[5pt]
+		\overline{1}& \longmapsto  \left(  
+		\begin{array}{rcl}
+			\varphi_{\overline{1}} : \mathbb{Z}/n\mathbb{Z} &\to&\mathbb{Z}/n\mathbb{Z} \\[2pt]
+			[r] &\mapsto& -[r]
+		\end{array} \right)
+	\end{align*}
+	Así para cada $t \in \mathbb{Z}/2\mathbb{Z}$ tenemos que $\varphi_t\in \operatorname{Aut}\left(\mathbb{Z}/n\mathbb{Z}\right)$ y que $\varphi$ es un homomorfismo de grupos ya que $$\varphi(\overline{0}+\overline{1})=\varphi_{\overline{1}}=\varphi_{\overline{0}}\circ\varphi_{\overline{1}}=\varphi\left(\overline{0}\right)\circ \varphi\left(\overline{1}\right).$$
+	
+	$$\varphi(\overline{1}+\overline{0})=\varphi_{\overline{1}}=\varphi_{\overline{1}}\circ \varphi_{\overline{0}}=\varphi\left(\overline{1}\right)\circ \varphi\left(\overline{0}\right).$$
+	
+	
+	\medskip
+	\noindent
+	Entonces formamos el producto semidirecto
+	\[
+	\mathbb{Z}/n\mathbb{Z} \rtimes_{\varphi} \mathbb{Z}/2\mathbb{Z}.
+	\]
+	Sean ahora los isomorfismos \(f: \langle a \rangle \to \mathbb{Z}/n\mathbb{Z}\), y \(g: \langle b \rangle \to \mathbb{Z}/2\mathbb{Z}\). Definimos
+	
+	\begin{align*}
+		\theta: \langle a\rangle\rtimes_{\rho} \langle b \rangle&\longrightarrow \dfrac{\mathbb{Z}}{n\mathbb{Z}} \rtimes_{\varphi} \dfrac{\mathbb{Z}}{2\mathbb{Z}} \\[5pt]
+		\quad (x, y) &\longmapsto \big(f(x), g(y)\big).
+	\end{align*}
+	Verificamos que \(\theta\) es un homomorfismo. Tomemos \((x,y), (x', y')\) en \(\langle a\rangle \rtimes_{\rho} \langle b\rangle\). Entonces:
+	\begin{align*}
+		\theta((x,y)\rtimes_{\rho}(x',y')) 
+		&= \theta\left(x  \rho_{y}(x'),\; yy'\right) \\
+		&= \left(f(x  \rho_{y}(x')),\; g(yy')\right) \\
+		&= \left(f(x) f(\rho_{y}(x')),\; g(y) g(y')\right).
+	\end{align*}
+	Como \(\rho\) y \(\varphi\) están relacionadas por \(f\) y \(g\) vía:
+	\[
+	f(\rho_h(z)) = \varphi_{g(h)}(f(z)),\quad h\in \langle b\rangle; \: z\in \langle a\rangle.
+	\]
+En efecto:
+	\begin{itemize}
+		\item Si \(h = I\), entonces \(g(h) = \overline{0}\), y como \(\rho_h = \operatorname{id}\), se tiene:
+		\[
+		f(\rho_h(z)) = f(z) = \varphi_{\overline{0}}(f(z)).
+		\]
+		\item Si \(h = b\), entonces \(g(h) = \overline{1}\), y \(\rho_b(z) = bzb^{-1} = z^{-1}\), dado que  \(ba = a^{-1}b\). Así,
+		\[
+		f(\rho_b(z)) = f(z^{-1}) = -f(z) = \varphi_{\overline{1}}(f(z)).
+		\]
+		
+		\noindent
+		\textbf{Nota.} Aunque \( \rho_h(z) = hzh^{-1} \), no podemos separar \( f(hzh^{-1}) \) como \( f(h) + f(z) + f(h^{-1}) \), ya que \( f \) sólo está definido en \( \langle a \rangle \), y \( h \notin \langle a \rangle \).
+	\end{itemize}
+	Entonces,
+	\begin{align*}
+		\theta((x,y)\rtimes_{\rho}(x',y')) 
+		&= \left(f(x) f(\rho_{y}(x')),\; g(y) g(y')\right)\\
+		&=\left(f(x) \varphi_{g(y)}(f(x')),\; g(y) g(y')\right) \\
+		&= \left(f(x), g_{g(y)} \left(f(x')\right),\:(f(x'), g(y')\right) \\
+		&=\left(f(x),g(y)\right)\rtimes_{\varphi}\left(f(x'),g(x')\right)\\
+		&= \theta(x, y) \rtimes_{\varphi} \theta(x', y').
+	\end{align*}
+	Así, \(\theta\) es un homomorfismo de grupos. Como \(f\) y \(g\) son isomorfismos, \(\theta\) también lo es. En efecto
+	\begin{itemize}
+		\item Inyectividad: Supongamos que \( \theta(z_1, h_1) = \theta(z_2, h_2) \). Entonces,
+		\[
+		(f(z_1), g(h_1)) = (f(z_2), g(h_2)).
+		\]
+		Como \( f \) y \( g \) son inyectivos, se concluye que \( z_1 = z_2 \) y \( h_1 = h_2 \), por lo que \( \theta \) es inyectiva.
+		
+		\item Sobreyectividad: Sea cualquier par \( ([r], [t]) \in \mathbb{Z}/n\mathbb{Z} \rtimes_\varphi \mathbb{Z}/2\mathbb{Z} \). Como \( f \) y \( g \) son isomorfismos, existen \( z \in \langle a \rangle \) y \( h \in \langle b \rangle \) tales que \( f(z) = [r] \) y \( g(h) = [t] \). Entonces \( \theta(z, h) = ([r], [t]) \), y por tanto \( \theta \) es sobreyectiva.
+	\end{itemize}
+	Como consecuencia tenemos que 
+	\[
+	\langle a\rangle \rtimes_{\rho} \langle b \rangle \cong \mathbb{Z}/n\mathbb{Z} \rtimes_{\varphi} \mathbb{Z}/2\mathbb{Z}.
+	\]
+	Finalmente, como ya se había establecido que \(D_n \cong \langle a\rangle \rtimes_{\rho} \langle b \rangle\), se concluye:
+	\[
+	D_n \cong \mathbb{Z}/n\mathbb{Z} \rtimes_{\varphi} \mathbb{Z}/2\mathbb{Z}. \qedhere
+	\]
+\end{proof}
+
+
+
+
+\medskip
+
+Así, como puede notarse, la demostración de la Proposición \ref{ñlkjhgfhjk} ha resultado extensa. A continuación presentaremos una demostración más directa. No obstante, esta primera demostración cumple un propósito importante: nos ha permitido observar en detalle cómo se relacionan dos productos semidirectos y bajo qué condiciones pueden ser isomorfos. Esto será analizado en la Proposición \ref{prop:isomorfismo_semi}.\\
+
+
+
+
+\noindent \textbf{Proposicion}
+	\upshape
+	Sea \( n \geq 3 \). Consideremos el producto semidirecto \( \mathbb{Z}/n\mathbb{Z} \rtimes_{\varphi} \mathbb{Z}/2\mathbb{Z} \), para algún homomorfismo \( \varphi: \mathbb{Z}/2\mathbb{Z} \to \operatorname{Aut}(\mathbb{Z}/n\mathbb{Z}) \), y consideremos al grupo diedral $D_n$. Entonces,
+	\[
+	D_n \cong \mathbb{Z}/n\mathbb{Z} \rtimes_{\varphi} \mathbb{Z}/2\mathbb{Z}.
+	\]
+
+
+\begin{proof}
+	Sea \(G := \mathbb{Z}/n\mathbb{Z} \rtimes_\varphi \mathbb{Z}/2\mathbb{Z}\), donde la acción \(\varphi: \mathbb{Z}/2\mathbb{Z} \to \operatorname{Aut}(\mathbb{Z}/n\mathbb{Z})\) está dada por
+	\[
+	\varphi_{\overline{0}} = \operatorname{id}, \qquad \varphi_{\overline{1}}([r]) = [-r].
+	\]
+	Denotemos
+	\[
+	p := ([1], \overline{0}), \qquad q := ([0], \overline{1}).
+	\]
+	Veamos que estos elementos satisfacen las relaciones del grupo diedral \(D_n\):
+	
+	\begin{itemize}
+		\item \(p^n = ([1], \overline{0})^n = ([n], \overline{0}) = ([0], \overline{0})\).
+		
+		\item \(q^2 = ([0], \overline{1})^2 = ([0] + \varphi_{\overline{1}}([0]), \overline{1} + \overline{1}) = ([0], \overline{0})\).
+		
+		\item \(q p q = ([0], \overline{1})([1], \overline{0})([0], \overline{1})\). Primero,
+		\[
+		([0], \overline{1})([1], \overline{0}) = ([0] + \varphi_{\overline{1}}([1]), \overline{1}) = ([-1], \overline{1}),
+		\]
+		y luego
+		\[
+		([-1], \overline{1})([0], \overline{1}) = ([-1] + \varphi_{\overline{1}}([0]), \overline{0}) = ([-1], \overline{0}) = p^{-1}.
+		\]
+		Así, \(q p q = p^{-1}\).
+	\end{itemize}
+	Además, \(G = \langle p, q \rangle\). En efecto, notemos que todo elemento de \(G = \mathbb{Z}/n\mathbb{Z} \rtimes_\varphi \mathbb{Z}/2\mathbb{Z}\) es un par \(([\ell], \overline{t})\), donde \([\ell] \in \mathbb{Z}/n\mathbb{Z}\) y \(\overline{t} \in \mathbb{Z}/2\mathbb{Z}\). Entonces, hay dos casos:
+	
+	\begin{itemize}
+		\item Si \(\overline{t} = \overline{0}\), entonces \(([\ell], \overline{0}) = ([1], \overline{0})^\ell = p^\ell\).
+		
+		\item Si \(\overline{t} = \overline{1}\), entonces
+		\[
+		([\ell], \overline{1}) = ([\ell], \overline{0})([0], \overline{1}) = ([1], \overline{0})^\ell \cdot q = p^\ell q.
+		\]
+	\end{itemize}
+	Por lo tanto, cualquier elemento de \(G\) puede expresarse como un producto de potencias de \(p\) y \(q\), lo cual prueba que \(G = \langle p, q \rangle\).
+	
+	
+	\medskip
+	\noindent Así,  tanto $D_n$ como $G$ tienen la misma presentación de grupos $$\langle x,y: x^n=e,y^2=2,yxy=x^{-1}\rangle$$ de donde 
+	\[
+	D_n \cong \langle x,y: x^n=e,y^2=2,yxy=x^{-1}\rangle \cong\mathbb{Z}/n\mathbb{Z} \rtimes_\varphi \mathbb{Z}/2\mathbb{Z}. 
+	\]
+\end{proof}
+
+
+%\begin{proposicion}\label{dasdasdasdasad}\upshape
+%	Sean \( A \), \( B \), \( A' \) y \( B' \) grupos, y sean \( \varphi \colon B \to \operatorname{Aut}(A) \) y \( \varphi' \colon B' \to \operatorname{Aut}(A') \) homomorfismos de grupos. Entonces, son equivalentes las siguientes condiciones:
+%	\begin{enumerate}
+%		\item Existe un isomorfismo de grupos
+%		\[
+%		A \rtimes_{\varphi} B \cong A' \rtimes_{\varphi'} B'.
+%		\]
+		
+%		\item Existen isomorfismos \( f \colon A \to A' \) y \( g \colon B \to B' \) tales que, para todo \( b \in B \), se cumple:
+%		\[
+%		f \circ \varphi_{b} = \varphi'_{g(b)} \circ f.
+%		\]
+%	\end{enumerate}
+%\end{proposicion}
+
+
+\begin{proposicion}\label{prop:isomorfismo_semi}
+	\upshape
+	Sean \( A \), \( B \), \( A' \) y \( B' \) grupos, y sean $$ \varphi \colon B \to \operatorname{Aut}(A) \qquad \text{y}\qquad\varphi' \colon B' \to \operatorname{Aut}(A') $$ homomorfismos de grupos. Supongamos que existen isomorfismos de grupos \( f \colon A \to A' \) y \( g \colon B \to B' \) tales que, para todo \( b \in B \), se cumple:
+	\[
+	f \circ \varphi_b = \varphi'_{g(b)} \circ f.
+	\]
+	Entonces, el grupo producto semidirecto \( A \rtimes_\varphi B \) es isomorfo a \( A' \rtimes_{\varphi'} B' \).
+\end{proposicion}
+
+\begin{proof}
+	\textcolor{white}{text}
+	
+	\medskip
+	\noindent 
+	Definamos
+	\[
+	\theta: A \rtimes_{\varphi} B \longrightarrow A' \rtimes_{\varphi'} B', \qquad (a,b) \longmapsto \left(f(a), g(b)\right).
+	\]
+	Veamos que \( \theta \) es homomorfismo. Tomemos \( (a,b), (a',b') \in A \rtimes_{\varphi} B \). Entonces:
+	\begin{align*}
+		\theta\big((a,b) \rtimes_{\varphi} (a',b')\big) 
+		&= \theta\big(a  \varphi_b(a'),\; bb'\big)\\
+		&= \left(f\left(a  \varphi_b(a')\right),\; g(bb')\right)\\
+		&= \left(f(a)  f(\varphi_b(a')),\; g(b)g(b')\right)\\
+		&= \left(f(a)  \varphi'_{g(b)}(f(a')),\; g(b)g(b')\right)\\
+		&= \left(f(a),g(b)\right) \rtimes_{\varphi'} \left(f(a'),g(b')\right)\\
+		&= \theta(a,b) \rtimes_{\varphi'} \theta(a',b').
+	\end{align*}
+Como \(f\) y \(g\) son isomorfismos, \(\theta\) también lo es. En efecto,
+\begin{itemize}
+	\item Inyectividad: Supongamos que \( \theta(a_1, b_1) = \theta(a_2, b_2) \). Entonces,
+	\[
+	(f(a_1), g(b_1)) = (f(a_2), g(b_2)).
+	\]
+	Como \( f \) y \( g \) son inyectivos, se concluye que \( a_1 = a_2 \) y \( b_1 = b_2 \), por lo que \( \theta \) es inyectiva.
+	
+	\item Sobreyectividad: Sea cualquier par \( (a', b') \in A' \rtimes_{\psi} B' \). Como \( f \) y \( g \) son isomorfismos, existen \( a \in A \) y \( b \in B \) tales que \( f(a) = a' \) y \( g(b) = b' \). Entonces \( \theta(a, b) = (a', b') \), y por tanto \( \theta \) es sobreyectiva.
+\end{itemize}
+Concluimos que
+\[
+A \rtimes_{\varphi} B \cong A' \rtimes_{\psi} B'. \qedhere
+\]
+
+	
+\end{proof}
+
+\begin{proposicion}
+	\upshape{
+	Sea \( \mathbb{K} \) un cuerpo. Consideremos los siguientes subconjuntos de \( \operatorname{GL}_n(\mathbb{K}) \), el grupo de matrices invertibles \( n \times n \) con entradas en \( \mathbb{K} \), con la operación de multiplicación de matrices:
+	\begin{align*}
+		\mathbb{T}_n &:= \{ A \in \operatorname{GL}_n(\mathbb{K}) \mid A \text{ es triangular superior} \}, \\[5pt]
+		\mathbb{D}_n &:= \{ A \in \operatorname{GL}_n(\mathbb{K}) \mid A \text{ es diagonal} \}, \\[5pt]
+		\mathbb{U}_n &:= \{ A \in \mathbb{T}_n \mid \text{todas las entradas diagonales de } A \text{ son iguales a } 1 \}.
+	\end{align*}
+	Entonces:
+	\begin{itemize}
+		\item \( \mathbb{T}_n \), \( \mathbb{D}_n \) y \( \mathbb{U}_n \) son subgrupos de \( \operatorname{GL}_n(\mathbb{K}) \) bajo la multiplicación de matrices.
+		\item Se tiene \( \mathbb{D}_n \leq \mathbb{T}_n \), \( \mathbb{U}_n \trianglelefteq \mathbb{T}_n \), y
+		\[
+		\mathbb{T}_n \cong \mathbb{U}_n \rtimes_{\varphi} \mathbb{D}_n,
+		\]
+		para algún homomorfismo \( \varphi \colon \mathbb{D}_n \to \operatorname{Aut}(\mathbb{U}_n) \).
+	\end{itemize}
+	}
+\end{proposicion}
+
+
+
+
+
+
+
+\begin{proof}
+	\textcolor{white}{text}
+	
+	\medskip
+	\noindent Nos interesa ver que  $\mathbb{T}_n \cong \mathbb{U}_n \rtimes_{\varphi} \mathbb{D}_n,$ por lo que probaremos inicialmente que $ \mathbb{U}_n \trianglelefteq \mathbb{T}_n $. En efecto, sean
+\[
+T =
+\begin{pmatrix}
+	d_1 & t_{12} & \cdots & t_{1n} \\
+	0   & d_2    & \cdots & t_{2n} \\
+	\vdots & \ddots & \ddots & \vdots \\
+	0 & \cdots & 0 & d_n
+\end{pmatrix} \in \mathbb{T}_n, \quad
+U =
+\begin{pmatrix}
+	1 & u_{12} & \cdots & u_{1n} \\
+	0 & 1 & \cdots & u_{2n} \\
+	\vdots & \ddots & \ddots & \vdots \\
+	0 & \cdots & 0 & 1
+\end{pmatrix} \in \mathbb{U}_n.
+\]
+Entonces \( T^{-1} \) también es triangular superior e invertible, y tiene la forma:
+\[
+T^{-1} =
+\begin{pmatrix}
+	d_1^{-1} & s_{12} & \cdots & s_{1n} \\
+	0   & d_2^{-1} & \cdots & s_{2n} \\
+	\vdots & \ddots & \ddots & \vdots \\
+	0 & \cdots & 0 & d_n^{-1}
+\end{pmatrix},
+\quad \text{con ciertos } s_{ij} \in \mathbb{K}.
+\]
+Así, la conjugación
+\[
+T U T^{-1} =
+\begin{pmatrix}
+	1 & * & \cdots & * \\
+	0 & 1 & \cdots & * \\
+	\vdots & \ddots & \ddots & \vdots \\
+	0 & \cdots & 0 & 1
+\end{pmatrix} \in \mathbb{U}_n,
+\]
+Así, tenemos que  \( \mathbb{U}_n \trianglelefteq \mathbb{T}_n \).
+
+\medskip
+\noindent Como siguienye paso definamos 
+	\[
+	\varphi \colon \mathbb{D}_n \to \operatorname{Aut}(\mathbb{U}_n), \quad \varphi_D(U) := D U D^{-1}.
+	\]
+	Veamos que esto está bien definido:
+	
+	\begin{itemize}
+		\item Dado \( D \in \mathbb{D}_n \), se tiene que \( \varphi_D \) es un automorfismo de \( \mathbb{U}_n \):
+		\begin{itemize}
+			\item Homomorfismo: Para \( U_1, U_2 \in \mathbb{U}_n \),
+			\[
+			\varphi_D(U_1 U_2) = D U_1 U_2 D^{-1} = D U_1 D^{-1} D U_2 D^{-1} = \varphi_D(U_1) \varphi_D(U_2).
+			\]
+			\item Biyectiva: La inversa de \( \varphi_D \) es \( \varphi_{D^{-1}} \), pues
+			\[
+			\varphi_{D^{-1}}(\varphi_D(U)) = D^{-1} (D U D^{-1}) D = U=\operatorname{id}_{\mathbb{U}_n}(U).
+			\]
+			\[
+			\varphi_{D^{-1}}(\varphi_D(U)) = D^{-1}(D U D^{-1})D = U = \operatorname{id}_{\mathbb{U}_n}(U).
+			\]
+			
+			
+			
+			
+		\end{itemize}
+		\item \( \varphi \) es un homomorfismo: Para \( D_1, D_2 \in \mathbb{D}_n \) y \( U \in \mathbb{U}_n \),
+		\[
+		\varphi_{D_1 D_2}(U) = \left(D_1 D_2\right) U \left(D_1 D_2\right)^{-1} = D_1 \left(D_2 U D_2^{-1}\right) D_1^{-1} = \varphi_{D_1}\left(\varphi_{D_2}(U)\right).
+		\]
+		
+	\end{itemize}
+	Debemos ver $\mathbb{T}=\mathbb{U}_n\mathbb{D}_n$, es decir, toda matriz \( T \in \mathbb{T}_n \) puede escribirse como \( T = U D \), con \( U \in \mathbb{U}_n \), \( D \in \mathbb{D}_n \). En efecto, sea
+	\[
+	T = (t_{ij}) \in \mathbb{T}_n,
+	\]
+	definimos
+	\[
+	D := \operatorname{diag}(t_{11}, t_{22}, \dots, t_{nn}) \in \mathbb{D}_n,
+	\]
+	y luego como \[
+	D^{-1} = \operatorname{diag}\left(t_{11}^{-1},\, t_{22}^{-1},\, \dots,\, t_{nn}^{-1}\right)\in \mathbb{D}_n
+	\]
+	 es tal que 	
+	\[
+	T D^{-1} = 
+	\begin{pmatrix}
+		t_{11} & t_{12} & \cdots & t_{1n} \\
+		0 & t_{22} & \cdots & t_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		0 & 0 & \cdots & t_{nn}
+	\end{pmatrix}
+	\begin{pmatrix}
+		t_{11}^{-1} & 0 & \cdots & 0 \\
+		0 & t_{22}^{-1} & \cdots & 0 \\
+		\vdots & \vdots & \ddots & \vdots \\
+		0 & 0 & \cdots & t_{nn}^{-1}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1 & \frac{t_{12}}{t_{22}} & \cdots & \frac{t_{1n}}{t_{nn}} \\
+		0 & 1 & \cdots & \frac{t_{2n}}{t_{nn}} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		0 & 0 & \cdots & 1
+	\end{pmatrix}
+	\in \mathbb{U}_n
+	\] definimos  \( U:=TD^{-1} \in \mathbb{U}_n \), y se tiene \( T = U D \) como queríamos.
+	
+	\medskip
+	\noindent
+	También debemos ver que \( \mathbb{U}_n \cap \mathbb{D}_n = \{I\} \). En efecto,
+	si \( A \in \mathbb{U}_n \cap \mathbb{D}_n \), entonces \( A \) es diagonal e igual a la identidad en la diagonal, por lo que
+	\[
+	A = 
+	\begin{pmatrix}
+		1 & 0 & \cdots & 0 \\
+		0 & 1 & \cdots & 0 \\
+		\vdots & \vdots & \ddots & \vdots \\
+		0 & 0 & \cdots & 1
+	\end{pmatrix}
+	= I.
+	\]
+	Así, \( \mathbb{U}_n \cap \mathbb{D}_n = \{I\} \).
+	
+	\medskip
+	\noindent	
+	Finalmente, por la ver Proposición~\ref{ñlkjhgfhjkwwwwww} y Observación~\ref{equiv-condicion-descomposicion} concluimos que
+	\[
+	\mathbb{T}_n \cong \mathbb{U}_n \rtimes_\varphi \mathbb{D}_n. \qedhere
+	\]
+\end{proof}
+
+

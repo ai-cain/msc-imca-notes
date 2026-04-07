@@ -1,0 +1,1010 @@
+\begin{ejercicio}
+	\upshape{
+	Diga si los siguientes enunciados son verdaderos (V) o falsos (F). Justifique su respuesta.
+	\begin{enumerate}[label=\alph*)]
+		\item El complemento de todo submonoide finitamente generado de $(\mathbb{N},+)$ es finito.
+		\item Dados dos números naturales $m,n \geq 2$, la presentación del grupo $\mathbb{Z}/m\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}$ es
+		\[
+		\langle x, y : x^m = y^n = e \rangle.
+		\]
+	\end{enumerate}
+	}
+\end{ejercicio}
+\begin{proof}[Sulución]
+	{\color{white} Texto en azul.}\\
+	
+	\noindent $a)$ Es falso: En el monoide $\left(\mathbb{N},+\right)$ considere el sobmonoide $M=\{0;2;4;4;6;\cdots\}$. Veamos que $M$ es finitamente generado. En efecto, $$\langle 2\rangle=\left\{n2 : n\in\mathbb{N}\right\}=\left\{2n:n\in\mathbb{N}\right\}=M$$ Ahora notemos que $\mathbb{N}\setminus M=\{1;2;3; \cdot\}$ es un conjunto infinito.\\
+	
+	\noindent $b)$  Consideremos la función 
+	\[
+	f : \{x,y\} \to \mathbb{Z}/m\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}
+	\]
+	definida por
+	\[
+	x \mapsto (\overline{1}, \overline{0}), \quad y \mapsto (\overline{0}, \overline{1}).
+	\] Por la propiedad universal del grupo libre, existe un único homomorfismo
+	\[
+	\varphi : F\{x,y\} \to \mathbb{Z}/m\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}
+	\]
+	tal que el siguiente diagrama conmuta:
+	\[
+	{\large \xymatrix{
+			X \ar[ddrr]_{f} \ar[rr]^{\iota}& & F\{x,y\} \ar[dd]^{\varphi} \\
+			&&\\
+			&& \mathbb{Z}/m\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}
+	}}
+	\]
+	donde \(\iota : \{x,y\} \to F\{x,y\}\) es la inclusión canónica.\\
+	
+	\noindent Observemos que
+	\[
+	\varphi(x^m) = f(x)^m = (\overline{1}, \overline{0})^m = (\overline{0}, \overline{0}),
+	\]
+	\[
+	\varphi(y^n) = f(y)^n = (\overline{0}, \overline{1})^n = (\overline{0}, \overline{0}),
+	\]
+	y además, dado que \(\mathbb{Z}/m\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}\) es abeliano,
+	\[
+	\varphi(x y y^{-1} x^{-1}) = f(x) f(y) f(y)^{-1} f(x)^{-1} = (\overline{0}, \overline{0}).
+	\] Luego, el núcleo de \(\varphi\) contiene el subgrupo normal generado por los elementos
+	\[
+	x^m, \quad y^n, \quad xyx^{-1}y^{-1}.
+	\]
+	
+	Por el teorema fundamental de homomorfismos, se tiene el isomorfismo
+	\[
+	F\{x,y\} / \langle\langle x^m, y^n, x y y^{-1} x^{-1} \rangle\rangle \cong \mathbb{Z}/m\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}.
+	\]
+	
+	En consecuencia, una presentación del grupo \(\mathbb{Z}/m\mathbb{Z} \times \mathbb{Z}/n\mathbb{Z}\) es
+	\[
+	\langle x, y : x^m = e, \quad y^n = e, \quad x y = y x \rangle.
+	\]
+	
+\end{proof}
+
+\begin{observacion}
+	\upshape{
+	Sea \( X \) un conjunto. Entonces existe un grupo \( F(X) \) y una función de conjuntos
+	\[
+	\iota : X \to F(X)
+	\]
+	tal que para todo grupo \( G \) y toda función de conjuntos
+	\[
+	f : X \to G,
+	\]
+	existe un único homomorfismo de grupos
+	\[
+	\varphi : F(X) \to G
+	\]
+	tal que el siguiente diagrama conmuta:
+	\[
+	{\large \xymatrix{
+		X \ar[dr]_{f} \ar[r]^{\iota} & G \\
+		 & F(X) \ar@{-->}[u]_{\varphi}
+	}}
+	\]
+	Es decir, se cumple:
+	\[
+	\varphi \circ \iota = f.
+	\]
+	}
+\end{observacion}
+
+
+
+
+
+
+\begin{observacion}
+	\upshape{
+		Sea \( X \) un conjunto. Entonces existe un grupo \( F(X) \) y una función de conjuntos
+		\[
+		\iota : X \to F(X)
+		\]
+		tal que para todo grupo \( G \) y toda función de conjuntos
+		\[
+		f : X \to G,
+		\]
+		existe un único homomorfismo de grupos
+		\[
+		\varphi : F(X) \to G
+		\]
+		tal que el siguiente diagrama conmuta:
+		\[
+		{\large \xymatrix{
+				X \ar[dr]_{f} \ar[r]^{\iota} & G \\
+				& F(X) \ar@{-->}[u]_{\varphi}
+		}}
+		\]
+		Es decir, se cumple:
+		\[
+		\varphi \circ \iota = f.
+		\]
+		
+		\medskip
+		
+		\noindent
+		\textbf{Recuerde:} El grupo \( F(X) \) es el \emph{grupo libre generado por el conjunto \( X \)}, formado por palabras reducidas en los símbolos de \( X \) y sus inversos, con la operación de concatenación seguida de reducción. La función \(\iota\) es la inclusión natural que asigna a cada \( x \in X \) el generador correspondiente en \( F(X) \). Esta inclusión es solo una función de conjuntos, no un homomorfismo, pues \( X \) no tiene estructura de grupo.
+	}
+\end{observacion}
+
+
+\begin{observacion}[Teorema Fundamental del Homomorfismo de grupos]
+	\upshape{
+		Sea \( f : G \to H \) un homomorfismo de grupos. Entonces el kernel
+		\[
+		\ker(f) = \{ g \in G : f(g) = e_H \}
+		\]
+		es un subgrupo normal de \( G \), y \( f \) induce un isomorfismo de grupos
+		\[
+		\overline{f} : G / \ker(f) \xrightarrow{\ \cong \ } \mathrm{Im}(f),
+		\]
+		es decir,
+		\[
+		G / \ker(f) \cong \mathrm{Im}(f).
+		\]
+	}
+\end{observacion}
+
+\begin{ejercicio}
+	Dados dos conjuntos $X$ e $Y$. Probar que los grupos libres $F_X$ y $F_Y$ son isomorfos si y solo si $X$ e $Y$ son biyectivos.
+\end{ejercicio}
+\begin{proof}
+	{\color{white} Texto en azul.}\\
+	
+	\noindent $[\Rightarrow]$
+	
+	\noindent   $[\Rightarrow]$
+\end{proof}
+\begin{ejercicio}
+	\upshape{
+	Dados dos conjuntos \(X\) e \(Y\). Probar que los grupos libres \(F_X\) y \(F_Y\) son isomorfos si y solo si \(X\) e \(Y\) son biyectivos.
+	}
+\end{ejercicio}
+
+
+
+
+\begin{proof}
+	\noindent\emph{($\Rightarrow$)}  Supongamos que \(F_X \cong F_Y\). Como los grupos libres están determinados por la cardinalidad de sus conjuntos generadores libres, esto implica que \(X\) e \(Y\) tienen la misma cardinalidad. Por tanto, existe una biyección entre \(X\) e \(Y\).
+	
+	\vspace{1ex}
+	\noindent\emph{($\Leftarrow$)} Supongamos ahora que existe una biyección de conjuntos
+	\[
+	f: X \to Y.
+	\]
+	Entonces podemos considerar la función
+	\[
+	\iota_X : X \longrightarrow F_X
+	\quad \text{y} \quad
+	\iota_Y : Y \longrightarrow F_Y
+	\]
+	que son las inclusiones canónicas. Componiendo con \(f\), obtenemos una función
+	\[
+	f \circ \iota_X : X \to F_Y.
+	\]
+	Por la propiedad universal del grupo libre \(F_X\), existe un único homomorfismo de grupos
+	\[
+	\varphi : F_X \to F_Y
+	\]
+	tal que \(\varphi \circ \iota_X = \iota_Y \circ f\). Análogamente, como \(f\) es biyectiva, su inversa \(f^{-1} : Y \to X\) induce, por la misma propiedad universal, un único homomorfismo de grupos
+	\[
+	\psi : F_Y \to F_X
+	\]
+	tal que \(\psi \circ \iota_Y = \iota_X \circ f^{-1}\). Entonces se verifica que
+	\[
+	\psi \circ \varphi \circ \iota_X = \psi \circ \iota_Y \circ f = \iota_X \circ f^{-1} \circ f = \iota_X,
+	\]
+	y como \(\iota_X\) genera \(F_X\), se deduce que \(\psi \circ \varphi = \operatorname{id}_{F_X}\). De forma similar, se verifica que \(\varphi \circ \psi = \operatorname{id}_{F_Y}\). Por tanto, \(\varphi\) es un isomorfismo de grupos.
+	
+	\vspace{1ex}
+	\noindent En conclusión, \(F_X \cong F_Y\) si y solo si \(X\) e \(Y\) son biyectivos.
+\end{proof}
+
+
+\begin{ejercicio}
+	\upshape{
+		Probar que todo subgrupo de un grupo libre es también libre.
+	}
+\end{ejercicio}
+
+\begin{proof}[Solución]
+Esta afirmación se conoce como el \emph{teorema de Nielsen-Schreier}. 
+\end{proof}
+
+\begin{teorema}[Teorema de Nielsen-Schreier]
+	\upshape{
+	Todo subgrupo de un grupo libre es también libre.
+	}
+\end{teorema}
+\begin{proof}
+	Sea \( F = F_X \) el grupo libre generado por un conjunto \( X \). Por definición, los elementos de \( F \) son palabras reducidas formadas por elementos de \( X \) y sus inversos, y la operación es concatenación seguida de reducción.
+	
+	Sea \( H \leq F \) un subgrupo de \( F \).
+	
+	\begin{enumerate}
+		\item \textbf{Descomposición en clases laterales:}
+		
+		El grupo \( F \) se descompone en clases laterales derechas respecto a \( H \):
+		\[
+		F = \bigsqcup_{t \in T} H t,
+		\]
+		donde \( T \subseteq F \) es un conjunto de representantes de las clases laterales, conteniendo exactamente un representante por clase lateral derecha.
+		
+		\item \textbf{Definición de generadores de \( H \):}
+		
+		Para cada \( t \in T \) y cada generador \( x \in X \), el producto \( t x \) pertenece a alguna clase lateral \( H s \) para cierto \( s \in T \). Esto implica que existe un elemento
+		\[
+		h_{t,x} := t x s^{-1} \in H.
+		\]
+		
+		Definimos el conjunto
+		\[
+		S := \{ h_{t,x} = t x s^{-1} \mid t, s \in T, x \in X, \text{ y } t x \in H s \}.
+		\]
+		
+		\item \textbf{Generación de \( H \) por \( S \):}
+		
+		Sea \( h \in H \). Entonces \( h \) puede escribirse como una palabra reducida en los generadores \( X \):
+		\[
+		h = x_1^{\epsilon_1} x_2^{\epsilon_2} \cdots x_n^{\epsilon_n},
+		\]
+		donde \( x_i \in X \) y \( \epsilon_i = \pm 1 \).
+		
+		Definimos una sucesión \( (t_0, t_1, \ldots, t_n) \) en \( T \) con \( t_0 = e \) (la identidad) tal que
+		\[
+		t_{i-1} x_i^{\epsilon_i} \in H t_i,
+		\]
+		para cada \( i = 1, \ldots, n \).
+		
+		De la definición de \( h_{t,x} \), para cada \( i \) existe \( h_i \in S \cup S^{-1} \) tal que
+		\[
+		t_{i-1} x_i^{\epsilon_i} = h_i t_i.
+		\]
+		
+		Multiplicando en orden,
+		\[
+		h = h_1 h_2 \cdots h_n,
+		\]
+		con \( h_i \in \langle S \rangle \).
+		
+		Así, \( h \in \langle S \rangle \) y por tanto
+		\[
+		H = \langle S \rangle.
+		\]
+		
+		\item \textbf{Conclusión:}
+		
+		Como \( F \) es libre y la construcción de \( S \) no introduce relaciones adicionales, se concluye que \( H \) es libre con conjunto de generadores \( S \).
+		
+	\end{enumerate}
+	
+	Por lo tanto, todo subgrupo de un grupo libre es libre.
+\end{proof}
+\begin{observacion}
+	\upshape{
+	Sea \( G \) un grupo y \( H \leq G \) un subgrupo de \( G \). Para cada elemento \( g \in G \), definimos la \emph{clase lateral derecha} de \( H \) en \( G \) determinada por \( g \) como el subconjunto
+	\[
+	H g = \{ h g : h \in H \}.
+	\]
+	
+	Análogamente, la \emph{clase lateral izquierda} de \( H \) determinada por \( g \) es
+	\[
+	g H = \{ g h : h \in H \}.
+	\]
+	
+	Estas clases laterales son subconjuntos de \( G \) que particionan \( G \), es decir,
+	\[
+	G = \bigsqcup_{t \in T} H t,
+	\]
+	donde \( T \subseteq G \) es un conjunto de representantes, es decir, cada elemento de \( G \) pertenece exactamente a una clase lateral derecha.
+	
+	Las clases laterales sirven para estudiar la estructura del grupo \( G \) en relación con el subgrupo \( H \), y son fundamentales en resultados como el Teorema de Lagrange.
+	}
+\end{observacion}
+
+
+
+\begin{ejercicio}
+	\upshape{
+	Sea \( m \in \mathbb{N} \) con \( m \geq 1 \). Entonces
+	\[
+	(\mathbb{Z}/2^m\mathbb{Z})^\times = \{ [a] \in \mathbb{Z}/2^m\mathbb{Z} : a \text{ es impar} \}.
+	\]
+	Además, si \( m \geq 3 \), entonces
+	\[
+	(\mathbb{Z}/2^m\mathbb{Z})^\times = \langle [-1], [5] \rangle \cong \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2^{m-2}\mathbb{Z}.
+	\]
+	}
+\end{ejercicio}
+\begin{proof}
+		\leavevmode
+		\begin{enumerate}
+			\item \textbf{Descripción del grupo multiplicativo:} 
+			
+			Sea \( a \in \mathbb{Z} \). El elemento \( [a] \in \mathbb{Z}/2^m\mathbb{Z} \) es invertible si y solo si \( \gcd(a, 2^m) = 1 \). Esto ocurre si y solo si \( a \) es impar, ya que \( 2^m \) es una potencia de \( 2 \). Por tanto:
+			\[
+			(\mathbb{Z}/2^m\mathbb{Z})^\times = \{ [a] : a \text{ es impar} \}.
+			\]
+			
+			\item \textbf{Cardinalidad:}
+			
+			El número de enteros entre \( 1 \) y \( 2^m \) que son primos con \( 2^m \) es \( \varphi(2^m) = 2^m - 2^{m-1} = 2^{m-1} \), pues la mitad de los números entre \( 1 \) y \( 2^m \) son impares. Por lo tanto, el grupo tiene orden \( 2^{m-1} \).
+			
+			\item \textbf{Estructura del grupo multiplicativo para \( m \geq 3 \):}
+			
+			Se sabe que para \( m \geq 3 \), el grupo \( (\mathbb{Z}/2^m\mathbb{Z})^\times \) no es cíclico, pero sí es isomorfo a
+			\[
+			\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2^{m-2}\mathbb{Z}.
+			\]
+			Esto se justifica constructivamente:
+			
+			\begin{itemize}
+				\item El elemento \( [-1] \) tiene orden \( 2 \), ya que:
+				\[
+				[-1]^2 = [1].
+				\]
+				
+				\item Sea \( m \geq 3 \) y consideremos \( [5] \in \mathbb{Z}/2^m\mathbb{Z} \). Se puede demostrar que \( [5] \) tiene orden \( 2^{m-2} \). Por ejemplo:
+				\[
+				5^1 = 5,\quad 5^2 = 25,\quad 5^3 = 125,\quad \dots
+				\]
+				En general, se puede mostrar que:
+				\[
+				5^{2^{m-2}} \equiv 1 \pmod{2^m},\quad \text{pero no antes.}
+				\]
+				Por lo tanto, el orden de \( [5] \) es \( 2^{m-2} \).
+				
+				\item Los elementos \( [-1] \) y \( [5] \) generan un subgrupo de orden:
+				\[
+				\operatorname{mcm}(2, 2^{m-2}) = 2 \cdot 2^{m-2} = 2^{m-1},
+				\]
+				que es el orden de todo el grupo. Así, se concluye que
+				\[
+				(\mathbb{Z}/2^m\mathbb{Z})^\times = \langle [-1], [5] \rangle.
+				\]
+				Y por el Teorema de estructura de grupos abelianos finitos, se deduce que:
+				\[
+				(\mathbb{Z}/2^m\mathbb{Z})^\times \cong \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2^{m-2}\mathbb{Z}.
+				\]
+			\end{itemize}
+		\end{enumerate}
+\end{proof}
+
+
+\begin{observacion}
+	\upshape{
+	El grupo multiplicativo \( (\mathbb{Z}/2^m\mathbb{Z})^\times \) es un grupo abeliano finito de orden \( \varphi(2^m) = 2^{m-1} \), pues contiene exactamente las clases de los enteros impares módulo \( 2^m \).
+	
+	Por el \textbf{teorema de estructura de grupos abelianos finitos}, todo grupo abeliano finito de orden \( n \) es isomorfo a un producto directo de grupos cíclicos de la forma
+	\[
+	\mathbb{Z}/n_1\mathbb{Z} \times \mathbb{Z}/n_2\mathbb{Z} \times \cdots \times \mathbb{Z}/n_r\mathbb{Z},
+	\]
+	con \( n_1 \mid n_2 \mid \cdots \mid n_r \). Esta descomposición es única salvo isomorfismo.
+	
+	Aplicando esto a \( (\mathbb{Z}/2^m\mathbb{Z})^\times \), se obtiene que para \( m \geq 3 \), este grupo es isomorfo a
+	\[
+	\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2^{m-2}\mathbb{Z},
+	\]
+	ya que:
+	
+	\begin{itemize}
+		\item La clase \( [-1] \) tiene orden 2, y
+		\item La clase \( [5] \) tiene orden \( 2^{m-2} \).
+	\end{itemize}
+	
+	Por lo tanto,
+	\[
+	(\mathbb{Z}/2^m\mathbb{Z})^\times = \langle [-1], [5] \rangle \cong \mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2^{m-2}\mathbb{Z}.
+	\]
+	}
+\end{observacion}
+
+
+\begin{ejemplo}
+	\upshape{
+	Sea $C^\infty(\mathbb{R})$ el anillo de funciones reales de clase $C^\infty$, es decir, funciones \( f : \mathbb{R} \to \mathbb{R} \) derivables infinitamente. Consideremos:
+	
+	\begin{enumerate}
+		\item \textbf{¿Es \( C^\infty(\mathbb{R}) \) un dominio de integridad?}
+		
+		\begin{proof}
+			Sea \( f, g \in C^\infty(\mathbb{R}) \) tales que
+			\[
+			fg = 0,
+			\]
+			es decir,
+			\[
+			(fg)(x) = f(x) g(x) = 0 \quad \text{para todo } x \in \mathbb{R}.
+			\]
+			
+			Queremos probar que esto implica que \( f = 0 \) o \( g = 0 \) (la función nula).
+			
+			Supongamos, sin pérdida de generalidad, que \( f \neq 0 \). Entonces existe algún punto \( a \in \mathbb{R} \) tal que \( f(a) \neq 0 \).
+			
+			Como \( f \) es continua, existe un intervalo abierto \( I \) alrededor de \( a \) tal que para todo \( x \in I \), \( f(x) \neq 0 \).
+			
+			Pero en \( I \), debido a que \( f(x) g(x) = 0 \), necesariamente debe cumplirse que
+			\[
+			g(x) = 0 \quad \text{para todo } x \in I.
+			\]
+			
+			Dado que \( g \in C^\infty(\mathbb{R}) \) y es nula en un intervalo abierto \( I \), por unicidad de funciones analíticas (o usando que las funciones suaves que se anulan en un intervalo abierto son idénticamente cero en ese intervalo y por extensión nula en todo \(\mathbb{R}\)) concluimos que
+			\[
+			g(x) = 0 \quad \text{para todo } x \in \mathbb{R}.
+			\]
+			
+			Por tanto, \( g = 0 \).
+			
+			Esto demuestra que si \( fg = 0 \), entonces \( f=0 \) o \( g=0 \).
+			
+			Así, \( C^\infty(\mathbb{R}) \) no tiene divisores de cero y es un dominio de integridad.
+		\end{proof}
+		\begin{observacion}
+			\upshape{
+			Dado que \( g \in C^\infty(\mathbb{R}) \) y es nula en un intervalo abierto \( I \subseteq \mathbb{R} \), es decir,
+			\[
+			g(x) = 0 \quad \text{para todo } x \in I,
+			\]
+			podemos concluir que \( g \) es la función nula en todo \(\mathbb{R}\).
+			
+			Esto se debe a que las funciones de clase \( C^\infty \) tienen una propiedad de *unicidad de extensión analítica local*: si una función suave se anula en un intervalo abierto, entonces todas sus derivadas en cualquier punto de ese intervalo también se anulan.
+			
+			En efecto, para cada \( a \in I \), como \( g \equiv 0 \) en un entorno de \( a \), se cumple que
+			\[
+			g^{(n)}(a) = 0 \quad \text{para todo } n \in \mathbb{N}_0,
+			\]
+			donde \( g^{(n)} \) denota la \( n \)-ésima derivada de \( g \).
+			
+			Esto implica que el desarrollo en serie de Taylor de \( g \) alrededor de \( a \) es idénticamente cero:
+			\[
+			g(x) = \sum_{n=0}^\infty \frac{g^{(n)}(a)}{n!} (x - a)^n = 0.
+			\]
+			
+			Como la función coincide con su serie de Taylor en un entorno de \( a \), \( g \) es nula en un entorno de cualquier punto \( a \in I \). Dado que \( I \) es un intervalo abierto, la función \( g \) es nula en una región abierta y conexa.
+			
+			Por continuidad e infinitas derivadas nulas en todo \( I \), \( g \) debe ser idénticamente cero en toda \(\mathbb{R}\), ya que una función suave con un conjunto abierto de ceros tiene que ser la función nula en todo su dominio (por la unicidad de la extensión analítica).
+			
+			Por tanto,
+			\[
+			g(x) = 0 \quad \text{para todo } x \in \mathbb{R}.
+			\]
+			
+			Así, \( g \) es la función nula.
+			}
+		\end{observacion}
+		
+		
+		\item \textbf{Sea \( R \subseteq C^\infty(\mathbb{R}) \) el subanillo generado por las funciones \( \sin \) y \( \cos \). Probar que todo elemento de \( R \) se puede escribir como}
+		\[
+		f(x) = a_0 + \sum_{m=1}^{n} (a_m \cos(mx) + b_m \sin(mx)), \quad a_0, a_m, b_m \in \mathbb{R}.
+		\]
+		
+		\begin{proof}
+			Sea \( R \subseteq C^\infty(\mathbb{R}) \) el subanillo generado por \( \sin(x) \) y \( \cos(x) \). Por definición, esto significa que \( R \) es el conjunto más pequeño que:
+			
+			\begin{itemize}
+				\item contiene \( \sin(x) \) y \( \cos(x) \),
+				\item es cerrado bajo suma y producto finitos,
+				\item contiene constantes reales (ya que \( R \subseteq C^\infty(\mathbb{R}) \) es un subanillo).
+			\end{itemize}
+			
+			Queremos probar que:
+			\[
+			\forall f \in R, \quad f(x) = a_0 + \sum_{m=1}^n (a_m \cos(mx) + b_m \sin(mx)),
+			\]
+			para ciertos \( a_0, a_1, \dots, a_n, b_1, \dots, b_n \in \mathbb{R} \) y algún \( n \in \mathbb{N} \).
+			
+			\medskip
+			\textbf{Paso 1. Base: } probamos que \( \cos(x) \) y \( \sin(x) \) están en la forma requerida.
+			
+			Esto es inmediato:
+			\[
+			\cos(x) = 0 + 1 \cdot \cos(1x) + 0 \cdot \sin(1x), \quad
+			\sin(x) = 0 + 0 \cdot \cos(1x) + 1 \cdot \sin(1x).
+			\]
+			Entonces están en la forma exigida.
+			
+			\medskip
+			\textbf{Paso 2. Inducción:} probamos que si \( \cos(kx), \sin(kx) \in R \) para todo \( k \leq n \), entonces \( \cos((n+1)x), \sin((n+1)x) \in R \).
+			
+			Utilizamos las identidades trigonométricas para deducir las siguientes fórmulas de recurrencia:
+			\[
+			\cos((n+1)x) = 2 \cos(x)\cos(nx) - \cos((n-1)x),
+			\]
+			\[
+			\sin((n+1)x) = 2 \cos(x)\sin(nx) - \sin((n-1)x).
+			\]
+			
+			**Demostración de que esas fórmulas generan elementos en \( R \):**
+			
+			- Por hipótesis inductiva, \( \cos(nx) \), \( \cos((n-1)x) \in R \).
+			- También sabemos que \( \cos(x) \in R \).
+			- Como \( R \) es un subanillo, entonces:
+			\[
+			\cos(x)\cos(nx) \in R, \quad 2\cos(x)\cos(nx) \in R, \quad \cos((n+1)x) \in R.
+			\]
+			porque la suma y producto de elementos en \( R \) están en \( R \).
+			
+			- Lo mismo se aplica a:
+			\[
+			\sin((n+1)x) = 2\cos(x)\sin(nx) - \sin((n-1)x).
+			\]
+			porque:
+			\[
+			\sin(nx), \sin((n-1)x), \cos(x) \in R \quad \Rightarrow \quad \sin((n+1)x) \in R.
+			\]
+			
+			Por lo tanto, por inducción matemática, tenemos que:
+			\[
+			\forall m \in \mathbb{N}, \quad \cos(mx), \sin(mx) \in R.
+			\]
+			
+			\medskip
+			\textbf{Paso 3. Combinaciones lineales:}
+			
+			Ahora, \( R \) es un anillo generado por \( \sin(x) \) y \( \cos(x) \), así que cualquier \( f \in R \) es suma finita de productos finitos de funciones de la forma \( \cos(kx), \sin(kx) \). Por identidades trigonométricas (producto a suma), sabemos que los productos como \( \cos(mx)\cos(nx) \), \( \sin(mx)\sin(nx) \), \( \sin(mx)\cos(nx) \) pueden escribirse como combinaciones lineales de \( \cos(kx) \) o \( \sin(kx) \) con \( k \in \mathbb{N} \).
+			
+			Por ejemplo:
+			\[
+			\cos(mx)\cos(nx) = \frac{1}{2}\left( \cos((m-n)x) + \cos((m+n)x) \right),
+			\]
+			\[
+			\sin(mx)\cos(nx) = \frac{1}{2} \left( \sin((m+n)x) + \sin((m-n)x) \right),
+			\]
+			\[
+			\sin(mx)\sin(nx) = \frac{1}{2}\left( \cos((m-n)x) - \cos((m+n)x) \right).
+			\]
+			
+			Estas identidades muestran que todo producto de funciones trigonométricas de múltiplos de \( x \) puede ser reescrito como combinación lineal finita de \( \cos(kx), \sin(kx) \).
+			
+			\medskip
+			\textbf{Conclusión:}
+			
+			Cualquier elemento \( f \in R \) se escribe como suma finita de productos finitos de \( \cos(kx), \sin(kx) \), y por lo anterior, estas se reducen a combinación lineal finita de funciones del tipo:
+			\[
+			\{ \cos(mx), \sin(mx) \mid m \in \mathbb{N} \} \cup \{1\}.
+			\]
+			Por tanto,
+			\[
+			f(x) = a_0 + \sum_{m=1}^{n} \bigl(a_m \cos(mx) + b_m \sin(mx)\bigr),
+			\]
+			para ciertos \( a_0, a_m, b_m \in \mathbb{R} \), y algún \( n \in \mathbb{N} \). Esto concluye la prueba.
+		\end{proof}
+		
+		\item \textbf{Probar que \( R \) no tiene divisores de cero.}
+		
+			
+		\begin{proof}
+			Queremos probar que el subanillo \( R \subseteq C^\infty(\mathbb{R}) \), generado por \( \sin(x) \) y \( \cos(x) \), no tiene divisores de cero. Es decir, si \( f(x), g(x) \in R \) y 
+			\[
+			f(x) \cdot g(x) = 0 \quad \text{para todo } x \in \mathbb{R},
+			\]
+			entonces necesariamente \( f = 0 \) o \( g = 0 \).
+			
+			\begin{enumerate}
+				\item \textbf{Forma de los elementos de \( R \):}  
+				Por una prueba previa, sabemos que todo \( f \in R \) puede escribirse como
+				\[
+				f(x) = a_0 + \sum_{m=1}^n \bigl(a_m \cos(mx) + b_m \sin(mx)\bigr),
+				\]
+				donde \( a_0, a_m, b_m \in \mathbb{R} \), y la suma es finita. Es decir, los elementos de \( R \) son combinaciones lineales finitas de las funciones \( \sin(mx) \) y \( \cos(mx) \).
+				
+				\item \textbf{Funciones trigonométricas como funciones analíticas:}  
+				Cada función \( \cos(mx) \), \( \sin(mx) \) es analítica en \( \mathbb{R} \), y por tanto también lo es cualquier combinación finita de ellas. Entonces, todo elemento de \( R \) es una función analítica real de \( \mathbb{R} \).
+				
+				\item \textbf{Propiedad de unicidad del producto nulo para funciones analíticas:}  
+				Supongamos que \( f(x), g(x) \in R \) y que \( f(x)\cdot g(x) = 0 \) para todo \( x \in \mathbb{R} \). Como \( f \cdot g \) es analítica y se anula en todos los reales, resulta que su conjunto de ceros tiene un punto de acumulación (de hecho, todo \( \mathbb{R} \)). Por el principio de identidad de las funciones analíticas, se deduce que:
+				\[
+				f(x) = 0 \quad \text{o} \quad g(x) = 0 \quad \text{en todo } \mathbb{R}.
+				\]
+				
+				\item \textbf{Conclusión:}  
+				Por tanto, si \( f \cdot g = 0 \) en \( \mathbb{R} \), entonces \( f = 0 \) o \( g = 0 \) como funciones reales. Es decir, no hay divisores de cero en \( R \), por lo que:
+				\[
+				R \text{ es un dominio de integridad}.
+				\]
+			\end{enumerate}
+		\end{proof}
+		
+		
+		\begin{observacion}
+			\upshape{
+				No todo subanillo de un dominio de integridad es también un dominio de integridad. 
+				
+				Para ilustrar esto, consideremos el siguiente ejemplo rápido:
+				
+				Sea 
+				\[
+				M = \mathbb{Z}[X]
+				\]
+				el anillo de polinomios en una variable \(X\) con coeficientes enteros. Sabemos que \(M\) es un dominio de integridad porque \(\mathbb{Z}\) es un dominio de integridad y el anillo de polinomios sobre un dominio de integridad también es un dominio de integridad. Esto significa que en \(M\) no existen divisores de cero, es decir, si \(f, g \in M\) y \(f \neq 0, g \neq 0\), entonces \(f \cdot g \neq 0\).
+				
+				Ahora, definimos un subanillo de \(M\) de la siguiente manera:
+				\[
+				N = \{ a + bX : a, b \in \mathbb{Z} \text{ y } X^2 = 0 \}.
+				\]
+				Este anillo \(N\) es isomorfo al cociente
+				\[
+				\mathbb{Z}[X]/(X^2),
+				\]
+				donde se impone la relación \(X^2 = 0\).
+				
+				En el subanillo \(N\), el elemento \(X\) es distinto de cero pero satisface
+				\[
+				X \cdot X = X^2 = 0,
+				\]
+				lo cual muestra que \(X\) es un divisor de cero en \(N\).
+				
+				Por lo tanto, \(N\) no es un dominio de integridad, a pesar de ser un subanillo de \(M\), que sí lo es.
+				
+				Este ejemplo muestra que la propiedad de ser dominio de integridad no se hereda necesariamente a los subanillos.
+			}
+		\end{observacion}
+		
+		
+		
+		\item \textbf{Probar que \( \sin \) y \( 1 - \cos \) son irreducibles en \( R \). Deducir que \( R \) no es un dominio de factorización única.}
+		
+		\begin{proof}
+			Recordemos que 
+			\[
+			R = \text{el subanillo de } C^\infty(\mathbb{R}) \text{ generado por } \sin \text{ y } \cos,
+			\]
+			y que todo elemento de \(R\) puede expresarse como combinación lineal finita de funciones \(\sin(mx)\) y \(\cos(mx)\).
+			
+			\begin{enumerate}
+				\item \textbf{Irreducibilidad de \(\sin\):}
+				
+				Supongamos que \(\sin\) es reducible en \(R\), es decir, existen \(f, g \in R\), no invertibles en \(R\), tales que
+				\[
+				\sin = f \cdot g.
+				\]
+				
+				Como \(R \subset C^\infty(\mathbb{R})\), esto implica que \(f\) y \(g\) son funciones suaves. 
+				Además, dado que \(\sin\) tiene ceros infinitos (por ejemplo, en \(k\pi\), \(k \in \mathbb{Z}\)), si \(f\) y \(g\) son factores no invertibles, entonces cada uno debe tener al menos un cero.
+				
+				Sin embargo, por la expresión en series de Fourier, cualquier función en \(R\) tiene ceros aislados o finitos, y la estructura del anillo \(R\) no permite factores no triviales que reproduzcan la periodicidad y ceros infinitos de \(\sin\) sin ser invertibles.
+				
+				Más formalmente, si \(f\) o \(g\) tuvieran ceros distintos a los de \(\sin\), el producto tendría ceros distintos o multiplicidad mayor, lo que no es el caso.
+				
+				Por lo tanto, \(\sin\) no se puede factorizar no trivialmente en \(R\), es decir, es irreducible.
+				
+				\item \textbf{Irreducibilidad de \(1 - \cos\):}
+				
+				Análogamente, supongamos que
+				\[
+				1 - \cos = f \cdot g,
+				\]
+				con \(f, g \in R\) no invertibles.
+				
+				Notemos que \(1 - \cos(x)\) es una función que se anula en múltiplos enteros de \(2\pi\), y que es no negativa y periódica.
+				
+				Por la misma razón que en el caso de \(\sin\), si \(f\) y \(g\) tuvieran ceros adicionales o diferente comportamiento, el producto no coincidiría exactamente con \(1 - \cos\).
+				
+				Dado que \(1 - \cos\) es función elemental y no se puede escribir como producto no trivial en \(R\), concluimos que es irreducible.
+				
+				\item \textbf{No unicidad de factorización en \(R\):}
+				
+				Consideremos ahora la función
+				\[
+				f(x) = 2(1 - \cos x) = 4 \sin^2\left(\frac{x}{2}\right).
+				\]
+				
+				Esta función puede factorizarse de dos maneras distintas en \(R\):
+				\[
+				2(1 - \cos x) = 2(1 - \cos x),
+				\]
+				o
+				\[
+				4 \sin^2\left(\frac{x}{2}\right) = (2 \sin(x/2))^2.
+				\]
+				
+				Notemos que \(2\) es invertible en \(R\) porque es una constante no nula.
+				
+				Esto indica que
+				\[
+				1 - \cos x = \left(2 \sin\left(\frac{x}{2}\right)\right)^2 \cdot \frac{1}{2}.
+				\]
+				
+				Sin embargo, la factorización en términos de \(\sin\) y \(1-\cos\) da diferentes factorizaciones irreducibles para la misma función, lo cual muestra que la factorización no es única.
+				
+				Por lo tanto, \(R\) no es un dominio de factorización única.
+			\end{enumerate}
+		\end{proof}
+		\begin{observacion}\upshape{
+				Un \emph{dominio de factorización única} (DFU) es un dominio de integridad \(R\) tal que todo elemento no nulo y no invertible de \(R\) puede escribirse como un producto finito de elementos irreducibles, y además esta factorización es única salvo el orden de los factores y las unidades asociadas.
+				
+				Formalmente, para todo \(a \in R\), \(a \neq 0\) y que no sea invertible, existen irreducibles \(p_1, p_2, \ldots, p_n \in R\) tales que
+				\[
+				a = p_1 p_2 \cdots p_n,
+				\]
+				y si existe otra factorización
+				\[
+				a = q_1 q_2 \cdots q_m,
+				\]
+				con irreducibles \(q_j \in R\), entonces \(m = n\) y existe una permutación \(\sigma\) de \(\{1, \ldots, n\}\) tal que cada \(p_i\) es asociado a \(q_{\sigma(i)}\) (es decir, difieren por un factor invertible).
+				
+				Este concepto generaliza la factorización única en los enteros y es fundamental en la teoría de anillos y factorización.
+			}
+		\end{observacion}
+		
+	\end{enumerate}
+	}
+\end{ejemplo}
+
+
+
+
+
+
+
+
+
+\begin{ejercicio}
+	
+\upshape{
+
+Sea $R$ un anillo conmutativo y $M$ un $R$-módulo. Un elemento $m \in M$ es de torsión si existe un elemento no nulo $a \in R$ tal que $am = 0$.
+\begin{enumerate}
+	\item Probar que el conjunto de elementos de torsión de $M$ forma un submódulo de $M$, llamado submódulo de torsión y denotado por $M_{\text{tor}}$.
+	\item Supongamos que $R$ es un dominio de ideales principales (DIP) y que $M$ es finitamente generado. Probar que $M/M_{\text{tor}}$ es un módulo libre, y deducir que existe un submódulo libre $F$ de $M$ tal que
+	\[
+	M \cong M_{\text{tor}} \oplus F.
+	\]
+\end{enumerate}
+}
+\end{ejercicio}
+	
+	\begin{enumerate}
+		\item \textbf{Probar que el conjunto de elementos de torsión de $M$ forma un submódulo de $M$, llamado submódulo de torsión y denotado por $M_{\text{tor}}$.}
+		
+		\begin{proof}
+			Definimos el conjunto
+			\[
+			M_{\text{tor}} := \{ m \in M : \exists a \in R \setminus \{0\} \text{ tal que } am = 0 \}.
+			\]
+			Queremos probar que $M_{\text{tor}}$ es un submódulo de $M$. Para ello, verificamos las tres propiedades:
+			
+			\textbf{(i) $0 \in M_{\text{tor}}$:} Para $m = 0 \in M$, tenemos $a \cdot 0 = 0$ para todo $a \in R$, en particular para cualquier $a \neq 0$. Por tanto, $0 \in M_{\text{tor}}$.
+			
+			\textbf{(ii) Cerrado bajo suma:} Sean $m_1, m_2 \in M_{\text{tor}}$. Entonces existen $a_1, a_2 \in R \setminus \{0\}$ tales que
+			\[
+			a_1 m_1 = 0 \quad \text{y} \quad a_2 m_2 = 0.
+			\]
+			Como $R$ es conmutativo, el producto $a := a_1 a_2 \in R \setminus \{0\}$. Entonces,
+			\begin{align*}
+				a(m_1 + m_2) &= a_1 a_2 (m_1 + m_2) \\
+				&= a_2 (a_1 m_1) + a_1 (a_2 m_2) \\
+				&= a_2 \cdot 0 + a_1 \cdot 0 = 0.
+			\end{align*}
+			Por tanto, $m_1 + m_2 \in M_{\text{tor}}$.
+			
+			\textbf{(iii) Cerrado bajo multiplicación por escalares:} Sea $r \in R$ y $m \in M_{\text{tor}}$, con $a \in R \setminus \{0\}$ tal que $am = 0$. Entonces,
+			\[
+			a(rm) = r(am) = r \cdot 0 = 0,
+			\]
+			y por tanto $rm \in M_{\text{tor}}$.
+			
+			Como $M_{\text{tor}}$ contiene al cero, es cerrado bajo suma y multiplicación por escalares, concluimos que es un submódulo de $M$.
+		\end{proof}
+		
+		\item \textbf{Supongamos que $R$ es un dominio de ideales principales (DIP) y que $M$ es finitamente generado. Probar que $M/M_{\text{tor}}$ es un módulo libre, y deducir que existe un submódulo libre $F$ de $M$ tal que}
+		\[
+		M \cong M_{\text{tor}} \oplus F.
+		\]
+		
+	\begin{proof}
+		Como $R$ es un dominio de ideales principales (DIP), y $M$ es un $R$-módulo finitamente generado, se aplica el \emph{teorema de estructura de módulos sobre un DIP}, el cual afirma que:
+		\[
+		M \cong \bigoplus_{i=1}^r R \oplus \bigoplus_{j=1}^s R/(a_j),
+		\]
+		donde $r, s \geq 0$, $a_j \neq 0$ y $a_j \mid a_{j+1}$ para todo $j$. El primer sumando es un módulo libre de rango $r$, mientras que el segundo es un módulo de torsión, pues todo elemento $x_j \in R/(a_j)$ cumple que $a_j x_j = 0$.
+		
+		Denotemos 
+		\[
+		F := \bigoplus_{i=1}^r R \quad \text{y} \quad T := \bigoplus_{j=1}^s R/(a_j),
+		\]
+		entonces 
+		\[
+		M \cong F \oplus T,
+		\]
+		donde $F$ es libre y $T$ es de torsión.
+		
+		\textbf{Afirmación:} $T = M_{\text{tor}}$.\\
+		Todo elemento de $T$ es de torsión por construcción, y si $m \in M_{\text{tor}}$, entonces existe $a \neq 0$ tal que $am = 0$. Como $F$ es libre, y en un dominio toda relación de torsión es trivial en un módulo libre, se deduce que $m \in T$. Así, $M_{\text{tor}} = T$.
+		
+		Consideremos el cociente:
+		\[
+		M / M_{\text{tor}} = (F \oplus T)/T \cong F.
+		\]
+		Como $F \cong R^r$ es libre, se concluye que $M / M_{\text{tor}}$ es libre.
+		
+		Como todo módulo libre es proyectivo, la sucesión exacta corta
+		\[
+		0 \to M_{\text{tor}} \xrightarrow{\iota} M \xrightarrow{\pi} M/M_{\text{tor}} \to 0
+		\]
+		se escinde. Es decir, existe un morfismo $s: M/M_{\text{tor}} \to M$ tal que $\pi \circ s = \mathrm{id}$. Entonces la imagen de $s$ es un submódulo complementario de $M_{\text{tor}}$ en $M$.
+		
+		Sea $F := \operatorname{im}(s)$. Entonces $F \cong M / M_{\text{tor}} \cong R^r$ es libre, y se tiene
+		\[
+		M = M_{\text{tor}} \oplus F.
+		\]
+		
+		Por tanto, hemos demostrado que si $M$ es un $R$-módulo finitamente generado sobre un DIP, entonces se descompone como suma directa de su submódulo de torsión y un submódulo libre complementario.
+	\end{proof}
+	\end{enumerate}
+	
+	\begin{observacion} \upshape
+		Un $R$-módulo $M$ se dice \emph{libre} si admite una base, es decir, existe un conjunto $\{e_i\}_{i \in I} \subseteq M$ tal que todo elemento $m \in M$ se escribe de manera única como combinación finita
+		\[
+		m = \sum_{i \in I} r_i e_i, \quad r_i \in R,
+		\]
+		donde todos salvo una cantidad finita de los coeficientes $r_i$ son cero. La unicidad de esta representación implica que los $e_i$ son linealmente independientes y generan el módulo.\\
+		
+	\noindent 	En particular, si $M$ es libre de rango $n$, entonces $M \cong R^n$ como $R$-módulos, es decir, $M$ es isomorfo al producto cartesiano $R \times R \times \cdots \times R$ ($n$ veces), con la estructura natural de módulo componente a componente.
+	\end{observacion}
+	
+	
+	\begin{ejercicio}
+		\upshape{
+		Sea $X$ un conjunto no vacío. Sea $M$ el $\mathbb{Z}$-módulo libre generado por $X$, y sea $N \ne 0$ un submódulo de $M$.
+		\begin{enumerate}
+			\item ¿Será cierto que $M/N$ es libre?
+			\item Si $M/N$ es finitamente generado, ¿es posible determinar su parte libre y de torsión en términos de las clases $\bar{x} = x + N$, con $x \in X$?
+		\end{enumerate}
+		}
+	\end{ejercicio}
+
+\begin{proof}
+	Sea \( M \) el \(\mathbb{Z}\)-módulo libre generado por un conjunto no vacío \( X \). Esto significa que
+	\[
+	M \cong \bigoplus_{x \in X} \mathbb{Z} x,
+	\]
+	donde cada \( x \in X \) actúa como generador libre.
+	
+	Sea \( N \subseteq M \) un submódulo distinto de cero, y consideremos el cociente
+	\[
+	M / N.
+	\]
+	
+	\textbf{(1) ¿Es \( M/N \) necesariamente libre?}
+	
+	No necesariamente. Para mostrarlo, consideremos el caso particular en que \( M = \mathbb{Z} \) (es decir, \( X = \{1\} \)) y
+	\[
+	N = 2 \mathbb{Z} = \{ 2k : k \in \mathbb{Z} \}.
+	\]
+	
+	Entonces el cociente es
+	\[
+	M/N = \mathbb{Z} / 2\mathbb{Z}.
+	\]
+	
+	Veamos si \( \mathbb{Z} / 2\mathbb{Z} \) es un módulo libre sobre \(\mathbb{Z}\):
+	
+	Supongamos que existe un generador \( \bar{1} = 1 + 2\mathbb{Z} \) que hace libre al módulo. Pero,
+	\[
+	2 \cdot \bar{1} = 2 + 2\mathbb{Z} = 0 + 2\mathbb{Z} = \bar{0}.
+	\]
+	
+	Esto implica que \( \bar{1} \) es un elemento de torsión, pues \(2 \bar{1} = \bar{0}\) con \(2 \neq 0\). Por definición, un módulo libre no puede tener elementos de torsión distintos de cero. Por lo tanto,
+	\[
+	\mathbb{Z} / 2\mathbb{Z} \text{ no es un módulo libre}.
+	\]
+	
+	Así, el cociente \( M/N \) no es libre en general.
+	
+	\bigskip
+	
+	\textbf{(2) Si \(M/N\) es finitamente generado, ¿cómo determinar su parte libre y de torsión?}
+	
+	Como \(\mathbb{Z}\) es un dominio de ideales principales (DIP), el teorema de estructura de módulos finitamente generados sobre \(\mathbb{Z}\) garantiza que
+	\[
+	M/N \cong \mathbb{Z}^r \oplus \left(\bigoplus_{i=1}^t \mathbb{Z}/n_i \mathbb{Z}\right),
+	\]
+	con \(r \geq 0\), \(t \geq 0\), y \(n_i \geq 2\) enteros tales que \(n_i \mid n_{i+1}\).
+	
+	Ahora, para ver esto en términos de las clases \(\bar{x} = x + N\), con \(x \in X\), procedemos así:
+	
+	\medskip
+	
+	Para cada generador \(x \in X\), consideramos la clase \(\bar{x} \in M/N\). 
+	
+	\textbf{Caso 1:} \(\bar{x}\) es un elemento de torsión.
+	
+	Esto significa que existe un entero \(n \geq 1\) tal que
+	\[
+	n \bar{x} = \overline{n x} = \bar{0} \quad \Longleftrightarrow \quad n x \in N.
+	\]
+	
+	Por ejemplo, si \(n=3\) y \(3x \in N\), entonces el orden de \(\bar{x}\) divide a 3, y por lo tanto \(\bar{x}\) genera un factor \(\mathbb{Z}/3\mathbb{Z}\) en la descomposición.
+	
+	\textbf{Cálculo:} Si \(x \in X\) y se encuentra \(n \neq 0\) con \(n x \in N\), entonces el elemento \(\bar{x}\) satisface
+	\[
+	n \bar{x} = \bar{0},
+	\]
+	es decir, \(\bar{x}\) es torsión de orden (divisor de) \(n\).
+	
+	\medskip
+	
+	\textbf{Caso 2:} \(\bar{x}\) es libre.
+	
+	Esto ocurre si no existe ningún entero \(n \neq 0\) tal que
+	\[
+	n x \in N,
+	\]
+	es decir, la clase \(\bar{x}\) no es anulada por ningún entero distinto de cero. En este caso,
+	\[
+	\mathbb{Z} \cdot \bar{x} \cong \mathbb{Z},
+	\]
+	es un submódulo libre de \(M/N\).
+	
+	\medskip
+	
+	\textbf{Ejemplo explícito:}
+	
+	Supongamos
+	\[
+	M = \mathbb{Z} e_1 \oplus \mathbb{Z} e_2,
+	\]
+	y
+	\[
+	N = \langle 2 e_1, 3 e_2 \rangle,
+	\]
+	es decir, \(N\) es generado por \(2 e_1\) y \(3 e_2\).
+	
+	Entonces, consideramos
+	\[
+	M/N = \frac{\mathbb{Z} e_1 \oplus \mathbb{Z} e_2}{\langle 2 e_1, 3 e_2 \rangle}.
+	\]
+	
+	Las clases \(\bar{e}_1, \bar{e}_2\) en \(M/N\) cumplen:
+	\[
+	2 \bar{e}_1 = \overline{2 e_1} = \bar{0} \implies \bar{e}_1 \text{ es torsión de orden 2},
+	\]
+	y
+	\[
+	3 \bar{e}_2 = \overline{3 e_2} = \bar{0} \implies \bar{e}_2 \text{ es torsión de orden 3}.
+	\]
+	
+	Por lo tanto,
+	\[
+	M/N \cong \mathbb{Z}/2\mathbb{Z} \oplus \mathbb{Z}/3\mathbb{Z}.
+	\]
+	
+	En este caso, no hay parte libre.
+	
+	\medskip
+	
+	Si en cambio tomamos
+	\[
+	N = \langle 2 e_1 \rangle,
+	\]
+	entonces
+	\[
+	M/N = \frac{\mathbb{Z} e_1 \oplus \mathbb{Z} e_2}{\langle 2 e_1 \rangle}.
+	\]
+	
+	Las clases \(\bar{e}_1, \bar{e}_2\) cumplen:
+	\[
+	2 \bar{e}_1 = \bar{0} \implies \bar{e}_1 \text{ es torsión de orden 2},
+	\]
+	pero
+	\[
+	n \bar{e}_2 = \overline{n e_2} = \bar{0} \implies n e_2 \in N = \langle 2 e_1 \rangle,
+	\]
+	y como \(e_2\) y \(e_1\) son generadores libres, ningún múltiplo no nulo de \(e_2\) está en \(N\). Por tanto, no existe \(n \neq 0\) con \(n \bar{e}_2 = \bar{0}\), y \(\bar{e}_2\) es libre.
+	
+	Por lo tanto,
+	\[
+	M/N \cong \mathbb{Z}/2\mathbb{Z} \oplus \mathbb{Z},
+	\]
+	donde
+	\[
+	M_{\text{tor}} = \langle \bar{e}_1 \rangle \cong \mathbb{Z}/2\mathbb{Z}, \quad F = \langle \bar{e}_2 \rangle \cong \mathbb{Z}.
+	\]
+	
+\end{proof}
+
+

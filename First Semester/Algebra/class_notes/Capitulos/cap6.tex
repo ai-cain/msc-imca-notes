@@ -1,0 +1,885 @@
+\section{Subestructuras generadas}
+
+\noindent Sea \( M \) un grupo (respectivamente, semigrupo o monoide). Sea \( X \subset M \) un subconjunto.
+
+\begin{definicion}
+	\upshape{
+		El \textit{subgrupo generado} por \( X \) (respectivamente, semigrupo o monoide) es el menor subgrupo (respectivamente, semigrupo o monoide) que contiene a \( X \), y se denota por \( \langle X \rangle \).
+	}
+\end{definicion}
+
+\begin{observacion}
+	\upshape{
+		Si \( X = \{x_1, x_2, \dots, x_n\} \), entonces se escribe \( \langle x_1, x_2, \dots, x_n \rangle := \langle X \rangle \).
+	}
+\end{observacion}
+
+
+\noindent Nuestro objetivo es saber cómo es \( \langle X \rangle \); pero antes, tengamos en cuenta la siguiente definición.
+
+\begin{definicion}
+	\upshape{
+		Sea \( (G, \ast) \) un grupo, \( e \) su elemento neutro, y \( n \in \mathbb{Z} \). Para todo \( a \in G \), definimos:
+		\[
+		a^n :=
+		\begin{cases}
+			\underbrace{a \ast \cdots \ast a}_{n\ \text{veces}} & \text{si } n \geq 1, \\
+		\:	e & \text{si } n = 0, \\
+			\underbrace{a^{-1} \ast \cdots \ast a^{-1}}_{-n\ \text{veces}} & \text{si } n \leq -1.
+		\end{cases}
+		\]
+	}
+\end{definicion}
+\begin{proposicion}
+	\upshape{
+		Sean \( a, x, y \) elementos de un grupo \( G \) y \( n \in \mathbb{Z} \). Se verifican las siguientes igualdades:
+		\begin{enumerate}
+			\item  \( (xy)^{-1} = y^{-1} x^{-1} \).
+			\item  \( a^{-n} = (a^{-1})^n \).
+			\item  \( (a^{-1})^n = (a^n)^{-1} \).
+		\end{enumerate}
+	}
+\end{proposicion}
+
+\begin{proof}
+	{\color{white}saa}
+	
+	\medskip
+	\noindent [$1$] Para todo \( x, y \in G \), se tiene:
+	\[
+	(xy)(y^{-1}x^{-1}) = x(yy^{-1})x^{-1} = xex^{-1} = xx^{-1} = e,
+	\]
+	y análogamente,
+	\[
+	(y^{-1}x^{-1})(xy) = y^{-1}(x^{-1}x)y = y^{-1}ey = y^{-1}y = e.
+	\]
+	Por unicidad del inverso, \( (xy)^{-1} = y^{-1}x^{-1} \).\\
+	
+	\noindent [$2$] Demostraremos inicialmente por inducción que \( a^{-n} = (a^{-1})^n \) para  \( n \in \mathbb{N}\).
+	\begin{itemize}
+		\item  Para \( n = 0 \): Por definición,
+		\[
+		a^0 = e = (a^{-1})^0.
+		\]
+		\item  Hipótesis inductiva: Supongamos que \( a^{-k} = (a^{-1})^k \) para algún \( k \geq 0 \).
+		\item Para $k+1$ tenemos:
+		\[
+		a^{-(k+1)} = a^{-k} a^{-1} = (a^{-1})^k a^{-1} = (a^{-1})^{k+1}.
+		\]
+	\end{itemize}
+	\noindent Por inducción, la igualdad es válida para todo \( n \geq 0 \).
+	
+	\medskip
+	\noindent Para \( n < 0 \), escribimos \( n = -m \) con \( m > 0 \). Entonces:
+	\[
+	a^{-n} = a^m = \left((a^{-1})^{-1}\right)^m = (a^{-1})^{-m} = (a^{-1})^n.
+	\]
+	
+	\medskip
+	\noindent [$3$] Aplicamos el caso anterior al elemento \( a^{-1} \), obteniendo:
+	\[
+	(a^{-1})^n = ((a^{-1})^{-1})^{-n} = (a^1)^{-n} = (a^n)^{-1}.
+	\]
+	Esto completa la demostración.
+\end{proof}
+
+\vspace{0.8cm}
+Las siguientes tablas nos describen cómo son los elementos de $\langle X \rangle$.\\
+
+
+\begin{table}[H]
+	\centering
+	{\large
+		\renewcommand{\arraystretch}{0.8}
+		\resizebox{160mm}{!}{
+			\begin{tabular}{
+					>{\centering\arraybackslash}m{6cm}
+					>{\centering\arraybackslash}m{12cm}
+				}
+				\toprule
+				\textbf{Estructura} &  \(\langle X \rangle\)  \\
+				\midrule
+				Semigrupos & 
+				\[
+				\left\{ x_1^{k_1} x_2^{k_2} \cdots x_n^{k_n} \mid x_i \in X, n \geq 1, k_i \in \mathbb{N}^+ \right\}
+				\] \\
+				Monoides & 
+				\[
+				\left\{ x_1^{k_1} x_2^{k_2} \cdots x_n^{k_n} \mid x_i \in X, n \geq 1, k_i \in \mathbb{N} \right\}
+				\] \\
+				Grupos & 
+				\[
+				\left\{ x_1^{k_1} x_2^{k_2} \cdots x_n^{k_n} \mid x_i \in X, n \geq 1, k_i \in \mathbb{Z} \right\}
+				\] \\
+				\bottomrule
+			\end{tabular}
+		}
+	}
+	\caption{Descripción de \(\langle X \rangle\) con notación multiplicativa}
+\end{table}
+
+\vspace{0.8cm}
+\noindent En el caso de ser el grupo un grupo aditivo tenemos:\\
+
+\begin{table}[H]
+	\centering
+	{\large
+		\renewcommand{\arraystretch}{0.8}
+		\resizebox{160mm}{!}{
+			\begin{tabular}{
+					>{\centering\arraybackslash}m{6cm}
+					>{\centering\arraybackslash}m{12cm}
+				}
+				\toprule
+				\textbf{Estructura} &  \(\langle X \rangle\)  \\
+				\midrule
+				Semigrupos & 
+				\[
+				\left\{ k_1 x_1 + k_2 x_2 + \cdots + k_n x_n \mid x_i \in X, n \geq 1, k_i \in \mathbb{N}^+ \right\}
+				\] \\
+				Monoides & 
+				\[
+				\left\{ k_1 x_1 + k_2 x_2 + \cdots + k_n x_n \mid x_i \in X, n \geq 1, k_i \in \mathbb{N} \right\}
+				\] \\
+				Grupos & 
+				\[
+				\left\{ k_1 x_1 + k_2 x_2 + \cdots + k_n x_n \mid x_i \in X, n \geq 1, k_i \in \mathbb{Z} \right\}
+				\] \\
+				\bottomrule
+			\end{tabular}
+		}
+	}
+	\caption{Descripción de \(\langle X \rangle\) con notación aditiva}
+\end{table}
+
+\medskip
+ \noindent Entonces formalicemos la que describen las tablas. 
+
+\begin{proposicion}
+	\upshape{
+		Sea el conjunto
+		\[
+		H_X := \left\{ k_1 x_1 + k_2 x_2 + \cdots + k_n x_n \mid x_i \in X,\ n \geq 1,\ k_i \in \mathbb{Z} \right\}.
+		\]
+		Entonces \( H_X \) es un subgrupo de \( M \) y, además, se cumple que \( \langle X \rangle = H_X \).
+	}
+\end{proposicion}
+
+\begin{proof}
+	{\color{white}asas}
+	
+	\medskip
+	\noindent [\(H_X\) es un subgrupo] Sea \( a, b \in H_X \). Entonces, existen \( x_1, \ldots, x_n \in X \), \( y_1, \ldots, y_m \in X \), \( k_1, \ldots, k_n \in \mathbb{Z} \), \( \ell_1, \ldots, \ell_m \in \mathbb{Z} \) tales que:
+	\[
+	a = x_1^{k_1} x_2^{k_2} \cdots x_n^{k_n}, \quad b = y_1^{\ell_1} y_2^{\ell_2} \cdots y_m^{\ell_m}.
+	\]
+	Como \( b^{-1} = y_m^{-\ell_m} \cdots y_1^{-\ell_1} \) (invirtiendo el orden y los exponentes), se tiene:
+	\[
+	ab^{-1} = x_1^{k_1} \cdots x_n^{k_n} \cdot y_m^{-\ell_m} \cdots y_1^{-\ell_1} \in H_X,
+	\]
+	pues es una combinación finita de potencias de elementos de \( X \) con exponentes en \( \mathbb{Z} \). Así, \( H_X \) es un subgrupo.\\
+	
+
+	\noindent[\(H_X = \langle X \rangle\)] Verifiques ahora que es el menor subgrupo que contiene a $X$, esto es 
+	\begin{itemize}
+		\item \( X \subset H_X \): En efecto, para todo \( x \in X \), se tiene \( x = x^1 \in H_X \), ya que \( 1 \in \mathbb{Z} \).
+		
+		\item Sea \( H \leq M \) tal que \( X \subset H \). Como \( H \) es un grupo, contiene los inversos y es cerrado bajo productos, por lo que toda combinación de la forma
+		\[
+		x_1^{k_1} x_2^{k_2} \cdots x_n^{k_n} \in H
+		\]
+		pertenece a \( H \). Por tanto, \( H_X \subset H \). 
+	\end{itemize}
+	Se concluye que \( \langle X \rangle = H_X \).
+\end{proof}
+
+\vspace{0.5cm}
+Ahora nos interesa describir en particular el caso en que \( X = \{x\} \), es decir, cuando el conjunto generador está formado por un solo elemento. Este caso es fundamental, pues muchos subgrupos importantes en álgebra son generados por un solo elemento.
+
+\begin{definicion}
+	\upshape{
+		Dado \( x \in M \), el subgrupo de la forma \( \langle x \rangle \) se denomina \textit{subgrupo cíclico} o, simplemente, \textit{grupo cíclico}.
+	}
+\end{definicion}
+
+\vspace{0.5cm}
+ La siguiente tabla describe cómo son los elementos de $\langle x\rangle$.
+
+
+ 
+\begin{table}[H]
+	\centering
+	{\large
+		\renewcommand{\arraystretch}{1.2}
+		\resizebox{160mm}{!}{
+			\begin{tabular}{
+					>{\centering\arraybackslash}m{6cm}
+					>{\raggedright\arraybackslash}m{12cm}
+				}
+				\toprule
+				\textbf{Estructura} &  \(\langle x \rangle\)  \\ 
+				\midrule
+				Semigrupos & 
+				\[
+				\{ x, x^2, x^3, x^4, \ldots \}
+				\] \\ 
+				Monoides & 
+				\[
+				\{ e, x, x^2, x^3, x^4, \ldots \}
+				\] \\ 
+				Grupos & 
+				\[
+				\{ \ldots, x^{-3}, x^{-2}, x^{-1}, e, x, x^{2}, x^{3}, \ldots \}
+				\] \\ 
+				\bottomrule
+			\end{tabular}
+		}
+	}
+	\caption{Elementos por extensión del conjunto \(\langle x \rangle\) generados por un solo elemento, en notación multiplicativa}
+\end{table}
+Dependiendo del comportamiento del elemento \( x \), el subgrupo cíclico \( \langle x \rangle \) puede ser finito o infinito. A continuación se presentan ejemplos en ambos casos.
+\begin{ejemplo}
+	\leavevmode
+	\upshape{
+	
+	\begin{itemize}
+		\item Caso infinito: Sea \( G = (\mathbb{Z}, +) \), el grupo aditivo de los enteros. Toma \( x = 1 \in \mathbb{Z} \). Entonces:
+		\[
+		\langle x \rangle = \langle 1 \rangle = \{ n \cdot 1 \mid n \in \mathbb{Z} \} = \mathbb{Z},
+		\]
+		es decir, \( \langle x \rangle \) es un grupo cíclico infinito.
+		
+		\item Caso finito: Sea \( G = (\mathbb{Z}_6, +) \), el grupo aditivo de los enteros módulo 6. Toma \( x = \overline{2} \in \mathbb{Z}_6 \). Entonces:
+		\[
+		\langle \overline{2} \rangle = \{ \overline{0}, \overline{2}, \overline{4} \},
+		\]
+		pues:
+		\[
+		\overline{2} + \overline{2} = \overline{4}, \quad
+		\overline{2} + \overline{2} + \overline{2} = \overline{0}.
+		\]
+		Así, \( \langle x \rangle \) es un grupo cíclico finito de orden 3.
+	\end{itemize}
+	}
+\end{ejemplo}
+
+
+\begin{ejemplo}
+	\upshape{
+		Sea \( X \) un espacio topológico y sea \( f \in \mathrm{Homeo}(X) \), es decir, un homeomorfismo de \( X \) en sí mismo. Como \( \mathrm{Homeo}(X) \) es un grupo bajo la composición de funciones, el elemento \( f \) genera:
+		
+		\begin{itemize}
+			\item El submonoide cíclico generado por \( f \):
+			\[
+			\langle f \rangle := \{ f^{\circ n} : n \in \mathbb{N} \},
+			\]
+			que consiste en las iteradas no negativas de \( f \). 
+			\begin{center}
+				\begin{tikzpicture}[scale=1.2, >=Stealth, thin]
+					
+					% Coordenadas de los nodos
+					\coordinate (p0) at (180:0.4);
+					\coordinate (p1) at (135:0.6);
+					\coordinate (p2) at (90:0.8);
+					\coordinate (p3) at (45:1.0);
+					\coordinate (p4) at (0:1.2);
+					\coordinate (p5) at (-45:1.4);
+					\coordinate (p6) at (-90:1.6);
+					\coordinate (p7) at (-135:1.8);
+					\coordinate (endArrow) at (-150:3.2); % Flecha un poco más larga que antes
+					
+					% Nodos con etiqueta refinada
+					\node[circle, fill=black, inner sep=1.2pt, label=below left:{\( x \)}] at (p0) {};
+					\node[circle, fill=black, inner sep=1.2pt, label=above left:{\( f(x) \)}] at (p1) {};
+					\node[circle, fill=black, inner sep=1.2pt, label=above:{\( f^{\circ 2}(x) \)}] at (p2) {};
+					\node[circle, fill=black, inner sep=1.2pt, label=above right:{\( f^{\circ 3}(x) \)}] at (p3) {};
+					\node[circle, fill=black, inner sep=1.2pt, label=right:{\( f^{\circ 4}(x) \)}] at (p4) {};
+					\node[circle, fill=black, inner sep=1.2pt, label=below right:{\( f^{\circ 5}(x) \)}] at (p5) {};
+					\node[circle, fill=black, inner sep=1.2pt, label=below:{\( f^{\circ 6}(x) \)}] at (p6) {};
+					\node[circle, fill=black, inner sep=1.2pt, label=above left:{\( f^{\circ 7}(x) \)}] at (p7) {};
+					
+					% Flechas curvas más delgadas usando bend left/right
+					\draw[->, thin, bend left] (p0) to (p1);
+					\draw[->, thin, bend left] (p1) to (p2);
+					\draw[->, thin, bend left] (p2) to (p3);
+					\draw[->, thin, bend left] (p3) to (p4);
+					\draw[->, thin, bend right] (p4) to (p5);
+					\draw[->, thin, bend right] (p5) to (p6);
+					\draw[->, thin, bend right] (p6) to (p7);
+					
+					% Flecha curva adicional después de f^7 pero sin nodo final
+					\draw[->, thin, bend left] (p7) to (endArrow);
+					
+				\end{tikzpicture}
+			\end{center}
+			
+			\item El subgrupo cíclico generado por \( f \):
+			\[
+			\langle f \rangle := \{ f^{\circ n} : n \in \mathbb{Z} \},
+			\]
+			que incluye también las iteradas inversas \( f^{-1}, f^{-2}, \dots \), ya que \( f \) es invertible.
+		\end{itemize} Ambas estructuras son relevantes en el estudio de dinámicas topológicas, ya que permiten analizar las trayectorias de puntos bajo iteraciones del mismo homeomorfismo.
+	}
+\end{ejemplo}
+
+
+\vspace{0.5cm}
+Hasta ahora sabemos cómo generar subgrupos a partir de un subconjunto de un grupo. Sin embargo, no podemos esperar que estos subgrupos sean normales en general.
+
+
+
+\begin{ejemplo}
+	\upshape{
+		Sea \( G \) el grupo de matrices invertibles \( 2 \times 2 \) con entradas reales, es decir, \( G = \mathrm{GL}_2(\mathbb{R}) \). Consideremos la matriz
+		\[
+		A = \begin{pmatrix}
+			1 & 1 \\
+			0 & 1
+		\end{pmatrix}.
+		\]
+		El subgrupo generado por \( A \) está dado por
+		\[
+		\langle A \rangle = \left\{ A^n \mid n \in \mathbb{Z} \right\} = \left\{ \begin{pmatrix}
+			1 & n \\
+			0 & 1
+		\end{pmatrix} \mid n \in \mathbb{Z} \right\}.
+		\] Ahora, tomemos la matriz
+		\[
+		P = \begin{pmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{pmatrix}.
+		\]
+		Calculamos el conjugado de \( A \) por \( P \):
+		\[
+		P A P^{-1} = \begin{pmatrix}
+			1 & 0 \\
+			1 & 1
+		\end{pmatrix}.
+		\]
+		Para que \( P A P^{-1} \) esté en \( \langle A \rangle \), debería existir algún \( m \in \mathbb{Z} \) tal que
+		\[
+		A^m = \begin{pmatrix}
+			1 & m \\
+			0 & 1
+		\end{pmatrix} = \begin{pmatrix}
+			1 & 0 \\
+			1 & 1
+		\end{pmatrix},
+		\]
+		lo cual es imposible pues los elementos en la posición (2,1) son distintos (0 en \( A^m \) y 1 en \( P A P^{-1} \)). 	Por tanto, \( P A P^{-1} \notin \langle A \rangle \) y el subgrupo \( \langle A \rangle \) no es normal en \( G \).
+	}
+\end{ejemplo}
+
+
+\vspace{0.4cm}
+Por ello, nos interesa describir cómo deben ser los elementos de un grupo para generar subgrupos normales.
+
+\begin{definicion}
+	\upshape{
+		El \textit{subgrupo normal generado} por \( X \), denotado por \( \langle X \rangle^{\trianglelefteq} \), es el menor subgrupo normal de \( M \) que contiene a \( X \).
+	}
+\end{definicion}
+
+\begin{proposicion}
+	\upshape{
+		Sea \( M \) un grupo y \( X \subseteq M \) un subconjunto no vacío. Definimos el conjunto
+		\[
+		H_N := \langle \{ a x^k a^{-1} \mid a \in M,\, k \in \mathbb{Z} \} \rangle.
+		\] Entonces, \( H_N \) es un subgrupo normal de \( M \) y además
+		\[
+		\langle x \rangle^{\trianglelefteq} =  H_N.
+		\]
+	}
+\end{proposicion}
+
+
+
+
+\begin{proof}
+	Es claro que \( H_N \) es un subgrupo de \( M \), ya que está definido como el subgrupo generado por un conjunto. Veamos ahora que \( H_N \) es normal en \( M \).
+	
+	\medskip	
+	\noindent Para todo \( m \in M \) y para todo generador \( a x^k a^{-1} \in H_N \) (con \( a \in M \), \( x \in X \), \( k \in \mathbb{Z} \)), se tiene:
+	\[
+	m (a x^k a^{-1}) m^{-1} = (m a) x^k (m a)^{-1} \in H_N,
+	\]
+	ya que \( m a \in M \), \( x \in X \), y \( k \in \mathbb{Z} \). Como \( H_N \) contiene a todos sus conjugados, es normal en \( M \).\\
+	
+	\medskip 
+	\noindent Ahora mostraremos que \( \langle X \rangle^{\trianglelefteq} = H_N \). Para ello:
+	\begin{itemize}
+		\item Como \( x = e x e^{-1} \in H_N \) para todo \( x \in X \), se tiene \( X \subseteq H_N \).
+		\item Sea \( H \) un subgrupo normal de \( M \) que contiene a \( X \). Entonces, para todo \( a \in M \), \( x \in X \), \( k \in \mathbb{Z} \), se tiene:
+		\[
+		x^k \in H \quad \text{(porque \( H \) es subgrupo)}, \quad \text{y} \quad a x^k a^{-1} \in H \quad \text{(porque \( H \) es normal)}.
+		\]
+		Por tanto, todos los generadores de \( H_N \) pertenecen a \( H \), y luego \( H_N \subseteq H \).
+	\end{itemize}
+	Esto prueba que \( H_N \) es el menor subgrupo normal de \( M \) que contiene a \( X \), es decir, \( \langle X \rangle^{\trianglelefteq} = H_N \).
+\end{proof}
+
+\vspace{0.4cm}
+
+\begin{observacion}
+	\upshape{
+		La caracterización mediante elementos del subgrupo normal generado por un único elemento \( x \in M \) es:
+		\[
+		\langle x \rangle^{\trianglelefteq} = 
+		\left\{ a_1 x^{k_1} a_1^{-1} \cdots a_n x^{k_n} a_n^{-1} \;\middle|\; 
+		n \in \mathbb{N},\, a_i \in M,\, k_i \in \mathbb{Z} \right\}.
+		\]
+		Es decir, está formado por todos los productos finitos de conjugados de potencias enteras de \( x \). Así, por ejemplo, algunos de sus elementos son:
+		\[
+		e,\quad x,\quad x^{-1},\quad
+		a x a^{-1},\quad a x^{-1} a^{-1},\quad
+		b x^{2} b^{-1},\quad
+		c x^{-3} c^{-1},\quad
+		(a x a^{-1})(b x b^{-1}).
+		\]
+	}
+\end{observacion}
+
+\vspace{0.4cm}
+
+\begin{proposicion}
+	\upshape{
+		Sea \( M \) un grupo y \( X \subseteq M \) un subconjunto no vacío. Definimos el conjunto
+		\[
+		H_N := \left\langle \left\{ a x^k a^{-1} \mid a \in M,\, x \in X,\, k \in \mathbb{Z} \right\} \right\rangle.
+		\]
+		Entonces, \( H_N \) es un subgrupo normal de \( M \) y además
+		\[
+		\langle X \rangle^{\trianglelefteq} = H_N.
+		\]
+	}
+\end{proposicion}
+
+
+\begin{proof}
+	Es claro que \( H_N \) es un subgrupo de \( M \), ya que está definido como el subgrupo generado por un conjunto. Veamos ahora que \( H_N \) es normal en \( M \).
+	
+	\medskip
+	\noindent Para todo \( m \in M \) y para todo generador \( a x^k a^{-1} \in H_N \) (con \( a \in M \), \( x \in X \), \( k \in \mathbb{Z} \)), se tiene:
+	\[
+	m (a x^k a^{-1}) m^{-1} = (m a) x^k (m a)^{-1} \in H_N,
+	\]
+	ya que \( m a \in M \), \( x \in X \), y \( k \in \mathbb{Z} \). Por tanto, \( H_N \) es normal en \( M \).
+	
+	\medskip
+	\noindent Veamos ahora que \( \langle X \rangle^{\trianglelefteq} = H_N \). Para ello:
+	\begin{itemize}
+		\item Como para cada \( x \in X \), se tiene \( x = e x e^{-1} \in H_N \), entonces \( X \subseteq H_N \).
+		\item Sea \( H \) un subgrupo normal de \( M \) tal que \( X \subseteq H \). Entonces:
+		\begin{itemize}
+			\item Para todo \( x \in X \) y \( k \in \mathbb{Z} \), se tiene \( x^k \in H \) (porque \( H \) es subgrupo),
+			\item Para todo \( a \in M \), \( a x^k a^{-1} \in H \) (porque \( H \) es normal).
+		\end{itemize}
+		Así, todos los generadores de \( H_N \) están en \( H \), por lo que \( H_N \subseteq H \).
+	\end{itemize}
+	Esto prueba que \( H_N \) es el menor subgrupo normal de \( M \) que contiene a \( X \), es decir,
+	\[
+	\langle X \rangle^{\trianglelefteq} = H_N. \qedhere
+	\]
+\end{proof}
+
+
+
+\section{Clasificación de grupo cíclicos}
+
+
+
+
+\begin{definicion}
+	\upshape{
+		Sea $G$ un grupo. El \textit{orden de $G$}, denotado por $|G|$, es el cardinal del conjunto subyacente $G$. Si $|G|$ es finito, decimos que $G$ es un \textit{grupo finito}.
+	}
+\end{definicion}
+
+\begin{proposicion}\label{lkjhgfñ-lkj}
+	\upshape
+	Sea \( G \) un grupo finito y \( x \in G \). Entonces, existe un entero positivo \( n \) tal que \( x^n = e \). Además, el subgrupo generado por \( x \) es
+	\[
+	\langle x \rangle = \{ e,\ x,\ x^2,\ \dots,\ x^{n-1} \}.
+	\]
+\end{proposicion}
+
+\begin{proof}
+	\noindent\textit{Existencia de \( n \):} Como \( G \) es finito, la secuencia \( x, x^2, x^3, \dots \) contiene infinitos términos pero toma valores en un conjunto finito. Por el principio del palomar, existen enteros \( k > \ell \geq 1 \) tales que \( x^k = x^\ell \). Entonces, $ x^{k - \ell} = e$. Sea \( n := k - \ell \), que es un entero positivo tal que \( x^n = e \).\\
+	
+
+	
+	\noindent\textit{Estructura de \( \langle x \rangle \):} El subgrupo generado por \( x \) está formado por todas sus potencias:
+	\[
+	\langle x \rangle = \{ x^m : m \in \mathbb{Z} \}.
+	\]
+	Sea \( m \in \mathbb{Z} \), al escribir \( m = qn + r \) con \( 0 \leq r < n \), se tiene:
+	\[
+	x^m = x^{qn + r} = (x^n)^q x^r = e^q x^r = x^r.
+	\]
+	Por tanto, todo \( x^m \) coincide con alguna de las potencias \( x^r \) para \( 0 \leq r < n \), y entonces:
+	\[
+	\langle x \rangle = \{ e, x, x^2, \dots, x^{n-1} \}.
+	\]
+\end{proof}
+
+\begin{definicion}
+	\upshape{
+		Sea $G$ un grupo y $x \in G$. El \textit{orden de $x$}, denotado por $\mathrm{ord}(x)$, es el menor entero positivo $n$ tal que $x^n = e$. Si no existe tal $n$, decimos que $x$ tiene \textit{orden infinito}.
+	}
+\end{definicion}
+
+\begin{proposicion}
+	\upshape
+	Sea \( G \) un grupo finito y \( x \in G \). Entonces, el orden de \( x \) es el menor entero positivo \( k \) tal que \( x^k = e \).
+\end{proposicion}
+
+\begin{proof}
+	Por la Proposición \ref{lkjhgfñ-lkj}, existe un entero positivo \( n \) tal que \( x^n = e \). Definamos
+	\[
+	k := \min \left\{ n \in \mathbb{N} \setminus \{0\} \mid x^n = e \right\}.
+	\]
+	Además, por la misma proposición, tenemos que
+	\[
+	\langle x \rangle = \{ e, x, x^2, \dots, x^{k-1} \}.
+	\]
+	Que \( k \) sea el menor entero positivo tal que \( x^k = e \) implica que todos los elementos de ese conjunto son distintos entre sí. Supongamos que existen \( 1 \leq i, j < k \) con \( i \neq j \) tales que \( x^i = x^j \). Sin pérdida de generalidad, supongamos \( i > j \), entonces \( x^{i - j} = e \). Así,  $k':=i-j$, \( 0 < k '< k \) contradice la minimalidad de \( k \). 
+	
+	\medskip
+	\noindent Por lo tanto, \( \operatorname{Ord}(x) = k \), y este es el menor entero positivo tal que \( x^k = e \).
+\end{proof}
+
+\begin{definicion}
+	\upshape{
+		Un grupo $G$ es \textit{cíclico} si $G = \langle g \rangle$ para algún $g \in G$.
+	}
+\end{definicion}
+
+\begin{proposicion}\label{lkjhghjklñ}
+	\upshape
+	Sea \( G \) un grupo cíclico. Entonces se cumple:
+	\begin{enumerate}
+		\item Si \( G \) tiene orden infinito, entonces \( G \cong \mathbb{Z} \).
+		\item Si \( G \) tiene orden \( n \), entonces \( G \cong \mathbb{Z}/n\mathbb{Z} \).
+	\end{enumerate}
+\end{proposicion}
+
+\begin{proof}
+	Como \( G \) es cíclico, existe un elemento \( a \in G \) tal que \( G = \langle a \rangle = \{ a^m : m \in \mathbb{Z} \} \).
+	
+	\medskip
+	\noindent$[1)]$ Supongamos que \( G \) tiene orden infinito. Definimos el homomorfismo:
+		\[
+		\begin{aligned}
+			f : \mathbb{Z} &\longrightarrow G \\
+			m &\longmapsto a^m.
+		\end{aligned}
+		\]
+		Veamos que \( f \) es un isomorfismo.
+		\begin{itemize}
+			\item Homomorfismo:
+			\[
+			f(m + n) = a^{m+n} = a^m a^n = f(m)f(n).
+			\]
+			
+			\item Sobreyectividad: Sea $g\in G$, entonces \(g= a^m \) para algún \( m \in \mathbb{Z} \). Así $f(m)=g$.
+			
+			\item Inyectividad:
+			\[
+			\ker f = \{ m \in \mathbb{Z} : f(m) = e \} = \{ m \in \mathbb{Z} : a^m = e \}.
+			\]
+			Como \( a \) tiene orden infinito, no existe ningún entero positivo \( m \) tal que \( a^m = e \), excepto \( m = 0 \). Por lo tanto, \( \ker f = \{0\} \), es decir, \( f \) es inyectivo.
+		\end{itemize}
+		
+		Como \( f \) es un homomorfismo biyectivo, es un isomorfismo. Por lo tanto, \( G \cong \mathbb{Z} \).\\
+		
+		\noindent $[2)]$ Supongamos ahora que \( G =\langle a\rangle\) tiene orden \( n \in \mathbb{N} \). Entonces \( a^n = e \) y \( n \) es el menor entero positivo con esta propiedad. Consideramos el mismo homomorfismo:
+		\[
+		\begin{aligned}
+			f : \mathbb{Z} &\longrightarrow G \\
+			m &\longmapsto a^m.
+		\end{aligned}
+		\]
+		Como antes, \( f \) es un homomorfismo y es sobreyectivo. Calculemos su núcleo:
+		\[
+		\ker f = \{ m \in \mathbb{Z} : a^m = e \} = \{ m \in \mathbb{Z} : n \text{ divide a } m \} = n\mathbb{Z}.
+		\]
+		Entonces por el teorema fundamental del homomorfismo de grupos:
+		\[ \mathbb{Z} / n\mathbb{Z} \cong G.
+		\]
+
+\end{proof}
+
+
+\begin{proposicion}
+	\upshape{
+		Todo subgrupo de un grupo cíclico es cíclico.
+	}
+\end{proposicion}
+
+\begin{proof}
+	Como \( G \) es cíclico, existe un elemento \( a \in G \) tal que \( G = \langle a \rangle \). Sea \( H \leq G \) un subgrupo. Queremos probar que \( H \) también es cíclico.
+	
+	\medskip
+	\noindent
+	Si \( H = \{e\} \), entonces \( H = \langle e \rangle \), que es cíclico.
+	
+	\medskip
+	\noindent
+	Supongamos ahora que \( H \neq \{e\} \). Entonces existe un entero \( n \neq 0 \) tal que \( a^n \in H \). Sea
+	\[
+	k := \min \left\{ n \in \mathbb{N} \setminus \{0\} \mid a^n \in H \right\}.
+	\]
+	Es decir, \( a^k \in H \) y \( k \) es el menor entero positivo con esta propiedad. Afirmamos que
+	\[
+	H = \langle a^k \rangle.
+	\]
+	\begin{itemize}
+		\item \( \langle a^k \rangle \subseteq H \): Como \( a^k \in H \) y \( H \) es un subgrupo, entonces todas las potencias de \( a^k \) también están en \( H \).
+		
+		\item  \( H \subseteq \langle a^k \rangle \): Sea \( h \in H \). Como \( G = \langle a \rangle \), existe \( m \in \mathbb{Z} \) tal que \( h = a^m \). Escribamos \( m = qk + r \) con \( 0 \leq r < k \). Entonces,
+		\[
+		h = a^m = a^{qk + r} = (a^k)^q a^r.
+		\]
+		Como \( (a^k)^q \in \langle a^k \rangle \subseteq H \), y \( h = (a^k)^q a^r \in H \), se deduce que \( a^r = (a^k)^{-q} h \in H \). Pero por la definición de \( k \), ningún entero positivo menor que \( k \) satisface que \( a^r \in H \), a menos que \( r = 0 \). Así, \( h = (a^k)^q \in \langle a^k \rangle \).
+	\end{itemize}
+	\medskip
+	\noindent
+	Por tanto, \( H \subseteq \langle a^k \rangle \), y concluimos que \( H = \langle a^k \rangle \), lo que demuestra que \( H \) es cíclico.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\section{Abelianización de un grupo}\label{kjhgf}
+
+\begin{definicion}
+	\upshape{
+		Sea \( G \) un grupo. El \textit{conmutador} de dos elementos \( a, b \in G \) se define como
+		\[
+		[a,b] := aba^{-1}b^{-1}.
+		\]
+	}
+\end{definicion}
+
+\begin{observacion}
+	\upshape{
+		Si \( [a, b] = e \), entonces \( ab = ba \), pues la igualdad \( aba^{-1}b^{-1} = e \) implica \( aba^{-1} = b \), lo que equivale a \( ab = ba \).
+		
+		\medskip
+		\noindent En resumen, dos elementos conmutan si y solo si su conmutador es la identidad.
+	}
+\end{observacion}
+\begin{observacion}
+	\upshape{
+		Sea \( f: G \to H \) un homomorfismo de grupos. Entonces, para cualesquiera \( a, b \in G \), se cumple
+		\[
+		f([a,b]) = [f(a), f(b)].
+		\]
+		Pues como \( f \) es homomorfismo, se tiene:
+		\[
+		f([a,b]) = f(aba^{-1}b^{-1}) = f(a)f(b)f(a)^{-1}f(b)^{-1} = [f(a), f(b)].
+		\]
+	}
+\end{observacion}
+
+\begin{definicion}
+	\upshape{
+		El \textit{grupo conmutador} o \textit{grupo derivado} de \( G \) es el subgrupo
+		\[
+		[G, G] := \langle [a, b] : a, b \in G \rangle.
+		\]
+		Es decir, el subgrupo normal generado por todos los conmutadores de elementos de \( G \). Además, \( [G, G] \trianglelefteq G \).
+	}
+\end{definicion}
+
+\begin{proposicion}
+	\upshape{
+		El grupo conmutador \( [G, G] \) es un subgrupo normal de \( G \).
+	}
+\end{proposicion}
+
+\begin{proof}
+	Sea \( x \in G \). Como \( [G, G] \) está generado por conmutadores \( [a,b] = aba^{-1}b^{-1} \), basta probar que para todo conmutador \( [a,b] \) se cumple que \( x [a,b] x^{-1} \in [G,G] \). Calculemos:
+	\[
+	x [a,b] x^{-1} = x (aba^{-1}b^{-1}) x^{-1} = (x a x^{-1})(x b x^{-1})(x a x^{-1})^{-1}(x b x^{-1})^{-1} \in [G,G].
+	\] Por tanto, el conjugado de cualquier elemento generado por conmutadores pertenece a \( [G,G] \). Así, \( [G,G] \) es normal en \( G \).
+\end{proof}
+
+\vspace{0.4cm}
+Por lo tanto, el cociente
+\[
+\dfrac{G}{[G,G]}
+\]
+tiene una estructura de grupo con la operación inducida por \( G \), es decir, para \( a, b \in G \) se define
+\[
+(a [G,G]) \cdot (b [G,G]) := (ab) [G,G].
+\]
+\begin{observacion}
+	\upshape{
+		Sea \( f : G \to H \) un homomorfismo de grupos. Entonces,
+		\[
+		f([G,G]) \trianglelefteq f(G).
+		\]
+		En general, \( f([G,G]) \) no es normal en \( H \) ni en \( [H,H] \).
+	}
+\end{observacion}
+
+\begin{definicion}
+	\upshape{
+		Sea \( G \) un grupo. La \textit{abelianización} de \( G \) es el grupo
+		\[
+		G^{\mathrm{ab}} := \frac{G}{[G,G]}.
+		\]
+	}
+\end{definicion}
+
+
+
+
+
+\medskip
+
+\noindent La abelianización de un grupo proporciona una forma canónica de obtener un grupo conmutativo a partir de cualquier grupo \( G \). Esta construcción es fundamental en teoría de grupos y permite estudiar \( G \) desde una perspectiva más manejable, reduciendo su estructura a la información esencial sobre su conmutatividad. 
+
+\begin{ejemplo}
+	\upshape{
+	Sea \( G = S_3 \), el grupo simétrico de las permutaciones de tres elementos. Sabemos que \( S_3 \) no es abeliano, pero su grupo conmutador \( [S_3, S_3] \) es el subgrupo alternante \( A_3 \), que es un grupo normal de orden 3. Por lo tanto, la abelianización de \( S_3 \) es el cociente
+	\[
+	S_3^{\mathrm{ab}} = \frac{S_3}{[S_3, S_3]} = \frac{S_3}{A_3} \cong \mathbb{Z}_2,
+	\]
+	que es un grupo abeliano de dos elementos.
+	
+	\medskip
+	\noindent Esto muestra que \( S_3 \) se “reduce” a un grupo abeliano simple, \(\mathbb{Z}_2\), cuando consideramos solo su parte conmutativa.
+	}
+\end{ejemplo}
+
+
+
+
+
+
+
+
+
+
+
+\section{El functor de abelianización}
+
+\noindent Para estudiar la relación entre los grupos arbitrarios y los grupos abelianos, es útil considerar la categoría en la que residen. La categoría \( \mathbf{Grp} \) tiene como objetos los grupos y como morfismos los homomorfismos de grupos.
+
+\medskip
+\noindent Dentro de \( \mathbf{Grp} \) encontramos la subcategoría \( \mathbf{Ab} \), que contiene todos los grupos abelianos junto con sus respectivos morfismos. Esto nos permite definir el functor de abelianización, denotado por \( (-)^{\operatorname{ab}} \).
+
+\medskip
+\noindent Primero veamos la asignación de objetos. De la Sección \ref{kjhgf} podemos hacer 
+\begin{align*}
+	(-)^{\operatorname{ab}}: \mathbf{Grp}&\longrightarrow  \mathbf{Ab}\\
+	G&\longmapsto G^{\operatorname{ab}}.
+\end{align*}
+Por lo que ahora debemos ver cómo se asignan los morfismos. Sea \(f: G\to H\) en \(\mathbf{Grp}\). Entonces definimos
+\begin{align*}
+	f^{\operatorname{ab}}:G^{\operatorname{ab}}&\longrightarrow H^{\operatorname{ab}}\\
+	[a]&\longmapsto [f(a)],
+\end{align*}
+esta asignación tiene sentido porque, como recordamos en la Sección \ref{kjhgf}, tanto \(G^{\operatorname{ab}}\) como \(H^{\operatorname{ab}}\) son grupos cocientes y, por un abuso de notación, usamos el mismo símbolo para sus clases. Veamos entonces que \(f^{\operatorname{ab}}\) está bien definido. Recordemos que 
+\[
+G^{\operatorname{ab}} = G / [G, G], \quad H^{\operatorname{ab}} = H / [H, H],
+\]
+donde \([G,G]\) y \([H,H]\) son los subgrupos conmutadores de \(G\) y \(H\) respectivamente.
+
+\medskip
+\noindent Para que \(f^{\operatorname{ab}}\) esté bien definido, debemos comprobar que si dos elementos \(a, a' \in G\) pertenecen a la misma clase en \(G^{\operatorname{ab}}\), entonces sus imágenes bajo \(f^{\operatorname{ab}}\) también pertenezcan a la misma clase en \(H^{\operatorname{ab}}\). Es decir, si 
+\[
+[a] = [a'] \implies a' = a \cdot c,
+\]
+para algún \(c \in [G, G]\) por ser $[G,G]\trianglelefteq G$. Como \(f\) es un homomorfismo de grupos, tenemos
+\[
+f(a') = f(a \cdot c) = f(a) \cdot f(c).
+\]Además, como \(c \in [G,G]\), entonces \(f(c) \in [H,H]\) porque los homomorfismos de grupos 
+\[
+[f(a')] = [f(a) \cdot f(c)] = [f(a)] \cdot [f(c)] = [f(a)],
+\] ya que $[f(c)]$ es una unidad en $H^{\operatorname{ab}}$. Veamos ahora que \(f^{\operatorname{ab}}\) es un homomorfismo de grupos. Sean \( [a], [b] \in G^{\operatorname{ab}} \), es decir, \( a, b \in G \). Entonces,
+\[
+f^{\operatorname{ab}}([a] \cdot [b]) = f^{\operatorname{ab}}([ab]) = [f(ab)].
+\]
+Como \(f\) es homomorfismo, se tiene que \(f(ab) = f(a)f(b)\), y por tanto
+\[
+f^{\operatorname{ab}}([a] \cdot [b]) = [f(ab)] = [f(a)f(b)] = [f(a)] \cdot [f(b)] = f^{\operatorname{ab}}([a]) \cdot f^{\operatorname{ab}}([b]).
+\]
+Por lo tanto, \(f^{\operatorname{ab}}\) respeta la operación de grupo y es un homomorfismo.
+
+\begin{proposicion}
+	\upshape{
+		Consideremos la asignación
+		\begin{align*}
+			(-)^{\operatorname{ab}}: \mathbf{Grp} &\longrightarrow \mathbf{Ab} \\
+			G &\longmapsto G^{\operatorname{ab}}, \\
+			\left(f : G \to H\right) &\longmapsto \left(f^{\operatorname{ab}} : G^{\operatorname{ab}} \to H^{\operatorname{ab}}\right).
+		\end{align*}
+		Entonces \( (-)^{\operatorname{ab}} \) es un functor.
+	}
+\end{proposicion}
+
+\begin{proof}
+	\upshape{
+		Para ello verificamos las condiciones de la Definición \ref{ppoiujhgf}:
+		
+		\begin{enumerate}
+			\item Asignación sobre objetos: A cada grupo \(G \in \mathbf{Grp}\), se le asigna el grupo abeliano \(G^{\operatorname{ab}} = G / [G, G]\). Esta construcción se ha justificado previamente.
+			
+			\item Asignación sobre morfismos: Sea \(f: G \to H\) un homomorfismo de grupos. Definimos \(f^{\operatorname{ab}}: G^{\operatorname{ab}} \to H^{\operatorname{ab}}\) por
+			\[
+			f^{\operatorname{ab}}([a]) := [f(a)],
+			\]
+			que, como vimos antes, es un homomorfismo de grupos.
+			
+			\item Preservación de identidades: Sea \(G \in \mathbf{Grp}\). Entonces,
+			\[
+			(\mathrm{id}_G)^{\operatorname{ab}}([a]) = [\mathrm{id}_G(a)] = [a],
+			\]
+			para todo \(a \in G\). Así, \((\mathrm{id}_G)^{\operatorname{ab}} = \mathrm{id}_{G^{\operatorname{ab}}}\).
+			
+			\item Preservación de la composición: Sean \(f: G \to H\) y \(g: H \to K\) morfismos en \( \mathbf{Grp} \). Entonces, para todo \( [a] \in G^{\operatorname{ab}} \),
+			\[
+			(g \circ f)^{\operatorname{ab}}([a]) = [(g \circ f)(a)] = [g(f(a))] = g^{\operatorname{ab}}([f(a)]) = g^{\operatorname{ab}}(f^{\operatorname{ab}}([a])) = \left( g^{\operatorname{ab}} \circ f^{\operatorname{ab}} \right)([a]).
+			\]
+			Por tanto,
+			\[
+			(g \circ f)^{\operatorname{ab}} = g^{\operatorname{ab}} \circ f^{\operatorname{ab}}.
+			\]
+		\end{enumerate}
+		
+		\noindent
+		Concluimos que \( (-)^{\operatorname{ab}} \) es un funtor bien definifo de \( \mathbf{Grp} \) a \( \mathbf{Ab} \).
+	}
+\end{proof}
+
+
+
+
+\begin{definicion}
+	\upshape{
+		El functor
+		$(-)^{\operatorname{ab}}$
+		de la categoría de grupos a la categoría de grupos abelianos está definido por
+		\begin{align*}
+			(-)^{\operatorname{ab}} : \mathbf{Grp} &\longrightarrow \mathbf{Ab}, \\
+			G &\longmapsto G^{\operatorname{ab}}, \\
+			\left(f : G \to H\right) &\longmapsto \left(f^{\operatorname{ab}} : G^{\operatorname{ab}} \to H^{\operatorname{ab}}\right).
+		\end{align*}
+		Se denomina \emph{functor de abelianización}.
+	}
+\end{definicion}
+
+
+
+

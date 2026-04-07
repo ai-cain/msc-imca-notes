@@ -1,0 +1,1735 @@
+\section{Anillos}
+\begin{definicion}
+	\upshape{
+		Un \textit{anillo} es un conjunto \( R \) provisto de dos operaciones internas
+		\[
+		+: R \times R \to R, \qquad \cdot: R \times R \to R,
+		\]
+		que satisfacen las siguientes condiciones:
+		\begin{enumerate}
+			\item \( (R, +) \) es un grupo abeliano.
+			\item \( (R, \cdot) \) es un semigrupo.
+			\item Propiedad distributiva: para todo \( a, b, c \in R \),
+			\[
+			a(b + c) = ab + ac \quad \text{y} \quad (a + b)c = ac + bc.
+			\]
+		\end{enumerate}
+		De esta manera, denotamos por \( (R, +, \cdot) \) al anillo que se define.
+	}
+\end{definicion}
+\begin{observacion}
+	\upshape{
+		\textcolor{white}{text}
+		\medskip
+		\begin{enumerate}
+			\item Llamaremos \textit{elemento neutro} a la identidad de \( (R, +) \), y lo denotaremos por \( 0_R \).
+			\item Si \( (R, \cdot) \) es un monoide, entonces diremos que \( (R, +, \cdot) \) es un \textit{anillo con unidad}, y denotaremos a dicha identidad por \( 1_R \), la cual también será llamada \textit{identidad del anillo}.
+			\item Si \( (R, \cdot) \) es conmutativo, entonces \( (R, +, \cdot) \) se denomina un \textit{anillo conmutativo}.
+		\end{enumerate}
+	}
+\end{observacion}
+
+
+\begin{ejemplo}
+	\upshape{
+		Sea \( X \) un espacio topológico. Entonces
+		\[
+		C^0(X) := \{\, f : X \to \mathbb{R} \mid f \text{ es continua} \,\}
+		\]
+		con la suma definida punto a punto \((f + g)(x) := f(x) + g(x)\) y el producto definido  \((fg)(x) := f(x)g(x)\), es un anillo conmutativo con unidad.
+	}
+\end{ejemplo}
+
+
+
+\begin{ejemplo}
+	\upshape{
+		Sea \( f \colon \mathbb{R}^n \to \mathbb{R} \) una función continua. Decimos que \( f \) tiene \textit{soporte compacto} si
+		\[
+		\operatorname{supp}(f) := \overline{\{ x \in \mathbb{R}^n \mid f(x) \neq 0 \}},
+		\]
+		es un subconjunto compacto de \( \mathbb{R}^n \).
+		
+		\medskip
+		\noindent
+		El conjunto 
+		\[
+		C_c(\mathbb{R}^n) := \{\, f \in C^0(\mathbb{R}^n) \mid \operatorname{supp}(f) \text{ es compacto} \,\}.
+		\]
+		con la suma y el producto definidos punto a punto es un anillo conmutativo, pero no posee unidad.
+	}
+\end{ejemplo}
+
+\begin{proof}
+	\upshape{
+		Basta probar que si \( f, g \) tienen soporte compacto, entonces \( f + g \) y \( fg \) también lo tienen. En efecto:
+		\begin{itemize}
+			\item \textbf{\( f + g \):} Como \( \operatorname{supp}(f) \) y \( \operatorname{supp}(g) \) son compactos, su unión \( \operatorname{supp}(f) \cup \operatorname{supp}(g) \) también lo es. Y como
+			\[
+			\{ x \in \mathbb{R}^n \mid (f + g)(x) \ne 0 \} \subseteq \{ x \in \mathbb{R}^n \mid f(x) \ne 0 \} \cup \{ x \in \mathbb{R}^n \mid g(x) \ne 0 \},
+			\]
+			se concluye que
+			\[
+			\operatorname{supp}(f + g) = \overline{\{ x \in \mathbb{R}^n \mid (f + g)(x) \ne 0 \}} \subseteq \operatorname{supp}(f) \cup \operatorname{supp}(g),
+			\]
+			y por tanto \( \operatorname{supp}(f + g) \) es compacto.
+			
+			\item \textbf{\( fg \):} Análogamente,
+			\[
+			\{ x \in \mathbb{R}^n \mid (fg)(x) \ne 0 \} \subseteq \{ x \in \mathbb{R}^n \mid f(x) \ne 0 \} \cap \{ x \in \mathbb{R}^n \mid g(x) \ne 0 \},
+			\]
+			por lo que
+			\[
+			\operatorname{supp}(fg) = \overline{\{ x \in \mathbb{R}^n \mid (fg)(x) \ne 0 \}} \subseteq \operatorname{supp}(f) \cap \operatorname{supp}(g),
+			\]
+			que también es compacto, pues la intersección de dos compactos es cerrada y contenida en un compacto.
+		\end{itemize}
+		Finalmente, si \( C_c(\mathbb{R}^n) \) tuviera unidad, esta sería la función constante \( 1 \colon \mathbb{R}^n \to \mathbb{R} \); pero
+		\[
+		\operatorname{supp}(1) = \overline{\{ x \in \mathbb{R}^n \mid 1(x) \ne 0 \}} = \overline{\mathbb{R}^n} = \mathbb{R}^n,
+		\]
+		que no es compacto. Por tanto, \( 1 \notin C_c(\mathbb{R}^n) \), y el anillo no tiene unidad.
+	}
+\end{proof}
+\begin{definicion}
+	\upshape{
+		En el anillo \( R \), para todo \( a, b \in R \), se define
+		\[
+		a - b := a + (-b),
+		\]
+		donde \( -b \) denota el inverso aditivo de \( b \) en \( R \).
+	}
+\end{definicion}
+
+
+
+\begin{proposicion}
+	\upshape{
+		Sea \( R \) un anillo. Para todo \( a, b, c \in R \), se cumple:
+		\begin{enumerate}
+			\item \( 0a = a0 = 0 \).
+			\item \( (-a)b = a(-b) = -(ab) \).
+			\item \( (-a)(-b) = ab \).
+			\item \( a(b - c) = ab - ac \) y \( (b - c)a = ba - ca \).
+				\item Para todo \( a_1, \dots, a_m, b_1, \dots, b_n \in R \), se tiene
+			\[
+			\left( \sum_{i=1}^{m} a_i \right) \left( \sum_{j=1}^{n} b_j \right) = \sum_{i=1}^{m} \sum_{j=1}^{n} a_i b_j.
+			\]
+		\end{enumerate}
+		
+	}
+\end{proposicion}
+
+\begin{proof}
+	\textcolor{white}{text}
+	
+	\medskip
+	\noindent $[1]$ Sea \( a \in R \). Usamos la distributividad:
+	\[
+	a \cdot 0 = a(0 + 0) = a \cdot 0 + a \cdot 0.
+	\]
+	Restando \( a \cdot 0 \) a ambos lados:
+	\[
+	a \cdot 0 = 0.
+	\]
+	Análogamente, \( 0 \cdot a = 0 \).\\
+	
+
+	\noindent $[2]$ Sea \( a, b \in R \). Como \( -a + a = 0 \), entonces:
+	\[
+	(-a)b + ab = (-a + a)b = 0b = 0,
+	\]
+	así que \( (-a)b = -(ab) \). Similarmente,
+	\[
+	a(-b) + ab = a(-b + b) = a \cdot 0 = 0,
+	\]
+	por lo que \( a(-b) = -(ab) \). \\
+	
+
+	
+	\noindent $[3]$ Aplicando el punto anterior:
+	\[
+	(-a)(-b) = -\left( a(-b) \right) = -\left( -(ab) \right) = ab.
+	\]
+	
+	
+	\noindent $[4]$ Sea \( a, b, c \in R \). Usamos la distributividad:
+	\[
+	a(b - c) = a(b + (-c)) = ab + a(-c) = ab - ac,
+	\]
+	y
+	\[
+	(b - c)a = (b + (-c))a = ba + (-c)a = ba - ca.
+	\]
+	
+	
+	\noindent $[5]$ Procedemos por distributividad iterada. Sea \( a_1, \dots, a_m, b_1, \dots, b_n \in R \). Aplicando distributividad en etapas:
+	\[
+	\left( \sum_{i=1}^m a_i \right) \left( \sum_{j=1}^n b_j \right)
+	= \sum_{i=1}^m \left( a_i \sum_{j=1}^n b_j \right)= \sum_{i=1}^m \left(  \sum_{j=1}^n a_ib_j \right)
+	= \sum_{i=1}^m \sum_{j=1}^n a_i b_j.
+	\]
+	
+\end{proof}
+
+\begin{proposicion}
+	\upshape{
+		Sea $R$ un anillo conmutativo. Entonces, para cualesquiera $a, b \in R$ y para todo entero $n \geq 0$, se cumple
+		\[
+		(a + b)^n = \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k}.
+		\]
+	}
+\end{proposicion}
+\begin{proof}
+	La demostración se realiza por inducción sobre $n$ y sigue el mismo esquema que la demostración estándar del binomio de Newton en $\mathbb{R}$.
+\end{proof}
+
+
+\begin{definicion}
+	\upshape{
+		Un elemento \( a \in R \setminus \{0\} \) se llama \textit{divisor de cero} si existe \( b \in R \setminus \{0\} \) tal que $$ ab = 0  \quad\text{
+		o} \quad ba = 0 .$$
+	}
+\end{definicion}
+
+\medskip
+\begin{ejemplo}
+	\upshape{
+		Sea \( \mathbb{K} = \mathbb{R} \) o \( \mathbb{C} \), y sea \( R = M_{2 \times 2}(\mathbb{K}) \). Entonces \( R \) tiene divisores de cero.\\
+		
+		
+		\noindent
+		Si \( \mathbb{K} = \mathbb{R} \), considérese, por ejemplo, las matrices
+		\[
+		A =
+		\begin{pmatrix}
+			1 & 0 \\
+			0 & 0
+		\end{pmatrix},
+		\qquad
+		B =
+		\begin{pmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{pmatrix}.
+		\]
+		Entonces
+		\[
+		AB =
+		\begin{pmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{pmatrix},
+		\qquad
+		BA =
+		\begin{pmatrix}
+			0 & 0 \\
+			0 & 0
+		\end{pmatrix}.
+		\]
+		Como \( A \ne 0 \), \( B \ne 0 \) y \( BA = 0 \), se concluye que \( A \) es un divisor de cero por la derecha y \( B \) por la izquierda.\\
+		
+	
+		
+		\noindent
+		Si \( \mathbb{K} = \mathbb{C} \), consideremos las matrices
+		\[
+		M =
+		\begin{pmatrix}
+			1 & i \\
+			-i & 1
+		\end{pmatrix},
+		\qquad
+		N =
+		\begin{pmatrix}
+			1 & -i \\
+			i & 1
+		\end{pmatrix}.
+		\]
+		Entonces
+		\[
+		MN =
+		\begin{pmatrix}
+			1 + i^2 & -i + i \\
+			-i + i & i^2 + 1
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			0 & 0 \\
+			0 & 0
+		\end{pmatrix}.
+		\]
+		Como \( M \ne 0 \), \( N \ne 0 \), y \( MN = 0 \), se concluye que \( M \) y \( N \) son divisores de cero en \( M_{2 \times 2}(\mathbb{C}) \).
+	}
+\end{ejemplo}
+
+
+\begin{definicion}
+	\upshape{
+		Sea \( R \) un anillo. Entonces:
+		\begin{enumerate}
+			\item Decimos que \( R \) es un \textit{dominio} si es un anillo sin divisores de cero.
+			\item Si \( R \) es un dominio y además es conmutativo, se dice que \( R \) es un \textit{dominio de integridad}.
+		\end{enumerate}
+	}
+\end{definicion}
+\begin{ejemplo}
+	\upshape{
+		El anillo \( \mathbb{Z}/n\mathbb{Z} \) es un dominio de integridad si y solo si \( n \) es primo.
+	}
+\end{ejemplo}
+
+\begin{proof}
+	\upshape{
+		\textcolor{white}{text}
+		
+		\medskip
+		\noindent $[\Rightarrow]$ Supongamos primero que \( n \) no es primo. Entonces existen \( a, b \in \mathbb{Z} \) tales   con \( 1 < a < n \), \( 1 < b < n \), tales que \( ab \equiv 0 \pmod{n} \). Esto implica que las clases \( \overline{a}, \overline{b} \in \mathbb{Z}/n\mathbb{Z} \) son no nulas, pero \( \overline{a} \cdot \overline{b} = \overline{0} \), así que hay divisores de cero y \( \mathbb{Z}/n\mathbb{Z} \) no es dominio de integridad.\\
+		
+		\noindent $[\Leftarrow]$ Recíprocamente, supongamos que \( n \) es primo. Si \( \overline{a}, \overline{b} \in \mathbb{Z}/n\mathbb{Z} \) satisfacen \( \overline{a} \cdot \overline{b} = \overline{0} \), entonces \( ab \equiv 0 \pmod{n} \). Como \( n \) es primo, esto implica que \( n \mid a \) o \( n \mid b \), es decir, que \( \overline{a} = \overline{0} \) o \( \overline{b} = \overline{0} \). Por tanto, no hay divisores de cero, y \( \mathbb{Z}/n\mathbb{Z} \) es un dominio de integridad.
+	}
+\end{proof}
+
+
+
+
+\begin{ejemplo}
+	\upshape{
+		El anillo \( C^0(\mathbb{R}) \), con la suma y el producto definidos punto a punto, no es un dominio.
+		
+		\medskip
+		
+		\noindent Sean
+		\[
+		f(x) := \begin{cases}
+			e^{-1/(1 - x^2)} & \text{si } |x| < 1, \\
+			0 & \text{si } |x| \geq 1,
+		\end{cases}
+		\quad
+		g(x) := \begin{cases}
+			e^{-1/(1 - (x - 2)^2)} & \text{si } |x - 2| < 1, \\
+			0 & \text{si } |x - 2| \geq 1.
+		\end{cases}
+		\]
+		Entonces \( f, g \in C^0(\mathbb{R}) \), \( f \ne 0 \), \( g \ne 0 \), pero se cumple que \( fg = 0 \), ya que \( f(x)g(x) = 0 \) para todo \( x \in \mathbb{R} \).
+		
+		\medskip
+		
+		\noindent Por tanto, \( f \) y \( g \) son divisores de cero, y se concluye que \( C^0(\mathbb{R}) \) no es un dominio.
+	}
+\end{ejemplo}
+
+
+
+
+
+
+\begin{observacion}
+	\upshape{
+		Se llama \textit{función bump} a toda función \( \varphi \colon \mathbb{R}^n \to \mathbb{R} \) que cumple:
+		\begin{itemize}
+			\item \( \varphi \in C^\infty(\mathbb{R}^n) \), es decir, es infinitamente diferenciable en todo \( \mathbb{R}^n \);
+			\item \( \operatorname{supp}(\varphi) \subseteq K \) para algún compacto \( K \subseteq \mathbb{R}^n \), es decir, tiene soporte compacto.
+		\end{itemize}
+		
+		\medskip
+		\noindent Una construcción clásica de funciones bump es la siguiente. Sea
+		\[
+		\varphi(x) := 
+		\begin{cases}
+			\exp\left( -\dfrac{1}{1 - \|x\|^2} \right) & \text{si } \|x\| < 1, \\[6pt]
+			0 & \text{si } \|x\| \geq 1,
+		\end{cases}
+		\]donde \( \|x\| \) denota la norma euclídea. Esta función pertenece a \( C^\infty(\mathbb{R}^n) \) y su soporte está contenido en la bola cerrada \( \overline{B(0,1)} \).
+		
+		\medskip
+		
+		\noindent De forma más general, dados \( a \in \mathbb{R}^n \) y \( r > 0 \), se define
+		
+		
+		\[
+		\varphi_{a,r}(x) := 
+		\begin{cases}
+			\exp\left( -\dfrac{1}{1 - \left( \frac{\|x - a\|}{r} \right)^2} \right) & \text{si } \|x - a\| < r, \\[6pt]
+			0 & \text{si } \|x - a\| \geq r.
+		\end{cases}
+		\]
+		Entonces \( \varphi_{a,r} \in C^\infty(\mathbb{R}^n) \), su soporte está contenido en \( \overline{B(a,r)} \), y todas sus derivadas se anulan sobre la frontera \( \partial B(a,r) \).
+		
+		\medskip
+		
+		\noindent Este tipo de funciones es fundamental en análisis y geometría, pues permite construir funciones suaves con comportamiento controlado en regiones localizadas del espacio.
+	}
+\end{observacion}
+
+\begin{ejemplo}
+	\upshape{
+		Denotamos por \( C^\infty(\mathbb{R}) \) al conjunto de todas las funciones \( f \colon \mathbb{R} \to \mathbb{R} \) que son derivables infinitas veces. Con la suma y el producto definidos punto a punto, este conjunto forma un anillo conmutativo con unidad.
+		
+		\medskip
+		
+		\noindent Este anillo no es un dominio. En efecto, consideremos las funciones
+		\[
+		f(x) := \begin{cases}
+			e^{-1/(1 - x^2)} & \text{si } |x| < 1, \\
+			0 & \text{si } |x| \geq 1,
+		\end{cases}
+		\quad
+		g(x) := \begin{cases}
+			e^{-1/(1 - (x - 2)^2)} & \text{si } |x - 2| < 1, \\
+			0 & \text{si } |x - 2| \geq 1.
+		\end{cases}
+		\]
+		Ambas funciones pertenecen a \( C^\infty(\mathbb{R}) \). Así, \( f \ne 0 \), \( g \ne 0 \), pero \( fg = 0 \), lo que muestra que \( f \) y \( g \) son divisores de cero. En consecuencia, el anillo \( C^\infty(\mathbb{R}) \) no es un dominio.
+	}
+\end{ejemplo}
+
+\begin{observacion}
+	\upshape{
+		El anillo \( C^\infty_c(\mathbb{R}^n) \) no es un dominio. Basta notar que existen funciones bump \( f, g \in C^\infty_c(\mathbb{R}^n) \), con soportes disjuntos, tales que \( f \ne 0 \), \( g \ne 0 \), pero \( fg = 0 \).
+	}
+\end{observacion}
+
+
+
+
+
+
+
+
+
+
+\begin{definicion}
+	\upshape{
+		Sea \( R \) un anillo no trivial (es decir, \( R \neq \{0\} \)). Decimos que \( R \) cumple la \textit{ley cancelativa} si para cualesquiera \( a, b, c \in R \) con $a\neq 0$ se tiene:
+		\[
+		ba = ca \;\:\:\text{entonces}\:\; b = c,
+		\qquad\text{y}\qquad
+		ab = ac \;\:\:\text{entonces}\:\; b = c.
+		\]
+	}
+\end{definicion}
+
+
+\begin{proposicion}
+	\upshape{
+		Sea \( R \) un anillo. Son equivalentes:
+		\begin{enumerate}
+			\item \( R \) es un dominio.
+			\item \( R \) cumple la ley cancelativa.
+		\end{enumerate}
+	}
+\end{proposicion}
+
+\begin{proof}
+	\textcolor{white}{text}
+	
+	\medskip
+	\noindent $[1 \Rightarrow 2]$ Sean \( a, b, c \in R \) con \( a \ne 0 \) y \( ab = ac \). Entonces
+	\[
+	ab - ac = a(b - c) = 0.
+	\]
+	Como \( R \) no tiene divisores de cero y \( a \ne 0 \), se concluye que \( b - c = 0 \), es decir, \( b = c \). El argumento para \( ba = ca \) es análogo.
+	
+	\medskip
+	\noindent $[2 \Rightarrow 1]$ Sean \( a, b \in R \) tales que \( ab = 0 \). Entonces:
+	\begin{itemize}
+		\item Si \( a \ne 0 \), entonces
+		\[
+		ab = 0 = a \cdot 0,
+		\]
+		y por la ley cancelativa, \( b = 0 \).
+		
+		\item Si \( b \ne 0 \), entonces
+		\[
+		ab = 0 = 0 \cdot b,
+		\]
+		y por la ley cancelativa, \( a = 0 \).
+	\end{itemize}
+	Por tanto, \( R \) no tiene divisores de cero y es un dominio.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Anillo monoidal}
+
+Sea \( (M, \star) \) un monoide conmutativo con unidad.
+
+\begin{definicion}\label{lkjhgxdcsd}
+	\upshape{
+		Sea \( (R, +, \bullet) \) un anillo conmutativo con unidad. Definimos el \textit{anillo monoidal generado por \( M \)} como
+		\[
+		R[M] := \{ f \colon M \to R \mid f \text{ tiene soporte finito} \}.
+		\]
+	}
+\end{definicion}
+
+\begin{observacion}
+	\upshape{
+		Diremos que una función \( f \colon M \to R \) tiene \textit{soporte finito} si existe un subconjunto finito \( S \subseteq M \) tal que
+		\[
+		f(m) = 0 \quad \text{para todo } m \in M \setminus S.
+		\]
+	}
+\end{observacion}
+
+
+En la Definición \ref{lkjhgxdcsd}, se introdujo el conjunto \( R[M] \) como el conjunto de funciones de soporte finito de \( M \) en \( R \). Para dotar a \( R[M] \) de estructura de anillo, se definen dos operaciones: la suma se realiza punto a punto, mientras que el producto se define mediante convolución, utilizando la operación del monoide \( M \).
+
+\begin{align*}
+	\text{Suma:} \quad & (f + g)(a) := f(a) + g(a), \quad \text{para todo } a \in M, \\[8pt]
+	\text{Producto (convolución):} \quad & (f\cdot g)(a) := \sum_{m \star n = a} f(m) \bullet g(n), \quad \text{para todo } a \in M.
+\end{align*}
+\begin{observacion}
+	\upshape{
+		En la fórmula del producto, \( m \star n = a \) significa que la suma recorre todos los pares \( (m, n) \in M \times M \) tales que \( m \star n = a \), es decir, que combinan mediante la operación del monoide para dar \( a \).
+	}
+\end{observacion}
+
+Probemos que \( R[M] \) es un anillo. En efecto:
+
+
+
+\begin{itemize}
+	
+	\item \( (R[M], +) \) es un grupo
+	\begin{itemize}
+		\item \( + \) es un producto interno: si \( f, g \in R[M] \), entonces \( f + g \in R[M] \), ya que existen subconjuntos finitos \( S_f, S_g \subseteq M \) tales que
+		\[
+		f(m) = 0 \quad \text{para todo } m \in M \setminus S_f,
+		\qquad
+		g(m) = 0 \quad \text{para todo } m \in M \setminus S_g.
+		\]
+		Sea \( S := S_f \cup S_g \), que también es finito. Entonces, para todo \( m \in M \setminus S \), se tiene
+		\[
+		(f + g)(m) = f(m) + g(m) = 0 + 0 = 0,
+		\]
+		por lo tanto, \( f + g \in R[M] \).
+		
+	
+		
+		\item Asociatividad: para todo \( a \in M \),
+		\begin{align*}
+			((f + g) + h)(a) 
+			&= (f + g)(a) + h(a) \\
+			&= f(a) + g(a) + h(a) \\
+			&= f(a) + (g(a) + h(a)) \\
+			&= (f + (g + h))(a). 
+		\end{align*}
+
+		\item Conmutatividad: como \( (R, +) \) es abeliano, para todo \( a \in M \),
+		\[
+		(f + g)(a) = f(a) + g(a) = g(a) + f(a) = (g + f)(a).
+		\]
+		
+		\item Elemento neutro: la función nula \( 0 \in R[M] \), dada por \( 0(a) := 0_R \) para todo \( a \in M \), cumple
+		\[
+		(f + 0)(a) = f(a) + 0_R = f(a).
+		\]
+		
+		\item Elemento inverso: si \( f \in R[M] \), entonces \( -f \in R[M] \), definido por \( (-f)(a) := -f(a) \), cumple
+		\[
+		(f + (-f))(a) = f(a) + (-f(a)) = 0_R.
+		\]
+	\end{itemize}
+	
+	\item \( (R[M], \cdot) \) es un semigrupo
+	\begin{itemize}
+		\item El producto es un producto interno: si \( f, g \in R[M] \), entonces \( fg \in R[M] \), ya que existen subconjuntos finitos \( S_f, S_g \subseteq M \) tales que
+		\[
+		f(m) = 0 \quad \text{para todo } m \in M \setminus S_f,
+		\qquad
+		g(n) = 0 \quad \text{para todo } n \in M \setminus S_g.
+		\]
+		Sea
+		\[
+		S := \{ m \star n \mid m \in S_f,\ n \in S_g \} \subseteq M.
+		\]
+		Como \( S_f \) y \( S_g \) son finitos, y \( \star \) es una operación binaria, el conjunto \( S \) también es finito. Si \( a \in M \setminus S \), entonces no existen \( (m, n) \in S_f \times S_g \) tales que \( m \star n = a \). Por tanto, si \( m \star n = a \), se tiene que \( m \notin S_f \) o \( n \notin S_g \), y en consecuencia \( f(m) = 0 \) o \( g(n) = 0 \), lo que implica \( f(m) \bullet g(n) = 0 \). Así,
+		\[
+		(fg)(a) = \sum_{m \star n = a} f(m) \bullet g(n) = 0,
+		\]
+		lo cual muestra que \( fg \) se anula fuera de un subconjunto finito \( S \), es decir, \( fg \in R[M] \).
+		
+	
+		
+		\item Asociatividad: para todo \( a \in M \),
+		\begin{align*}
+			((fg)h)(a) 
+			&= \sum_{x \star y = a} (fg)(x) \bullet h(y) \\[5pt]
+			&= \sum_{x \star y = a} \left( \sum_{m \star n = x} f(m) \bullet g(n) \right) \bullet h(y) \\[5pt]
+			&= \sum_{\substack{m, n, y \in M \\ (m \star n) \star y = a}} \left(f(m) \bullet g(n)\right) \bullet h(y) \\[5pt]
+			&= \sum_{\substack{m, n, y \in M \\ m \star (n \star y) = a}} f(m) \bullet\left( g(n) \bullet h(y)\right) \\[5pt]
+			&= \sum_{m \star p = a} f(m) \bullet \left( \sum_{n \star y = p} g(n) \bullet h(y) \right) \\[5pt]
+			&= \sum_{m \star p = a} f(m) \bullet (gh)(p) \\[5pt]
+			&= (f(gh))(a). \\[5pt]
+		\end{align*}
+	\end{itemize}
+	
+	\item Distributividad
+	\begin{itemize}
+		\item Para todo \( a \in M \),
+		\begin{align*}
+			f(g + h)(a) 
+			&= \sum_{m \star n = a} f(m) \bullet (g + h)(n) \\[5pt]
+			&= \sum_{m \star n = a} f(m) \bullet (g(n) + h(n)) \\[5pt]
+			&= \sum_{m \star n = a} f(m) \bullet g(n) + f(m) \bullet h(n) \\[5pt]
+			&= \sum_{m \star n = a} f(m) \bullet g(n) + \sum_{m \star n = a} f(m) \bullet h(n) \\[5pt]
+			&= (fg)(a) + (fh)(a). \\[5pt]
+		\end{align*}
+		\item Análogamente se prueba que \( (g + h)f = gf + hf \).
+	\end{itemize}
+	
+\end{itemize}
+
+\begin{proposicion}
+	\upshape{
+		\( R[M] \) es un anillo conmutativo con unidad.
+	}
+\end{proposicion}
+
+
+\begin{proof}
+	Ya se ha verificado que \( R[M] \) es un anillo. Solo falta demostrar que la convolución es conmutativa y que existe la identidad multiplicativa.
+	
+	\medskip
+	
+	\noindent Conmutatividad: Sea \( f, g \in R[M] \) y \( a \in M \). 	Dado que \( M \) es conmutativo, el conjunto de pares \( (m,n) \in M \times M \) con \( m \star n = a \) es el mismo que el conjunto de pares \( (n,m) \) con \( n \star m = a \). Como además \( R \) es conmutativo, se tiene \( f(m) \bullet g(n) = g(n) \bullet f(m) \). Por lo tanto:
+	\[
+	(f \cdot g)(a) = \sum_{m \star n = a} f(m) \bullet g(n) = \sum_{n \star m = a} g(n) \bullet f(m) = (g \cdot f)(a),
+	\]
+	y por ende \( f \cdot g = g \cdot f \), es decir, el producto es conmutativo.\\
+	
+	\medskip
+	
+	\noindent Para la existencia de identidad, definimos \( \delta \in R[M] \) como
+	\[
+	\delta(m) := 
+	\begin{cases}
+		1_R & \text{si } m = e_M, \\[4pt]
+		0   & \text{en otro caso}.
+	\end{cases}
+	\]
+	Entonces, para todo \( f \in R[M] \) y \( a \in M \), se tiene
+	\[
+	(\delta \cdot f)(a) = \sum_{m \star n = a} \delta(m) \bullet f(n).
+	\]
+	El único \( m \) con \( \delta(m) \ne 0 \) es \( m = e_M \), en cuyo caso \( n = a \), por lo que:
+	\[
+	(\delta \cdot f)(a) = \delta(e_M) \bullet f(a) = 1_R \bullet f(a) = f(a).
+	\]
+	De modo análogo, \( (f \cdot \delta)(a) = f(a) \). Por lo tanto, \( \delta \) actúa como la identidad en \( R[M] \).\\
+	
+
+	
+	\noindent Concluimos que \( R[M] \) es un anillo conmutativo con unidad.
+\end{proof}
+
+
+\medskip
+\begin{ejemplo}\label{ekjasckañsc}
+	\upshape{
+		Sea \( R = \mathbb{Z} \) y \( M = \mathbb{N}\) con la suma como operación. Consideramos las funciones \( f, g \in \mathbb{Z}[M] \) definidas por:
+		\[
+		f(n) := \begin{cases}
+			1 & \text{si } n = 0, \\
+			3 & \text{si } n = 1, \\
+			0 & \text{si } n \geq 2,
+		\end{cases}
+		\quad\quad
+		g(n) := \begin{cases}
+			2 & \text{si } n = 0, \\
+			5 & \text{si } n = 1, \\
+			4 & \text{si } n = 2, \\
+			0 & \text{si } n \geq 3.
+		\end{cases}
+		\]
+		
+		\medskip
+		
+		\noindent Calculemos el producto \( fg \) en \( \mathbb{Z}[M] \), usando la convolución:
+		\begin{align*}
+			(fg)(0) &= f(0) \cdot g(0) 
+			= 1 \cdot 2 = 2, \\[5pt]
+			(fg)(1) &= f(0) \cdot g(1) 
+			+ f(1) \cdot g(0) \\ 
+			&= 1 \cdot 5 + 3 \cdot 2 = 5 + 6 = 11, \\[5pt]
+			(fg)(2) &= f(0) \cdot g(2) 
+			+ f(1) \cdot g(1) 
+			+ f(2) \cdot g(0) \\
+			&= 1 \cdot 4 + 3 \cdot 5 + 0 \cdot 2 = 4 + 15 + 0 = 19, \\[5pt]
+			(fg)(3) &= f(0) \cdot g(3) 
+			+ f(1) \cdot g(2) 
+			+ f(2) \cdot g(1) 
+			+ f(3) \cdot g(0) \\
+			&= 1 \cdot 0 + 3 \cdot 4 + 0 \cdot 5 + 0 \cdot 2 = 0 + 12 + 0 + 0 = 12, \\[5pt]
+			(fg)(n) &= 0 \quad \text{para todo } n \geq 4.
+		\end{align*}
+		
+		
+		
+		
+		\medskip
+		
+		\noindent Luego, el producto \( fg \in \mathbb{Z}[M] \) es la función:
+		\[
+		(fg)(n) := \begin{cases}
+			2 & \text{si } n = 0, \\
+			11 & \text{si } n = 1, \\
+			19 & \text{si } n = 2, \\
+			12 & \text{si } n = 3, \\
+			0 & \text{si } n \geq 4,
+		\end{cases}
+		\]
+		Estas funciones corresponden a los polinomios \( f(x) = 3x + 1 \) y \( g(x) = 4x^2 + 5x + 2 \), y su producto usual es
+		\[
+		fg(x) = (3x + 1)(4x^2 + 5x + 2) = 12x^3 + 19x^2 + 11x + 2.
+		\]
+	}
+\end{ejemplo}
+
+\vspace{0.5cm}
+
+Además, en el Ejemplo \ref{ekjasckañsc}, notemos que
+\[
+g(x) = g(0)x^0 + g(1)x^1 + g(2)x^2 + \cdots = \sum_{n \in M} g(n)x^n.
+\]
+En el contexto del anillo \( R[M] \), es común identificar formalmente el símbolo \( x^n \) con el elemento \( n \in M \). Por tanto, podemos escribir a \( g \) como una combinación formal:
+\[
+g = \sum_{n \in M} g(n)  n,
+\]
+donde \( g(n) \in R \) y \( n \in M \), y se entiende que \( g(n)n \) representa la función \( \delta_n \colon M \to R \) definida por
+\[
+\delta_n(m) = \begin{cases}
+	g(n) & \text{si } m = n, \\
+	0 & \text{en otro caso}.
+\end{cases}
+\]
+De este modo, \( g \) es la suma (finita) de tales funciones. \\
+
+\begin{observacion}
+	\upshape{
+		En general, para \( f \in R[M] \), se suele usar la notación
+		\[
+		f = \sum_{n \in M} f(n) n,
+		\]
+		lo cual tiene sentido ya que, al tener \( f \) soporte finito, esta suma es finita.
+	}
+\end{observacion}
+
+En el Ejemplo \ref{ekjasckañsc} vimos que un polinomio puede identificarse con un elemento de $\mathbb{Z}[\mathbb{N}]$. Esto se debe a que el conjunto de polinomios en una indeterminada $x$ con coeficientes en $\mathbb{Z}$, dotado de las operaciones usuales de suma y multiplicación, forma un anillo $\mathbb{Z}[x]$ que es isomorfo al anillo monoidal $\mathbb{Z}[\mathbb{N}]$.
+
+\medskip
+\noindent
+Esta identificación proporciona una definición rigurosa del anillo de polinomios como un caso particular de un anillo monoidal, donde el monoide $\mathbb{N}$ (con la operación de suma) indexa los exponentes de la indeterminada $x$. Esta construcción se ilustrará con mayor detalle en los ejemplos siguientes.
+
+\begin{ejemplo}[Anillo de polinomios en una variable]
+	\upshape{
+		Sea \( (R,+,\cdot) \) un anillo conmutativo con unidad, y consideremos el monoide conmutativo con unidad \( (\mathbb{N}, +) \). Entonces, el\textit{ anillo de polinomios en una variable} con coeficientes en \( R \) se define como
+		\[
+		R[X] := R[\mathbb{N}],
+		\]
+		donde la estructura de anillo se da mediante las siguientes operaciones:
+		
+		\begin{align*}
+			\text{Suma:} \quad & (f + g)(a) := f(a) + g(a), \quad \text{para todo } a \in \mathbb{N}, \\[8pt]
+			\text{Producto (convolución):} \quad & (f \cdot g)(a) := \sum_{m + n = a} f(m) \cdot g(n), \quad \text{para todo } a \in \mathbb{N}.
+		\end{align*}
+		
+	}
+\end{ejemplo}
+
+\begin{observacion}
+	\upshape{
+		Para cada \( n \in \mathbb{N} \), definimos el monomio \( x^n \in R[\mathbb{N}] \) como la función \( f_n \colon \mathbb{N} \to R \) dada por
+		\[
+		f_n(k) := \begin{cases}
+			1_R & \text{si } k = n, \\[4pt]
+			0 & \text{en otro caso}.
+		\end{cases}
+		\]
+		Usando la notación \( f = \sum_{k \in \mathbb{N}} f(k) \cdot k \), tenemos:
+		\[
+		x^n := f_n = f_n(n) \cdot n = 1_R \cdot n.
+		\]
+		
+		\medskip
+		
+		\noindent Entonces, para cualquier \( r \in R \), definimos el monomio \( r x^n \in R[\mathbb{N}] \) como la función \( f \colon \mathbb{N} \to R \) dada por
+		\[
+		f(k) := r \cdot f_n(k) = \begin{cases}
+			r & \text{si } k = n, \\[4pt]
+			0 & \text{en otro caso}.
+		\end{cases}
+		\]
+		Así,
+		\[
+		r x^n = r \cdot f_n = r \cdot n.
+		\]
+		
+		\medskip
+		
+		\noindent Por ejemplo,
+		\[
+		x^0 := 1_R \cdot 0, \quad
+		x := x^1 = 1_R \cdot 1, \quad
+		x^2 := 1_R \cdot 2, \quad
+		x^3 := 1_R \cdot 3, \quad \dots
+		\]
+		
+		\medskip
+		
+		\noindent Y combinaciones como \( 4x^5 - 3x + 7 \) se escriben como
+		\[
+		4 \cdot 5 + (-3) \cdot 1 + 7 \cdot 0 \in R[\mathbb{N}].
+		\]
+		
+		\medskip
+		
+		\noindent Más generalmente, un polinomio
+		\[
+		a_0 + a_1 x + a_2 x^2 + \dots + a_n x^n
+		\]
+		se representa como
+		\[
+		a_0 \cdot 0 + a_1 \cdot 1 + a_2 \cdot 2 + \dots + a_n \cdot n = \sum_{k = 0}^{n} a_k \cdot k \in R[\mathbb{N}].
+		\]
+	}
+\end{observacion}
+
+
+
+\begin{ejemplo}[Anillo de polinomios en \( n \) variables]
+	\upshape{
+		Sea \( (R,+,\cdot) \) un anillo conmutativo con unidad, y consideremos el monoide conmutativo con unidad \( (\mathbb{N}^n,+).\) Entonces, el \textit{anillo de polinomios en \( n \) variables} con coeficientes en \( R \) se define como
+		\[
+		R[x_1,x_2\dots,x_n] := R[\mathbb{N}^n],
+		\]
+		donde la estructura de anillo se da mediante las siguientes operaciones:
+		
+		\begin{align*}
+			\text{Suma:} \quad & (f + g)(\alpha) := f(\alpha) + g(\alpha), \quad \text{para todo } \alpha \in \mathbb{N}^n, \\[8pt]
+			\text{Producto (convolución):} \quad & (f \cdot g)(\alpha) := \sum_{\beta + \gamma = \alpha} f(\beta) \cdot g(\gamma), \quad \text{para todo } \alpha \in \mathbb{N}^n.
+		\end{align*}
+		Donde los elementos de \( \mathbb{N}^n \) se interpretan como multiíndices \( \alpha = (\alpha_1,\dots,\alpha_n) \).
+	}
+\end{ejemplo}
+
+
+
+
+\begin{observacion}
+	\upshape{
+		Para cada \( \alpha = (\alpha_1, \dots, \alpha_n) \in \mathbb{N}^n \), definimos el monomio $$x^\alpha := x_1^{\alpha_1} \cdots x_n^{\alpha_n} \in R[\mathbb{N}^n] $$ como la función \( f_\alpha \colon \mathbb{N}^n \to R \) dada por
+		\[
+		f_\alpha(\beta) := \begin{cases}
+			1_R & \text{si } \beta = \alpha, \\[4pt]
+			0 & \text{en otro caso}.
+		\end{cases}
+		\]
+		
+		\medskip
+		
+		\noindent Usando la notación \( f = \sum_{\beta \in \mathbb{N}^n} f(\beta) \cdot \beta \), tenemos:
+		\[
+		x^\alpha := f_\alpha = f_\alpha(\alpha) \cdot \alpha = 1_R \cdot \alpha.
+		\]
+		
+		\medskip
+		
+		\noindent Entonces, para cualquier \( r \in R \), definimos el monomio \( r x^\alpha \in R[\mathbb{N}^n] \) como la función \( f \colon \mathbb{N}^n \to R \) dada por
+		\[
+		f(\beta) := r \cdot f_\alpha(\beta) = \begin{cases}
+			r & \text{si } \beta = \alpha, \\[4pt]
+			0 & \text{en otro caso}.
+		\end{cases}
+		\]
+		Así,
+		\[
+		r x^\alpha = r \cdot f_\alpha = r \cdot \alpha.
+		\]
+		
+		\medskip
+		
+		\noindent Por ejemplo, en \( R[\mathbb{N}^3] \), denotando por \( x := x_1, y := x_2, z := x_3 \), tenemos:
+		\[
+		x := x^{(1,0,0)} = 1_R \cdot (1,0,0), \quad
+		y := x^{(0,1,0)} = 1_R \cdot (0,1,0), \quad
+		xyz := x^{(1,1,1)} = 1_R \cdot (1,1,1), \quad \dots
+		\]
+		
+		\medskip
+		
+		\noindent Y combinaciones como \( 2x^2z + 5yz^3 - 4 \) se escriben como
+		\[
+		2 \cdot (2,0,1) + 5 \cdot (0,1,3) + (-4) \cdot (0,0,0) \in R[\mathbb{N}^3].
+		\]
+		
+		\medskip
+		
+		\noindent Más generalmente, un polinomio
+		\[
+		\sum_{\alpha \in \mathbb{N}^n} a_\alpha x^\alpha
+		\]
+		se representa como
+		\[
+		\sum_{\alpha \in \mathbb{N}^n} a_\alpha \cdot \alpha \in R[\mathbb{N}^n].
+		\]
+	}
+\end{observacion}
+
+
+
+
+
+\section{Anillo de polinomios}
+
+
+
+		Definir el anillo de polinomios como un caso particular de anillo monoidal ofrece una formulación general y rigurosa. No obstante, el enfoque clásico mediante expresiones algebraicas resulta igualmente valioso, ya que permite una manipulación directa de los polinomios en diversos contextos.\medskip
+
+
+
+
+\begin{definicion}\label{ñlkjpoiuyy}
+	\upshape{
+		Sea \( R \) un anillo conmutativo con unidad y \( x \) un símbolo que no pertenece a \( R \). Un \textit{polinomio en \( x \)} con coeficientes en \( R \) es una expresión formal
+		\[
+		p(x) = a_0 + a_1x + a_2x^^2 + \dots + a_nx^n,
+		\]
+		donde \( n \in \mathbb{N} \), cada \( a_k \in R \), y \( a_n \) puede ser cero (en cuyo caso el término \( x^n \) puede omitirse). El conjunto de todos estos polinomios se denota por
+		\[
+		R[x] := \left\{ \sum_{k=0}^n a_k x^k : n \in \mathbb{N}, \; a_k \in R \text{ para } 0 \leq k \leq n \right\}.
+		\]
+		Un elemento \( p \in R[x] \) suele escribirse como \( p = p(x) \), enfatizando su dependencia formal de \( x \).
+	}
+\end{definicion}
+
+
+
+\vspace{0.5cm}
+En \( R[x] \), las operaciones de \textit{suma} y \textit{producto} se definen de la siguiente manera. Sean
+\[
+p(x) = \sum_{k = 0}^n a_k x^k, \quad q(x) = \sum_{k = 0}^m b_k x^k,
+\]
+con \( a_k, b_k \in R \). Entonces:
+\begin{align*}
+	\text{Suma:} \quad (p + q)(x) &:= \sum_{k = 0}^{\max(n,m)} c_k x^k, \quad \text{donde } c_k :=
+	\begin{cases}
+		a_k + b_k & \text{si } k \leq \min(n,m), \\[4pt]
+		a_k & \text{si } n > m \text{ y } k > m, \\[4pt]
+		b_k & \text{si } m > n \text{ y } k > n,
+	\end{cases} \\[10pt]
+	\text{Producto:} \quad (p \cdot q)(x) &:= \sum_{k = 0}^{n+m} \left( \sum_{\substack{0 \leq i \leq n,\: 0 \leq j \leq m \\ i + j = k}} a_i b_j \right) x^k.
+\end{align*}
+
+\noindent Es decir, la suma se obtiene sumando término a término los coeficientes de igual grado, y el producto resulta de aplicar la distributividad junto con la regla \( x^i \cdot x^j = x^{i+j} \).\\
+
+\noindent Estas operaciones hacen de \( R[x] \) un anillo conmutativo con unidad, donde el neutro aditivo es el polinomio nulo \( 0(x) := 0 \), y el elemento identidad para el producto es el polinomio constante \( 1(x) := 1 \in R \).
+
+\begin{proposicion}
+	\upshape{
+		\( R[x] \) es un anillo conmutativo con unidad.
+	}
+\end{proposicion}
+
+
+
+
+\begin{definicion}
+	\upshape{
+		Sea \( R \) un anillo conmutativo con unidad. Se define \( R[x,y] \) como el conjunto de todas las expresiones finitas de la forma
+		\[
+		\sum_{i = 0}^n \sum_{j = 0}^m a_{i,j} x^i y^j,
+		\]
+		con \( a_{i,j} \in R \). La suma y el producto se definen término a término y distributivamente, extendiendo la regla $$ x^i y^j \cdot x^{i'} y^{j'} = x^{i+i'} y^{j+j'}.$$
+	}
+\end{definicion}
+
+\vspace{0.3cm}
+
+\begin{definicion}
+	\upshape{
+		Análogamente, al considerar el anillo \( (R[x])[y] \), sus elementos son polinomios en \( y \) cuyos coeficientes están en \( R[x] \), es decir, expresiones finitas de la forma
+		\[
+		\sum_{j = 0}^m f_j(x) y^j,
+		\]
+		donde cada \( f_j(x) \in R[x] \), y a su vez cada uno puede escribirse como
+		\[
+		f_j(x) = \sum_{i = 0}^{n_j} a_{i,j} x^i, \quad \text{con } a_{i,j} \in R.
+		\]
+		Por tanto, todo elemento de \( (R[x])[y] \) puede escribirse como una suma finita de términos \( a_{i,j} x^i y^j \).
+		
+		\medskip
+		
+		\noindent La suma y el producto en \( (R[x])[y] \) se definen siguiendo las mismas reglas de la  Definición \ref{ñlkjpoiuyy}).
+	}
+\end{definicion}
+
+
+\vspace{0.3cm}
+\begin{proposicion}
+	\upshape{
+		Los conjuntos \( (R[x])[y] \) y \( R[x,y] \) son iguales, ya que en ambos casos sus elementos son combinaciones finitas de términos de la forma \( a_{i,j} x^i y^j \) con \( a_{i,j} \in R \), \( i, j \in \mathbb{N} \).
+	}
+\end{proposicion}
+
+
+\begin{proof}
+	Por doble inclusión.
+	
+	\medskip
+	
+	\noindent \( (R[x])[y] \subseteq R[x,y] \): 
+	Sea \( f \in (R[x])[y] \). Entonces, por definición, existe una expresión finita
+	\[
+	f = \sum_{j=0}^m f_j(x) y^j,
+	\]
+	donde cada \( f_j(x) \in R[x] \). Como \( f_j(x) = \sum_{i=0}^{n_j} a_{i,j} x^i \) con \( a_{i,j} \in R \), se tiene:
+	\[
+	f = \sum_{j=0}^m \left( \sum_{i=0}^{n_j} a_{i,j} x^i \right) y^j = \sum_{j=0}^m \sum_{i=0}^{n_j} a_{i,j} x^i y^j.
+	\]
+	Como la suma es finita, esto es un elemento de \( R[x,y] \), es decir, un polinomio en dos variables con coeficientes en \( R \). Por tanto, \( f \in R[x,y] \).\\
+	
+	\noindent \( R[x,y] \subseteq (R[x])[y] \):
+	Sea \( f \in R[x,y] \). Por definición, se puede escribir como una suma finita
+	\[
+	f = \sum_{(i,j) \in F} a_{i,j} x^i y^j,
+	\]
+	con \( F \subseteq \mathbb{N}^2 \) finito y \( a_{i,j} \in R \). Reuniendo los términos con la misma potencia de \( y \), escribimos:
+	\[
+	f = \sum_{j=0}^m \left( \sum_{i=0}^{n_j} a_{i,j} x^i \right) y^j.
+	\]
+	Cada coeficiente entre paréntesis es un elemento de \( R[x] \), por lo que \( f \in (R[x])[y] \).
+	
+	\medskip
+	
+	\noindent Como ambas inclusiones se cumplen, concluimos que \( (R[x])[y] = R[x,y] \) como conjuntos.
+\end{proof}
+
+\begin{observacion}
+	\upshape{
+		A pesar de que \( (R[x])[y] = R[x,y] \) como conjuntos, no podemos afirmar que son el mismo anillo, ya que las operaciones de suma y producto en cada caso se definen inicialmente de manera distinta, al menos en su construcción formal. Sin embargo, más adelante veremos que, a pesar de estas diferencias en la definición, ambos anillos resultan ser isomorfos, es decir, existe una correspondencia que respeta las operaciones y preserva la estructura algebraica.
+	}
+\end{observacion}
+
+
+\vspace{0.5cm}
+De manera general, se define el anillo de polinomios en varias variables como una extensión natural del caso de una sola variable, preservando su estructura algebraica.
+
+\begin{definicion}[Anillo de polinomios en \( n \) variables]
+	\upshape{
+		Sea \( R \) un anillo conmutativo con unidad. Se define \( R[x_1, x_2, \dots, x_n] \) como el conjunto de todas las expresiones finitas de la forma
+		\[
+		\sum_{\alpha \in \mathbb{N}^n} a_{\alpha} x^{\alpha},
+		\]
+		donde \( a_{\alpha} \in R \) y, para cada multiíndice \( \alpha = (\alpha_1, \dots, \alpha_n) \in \mathbb{N}^n \), se define
+		\[
+		x^{\alpha} := x_1^{\alpha_1} x_2^{\alpha_2} \cdots x_n^{\alpha_n}.
+		\]
+		La suma y el producto se definen término a término y mediante linealidad, usando la regla
+		\[
+		x^{\alpha} \cdot x^{\beta} = x^{\alpha + \beta},
+		\]
+		donde \( \alpha + \beta := (\alpha_1 + \beta_1, \dots, \alpha_n + \beta_n) \). Estas operaciones hacen de \( R[x_1, x_2, \dots, x_n] \) un anillo conmutativo con unidad.
+	}
+\end{definicion}
+
+
+
+\begin{definicion}
+	\upshape{
+		Sea \( p(x) = \sum_{k = 0}^n a_k x^k \in R[x] \), con \( a_k \in R \). Definimos:
+		\begin{enumerate}
+			\item Si \( p(x) \neq 0 \), el \textit{grado} de \( p(x) \), denotado por \( \deg(p) \), es el mayor entero \( k \) tal que \( a_k \neq 0 \).
+			
+			\item Por convenio, si \( p(x) = 0 \), definimos \( \deg(0) := -\infty \).
+			
+			\item El coeficiente \( a_k \) correspondiente al término de mayor grado se denomina \textit{coeficiente principal} de \( p(x) \).
+			
+			\item Si el coeficiente principal o líder de \( p(x) \) es igual a \( 1_R \), decimos que \( p(x) \) es un \textit{polinomio monico}.
+			
+			\item Decimos que \( p(x) \) es un \textit{monomio} si contiene un único término no nulo, es decir, si existe \( k \in \mathbb{N} \) tal que \( p(x) = a_k x^k \) con \( a_k \neq 0 \).
+			
+		\end{enumerate}
+	}
+\end{definicion}
+
+\begin{definicion}
+	\upshape{
+		Sea \( p(x_1, x_2, \dots, x_n) \in R[x_1, x_2, \dots, x_n] \) un polinomio de la forma
+		\[
+		p(x_1, x_2, \dots, x_n) = \sum_{\alpha \in \mathbb{N}^n} a_{\alpha} x^{\alpha} = \sum_{\alpha \in \mathbb{N}^n} a_{\alpha} x_1^{\alpha_1} x_2^{\alpha_2} \cdots x_n^{\alpha_n},
+		\]
+		con \( a_{\alpha} \in R \) y solo una cantidad finita de coeficientes no nulos.
+		
+		\medskip
+		
+		\noindent Si \( p(x_1, \dots, x_n) \neq 0 \), definimos el \textit{grado total} de \( p \), denotado por \( \deg(p) \), como:
+		\[
+		\deg(p) := \max \left\{ \alpha_1 + \alpha_2 + \dots + \alpha_n \, : \, a_{\alpha} \neq 0 \right\}.
+		\]
+		Por convenio, se define \( \deg(0) := -\infty \).
+	}
+\end{definicion}
+
+
+
+
+
+
+\begin{proposicion}
+	\upshape{
+		Sea \( R \) un dominio de integridad. Entonces, el anillo de polinomios \( R[x_1, x_2, \dots, x_n] \) también es un dominio de integridad.
+	}
+\end{proposicion}
+
+
+
+
+\begin{proof}
+	Sean \( f, g \in R[x_1, \dots, x_n] \) tales que \( fg = 0 \). Supongamos que \( f \neq 0 \) y \( g \neq 0 \). Entonces podemos tomar \( ax^{\alpha} \) el término principal de \( f \), con \( a \neq 0_R \), y \( bx^{\beta} \) el término principal de \( g \), con \( b \neq 0_R \).
+	
+		\medskip
+	\noindent
+	Así, el producto \( fg \) contiene el término \( abx^{\alpha + \beta} \), cuyo coeficiente es \( ab \neq 0_R \), ya que \( R \) es un dominio de integridad.
+	
+		\medskip
+	\noindent
+	Además, todos los demás términos de \( fg \) tienen grado total menorque grado total de \( abx^{\alpha + \beta} \), por lo que dicho término no puede anularse al sumarse con los demás. Es decir, $fg\neq 0$. Esto contradice que \( fg = 0 \). Por tanto, si \( fg = 0 \), necesariamente \( f = 0 \) o \( g = 0 \), lo que prueba que \( R[x_1, \dots, x_n] \) es un dominio de integridad.
+\end{proof}
+
+\vspace{0.5cm}
+Como comentario final sobre los polinomios, podemos mencionar su relevancia en diversas ramas de las matemáticas y sus aplicaciones:
+
+\begin{itemize}
+	\item En análisis, los polinomios permiten aproximar funciones continuas en intervalos cerrados, según establece el Teorema de Stone-Weierstrass. Además, toda función diferenciable admite una aproximación local mediante su polinomio de Taylor.
+	
+	\item En análisis complejo, el teorema de Cauchy implica que toda función holomorfa es analítica, es decir, puede representarse localmente mediante una serie de potencias, lo que refuerza la presencia de los polinomios en el estudio de funciones complejas.
+	
+	
+		\item Las funciones trigonométricas satisfacen ecuaciones polinomiales como $c^2+s^2=1$:
+	\[
+	\cos^2(\theta) + \sen^2(\theta) = 1,
+	\]
+	lo que evidencia la conexión entre polinomios y relaciones funcionales básicas.
+	
+	
+	
+	\item En aplicaciones prácticas, los polinomios aparecen en problemas de optimización, modelado estadístico mediante regresión polinomial, y en teoría de control, donde se utilizan para describir el comportamiento de sistemas dinámicos.
+	
+	
+	\item En geometría algebraica, los polinomios constituyen el lenguaje fundamental para describir variedades algebraicas, generalizando así la geometría analítica clásica. Un ejemplo notable son las curvas cúbicas en dos variables, conocidas como curvas elípticas, que tienen aplicaciones relevantes en teoría de números, como la conjetura de Birch y Swinnerton-Dyer, uno de los problemas del milenio, y en criptografía, especialmente sobre cuerpos finitos.
+
+	\begin{table}[H]
+		\centering
+		{\large
+			\renewcommand{\arraystretch}{1.6}
+			\resizebox{160mm}{!}{
+				\begin{tabular}{
+						>{\raggedright\arraybackslash}p{4.5cm}
+						>{\raggedright\arraybackslash}p{5.5cm}
+						>{\raggedright\arraybackslash}p{5.5cm}
+					}
+					\toprule
+					\multicolumn{1}{c}{\textbf{Tipo de Ecuación}} & 
+					\multicolumn{1}{c}{\textbf{Ejemplo}} & 
+					\multicolumn{1}{c}{\textbf{Gráfico Asociado}} \\
+					\midrule
+					Lineal en dos variables & $ax + by + c = 0$ & Recta en el plano \\
+					Lineal en tres variables & $ax + by + cz + d = 0$ & Plano en el espacio \\
+					Cuadrática en dos variables & $ax^2 + by^2 + cxy + dx + ey + f = 0$ & Cónica: circunferencia, parábola, elipse o hipérbola \\
+					Cuadrática en tres variables & $ax^2 + by^2 + cz^2 + dxy + exz + fyz + gx + hy + iz + j = 0$ & Superficie cuadrática: esfera, elipsoide, hiperboloide, paraboloide, etc. \\
+					Cúbica en dos variables & $y^2 = x^3 + ax + b$ & Curva elíptica \\
+					\bottomrule
+				\end{tabular}
+		}}
+		\caption{Ecuaciones polinomiales y sus gráficos asociados.}
+	\end{table}
+	
+	
+	
+
+\end{itemize}
+
+Estos ejemplos reflejan cómo los polinomios constituyen una herramienta fundamental en la comprensión y el modelado de fenómenos tanto en matemáticas puras como aplicadas.
+
+
+
+
+
+
+
+
+
+\section{Cuerpos y Clausura algebraica}
+
+Dado un anillo \( (R,+,\cdot) \) con unidad.
+
+\begin{definicion}
+	\upshape{
+		Un elemento \( a \in R \) es \textit{inversible} si es inversible con respecto a \( (R,\cdot) \), es decir, existe \( b \in R \) tal que \( ab = 1_R = ba \).
+	}
+\end{definicion}
+
+\begin{observacion}
+	\upshape{
+		El neutro aditivo del anillo, \( 0 \in R \), no es inversible. En efecto, si existiera \( b \in R \) tal que \( 0 \cdot b = 1_R \), se tendría \( 0 = 1_R \), lo cual es absurdo, pues salvo en el anillo trivial, donde \( 1_R = 0 \), en general estos elementos son distintos.
+	}
+\end{observacion}
+ 
+ 
+ El conjunto de todos los elementos invertibles del anillo \( R \) se denota por \( R^\times \), es decir,
+ \[
+ R^\times := \{ \, a \in R \mid a \text{ es invertible} \, \}.
+ \]
+ Este conjunto se denomina \textit{grupo multiplicativo} del anillo \( R \), o también \textit{grupo de los elementos invertibles} de \( R \). La razón es la siguiente proposición.
+ 
+ \begin{proposicion}
+ 	\upshape{
+ 		\(\left( R^\times, \cdot \right)\) es un grupo.
+ 	}
+ \end{proposicion}
+ 
+\begin{proof}
+	En efecto,
+	\begin{itemize}
+		\item Operación interna: Si \( a, b \in R^\times \), existen \( a^{-1}, b^{-1} \in R \) tales que \( a a^{-1} = b b^{-1} = 1_R \). Además, \( ab \) es invertible con inverso \( b^{-1} a^{-1} \), ya que:
+		\[
+		(ab)(b^{-1} a^{-1}) = a (b b^{-1}) a^{-1} = a (1_R) a^{-1} = a a^{-1} = 1_R,
+		\]
+		y de modo similar, \( (b^{-1} a^{-1})(ab) = 1_R \). Por tanto, \( ab \in R^\times \).
+		
+		\item Asociatividad: Heredada de la operación en \( R \), pues \( \cdot \) es asociativa en \( R \).
+		
+		\item Elemento identidad: La unidad \( 1_R \) pertenece a \( R^\times \) y actúa como identidad.
+		
+		\item Elemento inverso: Por definición, todo elemento de \( R^\times \) es invertible en \( R \).
+	\end{itemize}
+	Por tanto, \( \left( R^\times, \cdot \right) \) es un grupo.
+\end{proof}
+
+\begin{ejemplo}
+	\upshape{
+		El grupo multiplicativo de \( \mathbb{Z} \) es
+		\[
+		\mathbb{Z}^{\times} = \{ -1,\ +1 \}.
+		\]
+	}
+\end{ejemplo}
+
+\begin{ejemplo}
+	\upshape{
+		Sea \( \mathbb{Z}/n\mathbb{Z} \) el anillo de clases módulo \( n \), es decir, \( \mathbb{Z}/n\mathbb{Z} = \{ [m] : m \in \mathbb{Z} \} \). Entonces, su grupo multiplicativo es
+		\[
+		\left( \dfrac{\mathbb{Z}}{n\mathbb{Z}} \right)^{\times} = \{ [m] \in \mathbb{Z}/n\mathbb{Z} : \, \mathrm{mcd}(m,n) = 1 \}.
+		\]
+	}
+\end{ejemplo}
+\begin{proof}[Justificación]
+	Un elemento \( [m] \in \mathbb{Z}/n\mathbb{Z} \) es invertible si y solo si existe \( [s] \in \mathbb{Z}/n\mathbb{Z} \) tal que
+	\[
+	[m][s] = [1].
+	\]
+	Esto equivale a decir que \( ms \equiv 1 \pmod{n} \), lo cual sucede si y solo si \( m \) y \( n \) son coprimos, es decir, \( \mathrm{mcd}(m,n) = 1 \).
+	
+	\medskip
+	\noindent Por tanto, los elementos invertibles de \( \mathbb{Z}/n\mathbb{Z} \) son exactamente aquellos \( [m] \) tales que \( \mathrm{mcd}(m,n) = 1 \), como se indicó.
+\end{proof}
+
+
+
+
+
+\begin{definicion}
+	\upshape{
+		Sea \( R \) un anillo. Un elemento \( a \in R \) se dice \textit{nilpotente} si existe un entero positivo \( k \) tal que
+		\[
+		a^k = 0.
+		\]
+	}
+\end{definicion}
+
+\begin{observacion}\label{ñlkjhgjklasx}
+	\upshape{
+		Todo elemento nilpotente no nulo de un anillo es un divisor de cero.
+	}
+\end{observacion}
+\begin{proof}[Justificación]
+	\upshape{
+	En efecto, sea \( a \in R \) un elemento nilpotente, es decir, existe un entero positivo \( k \) tal que \( a^k = 0 \). Si además \( a \neq 0 \), tomamos el menor de esos enteros \( k \), el cual necesariamente cumple \( k \geq 2 \). Entonces:
+	\[
+	a^{k-1} \neq 0 \quad \text{y} \quad a \cdot a^{k-1} = a^k = 0,
+	\]
+	por lo que \( a \) es divisor de cero.
+	}
+\end{proof}
+
+\medskip
+\begin{observacion}
+	\upshape{
+		Si \( R \) es un dominio, entonces no existen elementos nilpotentes distintos de \( 0_R \). Pues si existiera, por la Observación \ref{ñlkjhgjklasx}, \( R \) tendría divisores de cero.
+	}
+\end{observacion}
+
+\medskip
+
+\begin{proposicion}\label{lñkjhgsc}
+	\upshape{
+		En un anillo conmutativo, la suma de elementos nilpotentes es nilpotente.
+	}
+\end{proposicion}
+
+\begin{proof}
+	Sean \( a, b \in R \) nilpotentes, es decir, existen enteros positivos \( m, n \) tales que \( a^m = 0 \) y \( b^n = 0 \). Consideramos el binomio \( a + b \) y calculamos:
+	\[
+	(a + b)^{m+n} = \sum_{k=0}^{m+n} \binom{m+n}{k} a^k b^{m+n - k}.
+	\]
+	En cada término, si \( k \geq m \), entonces \( a^k = 0 \); y si \( k < m \), entonces \( m+n - k > n \), por lo que \( b^{m+n - k} = 0 \).
+	
+	\medskip
+	\noindent Por lo tanto, todos los términos de la expansión son nulos y se tiene:
+	\[
+	(a + b)^{m+n} = 0.
+	\]
+	Por inducción se extiende a sumas finitas de nilpotentes.
+\end{proof}
+
+\medskip
+\begin{observacion}
+	\upshape{
+		Si \( R \) no es conmutativo, la Proposición \ref{lñkjhgsc} es falsa. En efecto, consideremos el anillo \( M_{2\times 2}(\mathbb{\mathbb{R}}) \). Definimos:
+		\[
+		A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad B = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}.
+		\]
+		Ambas matrices son nilpotentes, ya que:
+		\[
+		A^2 = B^2 = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}.
+		\]
+		Sin embargo, su suma es:
+		\[
+		A + B = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix},
+		\]
+		y se verifica que:
+		\[
+		(A + B)^2 = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I_2,
+		\]
+		la matriz identidad. Como \( (A + B)^2 = I_2 \neq 0 \), concluimos que \( A + B \) no es nilpotente. Por lo tanto, en anillos no conmutativos, la suma de nilpotentes puede no ser nilpotente.
+	}
+\end{observacion}
+
+\vspace{0.5cm}
+\begin{proposicion}\label{lkjhgjnm}
+	\upshape{
+		Sea \( R \) un anillo conmutativo. Si \( a \in R \) es inversible y \( b \in R \) es nilpotente, entonces \( a + b \) es inversible.
+	}
+\end{proposicion}
+
+\begin{proof}
+	Como \( a \) es inversible, existe \( a^{-1} \in R \) tal que \( a a^{-1} = 1 \). Podemos escribir
+	\[
+	a + b = a \left( 1 + a^{-1} b \right).
+	\]
+	El elemento \( a^{-1} b \) es nilpotente, ya que \( b \) lo es y \( R \) es conmutativo. Sea \( k \) el menor entero positivo tal que \( (a^{-1} b)^{k} = 0 \). Entonces,  el inverso de \( 1 + a^{-1} b \) es 
+	\[
+	1 - a^{-1} b + (a^{-1} b)^2 - \cdots + (-1)^{k - 1} (a^{-1} b)^{k - 1}.
+	\]
+	En efecto, al multiplicar:
+	\[
+	\left( 1 + a^{-1} b \right) \left( 1 - a^{-1} b + (a^{-1} b)^2 - \cdots + (-1)^{k - 1} (a^{-1} b)^{k - 1} \right) = 1,
+	\]
+	
+	\noindent Por lo tanto, \( 1 + a^{-1} b \) es inversible, y como \( a \) también lo es, concluimos que \( a + b \) es inversible.
+\end{proof}
+
+
+
+\begin{observacion}
+	\upshape{
+		Para hallar el inverso de \( 1 + a^{-1} b \) en la Proposición \ref{lkjhgjnm}, se utilizó la expresión de la serie geométrica finita. Recordemos primero la forma general:
+		
+		\[
+		1 + r + r^2 + \cdots + r^k = \frac{1 - r^{k + 1}}{1 - r},
+		\]
+		Que para el caso de anillos se tiene que exigir que \( 1 - r \) sea inversible. Entonces la expresión válida es 		
+		\[
+		1 + r + r^2 + \cdots + r^k = \left( 1 - r^{k + 1} \right)(1 - r)^{-1}.
+		\]
+		
+		\medskip
+		
+		\noindent En nuestro caso particular, tomando \( r = - a^{-1} b \), se deduce que:
+		
+		\[
+		1 + (- a^{-1} b) + (- a^{-1} b)^2 + \cdots + (- a^{-1} b)^{k-1} = \left( 1 - (- a^{-1} b)^{k } \right) (1 + a^{-1} b)^{-1}.
+		\] Reescribiendo  y como \( (a^{-1} b)^{k} = 0 \) tenemos 
+		\[
+	(1 + a^{-1} b)\left( 1 - a^{-1} b + (a^{-1} b)^2 - \cdots + (-1)^{k - 1} (a^{-1} b)^{k - 1} \right) =  1 - (-1)^k( a^{-1} b)^{k }.
+		\]
+		
+	}
+\end{observacion}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{proposicion}
+	\upshape{
+		Sea \( R \) un anillo conmutativo con identidad. Son equivalentes
+	
+	\begin{enumerate}
+		\item Un polinomio \( p(x) = a_nx^n + \cdots + a_1x + a_0 \in R[x] \) es inversible.
+		\item Para $p(x)$ se cumplen 
+		\begin{itemize}
+			\item \( a_0 \) es un elemento inversible de \( R \),
+			\item Los coeficientes \( a_1, \dots, a_n \) son elementos nilpotentes de \( R \).
+		\end{itemize}
+	\end{enumerate}
+		
+	}
+\end{proposicion}
+
+\begin{proof}
+	\text{white}
+	
+	\medskip
+	\noindent $[ 1 \Rightarrow 2]$
+	Supongamos que \( p(x) \) es inversible en \( R[x] \). Sea \( q(x) = b_m x^m + \cdots + b_0 \in R[x] \) tal que:
+	\[
+	p(x) q(x) = 1.
+	\]
+	Examinando el término constante:
+	\[
+	a_0 b_0 = 1,
+	\]
+	por lo que \( a_0 \) es inversible en \( R \)\\
+	
+	\noindent Para los coeficientes \( a_1, \dots, a_n \), se procede por inducción descendente.
+	
+	\medskip
+	
+	\noindent Caso base: Consideremos el término de mayor grado. Sea \( a_n \) el coeficiente principal de \( p(x) \) y \( b_m \) el de \( q(x) \). El coeficiente principal del producto \( p(x)q(x) \) es
+	\[
+	a_n b_m x^{n + m} = 0,
+	\]
+	ya que el producto total es 1, que es de grado 0. Por lo tanto:
+	\[
+	a_n b_m = 0.
+	\]
+	Multiplicando ambos lados de la igualdad \( p(x)q(x) = 1 \) por \( a_n^m \), se obtiene:
+	\[
+	a_n^m p(x) q(x) = a_n^m.
+	\]
+	El término líder del lado izquierdo tiene grado estrictamente menor que \( m \), pues \( a_n b_m = 0 \). Al iterar este razonamiento se concluye que \( a_n \) es nilpotente.
+	
+	\medskip
+	
+	\noindent \textbf{Paso inductivo:} Suponiendo que \( a_n, a_{n-1}, \dots, a_{k+1} \) son nilpotentes, definimos:
+	\[
+	p_1(x) = p(x) - \sum_{i = k+1}^n a_i x^i.
+	\]
+	El polinomio \( p_1(x) \) sigue siendo inversible y su término de mayor grado es \( a_k x^k \). Repitiendo el argumento anterior, se concluye que \( a_k \) es nilpotente.
+	
+	Por inducción, todos los coeficientes \( a_1, \dots, a_n \) son nilpotentes.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	\medskip
+	
+	\noindent \textbf{($\impliedby$) Suficiencia:} \\
+	Supongamos que \( a_0 \) es inversible en \( R \) y que \( a_1, \dots, a_n \) son nilpotentes. Escribimos:
+	\[
+	p(x) = a_0 + N(x),
+	\]
+	donde \( N(x) = a_1x + a_2x^2 + \cdots + a_nx^n \).
+	
+	Observemos lo siguiente:
+	\begin{itemize}
+		\item Cada término \( a_i x^i \) es nilpotente en \( R[x] \), ya que \( a_i \) lo es y \( R[x] \) es conmutativo.
+		\item La suma \( N(x) \) es nilpotente en \( R[x] \), pues la suma finita de nilpotentes es nilpotente.
+		\item En un anillo conmutativo, si \( u \) es inversible y \( n \) es nilpotente, entonces \( u + n \) es inversible. En este caso:
+		\[
+		p(x) = a_0 (1 + a_0^{-1} N(x)).
+		\]
+		Como \( N(x) \) es nilpotente, \( a_0^{-1} N(x) \) también lo es, y por tanto \( 1 + a_0^{-1} N(x) \) es inversible.
+		\item El producto de inversibles es inversible, por lo que \( p(x) \) es inversible en \( R[x] \).
+	\end{itemize}
+	
+	\medskip
+	
+	
+\end{proof}
+
+
+
+
+
+
+
+
+
+\begin{proposicion}
+	\upshape{
+		Sea \( R \) un anillo conmutativo con identidad. Son equivalentes:
+		\begin{enumerate}
+			\item El polinomio \( p(x) = a_nx^n + \cdots + a_1x + a_0 \in R[x] \) es inversible.
+			\item Se cumplen:
+			\begin{itemize}
+				\item \( a_0 \) es un elemento inversible de \( R \).
+				\item Los coeficientes \( a_1, \dots, a_n \) son elementos nilpotentes de \( R \).
+			\end{itemize}
+		\end{enumerate}
+	}
+\end{proposicion}
+
+\begin{proof}
+	Demostramos ambas implicaciones por separado.
+	
+	\medskip
+	
+	\noindent \textbf{[1 $\Rightarrow$ 2]} Supongamos que \( p(x) \) es inversible en \( R[x] \), es decir, existe \( q(x) \in R[x] \) tal que \( p(x)q(x) = 1 \).
+	
+	Del término constante del producto se obtiene \( a_0 b_0 = 1 \), de modo que \( a_0 \) es inversible en \( R \).
+	
+	A continuación, verificaremos sucesivamente que los coeficientes \( a_1, \dots, a_n \) son nilpotentes, comenzando por el de mayor grado.
+	
+	\medskip
+	
+\medskip
+
+\noindent \textit{Coeficiente principal \( a_n \):} Sea \( q(x) = b_m x^m + \cdots + b_0 \in R[x] \) tal que \( p(x) q(x) = 1 \). Como el lado derecho tiene grado 0, y el producto de dos polinomios no nulos tiene grado al menos \( n + m \), el coeficiente de grado \( n + m \) en \( p(x) q(x) \) debe ser cero. Dicho coeficiente es \( a_n b_m \), por lo tanto:
+
+
+\[
+a_n b_m = 0.
+\]
+
+
+
+Multiplicamos ambos lados de la igualdad \( p(x) q(x) = 1 \) por \( a_n \):
+
+
+\[
+a_n p(x) q(x) = a_n.
+\]
+
+
+Expandiendo el lado izquierdo:
+
+
+\[
+(a_n p(x)) q(x) = a_n a_n x^n q(x) + \text{términos de menor grado}.
+\]
+
+
+El coeficiente de grado \( n + m \) de \( a_n p(x) q(x) \) es entonces \( a_n^2 b_m \), que también debe anularse debido a que $a_nb_m=0$. Siguiendo este proceso:
+
+
+\[
+a_n^2 p(x) q(x) = a_n^2, \quad a_n^3 p(x) q(x) = a_n^3, \quad \ldots
+\]
+
+
+Para cada \( r \in \mathbb{N} \), el coeficiente de grado \( n + m \) del producto \( a_n^r p(x) q(x) \) es \( a_n^{r} b_m \). Como ya vimos que \( a_n b_m = 0 \), se deduce que:
+
+
+\[
+a_n^r b_m = 0 \quad \text{para todo } r \geq 1.
+\]
+
+
+
+Como los términos dominantes del producto desaparecen, y el lado izquierdo sigue siendo igual a \( a_n^r \), debe ocurrir que, en algún momento, \( a_n^r = 0 \). Por tanto, \( a_n \) es nilpotente.
+
+
+	
+	\medskip
+	
+	\noindent \textit{Coeficientes restantes:} Ahora restamos el término \( a_n x^n \) de \( p(x) \), y consideramos el polinomio \( p_1(x) = p(x) - a_n x^n \), que también es inversible (ya que restamos un nilpotente). Su coeficiente principal ahora es \( a_{n-1} \). Repetimos el mismo argumento con \( p_1(x) \) en lugar de \( p(x) \), concluyendo que \( a_{n-1} \) es nilpotente.
+	
+	Repitiendo este procedimiento con los coeficientes restantes, concluimos que \( a_1, \dots, a_n \) son nilpotentes.
+	
+	\bigskip
+	
+	\noindent \textbf{[2 $\Rightarrow$ 1]} Supongamos ahora que \( a_0 \in R^\times \) y que \( a_1, \dots, a_n \) son nilpotentes. Definimos:
+	
+	
+	\[
+	N(x) := a_1 x + a_2 x^2 + \cdots + a_n x^n,
+	\]
+	
+	
+	por lo que \( p(x) = a_0 + N(x) = a_0 \left( 1 + a_0^{-1} N(x) \right) \).
+	
+	Dado que cada \( a_i \) es nilpotente y \( R \) es conmutativo, \( N(x) \) es nilpotente en \( R[x] \). Por tanto, \( a_0^{-1} N(x) \) es nilpotente, y en consecuencia, \( 1 + a_0^{-1} N(x) \) es invertible, con inverso dado por una serie geométrica finita:
+	
+	
+	\[
+	\left( 1 + a_0^{-1} N(x) \right)^{-1} = \sum_{k=0}^{r-1} (-a_0^{-1} N(x))^k,
+	\]
+	
+	
+	donde \( r \in \mathbb{N} \) es tal que \( (a_0^{-1} N(x))^r = 0 \).
+	
+	Finalmente, como \( a_0 \) es invertible y el producto de elementos invertibles es invertible, se concluye que \( p(x) \) es invertible en \( R[x] \).
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{ejemplo}
+	\upshape{
+		Sea \( R \) un anillo conmutativo con identidad. Entonces
+		\[
+		\left( R[x_1, x_2, \dots, x_n] \right)^{\times} = R^{\times}.
+		\]
+	}
+\end{ejemplo}
+
+\begin{proof}
+	Sea \( f(x_1, \dots, x_n) \in R[x_1, \dots, x_n] \) tal que existe \( g(x_1, \dots, x_n) \in R[x_1, \dots, x_n] \) con
+	\[
+	f(x_1, \dots, x_n) \cdot g(x_1, \dots, x_n) = 1.
+	\]
+	Sea \( f = a + p \), donde \( a \in R \) es el término constante y \( p \) es un polinomio sin término constante (es decir, todos los términos de \( p \) tienen grado al menos 1).
+	
+	De igual forma, sea \( g = b + q \), con \( b \in R \) el término constante y \( q \) un polinomio sin término constante.
+	
+	Calculando:
+	\[
+	(a + p)(b + q) = ab + aq + bp + pq = 1.
+	\]
+	El término constante de este producto es \( ab \), y los demás términos tienen grado al menos 1. Por lo tanto:
+	\[
+	ab = 1.
+	\]
+	Esto implica que \( a \in R^\times \) y \( b = a^{-1} \).
+	
+	Además, como los demás términos tienen grado al menos 1 y su suma es 0, necesariamente:
+	\[
+	aq + bp + pq = 0.
+	\]
+	Por lo tanto, el polinomio \( f \) no tiene términos no constantes, es decir, \( p = 0 \).
+	
+	Por lo tanto:
+	\[
+	f = a, \quad g = b.
+	\]
+	Es decir, \( f \) es constante e invertible en \( R \).
+	
+	Recíprocamente, si \( a \in R^\times \), entonces \( f = a \) y su inverso es \( a^{-1} \), que también pertenece a \( R[x_1, \dots, x_n] \).
+	
+	Por lo tanto:
+	\[
+	\left( R[x_1, \dots, x_n] \right)^\times = R^\times.
+	\]
+\end{proof}
+
+

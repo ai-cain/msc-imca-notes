@@ -1,0 +1,634 @@
+
+Sea \( M \) un monoide conmutativo. Buscamos construir un grupo conmutativo \( M^+ \) junto con un homomorfismo de monoides \( i: M \to M^+ \) que satisfaga una propiedad universal característica. Este grupo, conocido como \emph{grupo de Grothendieck} asociado a \( M \), permite dotar al monoide de una estructura completamente invertible extendiéndolo a un grupo que satisface una propiedad universal sin alterar sus propiedades fundamentales.
+
+\begin{proposicion}[Propiedad universal del grupo de Grothendieck]
+	\upshape{
+		Para todo grupo conmutativo \( A \) y todo homomorfismo de monoides \( j : M \to A \), existe un único homomorfismo de grupos \( f : M^+ \to A \) tal que el siguiente diagrama conmuta:
+		\[
+		\xymatrix{
+			M \ar[rr]^{\displaystyle j} \ar[dd]_{\displaystyle i } & & A \\
+			&&\\
+			M^+ \ar@{-->}[rruu]_{\displaystyle \exists !f} &&
+		}
+		\]Es decir, \( f \circ i = j \).
+	}
+\end{proposicion}
+
+Demostraremos la propiedad universal después de definir \( M^+ \) y el homomorfismo \( i: M \to M^+ \). Por lo pronto, podemos establecer que cualquier otro grupo que satisfaga esta propiedad universal es isomorfo a \( M^+ \), garantizando así su unicidad.
+
+
+
+
+\begin{corolario}
+	\upshape{
+		Sea \( (G, \varphi) \) otro par que cumple la propiedad universal del grupo de Grothendieck para \( M \). \\
+		
+		\noindent Entonces existe un único isomorfismo de grupos \( \psi : M^+ \to G \) tal que el siguiente diagrama conmuta:
+		\[
+		\xymatrix{
+			&& M \ar[lld]_{\displaystyle i} \ar[rrd]^{\displaystyle \varphi} && \\
+			M^+ \ar[rrrr]_{\displaystyle \exists!\,\psi}^{\displaystyle \cong} &&&& G
+		}
+		\]
+	}
+\end{corolario}
+
+
+\begin{proof}
+	Aplicamos la propiedad universal de \( M^+ \) al morfismo \( \varphi : M \to G \). Como \( G \) es un grupo conmutativo, existe un único homomorfismo de grupos \( \psi : M^+ \to G \) tal que el siguiente diagrama conmuta:
+	\[
+	\xymatrix{
+		M \ar[rr]^{\displaystyle \varphi} \ar[dd]_{\displaystyle i} & & G \\
+		&&\\
+		M^+ \ar@{-->}[rruu]_{\displaystyle \exists! \psi} &&
+	}
+	\]	Recíprocamente, aplicamos la propiedad universal de \( G \) al morfismo \( i : M \to M^+ \), lo que garantiza la existencia de un único homomorfismo de grupos \( \theta : G \to M^+ \) tal que:
+	\[
+	\xymatrix{
+		M \ar[rr]^{\displaystyle i} \ar[dd]_{\displaystyle \varphi} & & M^+ \\
+		&&\\
+		G \ar@{-->}[rruu]_{\displaystyle \exists! \theta} &&
+	}
+	\]
+	Entonces,
+	\[
+	\theta \circ \psi \circ i = \theta \circ \varphi = i,
+	\]
+	Ahora, aplicamos la propiedad universal de \( M^+ \) al morfismo \( i : M \to M^+ \). Tanto \( \mathrm{id}_{M^+} \) como \( \theta \circ \psi \) son homomorfismos de grupos que hacen conmutar el siguiente diagrama:
+	\[
+	\xymatrix{
+		M \ar[rrrr]^{\displaystyle i} \ar[dd]_{\displaystyle i} & &&& M^+ \\
+		&&&&\\
+		M^+ \ar@{-->}@/^1pc/[rrrruu]^{\displaystyle \mathrm{id}_{M^+}} \ar@{-->}@/_1pc/[rrrruu]_{\displaystyle \theta \circ \psi} &&&&
+	}
+	\] Por la unicidad del morfismo de grupos que hace conmutar el triángulo, se concluye que \( \theta \circ \psi = \mathrm{id}_{M^+} \).\\
+	
+	\noindent Análogamente, se prueba que \( \psi \circ \theta = \mathrm{id}_G \). Por lo tanto, \( \psi \) es un isomorfismo de grupos.
+\end{proof}
+
+
+
+
+
+
+\section{Construcción cuando \( M = (\mathbb{N}, +) \)}
+
+\noindent Recordemos que \( \mathbb{N} := \{0; 1; 2; 3; \cdots\} \), y que en \( (\mathbb{N}, +) \) se cumple la \emph{propiedad cancelativa}: para todos \( a, b, c \in \mathbb{N} \), si \( a + c = b + c \), entonces \( a = b \).\\
+
+\noindent Sobre \( \mathbb{N} \times \mathbb{N} \) definimos la relación:
+\[
+(a,b) \sim (c,d) \quad \text{si y solo si} \quad a + d = b + c.
+\]Esta relación es una relación de equivalencia:
+\begin{itemize}
+	\item Reflexiva: \( a + b = b + a \), luego \( (a,b) \sim (a,b) \).
+	\item Simétrica: Si \( (a,b) \sim (c,d) \), entonces \( a + d = b + c \), por lo tanto \( c + b = d + a \), y así \( (c,d) \sim (a,b) \).
+	\item Transitiva: Si \( (a,b) \sim (c,d) \) y \( (c,d) \sim (e,f) \), entonces \( a + d = b + c \) y \( c + f = d + e \). Sumando y simplificando se obtiene \( a + f = b + e \). Así, \( (a,b) \sim (e,f) \).
+\end{itemize}
+\noindent Por lo tanto, podemos definir
+\[
+\mathbb{N}^{+} := \dfrac{\mathbb{N} \times \mathbb{N}}{\sim}.
+\]
+Y sobre \( \mathbb{N^+} \) definimos la operación
+\[
+[(a,b)] + [(c,d)] := [(a+c,\, b+d)].
+\]
+Esta operación está bien definida, pues si \( (a,b) \sim (a',b') \) y \( (c,d) \sim (c',d') \), entonces se tiene:
+\[
+a + b' = a' + b \quad \text{y} \quad c + d' = c' + d.
+\]
+Sumando ambas igualdades:
+\[
+(a + c) + (b' + d') = (a' + c') + (b + d),
+\]
+lo cual implica que \( (a + c,\, b + d) \sim (a' + c',\, b' + d') \), es decir:
+\[
+[(a+c,\, b+d)] = [(a'+c',\, b'+d')].
+\]
+Por lo tanto, la suma está bien definida sobre las clases de equivalencia.
+
+\begin{proposicion}
+	\upshape{
+		\( (\mathbb{N^+}, +) \) es un grupo conmutativo.
+	}
+\end{proposicion}
+
+\begin{proof}
+	En efecto.
+	\begin{itemize}
+		\item La operación es una operación interna.
+		\item La operación es conmutativa.
+		\item El elemento identidad es \( [(0,0)] \).
+		\item Dado \( [(a,b)] \in \mathbb{Z} \), su inverso es \( -[(a,b)] := [(b,a)] \).
+	\end{itemize}
+\end{proof}
+
+
+
+\begin{proposicion}
+	\upshape{
+		Se cumple la isomorfía \( (\mathbb{Z}, +) \cong (\mathbb{N}^+, +) \).
+	}
+\end{proposicion}
+
+\begin{proof}
+	El grupo \((\mathbb{Z},+)\) junto con el morfismo \(i : \mathbb{N} \to \mathbb{Z}\), \(i(x) = x\), satisface la propiedad universal del grupo de Grothendieck del monoide \((\mathbb{N},+)\). En efecto, sea \(A\) un grupo abeliano y \(j : \mathbb{N} \to A\) un morfismo de monoides. Definimos
+	\[
+	f : \mathbb{Z} \to A,\quad
+	f(n) :=
+	\begin{cases}
+		j(n), & \text{si } n \geq 0,\\
+		-j(-n), & \text{si } n < 0.
+	\end{cases}
+	\] Probamos que \(f\) es un homomorfismo de grupos. Sea \(m,n \in \mathbb{Z}\). Consideramos los siguientes casos:
+	
+	\begin{itemize}
+		\item \textbf{Caso 1: \(m,n \geq 0\)}. Entonces \(f(m+n) = j(m+n) = j(m) + j(n) = f(m) + f(n)\), pues \(j\) es morfismo de monoides.
+		
+		\item \textbf{Caso 2: \(m,n < 0\)}. Escribimos \(m = -a\), \(n = -b\) con \(a,b \in \mathbb{N}\). Entonces
+		\[
+		f(m+n) = f(-(a+b)) = -j(a+b) = -j(a) - j(b) = f(m) + f(n).
+		\]
+		
+		\item \textbf{Caso 3: \(m \geq 0\), \(n < 0\)}. Escribimos \(n = -b\) con \(b \in \mathbb{N}\). Si \(m \geq b\), entonces \(m + n = m - b \geq 0\), y
+		\[
+		f(m + n) = j(m - b) = j(m) - j(b) = f(m) + f(n).
+		\]
+		Si \(m < b\), entonces \(m + n = -(b - m) < 0\), y
+		\[
+		f(m + n) = -j(b - m) = j(m) - j(b) = f(m) + f(n).
+		\]
+		
+		\item \textbf{Caso 4: \(m < 0\), \(n \geq 0\)}. Similar al caso anterior. Se obtiene \(f(m+n) = f(m) + f(n)\).
+	\end{itemize}
+	
+Por lo tanto, \(f\) es homomorfismo de grupos. Además, por definición,
+\[
+f \circ i(x) = f(x) = j(x),\quad \text{para todo } x \in \mathbb{N},
+\]
+es decir, \(f \circ i = j\).\\
+
+\noindent \textit{Unicidad:} Supongamos que \(g : \mathbb{Z} \to A\) es un homomorfismo de grupos tal que \(g \circ i = j\), es decir, \(g(n) = j(n)\) para todo \(n \in \mathbb{N}\). Probamos que \(g(n) = f(n)\) para todo \(n \in \mathbb{Z}\), por casos:
+
+\begin{itemize}
+	\item Si \(n \geq 0\), entonces \(g(n) = j(n) = f(n)\).
+	
+	\item Si \(n < 0\). Como \(g\) es homomorfismo,
+	\[
+	0 = g(0) = g(n +(-n)) = g(n) + g(-n),
+	\]
+	por lo que \(g(n) = -g(-n) = -j(-n) = f(n)\).
+\end{itemize} Así, \(g(n) = f(n)\) para todo \(n \in \mathbb{Z}\), y por lo tanto \(g = f\).\\
+
+\noindent Concluimos que \(\mathbb{Z}\) satisface la propiedad universal del grupo de Grothendieck del monoide \(\mathbb{N}\), y por lo tanto, \(\mathbb{Z} \cong \mathbb{N}^+\).
+\end{proof}
+
+
+
+
+\section{Construcción general}
+
+\noindent Definir en \( M \times M \) una relación de equivalencia como en el caso anterior no garantiza una relación de equivalencia, pues puede fallar la transitividad. Esto sucede porque el monoide \( M \) no necesariamente tiene la propiedad cancelativa.\\
+
+\noindent Sea $M := \{0,1,2\} $
+con la operación \(\min\). La operación \( \min \) no es cancelativa, pues \( \min(a, x) = \min(b, x) \) no implica \( a = b \), como se observa en \( \min(0,0) = \min(1,0) \). Definimos en \( M \times M \) la relación:
+\[
+(a,b) \sim (c,d) \quad \text{cuando} \quad \min(a,d) = \min(b,c).
+\]Consideremos los pares:
+\[
+(0,1) \sim (0,0) \quad \text{ya que} \quad \min(0,0) = 0 = \min(1,0),
+\]
+\[
+(0,0) \sim (1,0) \quad \text{ya que} \quad \min(0,0) = 0 = \min(0,1);
+\]
+pero
+\[
+(0,1) \not\sim (1,0) \quad \text{porque} \quad \min(0,1) = 0 \neq 1 = \min(1,0).
+\]Por lo tanto, la relación no es transitiva y no es una relación de equivalencia en \( M \times M \).\\
+
+Sea \(M\) un monoide conmutativo. Para ``forzar'' la transitividad definimos en \(M \times M\) la relación:
+\[
+(a,b) \sim (c,d) \quad \text{si y solo si} \quad \exists\, p \in M \text{ tal que } a + d + p = b + c + p.
+\]
+
+\begin{proposicion}
+	\upshape{
+		La relación \(\sim\) en \(M \times M\) es una relación de equivalencia.
+	}
+\end{proposicion}
+
+\begin{proof}
+	En efecto.
+	\begin{itemize}
+		\item Reflexiva: Para todo \((a,b) \in M \times M\), usando la conmutatividad de \(M\),
+		\[
+		a + b + p = b + a + p,
+		\]
+		para cualquier \(p \in M\). Por lo tanto, \((a,b) \sim (a,b)\).
+		
+		\item Simétrica: Si \((a,b) \sim (c,d)\), entonces existe \(p \in M\) tal que
+		\[
+		a + d + p = b + c + p.
+		\]
+		Por la conmutatividad de \(M\), esto implica
+		\[
+		c + b + p = d + a + p,
+		\]
+		y así \((c,d) \sim (a,b)\).
+		
+		\item \textbf{Transitiva:} Si \((a,b) \sim (c,d)\) y \((c,d) \sim (e,f)\), existen \(p,q \in M\) tales que
+		\[
+		a + d + p = b + c + p, \quad c + f + q = d + e + q.
+		\]
+		Sumando estas dos igualdades y reordenando términos, se obtiene
+		\[
+		a + f + (d + c + p + q) = b + e + (c + d + p + q),
+		\]
+		lo que implica \((a,b) \sim (e,f)\).
+	\end{itemize}
+\end{proof}
+
+\begin{definicion}
+	\upshape{
+		Sea \(M\) un monoide conmutativo. Definimos el grupo conmutativo
+	\[
+	M^+ := (M \times M) / \sim,
+	\]
+	donde la relación de equivalencia \(\sim\) en \(M \times M\) está dada por
+	\[
+	(a,b) \sim (c,d) \quad \Longleftrightarrow \quad \exists\, p \in M \text{ tal que } a + d + p = b + c + p.
+	\]
+	El conjunto cociente \(M^+\) se llama el \emph{grupo de Grothendieck} asociado a \(M\). La operación en \(M^+\) se define por
+	\[
+	[(a,b)] + [(c,d)] := [(a+c, b+d)],
+	\]
+	y el elemento identidad está dado por  \([(e,e)]\), siendo \(e\) el elemento identidad de \(M\).
+	}
+\end{definicion}
+
+\begin{observacion}
+	\upshape{
+		En notación multiplicativa, la relación se escribe \[ (a,b) \sim (c,d) \iff \exists\, p \in M \text{ tal que } a d p = b c p ,\] la operación es \( [(a,b)] \cdot [(c,d)] := [(a c, b d)] \).
+	}
+\end{observacion}
+
+
+
+
+
+
+
+
+
+
+\section{Propiedad universal del grupo de Grothendieck}
+\noindent Sea \( M \) un monoide conmutativo y \( i: M\to M^+ \) definido por \( i(a)=[(a,0)] \). Se cumple:\\
+
+\noindent Para todo grupo conmutativo \( A \) y todo homomorfismo de monoides \( j : M \to A \), existe un único homomorfismo de grupos \( f : M^+ \to A \) tal que el siguiente diagrama conmuta:
+\[
+\xymatrix{
+	M \ar[rr]^{\displaystyle j} \ar[dd]_{\displaystyle i } & & A \\
+	&&\\
+	M^+ \ar@{-->}[rruu]_{\displaystyle \exists !f} &&
+}
+\]
+Es decir, \( f \circ i = j \).
+
+
+
+\begin{proof}
+	En efecto.
+	\begin{itemize}
+		\item Definimos \( f : M^+ \to A \) por
+		\[
+		f([(a,b)]) := j(a) - j(b).
+		\]
+		
+		\item Comprobamos que \( f \) está bien definida: si \( (a,b) \sim (c,d) \), entonces existe \( p \in M \) tal que
+		\[
+		a + d + p = b + c + p.
+		\]
+		Aplicando \( j \) que es homomorfismo, se tiene
+		\[
+		j(a) + j(d) + j(p) = j(b) + j(c) + j(p),
+		\]
+		y al cancelar \( j(p) \), se obtiene \( j(a) + j(d) = j(b) + j(c) \), lo cual implica
+		\[
+		j(a) - j(b) = j(c) - j(d),
+		\]
+		así que \( f([(a,b)]) = f([(c,d)]) \).
+		
+		\item Verificamos que \( f \) es homomorfismo: dados \( [(a,b)], [(c,d)] \in M^+ \),
+		\[
+		f([(a,b)] + [(c,d)]) = f([(a+c, b+d)]) = j(a+c) - j(b+d) = j(a) + j(c) - j(b) - j(d),
+		\]
+		que coincide con
+		\[
+		f([(a,b)]) + f([(c,d)]).
+		\]
+		
+		\item Verificamos que \( f \circ i = j \): para todo \( a \in M \),
+		\[
+		f(i(a)) = f([(a,0)]) = j(a) - j(0) = j(a),
+		\]
+		pues \( j(0) = 0 \) ya que \( j: M \to A \) es un homomorfismo de monoides y \( A \) es grupo. En efecto, al tener inversos, se tiene:
+		\[
+		j(0) + j(0) = j(0 + 0) = j(0) \quad \Rightarrow \quad j(0) = 0.
+		\]
+		
+		
+		\item Unicidad: si \( g : M^+ \to A \) es otro homomorfismo tal que \( g \circ i = j \), entonces para todo \( [(a,b)] \in M^+ \), se tiene
+		\[
+		[(a,b)] = [(a,0)] - [(b,0)] = i(a) - i(b),
+		\]
+		luego
+		\[
+		g([(a,b)]) = g(i(a)) - g(i(b)) = j(a) - j(b) = f([(a,b)]),
+		\]
+		por lo tanto \( g = f \).
+	\end{itemize}
+\end{proof}
+
+\begin{observacion}
+	\upshape{
+		La demostración se hizo usando notación aditiva, pero es completamente análoga para la notación multiplicativa, cambiando suma por producto y el elemento neutro \(0\) por la unidad \(1\).
+	}
+\end{observacion}
+	
+\begin{proposicion}
+	\upshape{
+		Sea \(M\) un monoide conmutativo y \(i : M \to M^+\) el homomorfismo natural definido por \(i(a) = [(a,0)]\). Entonces, \(i\) es inyectivo si y solo si \(M\) es cancelativo, es decir,
+		\[
+		a + c = b + c \implies a = b \quad \text{para todo } a,b,c \in M.
+		\]
+	}
+\end{proposicion}
+
+\begin{proof}
+	{\color{white} blanco.}\\
+	
+	\noindent \([ \Rightarrow ]\) Sea \(a + c = b + c\). Entonces como $j$ es un homomorfismo
+	\[
+	i(a) + i(c) = i(a + c) = i(b + c) = i(b) + i(c),
+	\]
+	luego coomo $M^{+}$ es grupo tenemos  \(i(a) = i(b)\), y por inyectividad de \(i\), se concluye \(a = b\).\\
+	
+	\noindent \([ \Leftarrow ]\) Sea \(i(a) = i(b)\), es decir, \([(a,0)] = [(b,0)]\), por lo que existe \(p \in M\) tal que \(a + p = b + p\). Por cancelatividad de \(M\), se deduce \(a = b\).
+\end{proof}
+
+
+\begin{observacion}
+	\upshape{
+		La construcción de Grothendieck permite ``forzar'' la existencia de inversos en un monoide conmutativo \(M\), generando así un grupo \(M^+\). Esta idea aparece en varias áreas del álgebra. Por ejemplo, en \emph{K-teoría}, se considera el monoide \( \mathrm{Vect}(X) \) formado por las clases de isomorfismo de fibrados vectoriales sobre un espacio topológico \( X \), con la operación suma directa. Su grupo de Grothendieck \( K_0(X) := \mathrm{Vect}(X)^+ \) recoge información topológica importante del espacio. Así, \( K_0(X) \) es una herramienta algebraica construida a partir de datos geométricos.
+	}
+\end{observacion}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Construcción del grupo fundamental o universal de un monoide}
+
+En esta construcción, no asumiremos que el monoide \( M \) sea conmutativo. Esta es una diferencia esencial respecto al grupo de Grothendieck, que solo se define para monoides conmutativos y produce un grupo abeliano. En particular, la definición de la relación de equivalencia utilizada en \( M^+ \) requiere conmutatividad, lo cual no será necesario aquí.
+
+\medskip
+\noindent El grupo resultante se llama \emph{grupo fundamental} o \emph{grupo universal} de un monoide. Recibe este nombre porque satisface una propiedad universal análoga a la del grupo de Grothendieck. Así, proporciona la extensión más general de \( M \) a un grupo, dotando a sus elementos de inversos sin imponer conmutatividad.
+
+\medskip
+\noindent Esta construcción no debe confundirse con el grupo fundamental de la topología. Aquí, ``fundamental'' se refiere a su carácter universal en álgebra, y no a consideraciones geométricas.\\
+
+
+
+
+
+
+  
+  
+  
+  Sea \( M \) un monoide. Consideramos \( M \) simplemente como un conjunto no vacío, olvidando momentáneamente su estructura de monoide.
+  
+  \medskip
+  
+  \noindent Sea \( G_M \) el grupo libre generado por \( M \) y \( \rho : M \to G_M \) la inclusión canónica de generadores. Para reflejar la operación del monoide \( M \) en \( G_M \), consideramos el subgrupo normal \( N \) de \( G_M \) generado por los elementos de la forma
+  \[
+  \rho(a) \bullet \rho(b) \bullet \rho(ab)^{-1}, \quad \text{para todo } a, b \in M.
+  \]
+  
+  \noindent Definimos entonces el grupo cociente
+  \[
+  U(M) := G_M / N,
+  \]
+  y escribimos también \( \iota : M \to U(M) \) por  composición de la inclusión $\rho$ con el homomorfismo cociente de grupos $\pi$: 
+  
+  
+  \[
+  \xymatrix{
+  	M \ar[rr]^{\displaystyle\rho} \ar@/_1.5pc/[rrrr]_{\displaystyle \iota:=\pi \circ \rho} && G_M \ar[rr]^{\displaystyle \pi} && U(M)
+  }
+  \]
+ \noindent En efecto, veamos que \( \iota := \pi \circ \rho \) es un homomorfismo de monoides. Sean \( a, b \in M \). Como \( \rho \) es la inclusión de generadores en el grupo libre \( G_M \), y \( \pi \) respeta la relación
+ \[
+ \rho(a) \bullet \rho(b) \sim \rho(ab),
+ \]
+ se tiene:
+ \[
+ \iota(a \cdot b) = \pi(\rho(a \cdot b)) = \pi(\rho(a) \bullet \rho(b)) = \pi(\rho(a)) \cdot \pi(\rho(b)) = \iota(a) \cdot \iota(b).
+ \]
+ Por lo tanto, \( \iota \) es un homomorfismo de monoides.
+  
+  
+  \begin{definicion}
+  	\upshape{
+  		El grupo \( U(M) \) se denomina \textit{grupo fundamental} o \textit{grupo universal} del monoide \( M \).
+  	}
+  \end{definicion}
+  
+  \noindent El grupo \( U(M) \) viene equipado con un morfismo natural de monoides \( \iota : M \to U(M) \), y satisface la siguiente propiedad universal:
+  
+  \begin{proposicion}[Propiedad universal del grupo universal de un monoide]
+  	\upshape{
+  		El par $(U(M),\iota)$ satisface lo siguiente:
+  		
+  		\medskip
+  		\noindent Para todo grupo \( G \) y todo morfismo de monoides \( j : M \to G \), existe un único morfismo de grupos \( f : U(M)\to G \) tal que el siguiente diagrama conmuta:
+  		
+  		
+  		\[
+  		\xymatrix{
+  			M \ar[rr]^{\displaystyle j} \ar[dd]_{\displaystyle \iota} & & G \\
+  			&&\\
+  			U(M) \ar@{-->}[rruu]_{\displaystyle \exists !f} &&
+  		}
+  		\]Es decir, \( f \circ \iota = j \).
+  	}
+  \end{proposicion}
+  
+
+\begin{proof}
+	En efecto:
+	\begin{itemize}
+		\item Sea \( j : M \to G \) un morfismo de monoides hacia un grupo \( G \). Como \( G_M \) es el grupo libre generado por el conjunto \( M \), existe un único morfismo de grupos
+		\[
+		\tilde{f} : G_M \to G
+		\]
+		tal que \( \tilde{f} \circ \rho = j \), donde \( \rho : M \to G_M \) es la inclusión de generadores.
+		
+		\item Mostramos que \( \tilde{f} \) anula al subgrupo normal \( N \trianglelefteq G_M \) generado por los elementos
+		\[
+		\rho(a)\bullet \rho(b)\bullet \rho(ab)^{-1}, \quad \text{para } a, b \in M.
+		\]
+		En efecto, para todo \( a, b \in M \), se tiene:
+		\[
+		\tilde{f}(\rho(a)\bullet \rho(b)\bullet \rho(ab)^{-1}) = j(a) \cdot j(b) \cdot j(ab)^{-1}.
+		\]
+		Pero como \( j \) es un morfismo de monoides, se cumple \( j(ab) = j(a)j(b) \), así que:
+		\[
+		j(a)j(b)j(ab)^{-1} = j(ab)j(ab)^{-1} = 1_G.
+		\]
+		Por lo tanto, \( \tilde{f} \) se anula en los generadores de \( N \), y como es homomorfismo de grupos, también en todo \( N \). Así, \( N \subseteq \ker(\tilde{f}) \), y \( \tilde{f} \) induce un morfismo cociente.
+		
+		\item Por la propiedad universal del cociente, existe un único morfismo de grupos
+		\[
+		f : U(M) = G_M/N \to G
+		\]
+		tal que \( f \circ \pi = \tilde{f} \), donde \( \pi : G_M \to U(M) \) es el morfismo cociente.
+		
+		\item Verificamos que \( f \circ \iota = j \): recordemos que \( \iota := \pi \circ \rho \). Entonces:
+		\[
+		f \circ \iota = f \circ \pi \circ \rho = \tilde{f} \circ \rho = j.
+		\]
+		
+		\item Unicidad: supongamos que \( g : U(M) \to G \) es otro morfismo de grupos tal que \( g \circ \iota = j \). Entonces:
+		\[
+		g \circ \pi \circ \rho = g \circ \iota = j = \tilde{f} \circ \rho.
+		\]
+		Notemos que \( \rho(M) \) genera \( G_M \) y todos los mapas involucrados son homomorfismos de grupos. Para un elemento \( a \in G_M \), como los elementos de \( G_M \) son concatenaciones de generadores y sus inversos, podemos suponer que \( a = \rho(x)\bullet\rho(y)^{-1} \) (caso representativo). Entonces:		
+		\begin{align*}
+			(g\circ\pi)(a) 
+			&= (g\circ\pi)(\rho(x)\bullet\rho(y)^{-1}) \\
+			&= g\left(\pi(\rho(x)) \cdot \pi(\rho(y))^{-1}\right) \\
+			&= g\left(\iota(x) \cdot \iota(y)^{-1}\right) \\
+			&= g(\iota(x)) \cdot \left(g(\iota(y))\right)^{-1} \\
+			&= j(x) \cdot j(y)^{-1} \\
+			&= \tilde{f}(\rho(x)) \cdot \left(\tilde{f}(\rho(y))\right)^{-1} \\
+			&= \tilde{f}(\rho(x)\bullet\rho(y)^{-1}) = \tilde{f}(a)
+		\end{align*}
+		
+		Por lo tanto, \( g \circ \pi = \tilde{f} \).  Y por otro lado, también \( f \circ \pi = \tilde{f} \), así que:
+		\[
+		g \circ \pi = f \circ \pi.
+		\]
+		Como \( \pi : G_M \to U(M) \) es sobreyectivo, se deduce que \( g = f \). En efecto, dado \( b \in U(M) \), existe \( z \in G_M \) tal que \( \pi(z) = b \). Entonces:
+		\[
+		g(b) = g(\pi(z)) = (g \circ \pi)(z) = (f \circ \pi)(z) = f(\pi(z)) = f(b).
+		\]
+		Por lo tanto, \( f \) es el único morfismo de grupos que hace conmutar el diagrama.
+	\end{itemize}
+\end{proof}
+
+ En la prueba de la propiedad universal del grupo universal de un monoide, se hizo uso del hecho de que un conjunto de elementos puede generar el subgrupo normal más pequeño que los contiene. Estudiaremos esta construcción con mayor profundidad en el próximo capítulo.
+
+
+\begin{corolario}
+	\upshape{
+		Sea \( (G, \varphi) \) otro par que satisface la propiedad universal del grupo universal de un monoide para \( M \), es decir, para todo grupo \( H \) y todo morfismo de monoides \( j : M \to H \), existe un único morfismo de grupos \( f : G \to H \) tal que \( f \circ \varphi = j \).
+		
+		\medskip
+		
+		\noindent Entonces existe un único isomorfismo de grupos \( \psi : U(M) \to G \) tal que el siguiente diagrama conmuta:
+		\[
+		\xymatrix{
+			&& M \ar[lld]_{\displaystyle \iota} \ar[rrd]^{\displaystyle \varphi} && \\
+			U(M) \ar[rrrr]_{\displaystyle \exists!\,\psi}^{\displaystyle \cong} &&&& G
+		}
+		\]
+		Es decir, \( \psi \circ \iota = \varphi \).
+	}
+\end{corolario}
+
+
+\begin{proof}
+	Aplicamos la propiedad universal de \( U(M) \) al morfismo \( \varphi : M \to G \). Como \( G \) es un grupo, existe un único homomorfismo de grupos \( \psi : U(M) \to G \) tal que el siguiente diagrama conmuta:
+	\[
+	\xymatrix{
+		M \ar[rr]^{\displaystyle \varphi} \ar[dd]_{\displaystyle \iota} & & G \\
+		&&\\
+		U(M) \ar@{-->}[rruu]_{\displaystyle \exists! \psi} &&
+	}
+	\]
+	Recíprocamente, aplicamos la propiedad universal de \( G \) al morfismo \( \iota : M \to U(M) \), lo que garantiza la existencia de un único homomorfismo de grupos \( \theta : G \to U(M) \) tal que:
+	\[
+	\xymatrix{
+		M \ar[rr]^{\displaystyle \iota} \ar[dd]_{\displaystyle \varphi} & & U(M) \\
+		&&\\
+		G \ar@{-->}[rruu]_{\displaystyle \exists! \theta} &&
+	}
+	\] Entonces,
+	\[
+	\theta \circ \psi \circ \iota = \theta \circ \varphi = \iota.
+	\] Ahora, aplicamos la propiedad universal de \( U(M) \) al morfismo \( \iota : M \to U(M) \). Tanto \( \mathrm{id}_{U(M)} \) como \( \theta \circ \psi \) son homomorfismos de grupos que hacen conmutar el siguiente diagrama:
+	\[
+	\xymatrix{
+		M \ar[rrrr]^{\displaystyle \iota} \ar[dd]_{\displaystyle \iota} & &&& U(M) \\
+		&&&&\\
+		U(M) \ar@{-->}@/^1pc/[rrrruu]^{\displaystyle \mathrm{id}_{U(M)}} \ar@{-->}@/_1pc/[rrrruu]_{\displaystyle \theta \circ \psi} &&&&
+	}
+	\]
+	Por la unicidad del morfismo de grupos que hace conmutar el triángulo, se concluye que \( \theta \circ \psi = \mathrm{id}_{U(M)} \).
+	
+	\medskip
+	
+	\noindent Análogamente, se prueba que \( \psi \circ \theta = \mathrm{id}_G \). Por lo tanto, \( \psi \) es un isomorfismo de grupos.
+\end{proof}
+
+\begin{ejemplo}\label{kjhgcsa}
+	\upshape{
+		Sea \( q \in \mathbb{N} \), y sean \( x \) y \( y \) variables formales. Definimos el conjunto
+		\[
+		M_q := \{0\} \cup \{mx : m \in \mathbb{N}\} \cup \{ny : n \in \mathbb{N}\},
+		\]
+		con una operación binaria \( + \) definida por las siguientes reglas:
+		\begin{itemize}
+			\item \( 0 + c = c \) para todo \( c \in M_q \),
+			\item \( mx + px = (m + p)x \),
+			\item \( my + py = (m + p)y \),
+			\item \( mx + ny = (qm + n)y \).
+		\end{itemize} Estas reglas implican, por ejemplo, que \( x + y = (q + 1)y \), y más generalmente:
+		\[
+		mx + ny = (qm + n)y.
+		\] Entonces \( M_q \) es un monoide. Afirmamos que su grupo universal es isomorfo a \( \mathbb{Z} \), es decir:
+		\[
+		U(M_q) \cong \mathbb{Z}.
+		\]	Para justificarlo, definimos un morfismo de monoides \( \iota : M_q \to \mathbb{Z} \) dado por:
+		\[
+		\iota(0) = 0, \quad \iota(ny) = n, \quad \iota(mx) = qm.
+		\]Este morfismo induce, por la propiedad universal de \( U(M_q) \), un morfismo de grupos
+		\[
+		f : U(M_q) \to \mathbb{Z}.
+		\]Recíprocamente, dado un grupo \( H \) y un morfismo de monoides \( j : M_q \to H \), definimos:
+		\[
+		\tilde{j} : \mathbb{Z} \to H, \quad \tilde{j}(n) := j(ny).
+		\]
+		Esta definición extiende a un morfismo de grupos tal que \( \tilde{j} \circ \iota = j \), lo que muestra que \( \mathbb{Z} \) también cumple la propiedad universal para \( M_q \).
+		
+		\medskip 
+		\noindent Por la unicidad del grupo universal (salvo isomorfismo), se concluye que \( U(M_q) \cong \mathbb{Z} \).
+	}
+\end{ejemplo}
+
+
+
+\begin{observacion}
+	\upshape{
+		Aunque el monoide \( M \) no sea conmutativo, su grupo fundamental \( U(M) \) puede serlo, como en el Ejemplo \ref{kjhgcsa}. Sin embargo, esto no ocurre en general y no debe asumirse.
+	}
+\end{observacion}
+
+

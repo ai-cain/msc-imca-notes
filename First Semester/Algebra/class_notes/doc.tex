@@ -1,0 +1,185 @@
+\documentclass[12pt,a4paper,openany]{book} %openany elimina las hojas en blano que queda al crear los capitulos (Chapter)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}%para usar proof
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{appendix}
+\usepackage{stmaryrd }
+\usepackage{booktabs}
+\renewcommand{\arraystretch}{1.5} % Ajusta el factor de estiramiento de las filas tablas
+\usepackage{multirow} % Para \multirow
+\usepackage{enumitem}
+%\author{Henrri Quino Huerta}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[spanish]{babel} %paquete de idioma español
+\usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry} %bordes con normas APA
+
+\usepackage{setspace}%para dar espacios como en las barras de la cartula
+\usepackage{float} %para fijar graficos
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue]{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ENCABEZADO Y PIE DE PAGINA
+%%%%%%%%%%%%%%% pero creo que en book no funciona
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DEFINICIONES
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{corolario}{Corolario}[section]
+\newtheorem{afirmacion}{Afirmación}[section]
+\newtheorem{definicion}{Definición}[section]
+\newtheorem{proposicion}{Proposición}[section]
+\newtheorem{ejemplo}{Ejemplo}[section]
+\newtheorem{observacion}{Observación}[section]
+\newtheorem{propiedades}{Propiedades}[section]
+\newtheorem{ejercicio}{Ejercicio}[section]
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\usepackage{tikz-cd}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{mathrsfs}
+% Redefinir la numeración de las notas al pie para que use estrellas
+\usepackage{footmisc}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\makeatletter
+\renewcommand*{\@fnsymbol}[1]{
+	\ifcase#1
+	\or $\star$
+	\or $\star\star$
+	\or $\star\star\star$
+	\or $\star\star\star\star$
+	\or $\star\star\star\star\star$
+	\or $\star\star\star\star\star\star$
+	\or $\star\star\star\star\star\star\star$
+	\else\@ctrerr\fi
+}
+\makeatother
+\usepackage{mdframed}
+\usepackage{xcolor}
+\setlength{\footnotesep}{15pt}
+
+\usepackage{pdfpages}
+\newcommand{\inner}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\norma}[1]{\left\lVert #1 \right\rVert}
+
+\usepackage{array}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{caption}
+
+
+\usepackage[all,cmtip]{xy} %para diagramas de algebra
+%\usepackage{extpfeil}% para flechas largas
+\usepackage{mathtools}
+
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+
+
+
+\begin{document}
+\frontmatter
+	\include{caratula/caratula.tex}
+	\tableofcontents
+
+	\mainmatter
+	
+	\chapter{Estructuras algebraicas fundamentales, y Categorías.}
+	\input{Capitulos/cap1.tex}
+	\chapter{Functores y Transformaciones naturales}
+	\input{Capitulos/cap2.tex}
+	\chapter{Objetos libres}
+	\input{Capitulos/cap3.tex}
+	\chapter{Grupo cociente y Teorema fundamental del homomorfismo de grupos}
+	\input{Capitulos/cap4.tex}
+	\chapter{Construcción de Grothendieck de un grupo a partir de un monoide conmutativo}
+	\input{Capitulos/cap5.tex}
+	\chapter{Subestructuras generadas por un cojunto en una estructura algebraica y Abelianización de un grupo}
+	\input{Capitulos/cap6.tex}
+	\chapter{Presentación de un grupo, Grupo diedral, Teorema de Cayley, y Acción de un grupo}
+	\input{Capitulos/cap7.tex}
+	\chapter{Producto directo, y Producto semidirecto }
+	\input{Capitulos/cap8.tex}
+	
+	\chapter{Anillos y Cuerpos}
+	\input{Capitulos/cap9.tex}
+	%\chapter{Lista de ejercicios I}
+	%\input{Capitulos/EjerciciosI.tex}
+	
+	\appendix
+	\chapter{}
+	\input{apendiceA/apendiceA.tex}
+\backmatter
+	\begin{thebibliography}{99}
+		
+		\bibitem{Dorronsoro1996}
+		Dorronsoro, J. \& Hernández, E. (1996).
+		\textit{Números, grupos y anillos}.
+		Universidad Autónoma de Madrid.
+		
+		\bibitem{FernadoGuvea}
+		Gouvêa, F. (2020). \textit{$p-$adict Numbers: An Introduction}. Springer. 
+			
+		
+	\end{thebibliography}
+	
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+%\section*{Demostración}
+
+
+%\noindent En efecto. Fijado $p\in\mathbb{N}$, primo. Sea la susesión $\left(S_n\right)_{n\in\mathbb{N}}$ en $\mathbb{Q}$, donde $S_n:=\sum_{k=0}^{n} p^k$
+
+%\begin{itemize}
+
+%	\item $\lim_{n\to\infty}p^{n}=0$. Sea $\varepsilon>0$, luego por el Principio arquimediano existe $m_0\in \mathbb{N}\in $ tal que $p^{m_0}\varepsilon>1$, entonces  para todo $n\geq m_0$ se tiene $$|p^n - 0|_p=p^{-v_p(p^n)}=p^{-n}<\varepsilon $$
+	
+	
+
+%	\item $\left(S_n\right)_{n\in\mathbb{N}}$ es Cauchy. Podemos suponer que $n<m$ entonces
+
+%	\begin{align*}
+
+%		\left| S_m-S_n\right|_p&=\left|\, \sum_{k=n+1}^{m}p^k\,\right|_p=\left|p^{n+1}\left(1+p+p^2+\dots+ p^{m-n-1}\right)\right|_p\\
+
+%		&\\
+
+%		&=\left|p^{n+1}\right|_p \left| 1+p+p^2+\dots + p^{m-n-1} \right|_p
+
+%	\end{align*}
+
+%	Como $p$ no divide a $1+p+p^2+\dots + p^{m-n-1}$, luego $v_p\left(1+p+p^2+\dots + p^{m-n-1} \right)=0.$ Así\\
+
+%	$$\left| 1+p+p^2+\dots + p^{m-n-1} \right|_p=p^{-v_p\left(1+p+p^2+\dots + p^{m-n-1} \right)}=p^{-0}=1.$$ 
+	
+
+%	\noindent Así. Dado $\varepsilon>0$ entonces existe $n_0$ tal que si $n,m\geq n_o$, entonces $$\left| S_m-S_n\right|_p=|p^{n+1}|<\varepsilon.$$
+
+%	\item Notemos que $$S_n=\sum_{k=0}^{n}p^k=\dfrac{1-p^{n+1}}{1-p}$$ de donde $$S_n \xrightarrow{\scalebox{1}{$|\cdot|_p$}} \dfrac{1}{1-p}$$
+	
+
+%\end{itemize}
+
+
+
+
+
+
+
+

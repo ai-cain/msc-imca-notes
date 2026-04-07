@@ -1,0 +1,643 @@
+
+\section{Subgrupo}
+\begin{definicion}
+	\upshape{
+		Sea \( G \) un grupo. Un subconjunto no vacío \( H \subset G \) es un \textit{subgrupo} de \( G \) si \( H \) es un grupo con la operación inducida de \( G \). Y se denota como \(	H \leq G\).
+	}
+\end{definicion}
+
+
+
+\begin{proposicion}\label{propsubgrupo}
+	\upshape{
+		Las siguientes condiciones son equivalentes:
+		\begin{enumerate}
+			\item \( H \leq G \), es decir, \( H \) es un subgrupo de \( G \).
+			\item \( H \) satisface las siguientes propiedades:
+			\begin{itemize}
+				\item \( ab \in H \) para todo \( a, b \in H \) (cerradura bajo la operación).
+				\item \( 1_G \in H \) (contiene la identidad).
+				\item \( a^{-1} \in H \) para todo \( a \in H \) (cerradura bajo inversos).
+			\end{itemize}
+			\item \( H \) verifica: para todo \( a, b \in H \), se cumple \( ab^{-1} \in H \).
+		\end{enumerate}
+	}
+\end{proposicion}
+
+\begin{proof}
+	{\color{white} Texto en azul.}\\
+	
+	\noindent [\(1 \Rightarrow 2\)] Se sigue de que \( H \) es un grupo con la operación inducida de \( G \), por lo tanto cumple las propiedades de cerradura, contiene la identidad y es cerrado bajo inversos.
+	
+	\vspace{1ex}
+	\noindent [\(2 \Rightarrow 1\)] Tenemos:
+	\begin{itemize}
+		\item En \( H \) se induce la operación interna de \( G \).
+		\item La operación en \( H \) es asociativa, ya que lo es en \( G \).
+		\item \( 1_G \in H \) actúa como identidad.
+		\item Todo \( a \in H \) tiene inverso en \( H \), pues por hipótesis \( a^{-1} \in H \) y \( a a^{-1} = a^{-1} a = 1_G \).
+	\end{itemize}
+	
+	\vspace{1ex}
+	\noindent [\(2 \Leftrightarrow 3\)] La condición \( ab^{-1} \in H \) implica simultáneamente la cerradura bajo productos e inversos. Es una forma abreviada de las tres propiedades mencionadas en (2), y viceversa.
+\end{proof}
+
+
+\begin{ejemplo}
+	\upshape{
+		Sea \( \mathbb{K} = \mathbb{R} \) o \( \mathbb{C} \). Consideramos el conjunto
+		\[
+		M_{n \times n}(\mathbb{K}) = \left\{ A = (a_{ij}) \mid a_{ij} \in \mathbb{K},\ 1 \leq i,j \leq n \right\},
+		\]
+		que es el conjunto de todas las matrices cuadradas de tamaño \( n \) con entradas en \( \mathbb{K} \).\\
+		
+		\noindent Definimos:
+		\begin{itemize}
+			\item El \textbf{grupo general lineal}:
+			\[
+			\mathrm{GL}_n(\mathbb{K}) = \left\{ A \in M_{n \times n}(\mathbb{K}) \mid \det(A) \neq 0 \right\},
+			\]
+			que consiste en las matrices invertibles con entradas en \( \mathbb{K} \).
+			
+			\item El \textbf{grupo especial lineal}:
+			\[
+			\mathrm{SL}_n(\mathbb{K}) = \left\{ A \in \mathrm{GL}_n(\mathbb{K}) \mid \det(A) = 1 \right\},
+			\]
+			formado por aquellas matrices invertibles cuyo determinante es exactamente uno.
+		\end{itemize}
+		
+		\vspace{1ex}
+		
+		Por lo tanto, se tiene la inclusión de conjuntos (y de grupos donde corresponda):
+		\[
+		\mathrm{SL}_n(\mathbb{K}) \leq \mathrm{GL}_n(\mathbb{K}) \subseteq M_{n \times n}(\mathbb{K}).
+		\]
+	}
+\end{ejemplo}
+
+
+
+
+
+
+\begin{ejemplo}
+	\upshape{
+		Sea \( \mathbb{K} = \mathbb{R} \) o \( \mathbb{C} \). Consideramos el conjunto
+		\[
+		M_{n \times n}(\mathbb{K}) = \left\{ A = (a_{ij}) \mid a_{ij} \in \mathbb{K},\ 1 \leq i,j \leq n \right\},
+		\]
+		que es el conjunto de todas las matrices cuadradas de tamaño \( n \) con entradas en \( \mathbb{K} \), con la operación natural de suma y multiplicación de matrices.\\
+		
+		\noindent Definimos:
+		\begin{itemize}
+			\item El \textbf{grupo general lineal}:
+			\[
+			\mathrm{GL}_n(\mathbb{K}) = \left\{ A \in M_{n \times n}(\mathbb{K}) \mid \det(A) \neq 0 \right\},
+			\]
+			que consiste en las matrices invertibles con entradas en \( \mathbb{K} \). Este conjunto es un grupo con la operación de multiplicación de matrices.
+			
+			
+			
+			\item El \textbf{grupo especial lineal}:
+			\[
+			\mathrm{SL}_n(\mathbb{K}) = \left\{ A \in \mathrm{GL}_n(\mathbb{K}) \mid \det(A) = 1 \right\},
+			\] También es un grupo con la multiplicación de matrices.
+		\end{itemize}
+		Por lo tanto, se tiene:
+		\[
+		\mathrm{SL}_n(\mathbb{K}) \leq \mathrm{GL}_n(\mathbb{K}).
+		\]
+	}
+\end{ejemplo}
+
+
+\begin{ejemplo}\label{klasj}
+	\upshape{
+	Sea $n\in \mathbb{N}$ fijo. Entonces $n\mathbb{Z} \leq (\mathbb{Z},+)$, donde $$n\mathbb{Z}:=\left\{na: a\in\mathbb{Z}\right\}.$$
+	}
+\end{ejemplo}
+\begin{proof}{Justificación}
+	Sea $na,nb\in n\mathbb{Z}$. Tenemos que $na+(-nb)=n(a-b)\in n\mathbb{Z}.$ De la Proposición \ref{propsubgrupo} se concluye que es un subgrupo.
+\end{proof}
+
+\begin{proposicion}
+	\upshape{
+	Los únicos subgrupos de $(\mathbb{Z},+)$ son de la forma $n\mathbb{Z}$.
+	}
+\end{proposicion}
+
+
+\begin{proof}
+	Dado \( n \in \mathbb{N}_0 \), por el Ejemplo~\ref{klasj}, se tiene que \( n\mathbb{Z} \leq \mathbb{Z} \). Demostraremos que si \( H \leq \mathbb{Z} \), entonces existe \( n \in \mathbb{Z} \) tal que \( H = n\mathbb{Z} \). En efecto:\\
+	
+	\noindent Si \( H = \{0\} \), entonces \( H = n\mathbb{Z} \) para $n=0$.\\
+	
+	\noindent Supongamos que \( H \neq \{0\} \). Entonces existen \( x \in H \) tal que \( x \neq 0 \), y como \( H \) es subgrupo, también \( -x \in H \). Por lo tanto, \( H \) contiene enteros positivos. Definimos:
+	\[
+	n := \min \{ h \in H : h > 0 \}.
+	\]
+	Veamos que \( H = n\mathbb{Z} \).
+	
+	\medskip
+	\noindent \textbf{[$\subset$]} Sea \( h \in H \). Por el algoritmo de la división, existen \( q, r \in \mathbb{Z} \) tales que
+	\[
+	h = nq + r, \quad \text{con } 0 \leq r < n.
+	\]
+	Como \( h, nq \in H \), entonces \( r = h - nq \in H \). Si \( r > 0 \), esto contradice la minimalidad de \( n \), ya que \( r < n \). Por tanto, \( r = 0 \), y entonces \( h = nq \in n\mathbb{Z} \). Así, \( H \subset n\mathbb{Z} \).
+	
+	\medskip
+	\noindent \textbf{[$\supset$]} Sea \( x \in n\mathbb{Z} \), o sea, \( x = na \) con \( a \in \mathbb{Z} \). Consideramos casos:
+	\begin{itemize}
+		\item Si \( a = 0 \), entonces \( x = 0 \in H \).
+		\item Si \( a > 0 \), entonces \( x = \underbrace{n + \cdots + n}_{a\ \text{veces}} \in H \).
+		\item Si \( a < 0 \), entonces \( x = \underbrace{(-n) + \cdots + (-n)}_{-a\ \text{veces}} \in H \).
+	\end{itemize}
+	
+	\noindent En todos los casos, \( x \in H \), luego \( n\mathbb{Z} \subset H \).
+	
+	\medskip
+	\noindent Por lo tanto, \( H = n\mathbb{Z} \), como queríamos.
+\end{proof}
+
+
+\begin{proposicion}
+	\upshape{
+	Sea $\left\{H_i\right\}_{i\in \Lambda}$ una familia de subgrupos de $G$. Entonces $H:=\bigcap_{i\in \Lambda}H_i$ es un subgrupo de $G$.
+	}
+\end{proposicion}
+
+\begin{proof}
+	\upshape{
+	Sean $x,y\in H$, entonces $x,y\in H_i$ para todo $i\in \Lambda$. Así $xy^{-1}\in H_i$ para todo $i\in \Lambda$. Por lo que $xy^{-1}\in H$. De la Proposición \ref{propsubgrupo} se concluye que es un subgrupo.
+	}
+\end{proof}
+
+
+
+\section{Subgrupo normal}
+
+\begin{definicion}
+	\upshape{
+		Sea \( G \) un grupo, \( H \leq G \) un subgrupo, y \( a \in G \). Definimos:
+		
+		\begin{enumerate}
+			\item La \textit{clase lateral izquierda} de \( H \) que contiene a \( a \) como
+			\[
+			aH := \{ ah : h \in H \}.
+			\]
+			
+			\item La \textit{clase lateral derecha} de \( H \) que contiene a \( a \) como
+			\[
+			Ha := \{ ha : h \in H \}.
+			\]
+		\end{enumerate}
+	}
+\end{definicion}
+
+\begin{definicion}\label{kjhg}
+	\upshape{
+	Sea $H\leq G$. Definimos las siguientes relaciones 
+	\begin{enumerate}
+		\item $a\sim b$ si y solo si $a^{-1}b\in H$.
+		\item $a\sim' b$ si y solo si $ab^{-1}\in H$.
+	\end{enumerate} 
+	}
+\end{definicion}
+
+
+\begin{proposicion}
+	\upshape{
+		Sea \( H \leq G \). A partir de la Definición \ref{kjhg}, se tiene:
+		\begin{enumerate}
+			\item La relación \( \sim \) es una relación de equivalencia en \( G \), y \( [a] = aH \).
+			\item La relación \( \sim' \) es una relación de equivalencia en \( G \), y \( [a]' = Ha \).
+		\end{enumerate}
+	}
+\end{proposicion}
+
+\begin{proof}
+	Probaremos solo $[1]$ ya que $[2]$ es análogo. En efecto, \( \sim \) es relación de equivalencia:
+	\begin{itemize}
+		\item Reflexiva: \( a^{-1}a = 1 \in H \), pues \( H \) es subgrupo.
+		\item Simétrica: Si \( a^{-1}b \in H \), entonces \( (a^{-1}b)^{-1} = b^{-1}a \in H \), y como \( H \) es cerrado bajo inversos, se concluye que \( b \sim a \).
+		\item Transitiva: Si \( a \sim b \) y \( b \sim c \), entonces \( a^{-1}b \in H \) y \( b^{-1}c \in H \). Como \( H \) es cerrado bajo multiplicación, \( a^{-1}b \cdot b^{-1}c = a^{-1}c \in H \), luego \( a \sim c \).
+	\end{itemize}
+	Para cada \( a \in G \), se tiene
+	\[
+	[a] = \{ b \in G : a^{-1}b \in H \} = \{ ah : h \in H \} = aH.
+	\]
+\end{proof}
+
+
+\begin{definicion}
+	\upshape{
+		Sea \( G \) un grupo y \( H \leq G \) un subgrupo. Decimos que \( H \) es un \textit{subgrupo normal} de \( G \) si para todo \( a \in G \) se cumple
+		\[
+		aH = Ha.
+		\]	En este caso, escribimos \( H \trianglelefteq G \).
+	}
+\end{definicion}
+
+
+\begin{proposicion}\label{lkjhg}
+	\upshape{
+		Sea \( H \leq G \). Las siguientes condiciones son equivalentes:
+		\begin{enumerate}
+			\item \( H \trianglelefteq G \), es decir, \( aH = Ha \) para todo \( a \in G \).
+			\item Para todo \( a \in G \), se cumple \( aHa^{-1} \subseteq H \).
+			\item Para todo \( a \in G \), se cumple \( aHa^{-1} = H \).
+			\item Para todo \( a, b \in G \), se cumple \( (aH)(bH) = abH \).
+		\end{enumerate}
+	}
+\end{proposicion}
+
+\begin{proof}
+	{\color{white} Texto en azul.}\\
+	
+	\noindent[$1 \Rightarrow 2$] Sea \( a \in G \), y sea \( h \in H \). Como \( aH = Ha \), existe \( h' \in H \) tal que \( ah = h'a \). Entonces
+	\[
+	a h a^{-1} = h' a a^{-1} = h' \in H,
+	\]
+	luego \( aHa^{-1} \subseteq H \)\\
+	
+	\noindent	\noindent[$2 \Rightarrow 3$] Sea \( a \in G \). Como \( aHa^{-1} \subseteq H \), al aplicar la misma propiedad a \( a^{-1} \) se tiene
+	\[
+	a^{-1}Ha \subseteq H \Rightarrow H \subseteq aHa^{-1},
+	\]
+	de modo que \( H = aHa^{-1} \).\\
+	
+	\noindent	\noindent[$3 \Rightarrow 1$] Sea \( a \in G \) y \( h \in H \). Como \( aHa^{-1} = H \), existe \( h' \in H \) tal que
+	\[
+	a h = h' a \Rightarrow aH \subseteq Ha.
+	\]
+	El mismo argumento para \( a^{-1} \) da \( Ha \subseteq aH \), luego \( aH = Ha \).\\
+
+	\noindent[$3 \Rightarrow 4$] Sean \( a, b \in G \). Para cualquier \( h_1, h_2 \in H \),
+	\[
+	(a h_1)(b h_2) = a (h_1 b) h_2 = a b (b^{-1} h_1 b)h_2 .
+	\]
+	Como \( H \trianglelefteq G \), se tiene \( (b^{-1} h_1 b) h_2 \in H \), así que el producto está en \( abH \). Luego \( (aH)(bH) \subseteq abH \). La inclusión contraria se prueba similarmente, por lo que \[ (aH)(bH) = abH. \]
+	
+	\noindent[$4 \Rightarrow 3$] Sea \( a \in G \). Como por hipótesis se cumple
+	\[
+	(aH)(a^{-1}H) = aa^{-1}H = H,
+	\]
+	entonces cada elemento de \( H \) se puede escribir como \( (ah)(a^{-1}h') \) para algunos \( h, h' \in H \). En particular,
+	\[
+	(ah)(a^{-1}1) = aha^{-1} \in H.
+	\]
+	Esto muestra que \( aHa^{-1} \subseteq H \). Aplicando el mismo argumento a \( a^{-1} \), se obtiene \( a^{-1}Ha \subseteq H \), lo que implica que \( H \subseteq aHa^{-1} \). Por tanto, \( aHa^{-1} = H \).
+	
+	
+	
+\end{proof}
+
+\begin{proposicion}
+	\upshape{
+		Todo subgrupo de un grupo abeliano es un subgrupo normal.
+	}
+\end{proposicion}
+
+\begin{proof}
+	Sea \( G \) un grupo abeliano y \( H \leq G \). Para todo \( a \in G \) y todo \( h \in H \), se tiene
+	\[
+	a h a^{-1} = a a^{-1} h = h,
+	\]
+	ya que \( G \) es abeliano. Entonces \( a h a^{-1} \in H \), lo que muestra que \( a H a^{-1} \subseteq H \). Luego por la Proposición \ref{lkjhg} se concluye que \( H \trianglelefteq G \).
+\end{proof}
+
+
+
+
+
+
+\section{Grupo cociente}
+
+Dado \( H \leq G \), la relación de equivalencia definida por 
+\[
+a \sim b \quad \text{si y sólo si} \quad a^{-1}b \in H
+\]
+induce el conjunto cociente \( G/\sim \). Si queremos definir una operación en \( G/\sim \), naturalmente esperaríamos que 
+\[
+(aH)(bH) := abH,
+\]
+pero esto no siempre es posible. \\
+
+\noindent Consideremos 
+\[
+A = \begin{pmatrix}
+	-\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\
+	-\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}
+\end{pmatrix} \in G := GL_2(\mathbb{R}).
+\]
+
+\vspace{0.5cm}
+
+\noindent Notemos que 
+\[
+H := \{A, I_{2\times 2}\} \leq GL_2(\mathbb{R}).
+\]Tomemos 
+\[
+a = \begin{pmatrix}
+	-1 & 0 \\
+	0 & 1
+\end{pmatrix} \in G.
+\] Entonces, como \( a^2 = I \), tenemos 
+\[
+a^2 H = H,
+\]
+pero también se verifica que 
+\[
+-a \in (aH)(aH),
+\]
+por lo que 
+\[
+(aH)(aH) \neq a^2 H.
+\] Por lo tanto, vemos que la relación de equivalencia definida no siempre induce una estructura de grupo cociente. Para que esta operación esté bien definida y sea un grupo, es necesario que \( H \trianglelefteq G \), donde se cumple que \(
+(aH)(bH) = abH.
+\) Como se mostró en la Proposición \ref{lkjhg}.
+
+\begin{definicion}
+	\upshape{
+		Sea \( G \) un grupo y \( H \trianglelefteq G \). La operación 
+		\[
+		(aH)(bH) := abH, \quad \forall\, a,b \in G
+		\]
+		define en \( G/\sim \) una estructura de grupo. Este grupo se denomina \emph{grupo cociente} y se denota por \( G/H \).
+	}
+\end{definicion}
+\begin{observacion}
+	\upshape{
+		En \( G/H \):
+		\begin{itemize}
+			\item La operación interna está bien definida, es decir, no depende del representante de cada clase.
+			\item El elemento identidad es la clase de \( 1 \in G \); es decir, \(1_{G/H}= 1_G H \).
+			\item El inverso de \( aH \) es \( a^{-1}H \).
+		\end{itemize}
+	}
+\end{observacion}
+
+
+
+\section{Teorema fundamental de homomorfismo de grupos}
+
+
+\begin{definicion}
+	\upshape{
+		Sea \( f: G \to H \) un homomorfismo de grupos. Definimos:
+		\begin{enumerate}
+			\item El \textit{núcleo} de \( f \) como
+			\[
+			\ker f := \{ a \in G : f(a) = 1_H \}.
+			\]
+			\item La \textit{imagen} de \( f \) como
+			\[
+			\operatorname{Im} f := \{ h \in H : h = f(a) \text{ para algún } a \in G \}.
+			\]
+			\item La \textit{proyección canónica} de un grupo sobre su cociente: Si \(N\) es un subgrupo normal de un grupo \(G\), la proyección canónica es la función
+			\[
+			\pi : G \to G/N, \quad a \mapsto aN.
+			\]
+			Esta función \(\pi\) es un homomorfismo de grupos sobreyectivo, cuyo núcleo es \(N\).
+		\end{enumerate}
+	}
+\end{definicion}
+
+\begin{observacion}\label{Obs: imagen y núcleo}
+	\upshape{
+		El núcleo y la imagen de un homomorfismo de grupos son subgrupos, es decir,  
+		\[
+		\ker f \leq G \quad \text{y} \quad \operatorname{Im} f \leq H.
+		\]
+	}
+\end{observacion}
+
+
+\begin{proposicion}\label{oikhugfd}
+	\upshape{
+		Sea \( f: G \to H \) un homomorfismo de grupos. Entonces:
+		\begin{enumerate}
+			\item \( \ker f \trianglelefteq G \).
+			\item \( f \) es inyectivo si y solo si \( \ker f = \{1_G\} \).
+		\end{enumerate}
+	}
+\end{proposicion}
+
+
+\begin{proof}
+	En efecto.
+	\begin{enumerate}
+		\item Sea \(x,y \in \ker f\), entonces \(f(x) = f(y) = 1_H\). Así,
+		\[
+		f(x y^{-1}) = f(x) f(y)^{-1} = 1_H \cdot 1_H^{-1} = 1_H.
+		\]
+		Por lo tanto, \(x y^{-1} \in \ker f\), luego \(\ker f \leq G\). Ahora verifiquemos que \(\ker f\) es normal. Sea \(a \in G\), \(k \in \ker f\), entonces
+		\[
+		f(a k a^{-1}) = f(a) f(k) f(a)^{-1} = f(a) \cdot 1_H \cdot f(a)^{-1} = 1_H,
+		\]
+		por lo que \(a (\ker f) a^{-1} \subseteq \ker f\). Así, \(\ker f \trianglelefteq G\).
+		
+		\item Veamos:
+		
+		\noindent \([ \Rightarrow ]\) Sea \(x \in \ker f\). Entonces
+		\[
+		f(x) = f(1_G) = 1_H.
+		\]
+		Como \(f\) es inyectiva, entonces \(x = 1_G\). Así, \(\ker f = \{1_G\}\).
+		
+		\noindent \([ \Leftarrow ]\) Sean \(x,y \in G\) tales que \(f(x) = f(y)\). Entonces,
+		\[
+		f(x y^{-1}) = f(x) f(y)^{-1} = 1_H.
+		\]
+		Por lo que \(x y^{-1} \in \ker f = \{1_G\}\), entonces \(x y^{-1} = 1_G\). Así, \(x = y\). Esto implica que \(f\) es inyectiva.
+	\end{enumerate}
+\end{proof}
+
+
+
+\begin{teorema}[Propiedad universal del cociente]\label{Propiedad universal del cociente}
+	\upshape{
+		Sea \( f: G \to H \) un homomorfismo de grupos y sea \( N \trianglelefteq G \) tal que \( N \subseteq \ker f \). Entonces, existe un único homomorfismo de grupos \( \overline{f} : G / N \to H \) tal que el siguiente diagrama conmuta:
+		
+		
+		
+		\[
+		\xymatrix{
+			G \ar[rr]^{\displaystyle f} \ar[dd]_{\displaystyle \pi} && H \\
+			&&\\
+			G/N \ar@{-->}[uurr]_{\displaystyle \exists!\:\overline{f}} &&
+		}
+		\]
+		
+		
+		Es decir, \( \overline{f} \circ \pi = f \), donde \( \pi : G \to G/N \) es la proyección canónica.
+	}
+\end{teorema}
+
+\begin{proof}
+	\upshape{
+		Queremos definir un único homomorfismo \( \overline{f}: G/N \to H \) tal que \( \overline{f} \circ \pi = f \):
+		
+		\begin{itemize}
+			\item \textbf{Definición:} Definimos $\overline{f}(aN) := f(a)$, para todo $ a \in G.$
+			
+			
+			
+			\item \textbf{Buena definición:} Si \( aN = bN \), entonces \( a^{-1}b \in N \subseteq \ker f \), así que \( f(a^{-1}b) = 1_H \), lo que implica \( f(a) = f(b) \). Por tanto, \( \overline{f}(aN) = \overline{f}(bN) \), y la aplicación está bien definida.
+			
+			\item \textbf{Homomorfismo:} Sean \( aN, bN \in G/N \). Entonces:
+			\begin{align*}
+				\overline{f}((aN)(bN)) &= \overline{f}(abN) = f(ab) = f(a)f(b) = \overline{f}(aN)\cdot \overline{f}(bN).
+			\end{align*}
+			Así, \( \overline{f} \) es homomorfismo.
+			
+			\item \textbf{Conmutatividad:} Para todo \( a \in G \),
+			
+			
+			\[
+			(\overline{f} \circ \pi)(a) = \overline{f}(aN) = f(a),
+			\]
+			
+			
+			por lo que \( \overline{f} \circ \pi = f \).
+			
+			\item \textbf{Unicidad:} Si \( \psi: G/N \to H \) es otro homomorfismo tal que \( \psi \circ \pi = f \), entonces para todo \( aN \in G/N \), se cumple
+			
+			
+			\[
+			\psi(aN) = \psi(\pi(a)) = f(a) = \overline{f}(aN),
+			\]
+			
+			
+			de donde \( \psi = \overline{f} \).
+		\end{itemize}
+	}
+\end{proof}
+
+\begin{corolario} \label{coikjhg}
+	\upshape{
+		En el Teorema \ref{Propiedad universal del cociente}. Si \( N = \ker f \), entonces \( \overline{f}:G/N \to H \) es inyectivo.
+	}
+\end{corolario}
+
+\begin{proof}
+	\upshape{
+		Analizamos el núcleo de \( \overline{f} \):
+		
+		
+		\[
+		\ker \overline{f} = \{ aN \in G/N : \overline{f}(aN) = 1_H \} = \{ aN : f(a) = 1_H \} = \{aN: a\in \ker f \}.
+		\]
+		
+		
+		Como \( \ker f = N \), entonces
+		
+		
+		\[
+		\ker \overline{f} =\{aN: a\in N\}=\{N\},
+		\]
+		
+		
+		es decir, \( \overline{f} \) tiene núcleo trivial, por lo tanto es inyectivo.
+		
+		\vspace{-0.5em}
+		\qedhere
+	}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\begin{teorema}[Teorema fundamental del homomorfismo de grupos]
+	\upshape{
+		Sean \( G \) y \( H \) grupos, y sea \( f: G \to H \) un homomorfismo de grupos. Entonces, \( f \) induce un isomorfismo de grupos
+		
+		
+		\[
+		\frac{G}{\ker(f)} \cong \operatorname{Im}(f).
+		\]
+		
+		
+	}
+\end{teorema}
+
+\begin{proof}
+	En el Teorema \ref{Propiedad universal del cociente} consideremos \( N=\ker f \), por lo que existe el homomorfismo \( \overline{f}: G/\ker f \to H \). Así,  \( \overline{f}: G/\ker f \to \operatorname{Im}(f) \) es sobreyectivo. Además, \( \overline{f} \) es inyectivo por el Corolario \ref{coikjhg}. Por lo tanto, \( \overline{f} \) es un isomorfismo de grupos.
+\end{proof}
+
+
+\begin{ejemplo}
+	\upshape{
+		Considere el homomorfismo \( f: \left(\mathbb{Z},+\right) \to \left(\mathbb{Z}_n,+\right) \)
+		dado por \( f(a) := [a] \) para todo \( a \in \mathbb{Z} \). Entonces, como \( f \) es sobreyectivo y	\[
+		\ker f = \{ a \in \mathbb{Z} : [a] = [0] \} = \{ a \in \mathbb{Z} : n \mid a \} = n\mathbb{Z},
+		\]por el Teorema fundamental del homomorfismo de grupos, tenemos que
+		\[
+		\dfrac{\mathbb{Z}}{n\mathbb{Z}} \cong \mathbb{Z}_n.
+		\]
+	}
+\end{ejemplo}
+
+\begin{ejemplo}
+	\upshape{
+		Considere el homomorfismo \( f: \left(GL_n(\mathbb{R}), \cdot \right) \to \left(\mathbb{R}^\ast, \cdot \right) \)
+		definido por \( f(A) := \det(A) \) para toda matriz \( A \in GL_n(\mathbb{R}) \). Entonces, como \( f \) es sobreyectivo y  
+		
+		\[
+		\ker f = \{ A \in GL_n(\mathbb{R}) \mid \det(A) = 1_{\mathbb{R}} \} = SL_n(\mathbb{R}),
+		\]
+		
+		por el Teorema fundamental del homomorfismo de grupos, tenemos que
+		
+		
+		\[
+		\dfrac{GL_n(\mathbb{R})}{SL_n(\mathbb{R})} \cong \mathbb{R}^\ast.
+		\]
+		
+		
+	}
+\end{ejemplo}
+
+\begin{ejemplo}
+	\upshape{
+		Consideremos el grupo multiplicativo del círculo unitario 
+		\[
+		S^1 := \{ z \in \mathbb{C} : |z| = 1 \},
+		\]
+		que es un grupo bajo la multiplicación compleja.  \\
+		
+		\noindent Considere el homomorfismo \( f: \left(\mathbb{R}, + \right) \to \left(S^1, \cdot \right) \)
+		dado por 	\[
+		f(x) := e^{2\pi i x}, \quad \text{para todo } x \in \mathbb{R}.
+		\] Entonces, como \( f \) es sobreyectivo y  
+		\[
+		\ker f = \{ x \in \mathbb{R} \mid e^{2\pi i x} = 1 \} = \mathbb{Z},
+		\]por el Teorema fundamental del homomorfismo de grupos, tenemos que
+
+		\[
+		\dfrac{\mathbb{R}}{\mathbb{Z}} \cong S^1.
+		\]
+
+	}
+\end{ejemplo}
+
+\begin{observacion}
+	\upshape{
+		De manera similar, se tiene la siguiente isomorfía:		
+		\[
+		\dfrac{\mathbb{R}^n}{\mathbb{Z}^n} \cong \mathbb{T}^n := \underbrace{S^1 \times \cdots \times S^1}_{n\ \text{veces}}.
+		\]
+		
+	}
+\end{observacion}
+
+
+
+
+

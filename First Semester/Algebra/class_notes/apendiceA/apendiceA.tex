@@ -1,0 +1,76 @@
+
+\section{Relación de orden parcial y Lema de Zorn}
+
+
+
+\begin{definicion}[Relación de orden parcial]\label{lkjbhgcdb}
+	\upshape{
+		Dada una relación  ''\(\prec\)`` en un conjunto \(\mathcal{F}\), decimos que \(\prec\) es una \textit{relación de orden parcial} si cumple:
+		\begin{enumerate}
+			\item \textit{Reflexividad}: Para todo \(a \in \mathcal{F}\), se cumple que \(a \prec a\). 
+			\item \textit{Antisimetría}: Para todos \(a, b \in \mathcal{F}\), si \(a \prec b\) y \(b \prec a\), entonces \(a = b\).
+			\item \textit{Transitividad}: Para todos \(a, b, c \in \mathcal{F}\), si \(a \prec b\) y \(b \prec c\), entonces \(a \prec c\).
+		\end{enumerate}
+	}
+\end{definicion}
+\begin{observacion}
+	\upshape{
+	Sean $a,b\in\mathcal{F}$. Decimos que $a$ es \textit{mayor} que $b$ si $b\prec a$.
+	}
+\end{observacion}
+
+
+\begin{proposicion}\label{ibvdshkjcsd}
+	\upshape{
+		La relación de inclusión ``$\subset$'' es una relación de orden parcial en el conjunto de subconjuntos de un conjunto dado.
+	}
+\end{proposicion}
+\begin{proof}
+	Sea $X$ un conjunto y consideremos $\mathcal{F}$, un subconjunto del conjunto potencia de $X$ con la relación de inclusión ``$\subset$''. Entonces
+	
+	\begin{itemize}
+		\item \textit{Reflexividad}: Para cualquier subconjunto $A \subset X$, se cumple que $A \subset A$.
+		
+		\item \textit{Antisimetría}: Para cualesquiera  subconjuntos $A, B \subset X$, si $A \subset B$ y $B \subset A$, entonces $A = B$. 
+		
+		\item \textit{Transitividad}: Para cualesquiera subconjunto $A, B, C \subset X$, si $A \subset B$ y $B \subset C$, entonces $A \subset C$. 
+	\end{itemize}
+	Concluimos que ``$\subset$'' es una relación de orden parcial en $\mathcal{F}$.
+\end{proof}
+
+
+
+\begin{definicion}[Orden total]
+	\upshape{
+	
+		Sea $\mathcal{F}$ un conjunto con una relación de orden parcial $\prec$. Decimos que $\prec$ es un \textit{orden total} (o \textit{orden lineal}) en $\mathcal{F}$ si cumple la siguiente propiedad:
+		\begin{enumerate}
+			\item [$4.$] \textit{Comparabilidad}: para cualquier par de elementos $a, b \in \mathcal{F}$, se cumple que $a \prec b$ o $b \prec a$ (o ambos).
+		\end{enumerate} 
+	}
+\end{definicion}
+\begin{definicion}
+	\upshape{
+	
+	Sea $\mathcal{F}$ un conjunto parcialmente ordenado con una relación de orden parcial ''$\prec$''. Un subconjunto $\mathcal{C} \subseteq \mathcal{F}$ se llama \textit{cadena} si $ \mathcal{C}$ es totalmente ordenado con la relación ''$\prec$''.
+	
+	}
+\end{definicion}
+\begin{observacion}
+	\upshape{
+	Sea $d\in\mathcal{F}$. Decimos que $d$ es una \textit{cota superior} de $\mathcal{C}$ si $a\prec d$ para todo $a\in\mathcal{C}$.
+	}
+\end{observacion}
+
+\begin{lema}[Lema de Zorn]\label{lemazorn}
+	\upshape{
+	Supongamos que $\mathcal{F}$ es un conjunto parcialmente ordenado tal que cada cadena en $\mathcal{F}$ tiene una cota superior en $\mathcal{F}$. Entonces, $\mathcal{F}$ contiene al menos un elemento maximal(no existe otro elemento que sea estrictamente mayor que él con la relación de orden).
+	}
+\end{lema}
+
+
+
+
+
+
+

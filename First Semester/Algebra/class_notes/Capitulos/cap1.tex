@@ -1,0 +1,493 @@
+
+\begin{mdframed}[backgroundcolor=gray!30, hidealllines=true, innertopmargin=2mm, innerbottommargin=2mm, innerleftmargin=2mm, innerrightmargin=2mm]
+	\begin{center}
+		Tenga en cuenta, en adelante, que
+		$		\mathbb{N} := \{0, 1, 2, 3, \ldots\}.$
+		
+	\end{center}
+\end{mdframed}
+
+
+
+\section{Estructuras algebraicas fundamentales}
+
+Sean $A$, $B$ y $C$ conjuntos no vacíos.
+\begin{definicion}
+	\upshape{
+		Una \textit{ley de composición} es una función $A \times B \longrightarrow C$.
+	}
+\end{definicion}
+
+\begin{ejemplo}[Ley de composición de funciones]
+	\upshape{
+	Sean $X$ y $Y$ conjuntos no vacíos. Definimos el conjunto de todas las funciones de $X$ a $Y$ como
+	\[
+	Y^X := \left\{ f : X \to Y \mid f \text{ es una función} \right\}.
+	\]
+	Sea $Z$ un tercer conjunto no vacío. Consideramos la siguiente ley de composición:
+	\begin{align*}
+		Y^X \times Z^Y & \longrightarrow Z^X \\
+		(f, g) & \longmapsto g \circ f.
+	\end{align*}
+	}
+\end{ejemplo}
+
+\begin{definicion}
+	\upshape{
+		Se llama:
+		\begin{enumerate}
+			\item \textit{Operación externa} (acción) a una función $A \times A \longrightarrow B$,
+			\item \textit{Operación interna} a una función $A \times A \longrightarrow A$.
+		\end{enumerate}
+	}
+\end{definicion}
+
+\begin{definicion}
+	\upshape{
+		Sean $M$ un conjunto y $\ast : M \times M \longrightarrow M$ una ley de composición interna (es decir, una operación interna). Entonces:
+		\begin{enumerate}
+			\item La pareja $(M,\ast)$ se llama un \textit{magma}.
+			
+			\item La ley $\ast$ se dice \textit{asociativa} si
+			\[
+			a \ast (b \ast c) = (a \ast b) \ast c \quad \text{para todo } a,b,c \in M.
+			\]
+			
+			\item Un \textit{semigrupo} es un magma cuya ley es asociativa.
+			
+			\item Un elemento $e \in M$ es una \textit{identidad} si
+			\[
+			e \ast a = a = a \ast e \quad \text{para todo } a \in M.
+			\]
+			
+			\item Un \textit{monoide} es un semigrupo que posee una identidad.
+			
+			\item Un \textit{grupo} es un monoide en el que todo elemento $a \in M$ admite un \textit{inverso} $a^{-1} \in M$ tal que
+			\[
+			a \ast a^{-1} = e = a^{-1} \ast a.
+			\]
+			
+			\item Decimos que la ley $\ast$ es \textit{conmutativa} si
+			\[
+			a \ast b = b \ast a \quad \text{para todo } a,b \in M.
+			\]
+			
+			\item Una estructura $(M,\ast)$ (sea magma, semigrupo, monoide o grupo) se dice \textit{conmutativa} si la ley $\ast$ es conmutativa. En el caso de grupos, también se dice que es un \textit{grupo abeliano}.
+		\end{enumerate}
+	}
+\end{definicion}
+
+
+\begin{ejemplo}
+	{\color{white} Texto en azul.}
+	\upshape{		
+		\begin{itemize}
+			\item $(\mathbb{Z}^+, +)$ es un semigrupo que no es un monoide, ya que no contiene el $0$, que sería el neutro para la suma.
+			
+			\item $(\mathbb{N}, \cdot)$ es un monoide. El neutro es el número $1$, ya que $1 \cdot a = a \cdot 1 = a$ para todo $a \in \mathbb{N}$.
+			
+			
+			\item $M_{n \times n}(\mathbb{N})$, con la multiplicación de matrices, es un monoide. La matriz identidad actúa como elemento neutro.
+			
+			\item $M_{n \times n}(\mathbb{R}^+)$, también con multiplicación de matrices, es un monoide.
+			
+			\item El conjunto $\mathcal{P}(X)$ de subconjuntos de un conjunto $X$, con la operación unión, es un monoide. La identidad es el conjunto vacío $\emptyset$.
+			
+			\item El conjunto $\mathcal{P}(X)$ con la operación intersección también forma un monoide, siendo $X$ el elemento neutro.
+			
+			\item El conjunto de funciones de $X$ en sí mismo, con la composición de funciones, forma un monoide. La función identidad de $X$ actúa como neutro.
+			
+			\item $(\mathbb{Z}, +)$ es un grupo. Todo entero tiene inverso aditivo.
+			
+			\item $(\mathbb{Q}^\ast, \cdot)$ es un grupo, donde $\mathbb{Q}^\ast := \mathbb{Q} \setminus \{0\}$, con la multiplicación de racionales. Todo elemento tiene inverso multiplicativo.
+			
+			\item El conjunto de matrices invertibles $GL_n(\mathbb{R})$, con la multiplicación de matrices, es un grupo. El neutro es la matriz identidad, y toda matriz invertible tiene inversa.
+		\end{itemize}
+	}
+\end{ejemplo}
+
+
+
+\begin{ejemplo}
+	\upshape{
+		Sea \(n \in \mathbb{N}\), \(n \geq 1\). El conjunto \(\mathbb{Z}_n := \{[0], [1], \dots, [n{-}1]\}\), formado por clases de enteros módulo \(n\), con \([a]\) denotando la clase de \(a \in \mathbb{Z}\), es un grupo abeliano bajo la suma: la identidad es \([0]\) y el inverso de \([a]\) es \([-a]\).
+	}
+\end{ejemplo}
+
+
+
+\begin{proposicion} \label{jkhgdvnjf}
+	\upshape{
+		Sea \(n \geq 2\) un número entero. Definimos
+		\[ 
+		(\mathbb{Z}_n)^\ast := \{ [a] \in \mathbb{Z}_n \mid [a] \neq [0] \},
+		\]
+		donde la operación en \((\mathbb{Z}_n)^\ast\) es la multiplicación de clases módulo \(n\), es decir, 
+		\[ 
+		[a] \cdot [b] := [a \cdot b] \quad \text{para} \; a, b \in \mathbb{Z}.
+		\]Entonces, \((\mathbb{Z}_n)^\ast\), con esta operación de multiplicación, es un grupo si y solo si \(n\) es primo. Además, es un grupo abeliano.
+	}
+\end{proposicion}
+
+\begin{proof}
+	{\color{white} Texto en azul.}\\
+	
+	\noindent [$\Rightarrow$] Supongamos que \(n\) no es primo, entonces existen \(a, b \in \mathbb{Z}\) con \(1 < a, b < n\) tales que \(n = ab\). Tomando clases, vemos que \([ab] = [0]\). Por otro lado, como \(1 < a, b < n\), se tiene que \([a], [b] \in (\mathbb{Z}_n)^\ast\). Como \((\mathbb{Z}_n)^\ast\) tiene estructura de grupo, debe cumplirse que \([ab] \in (\mathbb{Z}_n)^\ast\), lo cual contradice el hecho de que \([ab] = [0]\). Así, \(n\) es primo.\\
+	
+	\noindent [$\Leftarrow$] Verifiquemos que \((\mathbb{Z}_n)^\ast\) es un grupo:
+	\begin{itemize}
+		\item La multiplicación es una operación interna: Sean \( [a], [b] \in (\mathbb{Z}_n)^\ast\). Supongamos que \( [a][b] \notin (\mathbb{Z}_n)^\ast \). Entonces \( [ab] = [0] \), lo que implica que \( n \mid ab \). Como \( n \) es primo, tenemos que \( n \mid a \) o \( n \mid b \), por lo tanto, \( [a] = [0] \) o \( [b] = [0] \). Esto contradice nuestra suposición de que ambos \( [a] \) y \( [b] \) son diferentes de \( [0] \). Así, la multiplicación es una operación interna.
+		
+		\item La multiplicación es asociativa: La multiplicación en \( (\mathbb{Z}_n)^\ast \) es asociativa, ya que la multiplicación en \( \mathbb{Z} \) es asociativa.
+		
+		\item El elemento identidad es \( [1] \): El elemento identidad en \( (\mathbb{Z}_n)^\ast \) es \( [1] \), ya que para cualquier \( [a] \in (\mathbb{Z}_n)^\ast \), se cumple que \( [1][a] = [a] = [a][1] \).
+		
+		\item Todo elemento es inversible: Sea \( [a] \in (\mathbb{Z}_n)^\ast \). Como \( n \nmid a \) y \( n \) es primo, se cumple que \( \gcd(a, n) = 1 \). Por el algoritmo de Euclides, existen \( \alpha, \beta \in \mathbb{Z} \) tales que \( \alpha a + \beta n = 1 \). Tomando clases módulo \(n\), obtenemos \( [a][\beta] = [1] \). Por lo tanto, \( [\beta] \) es el inverso de \( [a] \) en \( (\mathbb{Z}_n)^\ast \), y claramente \( [\beta] \neq [0] \).
+	\end{itemize}
+	Así, \( (\mathbb{Z}_n)^\ast \) es un grupo.
+\end{proof}
+
+
+
+\section{Aplicación a la teoría de categorías}
+
+\begin{definicion}
+	\upshape{
+		Una \textit{categoría} $\mathcal{C}$ consta de:
+		\begin{enumerate}
+			\item Una clase (o colección) de objetos, denotada por $\mathrm{Ob}(\mathcal{C})$. Si $A \in \mathrm{Ob}(\mathcal{C})$, se escribe simplemente $A \in \mathcal{C}$.
+			
+			\item Para cualesquiera objetos $A, B \in \mathrm{Ob}(\mathcal{C})$, un conjunto de morfismos de $A$ a $B$, denotado por
+			$$
+			\mathrm{Hom}_{\mathcal{C}}(A, B) := \{ f : A \to B \}.
+			$$
+			Los elementos de este conjunto también se denominan flechas.
+			
+			\item Una ley de composición de morfismos: para todos $A, B, C \in \mathrm{Ob}(\mathcal{C})$, se define una aplicación
+		\begin{align*}
+			\mathrm{Hom}_{\mathcal{C}}(A, B) \times \mathrm{Hom}_{\mathcal{C}}(B, C) &\longrightarrow \mathrm{Hom}_{\mathcal{C}}(A, C), \\
+			(f, g) &\longmapsto g \circ f.
+		\end{align*}
+			Usualmente se escribe $gf = g \circ f$. Cuando no hay riesgo de ambigüedad, también se puede escribir $f \in \mathcal{C}$. Además, como la composición es una función, el morfismo compuesto $g \circ f$ es único.
+			
+			\item Para cada objeto $A \in \mathrm{Ob}(\mathcal{C})$, existe un morfismo identidad $id_A \in \mathrm{Hom}_{\mathcal{C}}(A, A)$ tal que, para todo objeto $B \in \mathrm{Ob}(\mathcal{C})$, se cumple:
+			$$
+			f \circ id_A = f,\quad \forall f \in \mathrm{Hom}_{\mathcal{C}}(A, B),
+			$$
+			$$
+			id_A \circ g = g,\quad \forall g \in \mathrm{Hom}_{\mathcal{C}}(B, A).
+			$$  \label{4}
+			
+			\item La composición de morfismos es asociativa: dados
+			$$
+			f \in \mathrm{Hom}_{\mathcal{C}}(A, B), \quad g \in \mathrm{Hom}_{\mathcal{C}}(B, C), \quad h \in \mathrm{Hom}_{\mathcal{C}}(C, D),
+			$$
+			se cumple
+			$$
+			h \circ (g \circ f) = (h \circ g) \circ f.
+			$$
+		\end{enumerate}
+	}
+\end{definicion}
+\begin{observacion}
+	\upshape{
+	En ítem  \ref{4}, el morfísmo identidad es único.
+	}
+\end{observacion}
+
+\begin{proof}[Justificación]
+	Supongamos que $u, v \in \mathrm{Hom}_{\mathcal{C}}(A, A)$ son dos morfismos identidad. Entonces, para todo $f : A \to B$, se cumple $f \circ u = f$ y $f \circ v = f$; y para todo $g : B \to A$, se cumple $u \circ g = g$ y $v \circ g = g$. Tomando $f = v$, se tiene $v = v \circ u$; y tomando $g = u$, se tiene $u = v \circ u$. Por lo tanto, $u = v$.
+\end{proof}
+
+\begin{proposicion}
+	\upshape{
+	Sea $f : A \to B$ un morfismo en una categoría. Supongamos:
+	\begin{itemize}
+		\item Existe un morfismo $g : B \to A$ tal que $g \circ f = \mathrm{id}_A$ \ (inverso por la izquierda),
+		\item Existe un morfismo $h : B \to A$ tal que $f \circ h = \mathrm{id}_B$ \ (inverso por la derecha).
+	\end{itemize}
+	Entonces $g = h$, y  este morfismo se denomina el\textit{ morfismo inverso} de $f$.}
+\end{proposicion}
+
+\begin{proof}
+    Sabemos que $g = g \circ \mathrm{id}_B$. Como $f \circ h = \mathrm{id}_B$, sustituimos:
+	$$
+	g = g \circ (f \circ h) = (g \circ f) \circ h.
+	$$
+	Como $g \circ f = \mathrm{id}_A$, se obtiene:
+	$$
+	g = \mathrm{id}_A \circ h = h.
+	$$
+	Por lo tanto, $g = h$, y $f$ tiene un inverso único.
+\end{proof}
+
+\begin{definicion}
+	\upshape{
+		Un morfismo $f: A \to B$
+		se llama \textit{isomorfismo} si existe un morfismo $ g: B \to A $
+		tal que se cumple $$ g \circ f = id_A, \quad f \circ g = id_B.$$ En este caso, los objetos $A$ y $B$ se denominan \textit{isomorfos}.
+	}
+\end{definicion}
+
+
+\begin{ejemplo} 
+	\upshape{
+	Sea $\mathbb{K}$ un cuerpo. A continuación se muestran algunos ejemplos de categorías, con sus respectivos objetos, morfismos e isomorfismos:\\
+	
+	\begin{table}[H]
+		\centering
+		{\large
+			\renewcommand{\arraystretch}{1.6}
+			\resizebox{160mm}{!}{
+				\begin{tabular}{
+						>{\centering\arraybackslash}p{4cm}
+						>{\raggedright\arraybackslash}p{5.5cm}
+						>{\raggedright\arraybackslash}p{5.5cm}
+						>{\raggedright\arraybackslash}p{5.5cm}
+					}
+					\toprule
+					\multicolumn{1}{c}{$\mathcal{C}$} & 
+					\multicolumn{1}{c}{$\mathrm{Ob}(\mathcal{C})$} & 
+					\multicolumn{1}{c}{Morfismos} & 
+					\multicolumn{1}{c}{Isomorfismos} \\
+					\midrule
+					$\mathbf{Vect}_\mathbb{K}$ & Espacios vectoriales sobre $\mathbb{K}$ & Aplicaciones lineales & Isomorfismos lineales (biyecciones lineales) \\
+					$\mathbf{Top}$ & Espacios topológicos & Funciones continuas & Homeomorfismos \\
+					$\mathbf{Mag}$ & Magmas (conjunto con operación binaria) & Homomorfismos de magmas & Isomorfismos de magmas (homomorfismos biyectivos) \\
+					$\mathbf{Set}$ & Conjuntos & Funciones & Biyeciones \\
+					\bottomrule
+				\end{tabular}
+		}}
+		\caption{}
+	\end{table}
+	}
+\end{ejemplo}
+
+\begin{ejemplo}
+	\upshape{
+		Categoría $\mathbf{Set}$ (conjuntos):
+		
+		\begin{enumerate}
+			\item \textbf{Objetos:} Son conjuntos, por ejemplo, $A = \{1, 2, 3\}$, $B = \{a, b\}$ y $C = \{\alpha, \beta\}$, por lo que $A, B, C \in \mathbf{Set}$.
+			
+			\item \textbf{Morfismos:} Para $A, B \in \mathbf{Set}$, los morfismos son funciones de $A$ a $B$, es decir,
+			\[
+			\mathrm{Hom}_{\mathbf{Set}}(A, B) = \{ f : A \to B \mid f \text{ es función} \}.
+			\]
+			Por ejemplo, si $A = \{1,2\}$ y $B = \{a,b,c\}$, una función puede ser $f(1) = a$, $f(2) = c$.
+			
+			\item \textbf{Composición:} Dados $f : A \to B$ y $g : B \to C$, con $C = \{\alpha, \beta\}$, la composición $g \circ f : A \to C$ está definida por $(g \circ f)(x) = g(f(x))$ para todo $x \in A$. Por ejemplo, si $f(1) = a$, $f(2) = b$ y $g(a) = \alpha$, $g(b) = \beta$, entonces $(g \circ f)(1) = \alpha$, $(g \circ f)(2) = \beta$.
+			
+			\item \textbf{Identidad:} Para cada conjunto $A$ existe la función identidad $\mathrm{id}_A : A \to A$ dada por $\mathrm{id}_A(x) = x$ para todo $x \in A$, que cumple
+			\[
+			f \circ \mathrm{id}_A = f, \quad \forall f : A \to B, \quad \text{y} \quad \mathrm{id}_A \circ g = g, \quad \forall g : B \to A.
+			\]
+			
+			\item \textbf{Asociatividad:} Para $f : A \to B$, $g : B \to C$ y $h : C \to D$ se cumple
+			\[
+			h \circ (g \circ f) = (h \circ g) \circ f,
+			\]
+			porque ambas funciones asignan a cada $x \in A$ el valor $h(g(f(x)))$.
+		\end{enumerate}
+	}
+\end{ejemplo}
+
+
+\begin{definicion}
+	\upshape{
+	Sea $(M, *)$ y $(N, *')$ dos magmas. Un \emph{homomorfismo de magmas} es una función $ f : M \to N $
+	tal que, para todos $x, y \in M$, se cumple
+	$$
+	f(x * y) = f(x) *' f(y).
+	$$
+	}
+\end{definicion}
+
+
+
+\begin{ejemplo}
+	\upshape{
+		Categoría $\mathbf{Mag}$ (magmas):
+		
+		\begin{enumerate}
+			\item \textbf{Objetos:} Son magmas, es decir, conjuntos no vacíos con una operación binaria. Por ejemplo,
+			$$ A = (\mathbb{Z}, +), \quad B = (\mathbb{N}, \cdot), \quad C = (\{0,1\}, \max).$$		
+			\item \textbf{Morfismos:} Para magmas $A, B \in \mathbf{Mag}$, los morfismos son homomorfismos de magmas, es decir, funciones
+			$$
+			f : A \to B
+			$$
+			tales que para todos $x,y \in A$ se cumple
+			$$
+			f(x * y) = f(x) *' f(y),
+			$$
+			donde $*$ es la operación en $A$ y $*'$ la operación en $B$.
+			
+			\item \textbf{Composición:} Dados homomorfismos
+			$$
+			f : A \to B, \quad g : B \to C,
+			$$
+			la composición usual de funciones
+			$$
+			(g \circ f)(x) = g(f(x))
+			$$
+			es también un homomorfismo, pues
+			\begin{align*}
+				(g \circ f)(x * y) &= g(f(x * y)) = g(f(x) *' f(y)) \\
+				&= g(f(x)) *'' g(f(y)) = (g \circ f)(x) *'' (g \circ f)(y),
+			\end{align*}
+			donde $*''$ es la operación en $C$.
+			
+			\item \textbf{Identidad:} Para cada magma $A$, la función identidad
+			$$
+			\mathrm{id}_A : A \to A, \quad \mathrm{id}_A(x) = x,
+			$$
+			es un homomorfismo, ya que
+			$$
+			\mathrm{id}_A(x * y) = x * y = \mathrm{id}_A(x) * \mathrm{id}_A(y).
+			$$
+			
+			\item \textbf{Asociatividad:} La composición de funciones es asociativa, esto es,
+			$$
+			h \circ (g \circ f) = (h \circ g) \circ f,
+			$$
+			para homomorfismos $f, g, h$.
+		\end{enumerate}
+	}
+\end{ejemplo}
+
+
+
+
+\begin{ejemplo}
+	\upshape{
+		Categoría $\mathbf{Vect}_\mathbb{K}$ (espacios vectoriales sobre $\mathbb{K}$):
+		
+		\begin{enumerate}
+			\item \textbf{Objetos:} Son espacios vectoriales sobre $\mathbb{K}$. Por ejemplo,
+			$$
+			A = \mathbb{K}^2, \quad B = \mathbb{K}^3, \quad C = \{ \mathbf{0} \} \text{ (espacio trivial)}.
+			$$
+			
+			\item \textbf{Morfismos:} Para $A, B \in \mathbf{Vect}_\mathbb{K}$, los morfismos son transformaciones lineales,
+			$$
+			f : A \to B,
+			$$
+			tales que para todos $x,y \in A$ y $\lambda \in \mathbb{K}$ se cumple
+			$$
+			f(x + y) = f(x) + f(y), \quad f(\lambda x) = \lambda f(x).
+			$$
+			
+			\item \textbf{Composición:} Dados
+			$$
+			f : A \to B, \quad g : B \to C,
+			$$
+			la composición
+			$$
+			(g \circ f)(x) = g(f(x))
+			$$
+			es lineal porque, para $x,y \in A$ y $\lambda \in \mathbb{K}$,
+			\begin{itemize}
+				\item Para $x, y \in A$,
+				\begin{align*}
+					(g \circ f)(x + y) &= g(f(x + y)) = g(f(x) + f(y)) \\[8pt]
+					&= g(f(x)) + g(f(y)) \\[8pt]
+					&= (g \circ f)(x) + (g \circ f)(y).
+				\end{align*}
+				\item Para $\lambda \in \mathbb{K}$ y $x \in A$,
+				\begin{align*}
+					(g \circ f)(\lambda x) &= g(f(\lambda x)) = g(\lambda f(x)) = \lambda g(f(x)) = \lambda (g \circ f)(x).
+				\end{align*}
+			\end{itemize}
+			
+			
+			\item \textbf{Identidad:} Para cada espacio vectorial $A$, la transformación identidad
+			$$
+			\mathrm{id}_A : A \to A, \quad \mathrm{id}_A(x) = x,
+			$$
+			es lineal y cumple
+			\begin{align*}
+				\mathrm{id}_A(x + y) &= x + y = \mathrm{id}_A(x) + \mathrm{id}_A(y), \\[8pt]
+				\mathrm{id}_A(\lambda x) &= \lambda x = \lambda \,\mathrm{id}_A(x).
+			\end{align*}
+			
+			
+			\item \textbf{Asociatividad:} La composición de funciones es asociativa, es decir,
+			$$
+			h \circ (g \circ f) = (h \circ g) \circ f,
+			$$
+			para transformaciones lineales $f, g, h$.
+		\end{enumerate}
+	}
+\end{ejemplo}
+
+
+
+\begin{ejemplo}
+	\upshape{
+		Ejemplo de la categoría $\mathbf{Top}$ (espacios topológicos):
+		
+		\begin{itemize}
+			\item \textbf{Objetos:} Son espacios topológicos, es decir, pares $(X, \tau)$ donde $X$ es un conjunto y $\tau$ es una topología sobre $X$.
+			
+			\item \textbf{Morfismos:} Para dos objetos $(X, \tau)$ y $(Y, \sigma)$, los morfismos son las funciones continuas $f : X \to Y$.
+			
+			\item \textbf{Composición:} La composición de funciones continuas es continua. Si $f : X \to Y$ y $g : Y \to Z$ son continuas, entonces $g \circ f : X \to Z$ también es continua.
+			
+			\item \textbf{Identidad:} Para cada espacio topológico $(X, \tau)$, la función identidad $\mathrm{id}_X : X \to X$ es continua, ya que la preimagen de cualquier abierto es el mismo abierto.
+			
+			\item \textbf{Asociatividad:} La composición de funciones es asociativa:
+			$$
+			h \circ (g \circ f) = (h \circ g) \circ f.
+			$$
+		\end{itemize}
+	}
+\end{ejemplo}
+
+
+\begin{ejemplo}
+	\upshape{
+		Ejemplo de la categoría $\mathbf{Vect}_{\mathbb{K}}^{\|\cdot\|}$ (espacios vectoriales normados):
+		
+		\begin{itemize}
+			\item \textbf{Objetos:} Son espacios vectoriales sobre $\mathbb{K}$ equipados con una norma. Es decir, pares 
+			$$
+			(V, \|\cdot\|),
+			$$
+			donde $V$ es un espacio vectorial sobre $\mathbb{K}$ y $\|\cdot\|\colon V \to \mathbb{R}_{\ge 0}$ es una norma.
+			
+			\item \textbf{Morfismos:} Para dos objetos $(V, \|\cdot\|_V)$ y $(W, \|\cdot\|_W)$, los morfismos son las transformaciones lineales continuas
+			$$
+			f \colon V \to W
+			$$
+			(es decir, $f$ lineal y existe $C>0$ tal que $\|f(v)\|_W \le C\,\|v\|_V$ para todo $v\in V$).
+			
+			\item \textbf{Composición:} La composición de dos transformaciones lineales continuas es nuevamente lineal y continua. Si
+			$$
+			f \colon V \to W, \quad g \colon W \to X
+			$$
+			son continuas, entonces
+			$$
+			g \circ f \colon V \to X
+			$$
+			es lineal y continua.
+			
+			\item \textbf{Identidad:} Para cada objeto $(V, \|\cdot\|)$, la función identidad
+			$$
+			\mathrm{id}_V \colon V \to V
+			$$
+			es lineal y continua, ya que $\|\mathrm{id}_V(v)\| = \|v\|$ para todo $v \in V$.
+			
+			\item \textbf{Asociatividad:} La composición de funciones es asociativa, es decir, si
+			$$
+			f \colon U \to V,\quad g \colon V \to W,\quad h \colon W \to X,
+			$$
+			entonces
+			$$
+			h \circ (g \circ f) \;=\; (h \circ g) \circ f.
+			$$
+		\end{itemize}
+	}
+\end{ejemplo}
+
+
+
