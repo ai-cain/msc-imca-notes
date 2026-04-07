@@ -1,6 +1,10 @@
 # others
 
 *.pdf
+*.fls
+*.log
+*.out
+*.gz
 
 
 ## Core LaTeX/pdflatex auxiliary files:

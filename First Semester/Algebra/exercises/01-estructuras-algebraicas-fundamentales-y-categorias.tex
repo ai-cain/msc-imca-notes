@@ -1,0 +1,160 @@
+\section{Estructuras algebraicas fundamentales y categorías}
+
+\textbf{Referencia principal:} \texttt{First Semester/Algebra/ref/doc.pdf}
+
+\textbf{Capítulo:} 1
+
+\textbf{Secciones:} 1.1 y 1.2
+
+Este set está alineado con las definiciones y ejemplos del capítulo: leyes de composición, magma, semigrupo, monoide, grupo y nociones básicas de categoría.
+
+\subsection*{Parte A --- Leyes de composición y estructuras algebraicas}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item Sea \( A = \mathbb{Z} \). Defina la operación
+    \[
+        a * b = a + b + 1.
+    \]
+    Determine si \( (A, *) \) es magma, semigrupo, monoide o grupo. Si existe elemento identidad, encuéntrelo. Si es grupo, halle el inverso de un elemento arbitrario.
+
+    \item Considere los siguientes ejemplos y clasifique cada uno como magma, semigrupo, monoide o grupo. Indique además si la operación es conmutativa:
+    \begin{enumerate}[label=\alph*)]
+        \item \( (\mathbb{N}, +) \)
+        \item \( (\mathbb{Z}, +) \)
+        \item \( (\mathbb{N}, \cdot) \)
+        \item \( (\mathcal{P}(X), \cup) \)
+        \item \( (\mathcal{P}(X), \cap) \)
+        \item \( (\mathrm{End}(X), \circ) \), donde \( \mathrm{End}(X) \) es el conjunto de funciones \( X \to X \)
+    \end{enumerate}
+
+    \item Dé un ejemplo de:
+    \begin{enumerate}[label=\alph*)]
+        \item una ley de composición entre dos conjuntos distintos que NO sea operación interna;
+        \item una operación interna que no sea asociativa;
+        \item un semigrupo que no sea monoide;
+        \item un monoide que no sea grupo.
+    \end{enumerate}
+
+    \item En el conjunto \( A = \{0,1,2\} \), defina la operación
+    \[
+        a \star b = \max\{a,b\}.
+    \]
+    Verifique si \( (A,\star) \) es un monoide. Determine su elemento identidad y diga si es grupo.
+
+    \item En el conjunto \( A = \{0,1,2\} \), defina la operación
+    \[
+        a \diamond b = \min\{a+b,2\}.
+    \]
+    Estudie si la operación es asociativa. Si lo es, determine si \( (A,\diamond) \) es monoide o grupo.
+
+    \item Pruebe que en un monoide el elemento identidad es único.
+
+    \item Pruebe que en un grupo el inverso de cada elemento es único.
+
+    \item Sea \( G \) un grupo. Demuestre que para todo \( a \in G \),
+    \[
+        (a^{-1})^{-1} = a
+        \qquad \text{y} \qquad
+        (ab)^{-1} = b^{-1}a^{-1}.
+    \]
+
+    \item Demuestre que \( (\mathbb{Z}_n, +) \) es un grupo abeliano para todo \( n \geq 1 \).
+
+    \item Usando la convención del texto, considere
+    \[
+        (\mathbb{Z}_n)^* = \{[a] \in \mathbb{Z}_n : [a] \neq [0]\}
+    \]
+    con la multiplicación módulo \( n \).
+    \begin{enumerate}[label=\alph*)]
+        \item Estudie los casos \( n=4 \), \( n=6 \) y \( n=7 \).
+        \item Determine en cuáles casos se obtiene un grupo.
+        \item Explique qué relación observa con la primalidad de \( n \).
+    \end{enumerate}
+
+    \item Dé un ejemplo de operación externa \( A \times B \to B \) y explique por qué NO puede considerarse una operación interna en \( B \).
+
+    \item Sea \( M \) un semigrupo que tiene identidad por la izquierda \( e \) y tal que cada elemento \( a \in M \) tiene inverso por la izquierda \( b \in M \), es decir, \( ba = e \). Demuestre que \( M \) es un grupo.
+\end{enumerate}
+
+\subsection*{Parte B --- Introducción a categorías}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, start=13]
+    \item Escriba con precisión la definición de categoría identificando:
+    \begin{enumerate}[label=\alph*)]
+        \item objetos,
+        \item morfismos,
+        \item composición,
+        \item identidades,
+        \item asociatividad.
+    \end{enumerate}
+
+    \item En la categoría \textbf{Set}, considere
+    \[
+        A=\{1,2\}, \qquad B=\{a,b,c\}, \qquad C=\{\alpha,\beta\}.
+    \]
+    Defina funciones \( f:A\to B \) y \( g:B\to C \), calcule \( g\circ f \) y verifique explícitamente la propiedad de identidad usando \( id_A \) e \( id_B \).
+
+    \item Demuestre que el morfismo identidad de un objeto en una categoría es único.
+
+    \item Sea \( f:A\to B \) un morfismo en una categoría. Suponga que existe \( g:B\to A \) con
+    \[
+        g\circ f = id_A
+    \]
+    y \( h:B\to A \) con
+    \[
+        f\circ h = id_B.
+    \]
+    Demuestre que \( g=h \).
+
+    \item En la categoría \textbf{Set}, pruebe que un morfismo es un isomorfismo si y solo si es biyectivo.
+
+    \item En la categoría \textbf{Mag}, tome
+    \[
+        (\mathbb{Z},+) \qquad \text{y} \qquad (\mathbb{Z},+).
+    \]
+    Estudie si las aplicaciones siguientes son homomorfismos de magmas:
+    \begin{enumerate}[label=\alph*)]
+        \item \( f(x)=2x \)
+        \item \( g(x)=x+1 \)
+        \item \( h(x)=-x \)
+    \end{enumerate}
+
+    \item En la categoría \( \mathbf{Vect}_K \), explique por qué la composición de aplicaciones lineales vuelve a ser lineal. Luego verifique esa propiedad para dos transformaciones lineales concretas entre espacios \( K^2 \) y \( K^3 \).
+
+    \item Dé un ejemplo de un morfismo en \textbf{Top} que sea continuo pero no sea isomorfismo. Explique con cuidado por qué falla la condición de isomorfismo.
+\end{enumerate}
+
+\subsection*{Parte C --- Conexión entre monoides y categorías}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, start=21]
+    \item Sea \( (M,*) \) un monoide. Construya una categoría \( \mathcal{C}_M \) con un solo objeto \( \bullet \) tal que
+    \[
+        \mathrm{Hom}_{\mathcal{C}_M}(\bullet,\bullet)=M.
+    \]
+    Defina la composición usando la operación de \( M \) y verifique los axiomas de categoría.
+
+    \item Recíprocamente, sea \( \mathcal{C} \) una categoría con un único objeto \( A \). Demuestre que
+    \[
+        \mathrm{Hom}_{\mathcal{C}}(A,A)
+    \]
+    tiene estructura de monoide con la composición.
+
+    \item Explique por qué un grupo puede verse como una categoría con un solo objeto en la que todos los morfismos son isomorfismos.
+
+    \item Compare las siguientes tres ideas y explique sus diferencias con claridad:
+    \begin{enumerate}[label=\alph*)]
+        \item igualdad de objetos;
+        \item isomorfismo de objetos;
+        \item igualdad de morfismos.
+    \end{enumerate}
+\end{enumerate}
+
+\subsection*{Reto final}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, start=25]
+    \item Redacte un cuadro comparativo donde aparezcan las estructuras
+    \[
+        \text{magma} \to \text{semigrupo} \to \text{monoide} \to \text{grupo}
+    \]
+    indicando en cada paso qué propiedad adicional se exige. Luego explique cómo la noción de categoría abstrae la composición y la identidad que ya aparecen en estas estructuras.
+\end{enumerate}
