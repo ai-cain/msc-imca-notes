@@ -158,3 +158,123 @@ Este set está alineado con las definiciones y ejemplos del capítulo: leyes de 
     \]
     indicando en cada paso qué propiedad adicional se exige. Luego explique cómo la noción de categoría abstrae la composición y la identidad que ya aparecen en estas estructuras.
 \end{enumerate}
+
+% ------------------------------------------------------------------
+\subsection*{Parte D --- Problemas resueltos}
+% ------------------------------------------------------------------
+
+\begin{enumerate}[label=\textbf{\arabic*.}, start=26]
+
+    % ---------------------------------------------------------------
+    \item Demuestre que \((\mathbb{Q}^{*}, \cdot)\), donde
+    \(\mathbb{Q}^{*} := \mathbb{Q} \setminus \{0\}\), es un grupo abeliano.
+
+    \textbf{Solución.}
+    \begin{itemize}
+        \item \textit{Clausura.} Si \(p, q \in \mathbb{Q}^{*}\), entonces \(pq \in \mathbb{Q}\) y \(pq \neq 0\) (pues \(\mathbb{Q}\) no tiene divisores de cero). Luego \(pq \in \mathbb{Q}^{*}\).
+        \item \textit{Asociatividad.} La multiplicación en \(\mathbb{Q}\) es asociativa.
+        \item \textit{Identidad.} El número \(1 \in \mathbb{Q}^{*}\) satisface \(1 \cdot q = q \cdot 1 = q\) para todo \(q \in \mathbb{Q}^{*}\).
+        \item \textit{Inversos.} Para cada \(q \in \mathbb{Q}^{*}\), el número \(q^{-1} = 1/q \in \mathbb{Q}^{*}\) satisface \(q \cdot q^{-1} = 1\).
+        \item \textit{Conmutatividad.} \(pq = qp\) para todo \(p,q \in \mathbb{Q}^{*}\).
+    \end{itemize}
+    Por tanto \((\mathbb{Q}^{*}, \cdot)\) es un grupo abeliano. \hfill\(\square\)
+
+    % ---------------------------------------------------------------
+    \item Demuestre que \(GL_n(\mathbb{R})\), el conjunto de matrices invertibles \(n \times n\) con coeficientes reales, es un grupo bajo la multiplicación de matrices.
+
+    \textbf{Solución.}
+    \begin{itemize}
+        \item \textit{Clausura.} Si \(A, B \in GL_n(\mathbb{R})\), entonces \(\det(AB) = \det A \cdot \det B \neq 0\), luego \(AB \in GL_n(\mathbb{R})\).
+        \item \textit{Asociatividad.} La multiplicación de matrices es asociativa.
+        \item \textit{Identidad.} La matriz identidad \(I_n\) satisface \(I_n A = A I_n = A\) y \(\det(I_n)=1 \neq 0\).
+        \item \textit{Inversos.} Por definición, cada \(A \in GL_n(\mathbb{R})\) admite \(A^{-1}\) con \(\det(A^{-1}) = (\det A)^{-1} \neq 0\).
+    \end{itemize}
+    Por tanto \(GL_n(\mathbb{R})\) es un grupo. (No es abeliano para \(n \geq 2\) en general.) \hfill\(\square\)
+
+    % ---------------------------------------------------------------
+    \item Sea \(f : (G, *) \to (H, \cdot)\) un homomorfismo de grupos. Demuestre que:
+    \begin{enumerate}[label=\alph*)]
+        \item \(f(e_G) = e_H\),
+        \item \(f(a^{-1}) = f(a)^{-1}\) para todo \(a \in G\).
+    \end{enumerate}
+
+    \textbf{Solución.}
+    \begin{enumerate}[label=\alph*)]
+        \item Como \(f\) es homomorfismo:
+        \[
+            f(e_G) = f(e_G * e_G) = f(e_G) \cdot f(e_G).
+        \]
+        Multiplicando ambos lados a la izquierda por \(f(e_G)^{-1}\):
+        \[
+            e_H = f(e_G)^{-1} \cdot f(e_G) \cdot f(e_G) = e_H \cdot f(e_G) = f(e_G).
+        \]
+        \item Para \(a \in G\):
+        \[
+            f(a) \cdot f(a^{-1}) = f(a * a^{-1}) = f(e_G) = e_H.
+        \]
+        Análogamente \(f(a^{-1}) \cdot f(a) = e_H\). Por unicidad del inverso, \(f(a^{-1}) = f(a)^{-1}\). \hfill\(\square\)
+    \end{enumerate}
+
+    % ---------------------------------------------------------------
+    \item Considere \(A = \{e, a, b, c\}\) con la siguiente tabla de Cayley:
+    \[
+    \begin{array}{c|cccc}
+        \cdot & e & a & b & c \\ \hline
+        e & e & a & b & c \\
+        a & a & e & c & b \\
+        b & b & c & e & a \\
+        c & c & b & a & e
+    \end{array}
+    \]
+    \begin{enumerate}[label=\alph*)]
+        \item Verifique que \((A, \cdot)\) es un grupo.
+        \item Determine si es abeliano.
+        \item Identifique el inverso de cada elemento.
+    \end{enumerate}
+
+    \textbf{Solución.}
+    \begin{enumerate}[label=\alph*)]
+        \item \textit{Clausura}: todos los productos están en \(A\) (la tabla es cerrada). \textit{Asociatividad}: se puede verificar directamente (es \(\mathbb{Z}_2 \times \mathbb{Z}_2\), conocido como grupo de Klein). \textit{Identidad}: \(e\) actúa como neutro. \textit{Inversos}: ver apartado c).
+        \item La tabla es simétrica respecto a la diagonal, luego \(x \cdot y = y \cdot x\) para todos \(x,y \in A\). El grupo \textbf{es abeliano}.
+        \item De la tabla: \(e^{-1}=e\), \(a^{-1}=a\), \(b^{-1}=b\), \(c^{-1}=c\). Todo elemento es su propio inverso. \hfill\(\square\)
+    \end{enumerate}
+
+    % ---------------------------------------------------------------
+    \item Construya explícitamente la categoría \(\mathcal{C}_{(\mathbb{Z},+)}\) asociada al monoide \((\mathbb{Z}, +)\) con un único objeto \(\bullet\), y verifique los axiomas de categoría.
+
+    \textbf{Solución.}
+    \begin{itemize}
+        \item \textit{Objeto}: \(\mathrm{Ob}(\mathcal{C}) = \{\bullet\}\).
+        \item \textit{Morfismos}: \(\mathrm{Hom}(\bullet, \bullet) = \mathbb{Z}\). Cada entero \(n \in \mathbb{Z}\) es un morfismo \(n : \bullet \to \bullet\).
+        \item \textit{Composición}: dados \(m, n \in \mathbb{Z}\), definimos \(n \circ m := m + n\).
+        \item \textit{Identidad}: el morfismo identidad de \(\bullet\) es \(0 \in \mathbb{Z}\), pues \(0 + n = n + 0 = n\) para todo \(n\).
+        \item \textit{Asociatividad}: \((p \circ q) \circ r = (q+p)+r = q + p + r\) y \(p \circ (q \circ r) = p + (r+q) = p+q+r\). Como la suma en \(\mathbb{Z}\) es asociativa, se cumple la asociatividad.
+    \end{itemize}
+    Así \(\mathcal{C}_{(\mathbb{Z},+)}\) es una categoría. Además, como todo \(n \in \mathbb{Z}\) tiene inverso \(-n\), todos los morfismos son isomorfismos, lo cual refleja que \((\mathbb{Z},+)\) es un grupo. \hfill\(\square\)
+
+    % ---------------------------------------------------------------
+    \item Sea \((M, *)\) un monoide conmutativo. Defina la relación \(\sim\) sobre \(M \times M\) por
+    \[
+        (a, b) \sim (c, d) \iff \exists\, t \in M : a * d * t = b * c * t.
+    \]
+    \begin{enumerate}[label=\alph*)]
+        \item Demuestre que \(\sim\) es una relación de equivalencia.
+        \item Explique por qué esta construcción es el primer paso de la construcción de Grothendieck para obtener un grupo a partir de \((M, *)\).
+    \end{enumerate}
+
+    \textbf{Solución.}
+    \begin{enumerate}[label=\alph*)]
+        \item
+        \begin{itemize}
+            \item \textit{Reflexividad}: \((a,b) \sim (a,b)\) pues \(a*b*e = b*a*e\) (usando conmutatividad, con \(t = e\)).
+            \item \textit{Simetría}: si \((a,b) \sim (c,d)\) con testigo \(t\), entonces \(a*d*t = b*c*t\), que reescrito es \(c*b*t = d*a*t\), así \((c,d) \sim (a,b)\) con el mismo testigo.
+            \item \textit{Transitividad}: si \((a,b) \sim (c,d)\) con testigo \(t_1\) y \((c,d) \sim (p,q)\) con testigo \(t_2\), entonces
+            \[
+                a*d*t_1 = b*c*t_1, \quad c*q*t_2 = d*p*t_2.
+            \]
+            Multiplicando convenientemente (y usando conmutatividad) se obtiene \((a,b) \sim (p,q)\) con testigo \(t_1 * t_2 * d\).
+        \end{itemize}
+        \item Las clases de equivalencia \([a,b]\) representan formalmente la ``diferencia'' \(a - b\) (o cociente \(a/b\) en el caso multiplicativo). Dotando al cociente \((M \times M)/{\sim}\) de la operación \([a,b] * [c,d] := [a*c, b*d]\), se obtiene un grupo: el \textbf{grupo de Grothendieck} de \(M\). Para \(M = (\mathbb{N},+)\) esta construcción produce \(\mathbb{Z}\). \hfill\(\square\)
+    \end{enumerate}
+
+\end{enumerate}
