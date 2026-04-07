@@ -1,280 +1,847 @@
 \section{Estructuras algebraicas fundamentales y categorías}
 
-\textbf{Referencia principal:} \texttt{First Semester/Algebra/ref/doc.pdf}
+\textbf{Referencias:}
+\begin{itemize}
+    \item[{[Q]}] Henriri Quino Huerta, \textit{Algebra}, IMCA, Perú, 2025.
+    Capítulo 1, Secciones 1.1 y 1.2.
+    \item[{[P]}] J. Palacios, \textit{Algebra}, IMCA, Department of Mathematics.
+    Capítulo 1, Sección 1.1 (Group-like structures).
+\end{itemize}
 
-\textbf{Capítulo:} 1
+Todos los problemas están basados en la teoría común a ambas referencias:
+estructuras algebraicas fundamentales (magma, semigrupo, monoide, grupo,
+subestructuras, homomorfismos) y su aplicación a categorías [Q, §1.2].
+Los niveles de dificultad son:
 
-\textbf{Secciones:} 1.1 y 1.2
+\begin{center}
+\begin{tabular}{cl}
+    \textbf{Nivel 1} & Cálculo directo y verificación. \\
+    \textbf{Nivel 2} & Demostraciones directas de los teoremas del texto. \\
+    \textbf{Nivel 3} & Síntesis entre estructuras algebraicas y categorías. \\
+    \textbf{Nivel 4} & Reto --- combinación profunda de ideas del capítulo. \\
+\end{tabular}
+\end{center}
 
-Este set está alineado con las definiciones y ejemplos del capítulo: leyes de composición, magma, semigrupo, monoide, grupo y nociones básicas de categoría.
+% ==================================================================
+\subsection*{Nivel 1 --- Cálculo directo}
+% ==================================================================
 
-\subsection*{Parte A --- Leyes de composición y estructuras algebraicas}
+\textit{Teoría usada}: Definición 1.1.2 (operación interna/externa), Definición 1.1.3
+(magma, semigrupo, monoide, grupo, conmutatividad), Ejemplos 1.1.2 y 1.1.3.
 
-\begin{enumerate}[label=\textbf{\arabic*.}]
-    \item Sea \( A = \mathbb{Z} \). Defina la operación
-    \[
-        a * b = a + b + 1.
-    \]
-    Determine si \( (A, *) \) es magma, semigrupo, monoide o grupo. Si existe elemento identidad, encuéntrelo. Si es grupo, halle el inverso de un elemento arbitrario.
+\bigskip
 
-    \item Considere los siguientes ejemplos y clasifique cada uno como magma, semigrupo, monoide o grupo. Indique además si la operación es conmutativa:
-    \begin{enumerate}[label=\alph*)]
-        \item \( (\mathbb{N}, +) \)
-        \item \( (\mathbb{Z}, +) \)
-        \item \( (\mathbb{N}, \cdot) \)
-        \item \( (\mathcal{P}(X), \cup) \)
-        \item \( (\mathcal{P}(X), \cap) \)
-        \item \( (\mathrm{End}(X), \circ) \), donde \( \mathrm{End}(X) \) es el conjunto de funciones \( X \to X \)
-    \end{enumerate}
+\begin{enumerate}[label=\textbf{1.\arabic*.}]
 
-    \item Dé un ejemplo de:
-    \begin{enumerate}[label=\alph*)]
-        \item una ley de composición entre dos conjuntos distintos que NO sea operación interna;
-        \item una operación interna que no sea asociativa;
-        \item un semigrupo que no sea monoide;
-        \item un monoide que no sea grupo.
-    \end{enumerate}
-
-    \item En el conjunto \( A = \{0,1,2\} \), defina la operación
-    \[
-        a \star b = \max\{a,b\}.
-    \]
-    Verifique si \( (A,\star) \) es un monoide. Determine su elemento identidad y diga si es grupo.
-
-    \item En el conjunto \( A = \{0,1,2\} \), defina la operación
-    \[
-        a \diamond b = \min\{a+b,2\}.
-    \]
-    Estudie si la operación es asociativa. Si lo es, determine si \( (A,\diamond) \) es monoide o grupo.
-
-    \item Pruebe que en un monoide el elemento identidad es único.
-
-    \item Pruebe que en un grupo el inverso de cada elemento es único.
-
-    \item Sea \( G \) un grupo. Demuestre que para todo \( a \in G \),
-    \[
-        (a^{-1})^{-1} = a
-        \qquad \text{y} \qquad
-        (ab)^{-1} = b^{-1}a^{-1}.
-    \]
-
-    \item Demuestre que \( (\mathbb{Z}_n, +) \) es un grupo abeliano para todo \( n \geq 1 \).
-
-    \item Usando la convención del texto, considere
-    \[
-        (\mathbb{Z}_n)^* = \{[a] \in \mathbb{Z}_n : [a] \neq [0]\}
-    \]
-    con la multiplicación módulo \( n \).
-    \begin{enumerate}[label=\alph*)]
-        \item Estudie los casos \( n=4 \), \( n=6 \) y \( n=7 \).
-        \item Determine en cuáles casos se obtiene un grupo.
-        \item Explique qué relación observa con la primalidad de \( n \).
-    \end{enumerate}
-
-    \item Dé un ejemplo de operación externa \( A \times B \to B \) y explique por qué NO puede considerarse una operación interna en \( B \).
-
-    \item Sea \( M \) un semigrupo que tiene identidad por la izquierda \( e \) y tal que cada elemento \( a \in M \) tiene inverso por la izquierda \( b \in M \), es decir, \( ba = e \). Demuestre que \( M \) es un grupo.
+% ----------------------------------------------------------------
+\item Sea \(A = \mathbb{Z}\) con la operación \(a * b := a + b + 1\).
+\begin{enumerate}[label=\alph*)]
+    \item Calcule \(2 * 3\), \((-1)*1\) y \(0*0\).
+    \item Determine el elemento identidad, si existe.
+    \item Halle el inverso de un elemento arbitrario \(a \in \mathbb{Z}\).
+    \item Clasifique \((\mathbb{Z}, *)\) como magma, semigrupo, monoide o grupo.
 \end{enumerate}
 
-\subsection*{Parte B --- Introducción a categorías}
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item \(2*3 = 2+3+1 = 6\). \quad \((-1)*1 = -1+1+1 = 1\). \quad \(0*0 = 0+0+1 = 1\).
 
-\begin{enumerate}[label=\textbf{\arabic*.}, start=13]
-    \item Escriba con precisión la definición de categoría identificando:
-    \begin{enumerate}[label=\alph*)]
-        \item objetos,
-        \item morfismos,
-        \item composición,
-        \item identidades,
-        \item asociatividad.
-    \end{enumerate}
+    \item Queremos \(e\) tal que \(a*e = a\) para todo \(a\), es decir \(a+e+1=a\),
+    luego \(e = -1\). Verificamos: \(a*(-1) = a+(-1)+1 = a\) \checkmark, y
+    \((-1)*a = -1+a+1 = a\) \checkmark. El elemento identidad es \(e = -1\).
 
-    \item En la categoría \textbf{Set}, considere
-    \[
-        A=\{1,2\}, \qquad B=\{a,b,c\}, \qquad C=\{\alpha,\beta\}.
-    \]
-    Defina funciones \( f:A\to B \) y \( g:B\to C \), calcule \( g\circ f \) y verifique explícitamente la propiedad de identidad usando \( id_A \) e \( id_B \).
+    \item Queremos \(b\) tal que \(a*b = -1\), es decir \(a+b+1=-1\), luego
+    \(b = -a-2\). Se tiene \(b \in \mathbb{Z}\) para todo \(a \in \mathbb{Z}\).
 
-    \item Demuestre que el morfismo identidad de un objeto en una categoría es único.
-
-    \item Sea \( f:A\to B \) un morfismo en una categoría. Suponga que existe \( g:B\to A \) con
-    \[
-        g\circ f = id_A
-    \]
-    y \( h:B\to A \) con
-    \[
-        f\circ h = id_B.
-    \]
-    Demuestre que \( g=h \).
-
-    \item En la categoría \textbf{Set}, pruebe que un morfismo es un isomorfismo si y solo si es biyectivo.
-
-    \item En la categoría \textbf{Mag}, tome
-    \[
-        (\mathbb{Z},+) \qquad \text{y} \qquad (\mathbb{Z},+).
-    \]
-    Estudie si las aplicaciones siguientes son homomorfismos de magmas:
-    \begin{enumerate}[label=\alph*)]
-        \item \( f(x)=2x \)
-        \item \( g(x)=x+1 \)
-        \item \( h(x)=-x \)
-    \end{enumerate}
-
-    \item En la categoría \( \mathbf{Vect}_K \), explique por qué la composición de aplicaciones lineales vuelve a ser lineal. Luego verifique esa propiedad para dos transformaciones lineales concretas entre espacios \( K^2 \) y \( K^3 \).
-
-    \item Dé un ejemplo de un morfismo en \textbf{Top} que sea continuo pero no sea isomorfismo. Explique con cuidado por qué falla la condición de isomorfismo.
+    \item La asociatividad:
+    \(a*(b*c) = a+(b+c+1)+1 = a+b+c+2 = (a+b+1)+c+1 = (a*b)*c\).
+    Como es cerrada, asociativa, tiene identidad e inversos: \textbf{\((\mathbb{Z},*)\) es un grupo}
+    (abeliano, pues \(a*b = a+b+1 = b+a+1 = b*a\)). \hfill\(\square\)
 \end{enumerate}
 
-\subsection*{Parte C --- Conexión entre monoides y categorías}
-
-\begin{enumerate}[label=\textbf{\arabic*.}, start=21]
-    \item Sea \( (M,*) \) un monoide. Construya una categoría \( \mathcal{C}_M \) con un solo objeto \( \bullet \) tal que
-    \[
-        \mathrm{Hom}_{\mathcal{C}_M}(\bullet,\bullet)=M.
-    \]
-    Defina la composición usando la operación de \( M \) y verifique los axiomas de categoría.
-
-    \item Recíprocamente, sea \( \mathcal{C} \) una categoría con un único objeto \( A \). Demuestre que
-    \[
-        \mathrm{Hom}_{\mathcal{C}}(A,A)
-    \]
-    tiene estructura de monoide con la composición.
-
-    \item Explique por qué un grupo puede verse como una categoría con un solo objeto en la que todos los morfismos son isomorfismos.
-
-    \item Compare las siguientes tres ideas y explique sus diferencias con claridad:
-    \begin{enumerate}[label=\alph*)]
-        \item igualdad de objetos;
-        \item isomorfismo de objetos;
-        \item igualdad de morfismos.
-    \end{enumerate}
+% ----------------------------------------------------------------
+\item En \(A = \{0,1,2\}\), defina \(a \star b := \max\{a,b\}\).
+\begin{enumerate}[label=\alph*)]
+    \item Construya la tabla de Cayley de \((A,\star)\).
+    \item Determine si la operación es conmutativa.
+    \item Halle el elemento identidad, si existe.
+    \item ¿Es \((A,\star)\) un grupo? Justifique.
 \end{enumerate}
 
-\subsection*{Reto final}
-
-\begin{enumerate}[label=\textbf{\arabic*.}, start=25]
-    \item Redacte un cuadro comparativo donde aparezcan las estructuras
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item
     \[
-        \text{magma} \to \text{semigrupo} \to \text{monoide} \to \text{grupo}
-    \]
-    indicando en cada paso qué propiedad adicional se exige. Luego explique cómo la noción de categoría abstrae la composición y la identidad que ya aparecen en estas estructuras.
-\end{enumerate}
-
-% ------------------------------------------------------------------
-\subsection*{Parte D --- Problemas resueltos}
-% ------------------------------------------------------------------
-
-\begin{enumerate}[label=\textbf{\arabic*.}, start=26]
-
-    % ---------------------------------------------------------------
-    \item Demuestre que \((\mathbb{Q}^{*}, \cdot)\), donde
-    \(\mathbb{Q}^{*} := \mathbb{Q} \setminus \{0\}\), es un grupo abeliano.
-
-    \textbf{Solución.}
-    \begin{itemize}
-        \item \textit{Clausura.} Si \(p, q \in \mathbb{Q}^{*}\), entonces \(pq \in \mathbb{Q}\) y \(pq \neq 0\) (pues \(\mathbb{Q}\) no tiene divisores de cero). Luego \(pq \in \mathbb{Q}^{*}\).
-        \item \textit{Asociatividad.} La multiplicación en \(\mathbb{Q}\) es asociativa.
-        \item \textit{Identidad.} El número \(1 \in \mathbb{Q}^{*}\) satisface \(1 \cdot q = q \cdot 1 = q\) para todo \(q \in \mathbb{Q}^{*}\).
-        \item \textit{Inversos.} Para cada \(q \in \mathbb{Q}^{*}\), el número \(q^{-1} = 1/q \in \mathbb{Q}^{*}\) satisface \(q \cdot q^{-1} = 1\).
-        \item \textit{Conmutatividad.} \(pq = qp\) para todo \(p,q \in \mathbb{Q}^{*}\).
-    \end{itemize}
-    Por tanto \((\mathbb{Q}^{*}, \cdot)\) es un grupo abeliano. \hfill\(\square\)
-
-    % ---------------------------------------------------------------
-    \item Demuestre que \(GL_n(\mathbb{R})\), el conjunto de matrices invertibles \(n \times n\) con coeficientes reales, es un grupo bajo la multiplicación de matrices.
-
-    \textbf{Solución.}
-    \begin{itemize}
-        \item \textit{Clausura.} Si \(A, B \in GL_n(\mathbb{R})\), entonces \(\det(AB) = \det A \cdot \det B \neq 0\), luego \(AB \in GL_n(\mathbb{R})\).
-        \item \textit{Asociatividad.} La multiplicación de matrices es asociativa.
-        \item \textit{Identidad.} La matriz identidad \(I_n\) satisface \(I_n A = A I_n = A\) y \(\det(I_n)=1 \neq 0\).
-        \item \textit{Inversos.} Por definición, cada \(A \in GL_n(\mathbb{R})\) admite \(A^{-1}\) con \(\det(A^{-1}) = (\det A)^{-1} \neq 0\).
-    \end{itemize}
-    Por tanto \(GL_n(\mathbb{R})\) es un grupo. (No es abeliano para \(n \geq 2\) en general.) \hfill\(\square\)
-
-    % ---------------------------------------------------------------
-    \item Sea \(f : (G, *) \to (H, \cdot)\) un homomorfismo de grupos. Demuestre que:
-    \begin{enumerate}[label=\alph*)]
-        \item \(f(e_G) = e_H\),
-        \item \(f(a^{-1}) = f(a)^{-1}\) para todo \(a \in G\).
-    \end{enumerate}
-
-    \textbf{Solución.}
-    \begin{enumerate}[label=\alph*)]
-        \item Como \(f\) es homomorfismo:
-        \[
-            f(e_G) = f(e_G * e_G) = f(e_G) \cdot f(e_G).
-        \]
-        Multiplicando ambos lados a la izquierda por \(f(e_G)^{-1}\):
-        \[
-            e_H = f(e_G)^{-1} \cdot f(e_G) \cdot f(e_G) = e_H \cdot f(e_G) = f(e_G).
-        \]
-        \item Para \(a \in G\):
-        \[
-            f(a) \cdot f(a^{-1}) = f(a * a^{-1}) = f(e_G) = e_H.
-        \]
-        Análogamente \(f(a^{-1}) \cdot f(a) = e_H\). Por unicidad del inverso, \(f(a^{-1}) = f(a)^{-1}\). \hfill\(\square\)
-    \end{enumerate}
-
-    % ---------------------------------------------------------------
-    \item Considere \(A = \{e, a, b, c\}\) con la siguiente tabla de Cayley:
-    \[
-    \begin{array}{c|cccc}
-        \cdot & e & a & b & c \\ \hline
-        e & e & a & b & c \\
-        a & a & e & c & b \\
-        b & b & c & e & a \\
-        c & c & b & a & e
+    \begin{array}{c|ccc}
+        \star & 0 & 1 & 2 \\ \hline
+        0     & 0 & 1 & 2 \\
+        1     & 1 & 1 & 2 \\
+        2     & 2 & 2 & 2
     \end{array}
     \]
-    \begin{enumerate}[label=\alph*)]
-        \item Verifique que \((A, \cdot)\) es un grupo.
-        \item Determine si es abeliano.
-        \item Identifique el inverso de cada elemento.
-    \end{enumerate}
+    \item Sí, pues \(\max\{a,b\} = \max\{b,a\}\). La operación es \textbf{conmutativa}.
+    \item Buscamos \(e\) con \(\max\{e,a\} = a\) para todo \(a\). Esto exige
+    \(e \leq a\) para todo \(a \in \{0,1,2\}\), luego \(e = 0\).
+    Verificamos: \(\max\{0,a\} = a\) \checkmark.
+    \item El elemento \(2\) no tiene inverso: se necesitaría \(b\) con
+    \(\max\{2,b\} = 0\), lo que es imposible pues \(\max\{2,b\} \geq 2 > 0\).
+    \textbf{\((A,\star)\) es un monoide conmutativo, pero no es un grupo.} \hfill\(\square\)
+\end{enumerate}
 
-    \textbf{Solución.}
-    \begin{enumerate}[label=\alph*)]
-        \item \textit{Clausura}: todos los productos están en \(A\) (la tabla es cerrada). \textit{Asociatividad}: se puede verificar directamente (es \(\mathbb{Z}_2 \times \mathbb{Z}_2\), conocido como grupo de Klein). \textit{Identidad}: \(e\) actúa como neutro. \textit{Inversos}: ver apartado c).
-        \item La tabla es simétrica respecto a la diagonal, luego \(x \cdot y = y \cdot x\) para todos \(x,y \in A\). El grupo \textbf{es abeliano}.
-        \item De la tabla: \(e^{-1}=e\), \(a^{-1}=a\), \(b^{-1}=b\), \(c^{-1}=c\). Todo elemento es su propio inverso. \hfill\(\square\)
-    \end{enumerate}
+% ----------------------------------------------------------------
+\item En \(A = \{0,1,2\}\), defina \(a \diamond b := \min\{a+b,\,2\}\).
+\begin{enumerate}[label=\alph*)]
+    \item Construya la tabla de Cayley de \((A,\diamond)\).
+    \item Verifique si la operación es asociativa (pruebe un caso general y
+    uno concreto donde pueda fallar la intuición).
+    \item Determine si \((A,\diamond)\) es monoide o grupo.
+\end{enumerate}
 
-    % ---------------------------------------------------------------
-    \item Construya explícitamente la categoría \(\mathcal{C}_{(\mathbb{Z},+)}\) asociada al monoide \((\mathbb{Z}, +)\) con un único objeto \(\bullet\), y verifique los axiomas de categoría.
-
-    \textbf{Solución.}
-    \begin{itemize}
-        \item \textit{Objeto}: \(\mathrm{Ob}(\mathcal{C}) = \{\bullet\}\).
-        \item \textit{Morfismos}: \(\mathrm{Hom}(\bullet, \bullet) = \mathbb{Z}\). Cada entero \(n \in \mathbb{Z}\) es un morfismo \(n : \bullet \to \bullet\).
-        \item \textit{Composición}: dados \(m, n \in \mathbb{Z}\), definimos \(n \circ m := m + n\).
-        \item \textit{Identidad}: el morfismo identidad de \(\bullet\) es \(0 \in \mathbb{Z}\), pues \(0 + n = n + 0 = n\) para todo \(n\).
-        \item \textit{Asociatividad}: \((p \circ q) \circ r = (q+p)+r = q + p + r\) y \(p \circ (q \circ r) = p + (r+q) = p+q+r\). Como la suma en \(\mathbb{Z}\) es asociativa, se cumple la asociatividad.
-    \end{itemize}
-    Así \(\mathcal{C}_{(\mathbb{Z},+)}\) es una categoría. Además, como todo \(n \in \mathbb{Z}\) tiene inverso \(-n\), todos los morfismos son isomorfismos, lo cual refleja que \((\mathbb{Z},+)\) es un grupo. \hfill\(\square\)
-
-    % ---------------------------------------------------------------
-    \item Sea \((M, *)\) un monoide conmutativo. Defina la relación \(\sim\) sobre \(M \times M\) por
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item
     \[
-        (a, b) \sim (c, d) \iff \exists\, t \in M : a * d * t = b * c * t.
+    \begin{array}{c|ccc}
+        \diamond & 0 & 1 & 2 \\ \hline
+        0        & 0 & 1 & 2 \\
+        1        & 1 & 2 & 2 \\
+        2        & 2 & 2 & 2
+    \end{array}
     \]
-    \begin{enumerate}[label=\alph*)]
-        \item Demuestre que \(\sim\) es una relación de equivalencia.
-        \item Explique por qué esta construcción es el primer paso de la construcción de Grothendieck para obtener un grupo a partir de \((M, *)\).
-    \end{enumerate}
+    \item Debemos verificar \(a \diamond (b \diamond c) = (a \diamond b) \diamond c\).
+    Sean \(a,b,c \in \{0,1,2\}\). Ambos lados calculan
+    \(\min\{a + b + c,\, 2\}\), ya que la función \(\min\{\cdot, 2\}\) es monótona y
+    \(\min\{\min\{a+b,2\}+c,2\} = \min\{a+b+c,2\}\) (si \(a+b \geq 2\) el resultado
+    es \(2\) en cualquier caso; si \(a+b < 2\) entonces \(\min\{a+b,2\}=a+b\)).
+    La operación es \textbf{asociativa}.
+    \item Identidad: \(a \diamond 0 = \min\{a,2\} = a\) para \(a \leq 2\) \checkmark.
+    Neutro es \(0\). ¿Inversos? El elemento \(2\) satisface
+    \(2 \diamond b = \min\{2+b,2\} = 2\) para todo \(b\), nunca vuelve a \(0\).
+    \textbf{\((A,\diamond)\) es monoide conmutativo, pero no grupo.} \hfill\(\square\)
+\end{enumerate}
 
-    \textbf{Solución.}
-    \begin{enumerate}[label=\alph*)]
-        \item
-        \begin{itemize}
-            \item \textit{Reflexividad}: \((a,b) \sim (a,b)\) pues \(a*b*e = b*a*e\) (usando conmutatividad, con \(t = e\)).
-            \item \textit{Simetría}: si \((a,b) \sim (c,d)\) con testigo \(t\), entonces \(a*d*t = b*c*t\), que reescrito es \(c*b*t = d*a*t\), así \((c,d) \sim (a,b)\) con el mismo testigo.
-            \item \textit{Transitividad}: si \((a,b) \sim (c,d)\) con testigo \(t_1\) y \((c,d) \sim (p,q)\) con testigo \(t_2\), entonces
-            \[
-                a*d*t_1 = b*c*t_1, \quad c*q*t_2 = d*p*t_2.
-            \]
-            Multiplicando convenientemente (y usando conmutatividad) se obtiene \((a,b) \sim (p,q)\) con testigo \(t_1 * t_2 * d\).
-        \end{itemize}
-        \item Las clases de equivalencia \([a,b]\) representan formalmente la ``diferencia'' \(a - b\) (o cociente \(a/b\) en el caso multiplicativo). Dotando al cociente \((M \times M)/{\sim}\) de la operación \([a,b] * [c,d] := [a*c, b*d]\), se obtiene un grupo: el \textbf{grupo de Grothendieck} de \(M\). Para \(M = (\mathbb{N},+)\) esta construcción produce \(\mathbb{Z}\). \hfill\(\square\)
-    \end{enumerate}
+% ----------------------------------------------------------------
+\item Construya la tabla de Cayley de \((\mathbb{Z}_4, +)\) e identifique:
+el neutro, el inverso de cada elemento, y si la operación es conmutativa.
+
+\textbf{Solución.}
+\[
+\begin{array}{c|cccc}
+    +    & [0] & [1] & [2] & [3] \\ \hline
+    [0]  & [0] & [1] & [2] & [3] \\
+    [1]  & [1] & [2] & [3] & [0] \\
+    [2]  & [2] & [3] & [0] & [1] \\
+    [3]  & [3] & [0] & [1] & [2]
+\end{array}
+\]
+Neutro: \([0]\).
+Inversos: \([0]^{-1}=[0]\), \([1]^{-1}=[3]\), \([2]^{-1}=[2]\), \([3]^{-1}=[1]\).
+La tabla es simétrica respecto a la diagonal, luego la operación es \textbf{conmutativa}.
+\((\mathbb{Z}_4, +)\) es un grupo abeliano (Ejemplo 1.1.3 del texto). \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Clasifique cada una de las siguientes estructuras como magma, semigrupo,
+monoide o grupo, e indique si la operación es conmutativa.
+\begin{enumerate}[label=\alph*)]
+    \item \((\mathbb{N}, +)\) con \(\mathbb{N} = \{0,1,2,\ldots\}\)
+    \item \((\mathbb{Z}, +)\)
+    \item \((\mathbb{N}, \cdot)\)
+    \item \((\mathbb{Z}^+, \cdot)\) con \(\mathbb{Z}^+ = \{1,2,3,\ldots\}\)
+    \item \((\mathcal{P}(X), \cup)\)
+    \item \((\mathcal{P}(X), \cap)\)
+    \item \((\mathrm{End}(X), \circ)\), funciones \(X \to X\) con composición
+    \item \((\mathbb{Q}^*, \cdot)\) con \(\mathbb{Q}^* = \mathbb{Q} \setminus \{0\}\)
+    \item \((GL_n(\mathbb{R}), \cdot)\), matrices invertibles \(n\times n\)
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item \((\mathbb{N},+)\): monoide (neutro \(0\)), no grupo (\(1\) sin inverso). Conmutativa.
+    \item \((\mathbb{Z},+)\): grupo abeliano. Neutro \(0\), inverso de \(n\) es \(-n\). Conmutativa.
+    \item \((\mathbb{N},\cdot)\): monoide (neutro \(1\)), no grupo. Conmutativa.
+    \item \((\mathbb{Z}^+,\cdot)\): monoide (neutro \(1\)), no grupo (\(2\) sin inverso en \(\mathbb{Z}^+\)). Conmutativa.
+    \item \((\mathcal{P}(X),\cup)\): monoide (neutro \(\emptyset\)), no grupo. Conmutativa.
+    \item \((\mathcal{P}(X),\cap)\): monoide (neutro \(X\)), no grupo. Conmutativa.
+    \item \((\mathrm{End}(X),\circ)\): monoide (neutro \(\mathrm{id}_X\)), no grupo (funciones no inyectivas no son invertibles). No conmutativa en general.
+    \item \((\mathbb{Q}^*,\cdot)\): grupo abeliano. Neutro \(1\), inverso de \(q\) es \(1/q\). Conmutativa.
+    \item \((GL_n(\mathbb{R}),\cdot)\): grupo. Neutro \(I_n\), inverso de \(A\) es \(A^{-1}\). No conmutativa para \(n \geq 2\) en general. \hfill\(\square\)
+\end{enumerate}
+
+% ----------------------------------------------------------------
+\item Dé un ejemplo de cada una de las siguientes situaciones:
+\begin{enumerate}[label=\alph*)]
+    \item Una ley de composición \(A \times B \to C\) que no sea operación interna.
+    \item Una operación interna que no sea asociativa.
+    \item Un semigrupo que no sea monoide.
+    \item Un monoide que no sea grupo.
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item La función \(\mathbb{Z} \times \mathbb{N} \to \mathbb{Q}\), \((a,n) \mapsto a/n\)
+    (para \(n \neq 0\)): los conjuntos de partida son distintos entre sí y distintos del
+    de llegada, no es operación interna.
+    \item En \(\mathbb{R}\), la operación \(a * b := a - b\):
+    \((1*2)*3 = (1-2)-3 = -4\) pero \(1*(2*3)=1-(2-3)=2\). No asociativa.
+    \item \((\mathbb{Z}^+, \cdot)\) es semigrupo (asociativa, cerrada) pero no monoide si tomamos
+    \(\mathbb{Z}^+ = \{2,3,4,\ldots\}\): el neutro \(1\) no está.
+    Alternativamente, el Ejemplo 1.1.2 menciona \((\mathbb{Z}^+, +)\).
+    \item \((\mathbb{N}, +)\) es monoide (neutro \(0\)) pero no grupo (el \(1\) no tiene inverso en \(\mathbb{N}\)).
+    \hfill\(\square\)
+\end{enumerate}
+
+% ----------------------------------------------------------------
+\item Determine cuáles de las siguientes aplicaciones son operaciones internas en
+el conjunto indicado:
+\begin{enumerate}[label=\alph*)]
+    \item \(a * b := a - b\) en \(\mathbb{N}\).
+    \item \(a * b := a/b\) en \(\mathbb{Q}^*\).
+    \item \(A * B := A \setminus B\) en \(\mathcal{P}(X)\).
+    \item \(a * b := \gcd(a,b)\) en \(\mathbb{Z}^+\).
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{No}: \(1 - 3 = -2 \notin \mathbb{N}\).
+    \item \textbf{Sí}: para \(a,b \in \mathbb{Q}^*\), \(a/b \in \mathbb{Q}\) y \(a/b \neq 0\),
+    luego \(a/b \in \mathbb{Q}^*\).
+    \item \textbf{Sí}: \(A \setminus B \subseteq A \subseteq X\), luego
+    \(A \setminus B \in \mathcal{P}(X)\).
+    \item \textbf{Sí}: \(\gcd(a,b) \geq 1\) y es un entero positivo. \hfill\(\square\)
+\end{enumerate}
+
+\end{enumerate}
+
+% ----------------------------------------------------------------
+\item \textbf{[P, §1.1]} Determine cuáles de los siguientes subconjuntos
+son subestructuras del tipo indicado:
+\begin{enumerate}[label=\alph*)]
+    \item \(T = \{n \in \mathbb{N} : n \text{ es par}\}\) en \((\mathbb{N}, +)\).
+    ¿Es subsemigrupo? ¿Submonoide?
+    \item \(H = \{A \in GL_n(\mathbb{R}) : \det(A) = 1\} = SL_n(\mathbb{R})\)
+    en \((GL_n(\mathbb{R}), \cdot)\). ¿Es subgrupo?
+    \item \(S = \{n \in \mathbb{N} : p \nmid n\}\) para \(p\) primo fijo,
+    en \((\mathbb{N}, \cdot)\). ¿Es submonoide?
+\end{enumerate}
+
+\textbf{Solución.}
+
+\textit{Definiciones} [P, Def. 1.1.10]: Un subconjunto no vacío \(T \subset S\) es
+subsemigrupo si es cerrado bajo la operación; submonoide si además contiene la
+identidad; subgrupo si es cerrado, contiene la identidad y los inversos.
+
+\begin{enumerate}[label=\alph*)]
+    \item \textit{Subsemigrupo}: si \(m, n \in T\) (ambos pares), entonces
+    \(m+n\) es par, luego \(m+n \in T\). \checkmark
+    \textit{Submonoide}: el neutro de \((\mathbb{N},+)\) es \(0\), que es par,
+    luego \(0 \in T\). \checkmark \quad \textbf{Es submonoide}.
+
+    \item Clausura: \(\det(AB) = \det A \cdot \det B = 1 \cdot 1 = 1\). \checkmark
+    Identidad: \(\det(I_n) = 1\). \checkmark
+    Inversos: \(\det(A^{-1}) = (\det A)^{-1} = 1\). \checkmark
+    \textbf{\(SL_n(\mathbb{R})\) es subgrupo de \(GL_n(\mathbb{R})\)}.
+
+    \item Si \(p \nmid m\) y \(p \nmid n\), entonces \(p \nmid mn\)
+    (pues \(p\) es primo). Luego \(mn \in S\). La identidad \(1\) satisface
+    \(p \nmid 1\), luego \(1 \in S\). \textbf{Es submonoide de \((\mathbb{N},\cdot)\)}.
+    \hfill\(\square\)
+\end{enumerate}
+
+\end{enumerate}
+
+% ==================================================================
+\subsection*{Nivel 2 --- Demostraciones directas}
+% ==================================================================
+
+\textit{Teoría usada}: Definición 1.1.3 [Q] / Definición 1.1.6 [P] (grupo),
+Definición 1.1.15 [P] (homomorfismos), Remark 1.1.16 [P] y Problema 2.7 [Q]
+(propiedades de homomorfismos), Proposición 1.1.1 [Q] (\((\mathbb{Z}_n)^*\)),
+Notation 2 [P] (núcleo e imagen).
+
+\bigskip
+
+\begin{enumerate}[label=\textbf{2.\arabic*.}]
+
+% ----------------------------------------------------------------
+\item Pruebe que en un monoide \((M,*)\) el elemento identidad es único.
+
+\textbf{Solución.}
+Suponga que \(e\) y \(e'\) son ambos identidades. Entonces:
+\[
+    e = e * e' = e',
+\]
+donde la primera igualdad usa que \(e'\) es identidad, y la segunda que \(e\) es identidad.
+Luego \(e = e'\). \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Pruebe que en un grupo \((G,*)\) el inverso de cada elemento es único.
+
+\textbf{Solución.}
+Sea \(a \in G\) y suponga que \(b, c \in G\) satisfacen \(b*a = e = a*b\) y
+\(c*a = e = a*c\). Entonces:
+\[
+    b = b*e = b*(a*c) = (b*a)*c = e*c = c.
+\]
+El inverso es único. \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Sea \(G\) un grupo. Demuestre que para todo \(a,b \in G\):
+\begin{enumerate}[label=\alph*)]
+    \item \((a^{-1})^{-1} = a\),
+    \item \((a*b)^{-1} = b^{-1}*a^{-1}\).
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item Por definición, \(a^{-1}\) satisface \(a*a^{-1}=e=a^{-1}*a\). Esto significa
+    que \(a\) es el inverso de \(a^{-1}\), es decir \((a^{-1})^{-1}=a\).
+    \item Calculamos:
+    \[
+        (a*b)*(b^{-1}*a^{-1}) = a*(b*b^{-1})*a^{-1} = a*e*a^{-1} = a*a^{-1}=e.
+    \]
+    Análogamente \((b^{-1}*a^{-1})*(a*b) = b^{-1}*(a^{-1}*a)*b = b^{-1}*e*b = e\).
+    Por unicidad del inverso (problema anterior), \((a*b)^{-1} = b^{-1}*a^{-1}\).
+    \hfill\(\square\)
+\end{enumerate}
+
+% ----------------------------------------------------------------
+\item Demuestre que \((\mathbb{Z}_n, +)\) es un grupo abeliano para todo
+\(n \geq 1\), con identidad \([0]\) e inverso \([a]^{-1} = [-a]\).
+
+\textbf{Solución.}
+La operación \([a]+[b]:=[a+b]\) está bien definida: si \([a]=[a']\) entonces
+\(n \mid a-a'\), y si \([b]=[b']\) entonces \(n \mid b-b'\); luego
+\(n \mid (a+b)-(a'+b')\), así \([a+b]=[a'+b']\).
+\begin{itemize}
+    \item \textit{Clausura}: \([a]+[b]=[a+b] \in \mathbb{Z}_n\).
+    \item \textit{Asociatividad}: \(([a]+[b])+[c]=[a+b+c]=[a]+([b]+[c])\).
+    \item \textit{Identidad}: \([0]+[a]=[a]=[a]+[0]\).
+    \item \textit{Inversos}: \([a]+[-a]=[0]\) y \([-a]=[n-a] \in \mathbb{Z}_n\).
+    \item \textit{Conmutatividad}: \([a]+[b]=[a+b]=[b+a]=[b]+[a]\).
+\end{itemize}
+\hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Sea \(n \geq 2\) y defina
+\((\mathbb{Z}_n)^* := \{[a] \in \mathbb{Z}_n : [a] \neq [0]\}\)
+con la multiplicación módulo \(n\) (como en la Proposición 1.1.1).
+Estudie los casos \(n=4\), \(n=6\) y \(n=7\), y en cada caso determine si
+\((\mathbb{Z}_n)^*\) es un grupo. Explique la relación con la primalidad de \(n\).
+
+\textbf{Solución.}
+
+\textit{Caso \(n=4\)}: \((\mathbb{Z}_4)^*=\{[1],[2],[3]\}\).
+Pero \([2]\cdot[2]=[4]=[0] \notin (\mathbb{Z}_4)^*\): la operación no es interna.
+\textbf{No es grupo}.
+
+\textit{Caso \(n=6\)}: \([2]\cdot[3]=[6]=[0] \notin (\mathbb{Z}_6)^*\).
+\textbf{No es grupo}.
+
+\textit{Caso \(n=7\)}: \(7\) es primo. Para todo \([a] \neq [0]\) se tiene
+\(\gcd(a,7)=1\). Por el algoritmo de Euclides existen \(\alpha,\beta \in \mathbb{Z}\)
+con \(\alpha a + 7\beta = 1\), luego \([\alpha]\cdot[a]=[1]\): todo elemento tiene
+inverso. La clausura se sigue de que \(7\) es primo: si \(7 \mid ab\) entonces
+\(7 \mid a\) o \(7 \mid b\), imposible si \([a],[b] \neq [0]\).
+Verificando el resto de axiomas (heredados de \(\mathbb{Z}\)):
+\textbf{\((\mathbb{Z}_7)^*\) es un grupo abeliano}.
+
+\textit{Relación general} (Proposición 1.1.1): \((\mathbb{Z}_n)^*\) es grupo si y
+solo si \(n\) es primo. \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Sea \(M\) un semigrupo con identidad por la izquierda \(e\) (esto es,
+\(e*a=a\) para todo \(a\)) y tal que cada elemento tiene inverso por la izquierda
+(existe \(b\) con \(b*a=e\)). Demuestre que \(M\) es un grupo.
+
+\textbf{Solución.}
+Sea \(a \in M\) con inverso izquierdo \(b\) (\(b*a=e\)), y sea \(c\) el inverso
+izquierdo de \(b\) (\(c*b=e\)).
+
+\textit{Paso 1 --- \(a*b=e\)}:
+\[
+    a*b = e*(a*b) = (c*b)*(a*b) = c*(b*a)*b = c*e*b = c*b = e.
+\]
+
+\textit{Paso 2 --- \(e\) es identidad por la derecha}:
+\[
+    a*e = a*(b*a) = (a*b)*a = e*a = a.
+\]
+
+Luego \(e\) es identidad bilateral y \(b\) es inverso bilateral de \(a\).
+\(M\) es un grupo. \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Determine cuáles de las siguientes aplicaciones son homomorfismos de magmas
+de \((\mathbb{Z},+)\) en \((\mathbb{Z},+)\):
+\begin{enumerate}[label=\alph*)]
+    \item \(f(x) = 2x\)
+    \item \(g(x) = x+1\)
+    \item \(h(x) = -x\)
+    \item \(k(x) = 0\)
+    \item \(\ell(x) = x^2\)
+\end{enumerate}
+
+\textbf{Solución.}
+La condición de homomorfismo de magmas (Definición 1.2.3 [Q] / Definición 1.1.15 [P])
+exige \(\varphi(x+y) = \varphi(x)+\varphi(y)\).
+\begin{enumerate}[label=\alph*)]
+    \item \(f(x+y)=2(x+y)=2x+2y=f(x)+f(y)\). \textbf{Sí}.
+    \item \(g(x+y)=x+y+1\) pero \(g(x)+g(y)=x+y+2\). \textbf{No}.
+    \item \(h(x+y)=-(x+y)=(-x)+(-y)=h(x)+h(y)\). \textbf{Sí}.
+    \item \(k(x+y)=0=0+0=k(x)+k(y)\). \textbf{Sí} (homomorfismo constante).
+    \item \(\ell(x+y)=(x+y)^2=x^2+2xy+y^2\) pero
+    \(\ell(x)+\ell(y)=x^2+y^2\). Iguales solo si \(2xy=0\), no siempre.
+    \textbf{No}. \hfill\(\square\)
+\end{enumerate}
+
+% ----------------------------------------------------------------
+\item \textbf{[P, Question 1.1.17]} ¿Es cierto que todo homomorfismo de
+semigrupos \(f:S \to T\) entre monoides lleva la identidad de \(S\) en la de \(T\)?
+Demuestre o dé un contraejemplo.
+
+\textbf{Solución.}
+\textbf{No es cierto} en general. Contraejemplo de Palacios:
+
+Sea \(S = \{e\}\) el monoide trivial (con \(e*e=e\)) y
+\(T = \{e_T, a\}\) el monoide con tabla:
+\[
+\begin{array}{c|cc}
+    * & e_T & a \\ \hline
+    e_T & e_T & a \\
+    a   & a   & a
+\end{array}
+\]
+(la identidad de \(T\) es \(e_T\), y \(a*a=a\)).
+Definamos \(f:S\to T\) por \(f(e) = a\). Verificamos que es homomorfismo de
+semigrupos: \(f(e*e)=f(e)=a\) y \(f(e)*f(e)=a*a=a\). \checkmark
+
+Pero \(f(e_S) = a \neq e_T\). Luego \(f\) no preserva la identidad.
+
+\textit{Observación}: si \(f\) es homomorfismo de \textbf{monoides} (Definición
+1.1.15.2 [P]), entonces por definición se exige adicionalmente \(f(e_S)=e_T\).
+La pregunta solo falla para homomorfismos de semigrupos. \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item \textbf{[P, Exercise 1.1.9]} Sea \(S\) un monoide \textbf{finito}.
+Demuestre que \(S\) es un grupo si y solo si \(S\) tiene la propiedad
+cancelativa por la izquierda: \(ab = ac \Rightarrow b = c\) para todo
+\(a, b, c \in S\).
+
+\textbf{Solución.}
+
+\((\Rightarrow)\) Si \(S\) es grupo y \(ab=ac\), multiplicamos por \(a^{-1}\) a la
+izquierda: \(b = a^{-1}(ab) = a^{-1}(ac) = c\).
+
+\((\Leftarrow)\) Suponga que \(S\) es finito y tiene cancelación izquierda.
+Sea \(a \in S\). Considere el mapa \(\lambda_a : S \to S\), \(\lambda_a(x) = ax\).
+La cancelación izquierda implica que \(\lambda_a\) es inyectiva.
+Como \(S\) es finito, \(\lambda_a\) es también sobreyectiva. En particular,
+existe \(b \in S\) con \(ab = e\), es decir, \(a\) tiene inverso por la derecha.
+
+Ahora bien, también existe \(c \in S\) con \(ac = a\) (tomando la preimagen de
+\(a\)). Entonces \(ac = a = ae\), y por cancelación izquierda \(c = e\), luego
+\(e\) actúa por la derecha. Similarmente \(e\) actúa por la izquierda, y \(b\) es
+inverso bilateral. Luego \(S\) es grupo. \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item \textbf{[P, Exercise 1.1.24 y Notation 2]} Sea \(f:G \to H\) un
+homomorfismo de grupos.
+\begin{enumerate}[label=\alph*)]
+    \item Demuestre que \(f\) es isomorfismo (en el sentido de Def.\ 1.1.23 [P])
+    si y solo si \(f\) es biyectivo y \(f^{-1}:H\to G\) también es homomorfismo
+    de grupos.
+    \item Defina \(\mathrm{Im}(f) := f(G)\) y \(\ker(f) := \{a \in G : f(a)=e_H\}\).
+    Demuestre que \(\mathrm{Im}(f) \leq H\) y \(\ker(f) \leq G\).
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item \((\Rightarrow)\) Si \(f\) es isomorfismo, existe un homomorfismo
+    \(g:H\to G\) con \(g\circ f=\mathrm{id}_G\) y \(f\circ g=\mathrm{id}_H\).
+    Luego \(f\) es biyectivo y \(g = f^{-1}\) es homomorfismo.
+    \((\Leftarrow)\) Si \(f\) es biyectivo y \(f^{-1}\) es homomorfismo, entonces
+    \(f^{-1}\circ f = \mathrm{id}_G\) y \(f\circ f^{-1}=\mathrm{id}_H\), luego
+    \(f\) es isomorfismo.
+
+    \item \textit{Imagen}: \(e_H = f(e_G) \in \mathrm{Im}(f)\). Si
+    \(f(a),f(b)\in\mathrm{Im}(f)\) entonces \(f(a)f(b)=f(ab)\in\mathrm{Im}(f)\).
+    Y \(f(a)^{-1}=f(a^{-1})\in\mathrm{Im}(f)\). Luego \(\mathrm{Im}(f) \leq H\).
+
+    \textit{Núcleo}: \(f(e_G)=e_H\) luego \(e_G \in \ker f\). Si \(a,b\in\ker f\):
+    \(f(ab)=f(a)f(b)=e_H\), luego \(ab\in\ker f\). Y \(f(a^{-1})=f(a)^{-1}=e_H\),
+    luego \(a^{-1}\in\ker f\). Luego \(\ker(f) \leq G\). \hfill\(\square\)
+\end{enumerate}
+
+\end{enumerate}
+
+% ==================================================================
+\subsection*{Nivel 3 --- Síntesis: estructuras algebraicas y categorías}
+% ==================================================================
+
+\textit{Teoría usada}: [Q] Sección 1.2 completa: Definición 1.2.1 (categoría),
+Observación 1.2.1 (unicidad de identidad), Proposición 1.2.1 (unicidad de inverso),
+Definición 1.2.2 (isomorfismo), Definiciones 1.2.3--1.2.4 (homomorfismos en Mag y
+Vect), Ejemplos 1.2.1--1.2.4. [P] Definición 1.1.23 (isomorfismo de semigrupos).
+
+\bigskip
+
+\begin{enumerate}[label=\textbf{3.\arabic*.}]
+
+% ----------------------------------------------------------------
+\item Escriba con precisión los cinco datos que definen una categoría (Definición 1.2.1):
+objetos, morfismos, composición, identidades y asociatividad. Luego verifique
+\textbf{explícitamente} cada uno de estos datos para la categoría \(\mathbf{Set}\)
+usando los conjuntos \(A=\{1,2\}\), \(B=\{a,b,c\}\), \(C=\{\alpha,\beta\}\),
+la función \(f:A\to B\) dada por \(f(1)=a\), \(f(2)=b\), y \(g:B\to C\) dada
+por \(g(a)=\alpha\), \(g(b)=\beta\), \(g(c)=\alpha\).
+
+\textbf{Solución.}
+
+Los cinco datos (Definición 1.2.1):
+\begin{enumerate}[label=\arabic*.]
+    \item \textit{Objetos}: conjuntos. \(A,B,C \in \mathbf{Set}\).
+    \item \textit{Morfismos}: \(\mathrm{Hom}(A,B)=\{f:A\to B \mid f \text{ función}\}\).
+    Ejemplo: \(f \in \mathrm{Hom}(A,B)\), \(g \in \mathrm{Hom}(B,C)\).
+    \item \textit{Composición}: \((f,g) \mapsto g\circ f\) donde
+    \((g\circ f)(x)=g(f(x))\).
+    Calculamos: \((g\circ f)(1)=g(a)=\alpha\) y \((g\circ f)(2)=g(b)=\beta\).
+    \item \textit{Identidades}: para cada conjunto \(X\), \(\mathrm{id}_X(x)=x\).
+    Verificamos: \(f\circ\mathrm{id}_A = f\) pues
+    \((f\circ\mathrm{id}_A)(1)=f(1)=a\) y \((f\circ\mathrm{id}_A)(2)=f(2)=b\).
+    Y \(\mathrm{id}_B\circ f = f\) pues \((\mathrm{id}_B\circ f)(x)=\mathrm{id}_B(f(x))=f(x)\).
+    \item \textit{Asociatividad}: para \(f:A\to B\), \(g:B\to C\), \(h:C\to D\),
+    \(h\circ(g\circ f)=(h\circ g)\circ f\) pues ambos evalúan a \(h(g(f(x)))\).
+    \hfill\(\square\)
+\end{enumerate}
+
+% ----------------------------------------------------------------
+\item Demuestre que el morfismo identidad de un objeto en una categoría es único
+(Observación 1.2.1 del texto).
+
+\textbf{Solución.}
+Sea \(A \in \mathcal{C}\) y suponga que \(u, v \in \mathrm{Hom}(A,A)\) son ambos
+morfismos identidad. Como \(u\) es identidad, para todo \(f \in \mathrm{Hom}(A,A)\):
+\[
+    v \circ u = v
+\]
+(pues \(u\) actúa como neutro por la izquierda).
+Como \(v\) es identidad:
+\[
+    v \circ u = u
+\]
+(pues \(v\) actúa como neutro por la derecha).
+Luego \(u = v\). \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Sea \(f:A\to B\) un morfismo en una categoría. Suponga que existe
+\(g:B\to A\) con \(g\circ f=\mathrm{id}_A\) y \(h:B\to A\) con
+\(f\circ h=\mathrm{id}_B\). Demuestre que \(g=h\) (Proposición 1.2.1).
+
+\textbf{Solución.}
+\[
+    g = g\circ\mathrm{id}_B = g\circ(f\circ h) = (g\circ f)\circ h
+      = \mathrm{id}_A\circ h = h.
+\]
+Luego \(g=h\), y este morfismo es el \textit{morfismo inverso} de \(f$.
+\hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item En la categoría \(\mathbf{Set}\), pruebe que un morfismo es isomorfismo
+(Definición 1.2.2) si y solo si es biyectivo.
+
+\textbf{Solución.}
+
+\((\Rightarrow)\) Si \(f:A\to B\) es isomorfismo, existe \(g:B\to A\) con
+\(g\circ f=\mathrm{id}_A\) y \(f\circ g=\mathrm{id}_B\).
+\begin{itemize}
+    \item \textit{Inyectividad}: si \(f(x)=f(y)\) entonces
+    \(x = \mathrm{id}_A(x)=g(f(x))=g(f(y))=y\).
+    \item \textit{Sobreyectividad}: dado \(b\in B\), sea \(a:=g(b)\).
+    Entonces \(f(a)=f(g(b))=\mathrm{id}_B(b)=b\).
+\end{itemize}
+
+\((\Leftarrow)\) Si \(f\) es biyectiva, existe \(f^{-1}:B\to A\) con
+\(f^{-1}\circ f=\mathrm{id}_A\) y \(f\circ f^{-1}=\mathrm{id}_B\).
+Luego \(f\) es isomorfismo. \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item En la categoría \(\mathbf{Mag}\), estudie si las siguientes aplicaciones
+son homomorfismos de magmas de \((\mathbb{Z},+)\) en \((\mathbb{Z},+)\)
+y clasifique cuáles son isomorfismos:
+\begin{enumerate}[label=\alph*)]
+    \item \(f(x)=2x\)
+    \item \(h(x)=-x\)
+    \item \(k(x)=0\)
+\end{enumerate}
+
+\textbf{Solución.}
+Homomorfismo: \(\varphi(x+y)=\varphi(x)+\varphi(y)\).
+Isomorfismo en \(\mathbf{Mag}\): homomorfismo biyectivo (Cuadro 1.1 del texto).
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Homomorfismo}: \(f(x+y)=2(x+y)=2x+2y=f(x)+f(y)\).
+    No es sobreyectiva (\(1\) no está en la imagen). \textbf{No isomorfismo}.
+    \item \textbf{Homomorfismo}: \(h(x+y)=-(x+y)=h(x)+h(y)\).
+    Es biyectiva (su propia inversa). \textbf{Isomorfismo}.
+    \item \textbf{Homomorfismo} (trivial). No inyectiva. \textbf{No isomorfismo}.
+    \hfill\(\square\)
+\end{enumerate}
+
+% ----------------------------------------------------------------
+\item Sea \((M,*)\) un monoide. Construya la categoría \(\mathcal{C}_M\) con un
+único objeto \(\bullet\) tal que \(\mathrm{Hom}(\bullet,\bullet)=M\), y verifique
+los axiomas de categoría.
+
+\textbf{Solución.}
+\begin{itemize}
+    \item \(\mathrm{Ob}(\mathcal{C}_M)=\{\bullet\}\).
+    \item \(\mathrm{Hom}(\bullet,\bullet)=M\).
+    \item \textit{Composición}: \(m'\circ m := m*m'\).
+    \item \textit{Identidad}: \(\mathrm{id}_\bullet := e\) (neutro de \(M\)).
+\end{itemize}
+\textit{Verificación}:
+\begin{enumerate}[label=\arabic*.]
+    \item \textit{Clausura}: \(m*m' \in M\).
+    \item \textit{Identidad}: \(e*m=m=m*e\) para todo \(m \in M\).
+    \item \textit{Asociatividad}: \((m''\circ m')\circ m = (m'*m'')*m\)\ldots
+    más precisamente, la asociatividad de la composición en \(\mathcal{C}_M\)
+    se reduce a la asociatividad de \(*\) en \(M\).
+\end{enumerate}
+Luego \(\mathcal{C}_M\) es una categoría. \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Sea \(\mathcal{C}\) una categoría con un único objeto \(A\). Demuestre que
+\(\mathrm{Hom}(A,A)\) con la composición es un monoide. ¿Cuándo es un grupo?
+
+\textbf{Solución.}
+Sea \(H:=\mathrm{Hom}(A,A)\).
+\begin{itemize}
+    \item \textit{Clausura}: si \(f,g\in H\), entonces \(g\circ f:A\to A\), luego
+    \(g\circ f \in H\).
+    \item \textit{Asociatividad}: axioma de categoría.
+    \item \textit{Identidad}: \(\mathrm{id}_A \in H\) actúa como neutro.
+\end{itemize}
+Luego \((H,\circ)\) es un monoide.
+Es un grupo si y solo si todo morfismo es isomorfismo, es decir, si y solo si
+todo \(f \in H\) tiene inverso bilateral en \(H\). Esto ocurre precisamente cuando
+\((H,\circ)\) es un grupo. \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Compare las tres ideas siguientes y explique sus diferencias:
+\begin{enumerate}[label=\alph*)]
+    \item Igualdad de objetos.
+    \item Isomorfismo de objetos.
+    \item Igualdad de morfismos.
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item \textit{Igualdad de objetos}: \(A=B\) significa que son el mismo objeto en
+    \(\mathrm{Ob}(\mathcal{C})\). Es una noción fuerte que identifica exactamente el
+    mismo elemento de la clase de objetos.
+
+    \item \textit{Isomorfismo de objetos}: \(A \cong B\) significa que existe un
+    morfismo \(f:A\to B\) con inverso \(g:B\to A\) tal que \(g\circ f=\mathrm{id}_A\)
+    y \(f\circ g=\mathrm{id}_B\) (Definición 1.2.2). Es la noción ``correcta'' de
+    equivalencia en categorías: dos objetos isomorfos son indistinguibles
+    categorialmente aunque sean distintos como objetos.
+    Ejemplo en \(\mathbf{Set}\): \(\{1,2\} \cong \{a,b\}\) pero \(\{1,2\}\neq\{a,b\}\).
+
+    \item \textit{Igualdad de morfismos}: \(f=g\) en \(\mathrm{Hom}(A,B)\) significa
+    que son exactamente la misma flecha. No confundir con isomorfismo: un morfismo
+    \(f:A\to A\) puede ser distinto de \(\mathrm{id}_A\) sin dejar de ser isomorfismo.
+    \hfill\(\square\)
+\end{enumerate}
+
+\end{enumerate}
+
+% ==================================================================
+\subsection*{Nivel 4 --- Reto}
+% ==================================================================
+
+\textit{Teoría usada}: Combinación profunda de las secciones 1.1 y 1.2.
+Cada problema requiere unificar varias ideas del capítulo.
+
+\bigskip
+
+\begin{enumerate}[label=\textbf{4.\arabic*.}]
+
+% ----------------------------------------------------------------
+\item Explique por qué un grupo puede verse como una categoría con un único objeto
+en la que \textbf{todos} los morfismos son isomorfismos. ¿Qué corresponde al
+grupo abeliano?
+
+\textbf{Solución.}
+Por el problema 3.6, un monoide \((M,*)\) equivale a una categoría \(\mathcal{C}_M\)
+con un único objeto \(\bullet\) y \(\mathrm{Hom}(\bullet,\bullet)=M\).
+
+Un morfismo \(m \in M\) es isomorfismo en \(\mathcal{C}_M\) si y solo si existe
+\(m^{-1} \in M\) con \(m \circ m^{-1} = \mathrm{id}_\bullet = m^{-1} \circ m\),
+es decir, si \(m\) tiene inverso bilateral en \(M\).
+
+Pedir que \textbf{todos} los morfismos sean isomorfismos equivale a pedir que todo
+elemento de \(M\) sea invertible, es decir, que \((M,*)\) sea un \textbf{grupo}.
+
+Si además la composición de morfismos es conmutativa (i.e., \(m\circ m'=m'\circ m\)
+para todos \(m,m'\)), entonces \((M,*)\) es un \textbf{grupo abeliano}. \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Redacte un cuadro comparativo detallado de las estructuras
+\[
+    \text{magma} \;\to\; \text{semigrupo} \;\to\; \text{monoide} \;\to\; \text{grupo}
+\]
+indicando en cada flecha la propiedad adicional que se exige. Luego, para cada
+estructura, identifique qué dato de la Definición 1.2.1 de categoría se le puede
+asociar.
+
+\textbf{Solución.}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+\textbf{Estructura} & \textbf{Propiedad adicional} & \textbf{Dato categorial} \\
+\hline
+Magma & --- (sólo operación interna) & morfismos (flechas) \\
+Semigrupo & asociatividad de \(*\) & composición asociativa \\
+Monoide & existencia de identidad & morfismos identidad \\
+Grupo & existencia de inversos & todos los morfismos son isomorfismos \\
+\hline
+\end{tabular}
+\end{center}
+
+La noción de categoría abstrae exactamente la composición (asociativa) y la
+identidad que ya aparecen en monoides: una categoría con un único objeto
+\textit{es} un monoide, y con inversas \textit{es} un grupo. Las categorías
+generalizan esto a múltiples objetos. \hfill\(\square\)
+
+% ----------------------------------------------------------------
+\item Sea \(f:(M,*) \to (N,\cdot)\) un homomorfismo de monoides
+(es decir, un homomorfismo de magmas que además satisface \(f(e_M)=e_N\)).
+\begin{enumerate}[label=\alph*)]
+    \item Demuestre que la composición de dos homomorfismos de monoides es
+    homomorfismo de monoides.
+    \item Demuestre que la identidad \(\mathrm{id}_M : M \to M\) es homomorfismo.
+    \item Concluya que los monoides con sus homomorfismos forman una categoría.
+    ¿Cómo se llama esta categoría según el Cuadro 1.1 del texto?
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item Sean \(f:(M,*)\to(N,\cdot)\) y \(g:(N,\cdot)\to(P,\bullet)\)
+    homomorfismos de monoides. Para \(x,y \in M\):
+    \[
+        (g\circ f)(x*y) = g(f(x*y)) = g(f(x)\cdot f(y)) = g(f(x))\bullet g(f(y))
+                        = (g\circ f)(x) \bullet (g\circ f)(y).
+    \]
+    Y \((g\circ f)(e_M) = g(f(e_M)) = g(e_N) = e_P\). Luego \(g\circ f\) es
+    homomorfismo de monoides.
+    \item \(\mathrm{id}_M(x*y)=x*y=\mathrm{id}_M(x)*\mathrm{id}_M(y)\) y
+    \(\mathrm{id}_M(e_M)=e_M\).
+    \item Con la composición usual de funciones, los axiomas de categoría se reducen
+    a los apartados a) y b) más la asociatividad de la composición de funciones.
+    Esta categoría se llama \textbf{Mon} (categoría de monoides).
+    \hfill\(\square\)
+\end{enumerate}
+
+% ----------------------------------------------------------------
+\item \textbf{[P, Def. 1.1.18 / Q, Cap. 5] (Construcción de Grothendieck)}
+Sea \((M, +)\) un monoide conmutativo. Define la relación \(\sim\) en
+\(M \times M\) por
+\[
+    (a,b) \sim (a',b') \iff \exists\, p \in M : a + b' + p = a' + b + p.
+\]
+\begin{enumerate}[label=\alph*)]
+    \item Demuestre que \(\sim\) es una relación de equivalencia.
+    \item Demuestre que la operación \([m,n]+[m',n']:=[m+m',\,n+n']\)
+    está bien definida en \(M^+ := (M\times M)/{\sim}\).
+    \item Demuestre que \((M^+, +)\) es un grupo abeliano.
+    \item Defina \(i:M \to M^+\) por \(i(m)=[m,0]\).
+    Demuestre que \(i\) es homomorfismo de monoides.
+    \item Para \(M=(\mathbb{N},+)\), identifique explícitamente \(M^+\) con
+    \((\mathbb{Z},+)\) describiendo el isomorfismo.
+    \item \textbf{[P, Prop. 1.1.20]} Demuestre que si \(M\) es cancelativo
+    (es decir, \(a+c=b+c \Rightarrow a=b\)), entonces \(i\) es inyectivo.
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[label=\alph*)]
+    \item \textit{Reflexividad}: \((a,b)\sim(a,b)\) con \(p=0\):
+    \(a+b+0=a+b+0\). \checkmark
+    \textit{Simetría}: si \(a+b'+p=a'+b+p\), entonces \(a'+b+p=a+b'+p\),
+    luego \((a',b')\sim(a,b)\). \checkmark
+    \textit{Transitividad}: si \((a,b)\sim(a',b')\) con testigo \(p\) y
+    \((a',b')\sim(a'',b'')\) con testigo \(q\), entonces sumando:
+    \[
+        (a+b'+p)+(a'+b''+q) = (a'+b+p)+(a''+b'+q).
+    \]
+    Cancelando \(a'\) y \(b'\) de ambos lados (usando conmutatividad):
+    \(a+b''+p+q = a''+b+p+q\), luego \((a,b)\sim(a'',b'')\) con testigo
+    \(p+q\). \checkmark
+
+    \item Si \((a,b)\sim(a_1,b_1)\) con testigo \(p\) y \((a',b')\sim(a_1',b_1')\)
+    con testigo \(q\), entonces:
+    \begin{align*}
+        (a+a')+(b_1+b_1')+(p+q)
+        &= (a+b_1'+p)+(a'+b_1'+q) \quad \text{[reordenando]}\\
+        &= (a_1+b+p)+(a_1'+b'+q) \\
+        &= (a_1+a_1')+(b+b')+(p+q).
+    \end{align*}
+    Luego \([a+a',b+b']=[a_1+a_1',b_1+b_1']\). Bien definida.
+
+    \item \textit{Conmutatividad}: \([m,n]+[m',n']=[m+m',n+n']=[m'+m,n'+n]\). \checkmark
+    \textit{Asociatividad}: hereda de \(M\). \checkmark
+    \textit{Neutro}: \([0,0]\) pues \([m,n]+[0,0]=[m,n]\). \checkmark
+    \textit{Inversos}: \([m,n]+[n,m]=[m+n,n+m]\sim[0,0]\) con \(p=0\)
+    (pues \(m+n+0 = n+m+0\)). \checkmark \quad \textbf{\(M^+\) es grupo abeliano}.
+
+    \item \(i(m+m')=[m+m',0]=[m,0]+[m',0]=i(m)+i(m')\). \checkmark
+    Y \(i(0)=[0,0]=\) neutro de \(M^+\). \checkmark
+
+    \item El isomorfismo es \(\varphi: M^+ \to \mathbb{Z}\), \(\varphi([a,b])=a-b\).
+    \textit{Bien definida}: si \((a,b)\sim(a',b')\) existe \(p\) con
+    \(a+b'+p=a'+b+p\), luego \(a-b=a'-b'\). \checkmark
+    \textit{Homomorfismo}: \(\varphi([a,b]+[a',b'])=\varphi([a+a',b+b'])
+    =(a+a')-(b+b')=(a-b)+(a'-b')=\varphi([a,b])+\varphi([a',b'])\). \checkmark
+    \textit{Biyección}: sobreyectiva pues dado \(n \in \mathbb{Z}\), si \(n\geq 0\)
+    toma \([n,0]\); si \(n<0\) toma \([0,-n]\). Inyectiva: si \(a-b=a'-b'\)
+    entonces \(a+b'=a'+b\) con testigo \(0\). \checkmark
+
+    \item Suponga \(i(m)=i(n)\), es decir \([m,0]=[n,0]\). Entonces existe \(p\)
+    con \(m+0+p=n+0+p\), es decir \(m+p=n+p\). Por cancelatividad, \(m=n\).
+    \hfill\(\square\)
+\end{enumerate}
+
+% ----------------------------------------------------------------
+\item \textbf{(Reto final)} Sea \(\mathcal{C}\) una categoría con un único objeto
+\(A\), de modo que \((H,\circ) := (\mathrm{Hom}(A,A),\circ)\) es un monoide
+(problema 3.7). Construya la categoría \(\mathcal{C}_H\) asociada a este monoide
+(problema 3.6) y defina un functor \(F:\mathcal{C}\to\mathcal{C}_H\). Demuestre
+que \(F\) es un isomorfismo de categorías, es decir, que existe un functor
+\(G:\mathcal{C}_H\to\mathcal{C}\) con \(G\circ F=\mathrm{Id}_{\mathcal{C}}\)
+y \(F\circ G=\mathrm{Id}_{\mathcal{C}_H}\).
+
+\textbf{Solución.}
+La categoría \(\mathcal{C}\) tiene único objeto \(A\) y morfismos \(H\).
+La categoría \(\mathcal{C}_H\) tiene único objeto \(\bullet\) y morfismos \(H\)
+(el mismo conjunto) con la misma operación de composición.
+
+Definimos:
+\[
+    F(A) := \bullet, \qquad F(f) := f \text{ para todo } f \in H.
+\]
+\[
+    G(\bullet) := A, \qquad G(f) := f \text{ para todo } f \in H.
+\]
+
+\textit{Verificación de que \(F\) es functor}:
+\begin{itemize}
+    \item \(F(\mathrm{id}_A)=\mathrm{id}_A=\mathrm{id}_{F(A)}=\mathrm{id}_\bullet\).
+    \item \(F(g\circ f)=g\circ f=F(g)\circ F(f)\).
+\end{itemize}
+Análogamente \(G\) es functor. Como \(G(F(A))=G(\bullet)=A\) y \(G(F(f))=f\),
+se tiene \(G\circ F=\mathrm{Id}_{\mathcal{C}}\). Análogamente
+\(F\circ G=\mathrm{Id}_{\mathcal{C}_H}\). Luego \(F\) es isomorfismo de categorías.
+
+Esto muestra que \textit{una categoría con un único objeto es exactamente lo mismo
+que un monoide}: la construcción es inversa a sí misma. \hfill\(\square\)
 
 \end{enumerate}
