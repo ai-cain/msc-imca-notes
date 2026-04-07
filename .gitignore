@@ -1,3 +1,8 @@
+# others
+
+*.pdf
+
+
 ## Core LaTeX/pdflatex auxiliary files:
 *.aux       # Auxiliary files
 *.lof       # List of figures
