@@ -3,7 +3,7 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsmath,amssymb}
 \usepackage{geometry}
 \geometry{margin=2.5cm}
 
@@ -14,502 +14,312 @@
 
 \maketitle
 
-\section{Estructuras algebraicas}
+\section*{Estructuras algebraicas}
 
-Las estructuras algebraicas que estudiaremos principalmente son los grupos, anillos y módulos.
-Todas estas estructuras se engloban en las llamadas \emph{álgebras universales}.
-
-\section{Operaciones \(n\)-arias}
+Las estructuras algebraicas que estudiaremos principalmente son los grupos, anillos y módulos.  
+Todas estas estructuras se engloban en las llamadas álgebras universales.
 
 Sea
 \[
 \mathbb{N}=\{0,1,2,3,\dots\}
 \]
-el conjunto de los números naturales, y sea \(A\) un conjunto.
+el conjunto de los números naturales.
 
-Para cada \(n\in\mathbb{N}\), una \textbf{operación \(n\)-aria sobre \(A\)} es una función
+Sea $A$ un conjunto.
+
+Para cada $n\in\mathbb{N}$ definimos una operación $n$-aria sobre $A$ como una función:
 \[
-\omega:A^n\to A,
+\omega:A^n\to A
 \]
-donde
+
+donde:
 \[
-A^n=\underbrace{A\times A\times\cdots\times A}_{n\text{ veces}}.
+A^n=A\times A\times \cdots \times A \quad (n \text{ veces})
 \]
 
 Por convención:
 \[
-A^0 \text{ es un conjunto unitario}, \qquad A^1=A.
+A^0 \text{ es un conjunto unitario}, \qquad A^1=A
 \]
 
 \begin{center}
 \begin{tabular}{c|c|c}
-\(n\) & operación & tipo \\
+$n$ & operación & tipo \\
 \hline
-0 & 0-aria & \(\{*\}\to A\) \\
-1 & 1-aria & \(A\to A\) \\
-2 & binaria & \(A\times A\to A\) \\
-3 & ternaria & \(A\times A\times A\to A\)
+0 & 0-aria & $\{*\}\to A$ \\
+1 & 1-aria & $A\to A$ \\
+2 & binaria & $A\times A\to A$ \\
+3 & ternaria & $A\times A\times A\to A$
 \end{tabular}
 \end{center}
 
-\paragraph{Observación.}
-Dar operaciones \(0\)-arias sobre \(A\) equivale a dar elementos de \(A\).
+\textbf{Obs:} Dar operaciones 0-arias sobre $A$ equivale a dar elementos de $A$.
 
-\section{Operaciones binarias}
+%--------------------------------------------------
+\section*{Operación binaria}
 
-Sea
-\[
-\omega:A\times A\to A.
-\]
-
-Diremos que \(\omega\) es \textbf{asociativa} si
-\[
-\omega(\omega(a,b),c)=\omega(a,\omega(b,c))
-\qquad \forall a,b,c\in A.
-\]
-
-Usando la notación usual
-\[
-a\cdot b=\omega(a,b),
-\]
-la asociatividad se escribe como
-\[
-(a\cdot b)\cdot c=a\cdot (b\cdot c)
-\qquad \forall a,b,c\in A.
-\]
-
-\section{Primeras estructuras}
-
-\subsection{Magma}
-
-Un conjunto \(A\) con una operación binaria se llama \textbf{magma}.
-
-Se denota por
-\[
-(A,\cdot).
-\]
-
-\subsection{Semigrupo}
-
-Un conjunto no vacío \(A\) junto con una operación binaria asociativa se llama \textbf{semigrupo}.
-
-\subsection{Elemento neutro}
-
-Sea \((A,\cdot)\) un magma.
-
-Un elemento \(e\in A\) se llama \textbf{elemento neutro} si
-\[
-e\cdot a=a=a\cdot e
-\qquad \forall a\in A.
-\]
-
-\subsection{Monoide}
-
-Un \textbf{monoide} es un semigrupo con elemento neutro.
-
-Se denota por
-\[
-(A,\cdot,e).
-\]
-
-\subsection{Magma conmutativo}
-
-Un magma \(A\) es \textbf{conmutativo} o \textbf{abeliano} si
-\[
-a\cdot b=b\cdot a
-\qquad \forall a,b\in A.
-\]
-
-\section{Propiedades básicas}
-
-\subsection{Unicidad del elemento neutro}
-
-\textbf{Proposición.}
-En un monoide, el elemento neutro es único.
-
-\textbf{Demostración.}
-Sean \(e\) y \(e'\) dos elementos neutros. Entonces, como \(e\) es neutro,
-\[
-e\cdot e'=e',
-\]
-y como \(e'\) es neutro,
-\[
-e\cdot e'=e.
-\]
-Por lo tanto,
-\[
-e=e'.
-\]
-\qed
-
-\subsection{Elemento inversible}
-
-Sea \((A,\cdot,e)\) un magma con elemento neutro.
-
-Un elemento \(a\in A\) se dice \textbf{invertible} si existe \(b\in A\) tal que
-\[
-ab=e=ba.
-\]
-
-En ese caso, \(b\) se llama el \textbf{inverso} de \(a\).
-
-\subsection{Unicidad del inverso}
-
-\textbf{Proposición.}
-En un monoide, si un elemento tiene inverso, entonces dicho inverso es único.
-
-\textbf{Demostración.}
-Supongamos que \(b\) y \(b'\) son inversos de \(a\). Entonces
-\[
-ab=e=ba
-\qquad\text{y}\qquad
-ab'=e=b'a.
-\]
-Así,
-\[
-b=b\cdot e=b(ab')=(ba)b'=e\,b'=b'.
-\]
-Por lo tanto, el inverso es único.
-\qed
-
-\paragraph{Notación.}
-Si \(b\) es el inverso de \(a\), se escribe
-\[
-a^{-1}=b.
-\]
-
-\section{Grupo}
-
-Un \textbf{grupo} es un monoide en el que todo elemento es invertible.
-
-Se denota por
-\[
-(G,\cdot,{}^{-1},e).
-\]
-
-Aquí:
-\begin{itemize}
-\item \(\cdot\) es una operación binaria;
-\item \({}^{-1}\) es una operación 1-aria;
-\item \(e\) puede verse como una operación 0-aria.
-\end{itemize}
-
-\section{Ejemplos ordenados}
-
-\subsection{Ejemplo de monoide no conmutativo}
-
-Consideremos
-\[
-M_{2\times 2}(\mathbb{Z}),
-\]
-el conjunto de matrices cuadradas \(2\times 2\) con coeficientes enteros.
-
-Con el producto usual de matrices, la identidad
-\[
-I=\begin{pmatrix}1&0\\0&1\end{pmatrix}
-\]
-es el elemento neutro. Por tanto,
-\[
-\bigl(M_{2\times 2}(\mathbb{Z}),\cdot,I\bigr)
-\]
-es un monoide.
-
-\subsection{Ejemplos de monoides abelianos}
-
-\[
-(\mathbb{N},+,0)
-\qquad\text{y}\qquad
-(\mathbb{N},\cdot,1)
-\]
-son monoides abelianos distintos.
-
-\subsection{Ejemplo de operación binaria no asociativa}
-
-Sea
-\[
-A=M_{2\times 2}(\mathbb{Z})
-\]
-y definamos
-\[
-\omega:A\times A\to A,
-\qquad
-\omega(M,N)=MN-NM.
-\]
-
-Esta operación \textbf{no es asociativa}.
-
-\textbf{Demostración.}
-Tomemos
-\[
-A_1=\begin{pmatrix}1&0\\0&0\end{pmatrix},
-\qquad
-A_2=\begin{pmatrix}0&1\\0&0\end{pmatrix},
-\qquad
-A_3=\begin{pmatrix}0&0\\1&0\end{pmatrix}.
-\]
-
-Primero calculamos
-\[
-\omega(A_1,A_2)=A_1A_2-A_2A_1
-=
-\begin{pmatrix}0&1\\0&0\end{pmatrix}
--
-\begin{pmatrix}0&0\\0&0\end{pmatrix}
-=
-\begin{pmatrix}0&1\\0&0\end{pmatrix}.
-\]
-Entonces
-\[
-\omega(\omega(A_1,A_2),A_3)
-=
-\omega\!\left(
-\begin{pmatrix}0&1\\0&0\end{pmatrix},
-\begin{pmatrix}0&0\\1&0\end{pmatrix}
-\right).
-\]
-Ahora,
-\[
-\begin{pmatrix}0&1\\0&0\end{pmatrix}
-\begin{pmatrix}0&0\\1&0\end{pmatrix}
-=
-\begin{pmatrix}1&0\\0&0\end{pmatrix},
-\qquad
-\begin{pmatrix}0&0\\1&0\end{pmatrix}
-\begin{pmatrix}0&1\\0&0\end{pmatrix}
-=
-\begin{pmatrix}0&0\\0&1\end{pmatrix}.
-\]
-Por tanto,
-\[
-\omega(\omega(A_1,A_2),A_3)
-=
-\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
-\]
-
-Por otro lado,
-\[
-\omega(A_2,A_3)=A_2A_3-A_3A_2
-=
-\begin{pmatrix}1&0\\0&0\end{pmatrix}
--
-\begin{pmatrix}0&0\\0&1\end{pmatrix}
-=
-\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
-\]
-Entonces
-\[
-\omega(A_1,\omega(A_2,A_3))
-=
-\omega\!\left(
-\begin{pmatrix}1&0\\0&0\end{pmatrix},
-\begin{pmatrix}1&0\\0&-1\end{pmatrix}
-\right).
-\]
-Pero estas dos matrices conmutan, así que
-\[
-\omega(A_1,\omega(A_2,A_3))=0.
-\]
-
-En consecuencia,
-\[
-\omega(\omega(A_1,A_2),A_3)\neq \omega(A_1,\omega(A_2,A_3)).
-\]
-Luego \(\omega\) no es asociativa.
-\qed
-
-\subsection{Ejemplo de no invertibilidad en \(M_{2\times 2}(\mathbb{Z})\)}
-
-En \(\bigl(M_{2\times 2}(\mathbb{Z}),\cdot,I\bigr)\), la matriz \(2I\) no es invertible.
-
-\textbf{Demostración.}
-Se tiene
-\[
-\det(2I)=4\neq 0.
-\]
-Sin embargo, si \(2I\) fuera invertible en \(M_{2\times 2}(\mathbb{Z})\), existiría
-\[
-N\in M_{2\times 2}(\mathbb{Z})
-\]
-tal que
-\[
-(2I)N=I.
-\]
-De aquí se deduce
-\[
-2N=I,
-\qquad\text{es decir}\qquad
-N=\frac12 I
-=
-\begin{pmatrix}
-\frac12 & 0\\
-0 & \frac12
-\end{pmatrix}.
-\]
-Pero esta matriz no pertenece a \(M_{2\times 2}(\mathbb{Z})\), contradicción.
-
-Por lo tanto, \(2I\) no es invertible en \(M_{2\times 2}(\mathbb{Z})\).
-\qed
-
-\paragraph{Observación.}
-Todo elemento de \(\bigl(M_{2\times 2}(\mathbb{Z}),+\bigr)\) es invertible, pues el inverso aditivo de \(M\) es \(-M\).
-
-Por tanto,
-\[
-\bigl(M_{2\times 2}(\mathbb{Z}),+\bigr)
-\]
-es un grupo, mientras que
-\[
-\bigl(M_{2\times 2}(\mathbb{Z}),\cdot\bigr)
-\]
-no es un grupo.
-
-\subsection{Grupo de biyecciones}
-
-Sea \(X\) un conjunto no vacío y definamos
-\[
-\operatorname{Bij}(X)=\{f:X\to X:\ f \text{ es biyectiva}\}.
-\]
-Entonces,
-\[
-\bigl(\operatorname{Bij}(X),\circ\bigr)
-\]
-es un grupo.
-
-\subsection{Grupo simétrico}
-
-Si \(|X|=n\), entonces
-\[
-\Sigma_n=\bigl(\operatorname{Bij}(X),\circ\bigr)
-\]
-se llama el \textbf{grupo de permutaciones de \(n\) letras}.
-
-En particular,
-\[
-|\Sigma_n|=n!.
-\]
-
-\section{Álgebras universales}
-
-Sea \(\Omega\) un conjunto y sea
-\[
-a:\Omega\to\mathbb{N}
-\]
-una función.
-
-Para cada \(n\in\mathbb{N}\), definimos
-\[
-\Omega(n)=\{\omega\in\Omega:\ a(\omega)=n\}.
-\]
-
-\textbf{Definición.}
-Una \(\Omega\)-álgebra, o álgebra universal, es una terna
-\[
-(A,\Omega,\varphi),
-\]
-donde \(A\) es un conjunto y \(\varphi\) es una familia de funciones
-\[
-\varphi=\{\varphi_n\}_{n\in\mathbb{N}},
-\qquad
-\varphi_n:\Omega(n)\to \operatorname{Func}(A^n,A).
-\]
-
-Equivalentemente, para cada \(\omega\in\Omega(n)\),
-\[
-\varphi_n(\omega):A^n\to A
-\]
-es una operación \(n\)-aria sobre \(A\).
-
-\paragraph{Abuso de notación.}
-Muchas veces
-\[
-(A,\Omega,\varphi)
-\]
-se escribe simplemente como
-\[
-(A,\varphi)
-\]
-o incluso indicando solo las operaciones relevantes.
-
-\section{Interpretación de estructuras como álgebras universales}
-
-\subsection{Magma}
-
-Un magma puede verse como
-\[
-(A,\omega),
-\]
-donde
+Sea:
 \[
 \omega:A\times A\to A
 \]
-es una operación binaria.
 
-Usualmente se escribe
+Se dice asociativa si:
 \[
-(A,\cdot).
+\omega(\omega(a,b),c)=\omega(a,\omega(b,c)) \quad \forall a,b,c\in A
 \]
 
-\subsection{Monoide}
-
-Un monoide puede verse como
+Notación usual:
 \[
-(A,\cdot,e),
+a\cdot b=\omega(a,b)
 \]
+
+\[
+(a\cdot b)\cdot c=a\cdot(b\cdot c)
+\]
+
+Un conjunto no vacío $A$ junto con una operación binaria asociativa es llamado \textbf{semigrupo}.
+
+\textbf{Def:} Un conjunto $A$ con una operación binaria es llamado \textbf{magma}.
+
+%--------------------------------------------------
+\section*{Ejemplo}
+
+Sea:
+\[
+A=M_{2\times2}(\mathbb{Z})
+\]
+
+Definimos:
+\[
+\omega(M,N)=MN-NM
+\]
+
+\textbf{¿Es asociativa?} No.
+
+%--------------------------------------------------
+\section*{Elemento neutro}
+
+\textbf{Def:} Un elemento $e\in A$ es llamado neutro si:
+\[
+e\cdot a=a=a\cdot e \quad \forall a\in A
+\]
+
+Ejemplo:  
+En $M_{2\times2}(\mathbb{Z})$, con el producto de matrices, la identidad es el elemento neutro.
+
+\textbf{Def:} Un monoide es un semigrupo con un elemento neutro.
+
+Ejemplo:
+\[
+(M_{2\times2}(\mathbb{Z}),\cdot,I)
+\]
+es un monoide.
+
+%--------------------------------------------------
+\section*{Conmutatividad}
+
+\textbf{Def:} Un magma $A$ es conmutativo (abeliano) si:
+\[
+a\cdot b=b\cdot a \quad \forall a,b\in A
+\]
+
+Ejemplo:
+\[
+(\mathbb{N},+,0), \quad (\mathbb{N},\cdot,1)
+\]
+
+Son monoides abelianos distintos.
+
+%--------------------------------------------------
+\section*{Unicidad del neutro}
+
+Ejercicio: Probar que el elemento neutro es único.
+
+\textbf{Sol:}  
+Sean $e,e'$ neutros:
+\[
+e=e\cdot e'=e'
+\]
+
+%--------------------------------------------------
+\section*{Elemento inverso}
+
+\textbf{Def:} Un elemento $a\in A$ es invertible si existe $b\in A$ tal que:
+\[
+ab=e=ba
+\]
+
+En este caso $b$ es el inverso de $a$.
+
+\textbf{Notación:}
+\[
+a^{-1}=b
+\]
+
+%--------------------------------------------------
+\section*{Unicidad del inverso}
+
+Ejercicio: Probar que el inverso es único.
+
+\textbf{Sol:}
+
+Si:
+\[
+ab=e=ba, \quad ab'=e=b'a
+\]
+
+Entonces:
+\[
+b=b\cdot e=b(ab')=(ba)b'=e b'=b'
+\]
+
+%--------------------------------------------------
+\section*{Ejemplo matrices (invertibilidad)}
+
+Ejemplo: $2I$ no es invertible en
+\[
+(M_{2\times2}(\mathbb{Z}),\cdot)
+\]
+
+aunque:
+\[
+\det(2I)=4\neq 0
+\]
+
+\textbf{Demostración:}
+
+Supongamos que $2I$ es invertible. Entonces existe $N$ tal que:
+\[
+(2I)N=I
+\]
+
+\[
+2N=I \Rightarrow N=\frac{1}{2}I
+\]
+
+Pero:
+\[
+\frac{1}{2}\notin \mathbb{Z}
+\]
+
+Contradicción. Luego $2I$ no es invertible.
+
+\textbf{Obs:}
+\[
+(M_{2\times2}(\mathbb{Z}),+) \text{ es grupo}
+\]
+
+\[
+(M_{2\times2}(\mathbb{Z}),\cdot) \text{ no es grupo}
+\]
+
+%--------------------------------------------------
+\section*{Grupo}
+
+\textbf{Def:} Un monoide donde todos sus elementos son invertibles es llamado \textbf{grupo}.
+
+%--------------------------------------------------
+\section*{Ejemplo}
+
+Sea $X$ un conjunto no vacío:
+\[
+\text{Bij}(X)=\{f:X\to X \mid f \text{ biyectiva}\}
+\]
+
+Entonces:
+\[
+(\text{Bij}(X),\circ) \text{ es grupo}
+\]
+
+Si $|X|=n$:
+\[
+\Sigma_n=(\text{Bij}(X),\circ)
+\]
+
+\[
+|\Sigma_n|=n!
+\]
+
+%--------------------------------------------------
+\section*{Álgebras universales}
+
+Sea $\Omega$ un conjunto y:
+\[
+a:\Omega\to\mathbb{N}
+\]
+
+Definimos:
+\[
+\Omega(n)=\{\omega\in\Omega \mid a(\omega)=n\}
+\]
+
+\textbf{Def:} Una $\Omega$-álgebra es una terna:
+\[
+(A,\Omega,\varphi)
+\]
+
 donde:
+\[
+\varphi=\{\varphi_n\}
+\]
+
+\[
+\varphi_n:\Omega(n)\to \text{Func}(A^n,A)
+\]
+
+\textbf{Abuso de notación:}
+\[
+(A,\Omega,\varphi)\equiv (A,\varphi)
+\]
+
+%--------------------------------------------------
+\section*{Interpretación}
+
+Magma:
+\[
+(A,\cdot)
+\]
+
+Monoide:
+\[
+(A,\cdot,e)
+\]
+
+Grupo:
+\[
+(G,\cdot,^{-1},e)
+\]
+
 \begin{itemize}
-\item \(\cdot\) es una operación binaria;
-\item \(e\) es una operación 0-aria, es decir, una constante del conjunto.
+\item $\cdot$ : binaria
+\item $^{-1}$ : 1-aria
+\item $e$ : 0-aria
 \end{itemize}
 
-\subsection{Grupo}
+%--------------------------------------------------
+\section*{Ejemplo final: espacio vectorial}
 
-Un grupo puede verse como
-\[
-(G,\cdot,{}^{-1},e),
-\]
-donde:
-\begin{itemize}
-\item \(\cdot\) es binaria;
-\item \({}^{-1}\) es 1-aria;
-\item \(e\) es 0-aria.
-\end{itemize}
-
-\section{Ejemplo: espacios vectoriales}
-
-Sea \(K\) un cuerpo. Los \(K\)-espacios vectoriales pueden interpretarse como álgebras universales.
-
-Sea \(V\) un \(K\)-espacio vectorial. Entonces tenemos:
+Sea $K$ un cuerpo y $V$ un espacio vectorial.
 
 \[
-+ : V\times V\to V,
-\qquad
-(u,v)\mapsto u+v,
++:V\times V\to V
+\quad (u,v)\mapsto u+v
 \]
-que es una operación binaria;
 
-para cada \(\alpha\in K\), la aplicación
 \[
-w_\alpha:V\to V,
-\qquad
-v\mapsto \alpha v,
+w_\alpha:V\to V
+\quad v\mapsto \alpha v
 \]
-que es una operación 1-aria;
 
-y además el elemento
 \[
-0\in V,
+0\in V
 \]
-que puede verse como una operación 0-aria.
 
-Por tanto, un espacio vectorial puede escribirse como una estructura del tipo
+Entonces:
 \[
-\bigl(V,+,\{w_\alpha\}_{\alpha\in K},0\bigr),
+(V,+,\{w_\alpha\}_{\alpha\in K},0)
 \]
-donde:
-\begin{itemize}
-\item \(+\) es binaria;
-\item cada \(w_\alpha\) es 1-aria;
-\item \(0\) es 0-aria y corresponde al neutro aditivo.
-\end{itemize}
+
+es un álgebra universal.
 
 \end{document}
