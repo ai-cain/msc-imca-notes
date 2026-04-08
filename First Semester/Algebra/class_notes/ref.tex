@@ -6,17 +6,63 @@
 \usepackage{amsmath,amssymb}
 \usepackage{geometry}
 \geometry{margin=2.5cm}
+\usepackage[most]{tcolorbox}
+\usepackage[colorlinks=false,hidelinks]{hyperref}
+\usepackage{xcolor}
 
-\title{Estructuras Algebraicas}
-\date{}
+% Caja de sugerencia IA
+\tcbset{
+  iabox/.style={
+    enhanced,
+    colback=blue!4!white,
+    colframe=blue!60!black,
+    fonttitle=\bfseries\small,
+    title={Sugerencia IA},
+    attach boxed title to top left={yshift=-2mm, xshift=4mm},
+    boxed title style={colback=blue!60!black, colframe=blue!60!black},
+    top=4mm
+  }
+}
 
 \begin{document}
 
-\maketitle
+% ---- PORTADA ----
+\begin{titlepage}
+  \centering
+  \vspace*{3cm}
+
+  {\Large\scshape Instituto de Matemática y Ciencias Afines}\\[0.4cm]
+  {\large\scshape IMCA}\\[0.3cm]
+  \noindent\rule{\textwidth}{0.4pt}\\[0.6cm]
+
+  {\Huge\bfseries Estructuras Algebraicas}\\[0.4cm]
+  {\large Notas de clase --- Álgebra}\\[0.2cm]
+  \noindent\rule{\textwidth}{0.4pt}
+
+  \vfill
+
+  \begin{flushleft}
+    \large
+    \textbf{Estudiante:} Gerald\\[0.3cm]
+    \textbf{Semestre:} 2026-I\\[0.3cm]
+  \end{flushleft}
+
+  \vfill
+
+  \begin{center}
+    \normalsize\color{gray}
+    Texto transcrito a \LaTeX\ desde imagen por
+    \href{https://chatgpt.com/es-419/pricing/}{\textbf{ChatGPT Pro}}\\[0.2cm]
+    sugerencias por
+    \href{https://claude.com/pricing}{\textbf{Claude Max}}
+  \end{center}
+  \vspace{1cm}
+\end{titlepage}
+% ---- FIN PORTADA ----
 
 \section*{Estructuras algebraicas}
 
-Las estructuras algebraicas que estudiaremos principalmente son los grupos, anillos y módulos.  
+Las estructuras algebraicas que estudiaremos principalmente son los grupos, anillos y módulos.
 Todas estas estructuras se engloban en las llamadas álgebras universales.
 
 Sea
@@ -55,6 +101,16 @@ $n$ & operación & tipo \\
 
 \textbf{Obs:} Dar operaciones 0-arias sobre $A$ equivale a dar elementos de $A$.
 
+\begin{tcolorbox}[iabox]
+\textbf{¿Por qué una operación 0-aria ``equivale a dar un elemento''?}
+
+Una función $\omega:\{*\}\to A$ queda totalmente determinada por la imagen del único punto $*$, es decir, por $\omega(*)\in A$. Por tanto hay una biyección canónica:
+\[
+  \operatorname{Func}(\{*\},A) \;\longleftrightarrow\; A, \qquad \omega \;\mapsto\; \omega(*).
+\]
+En la práctica, las operaciones 0-arias son los \emph{elementos distinguidos} de la estructura (neutro $e$, cero $0$, etc.). Esta perspectiva unifica la definición de constantes con la de operaciones dentro del marco de álgebras universales.
+\end{tcolorbox}
+
 %--------------------------------------------------
 \section*{Operación binaria}
 
@@ -81,6 +137,20 @@ Un conjunto no vacío $A$ junto con una operación binaria asociativa es llamado
 
 \textbf{Def:} Un conjunto $A$ con una operación binaria es llamado \textbf{magma}.
 
+\begin{tcolorbox}[iabox]
+\textbf{Jerarquía de estructuras con una operación binaria:}
+\[
+  \text{Magma} \supset \text{Semigrupo} \supset \text{Monoide} \supset \text{Grupo} \supset \text{Grupo abeliano}
+\]
+Cada inclusión agrega un axioma:
+\begin{itemize}
+  \item Magma $\to$ Semigrupo: asociatividad.
+  \item Semigrupo $\to$ Monoide: existencia de neutro.
+  \item Monoide $\to$ Grupo: todo elemento es invertible.
+  \item Grupo $\to$ Grupo abeliano: conmutatividad.
+\end{itemize}
+\end{tcolorbox}
+
 %--------------------------------------------------
 \section*{Ejemplo}
 
@@ -96,6 +166,46 @@ Definimos:
 
 \textbf{¿Es asociativa?} No.
 
+\begin{tcolorbox}[iabox]
+\textbf{Contraejemplo explícito de no-asociatividad:}
+
+Tomemos:
+\[
+  A=\begin{pmatrix}1&0\\0&0\end{pmatrix},\quad
+  B=\begin{pmatrix}0&1\\0&0\end{pmatrix},\quad
+  C=\begin{pmatrix}0&0\\1&0\end{pmatrix}.
+\]
+
+Calculamos $\omega(A,B)=AB-BA$:
+\[
+  AB=\begin{pmatrix}0&1\\0&0\end{pmatrix},\quad
+  BA=\begin{pmatrix}0&0\\0&0\end{pmatrix},\quad
+  \omega(A,B)=\begin{pmatrix}0&1\\0&0\end{pmatrix}.
+\]
+
+Luego $\omega(\omega(A,B),C)=\omega(B,C)=BC-CB$:
+\[
+  BC=\begin{pmatrix}0&0\\0&1\end{pmatrix},\quad
+  CB=\begin{pmatrix}0&0\\0&0\end{pmatrix},\quad
+  \omega(B,C)=\begin{pmatrix}0&0\\0&1\end{pmatrix}.
+\]
+
+Por otro lado, $\omega(B,C)$ ya está calculado. Ahora $\omega(A,\omega(B,C))=\omega(A,C')$ con $C'=\begin{pmatrix}0&0\\0&1\end{pmatrix}$:
+\[
+  AC'=\begin{pmatrix}0&0\\0&0\end{pmatrix},\quad
+  C'A=\begin{pmatrix}0&0\\0&0\end{pmatrix},\quad
+  \omega(A,C')=\begin{pmatrix}0&0\\0&0\end{pmatrix}.
+\]
+
+Como $\begin{pmatrix}0&0\\0&1\end{pmatrix}\neq\begin{pmatrix}0&0\\0&0\end{pmatrix}$, la operación \emph{no es asociativa}. $\square$
+
+\medskip
+\textbf{Nota:} Esta operación es el \emph{conmutador} de matrices, denotado $[M,N]=MN-NM$. Es la operación fundamental de las \emph{álgebras de Lie}. Satisface la \emph{identidad de Jacobi} en lugar de asociatividad:
+\[
+  [[A,B],C]+[[B,C],A]+[[C,A],B]=0.
+\]
+\end{tcolorbox}
+
 %--------------------------------------------------
 \section*{Elemento neutro}
 
@@ -104,7 +214,7 @@ Definimos:
 e\cdot a=a=a\cdot e \quad \forall a\in A
 \]
 
-Ejemplo:  
+Ejemplo:
 En $M_{2\times2}(\mathbb{Z})$, con el producto de matrices, la identidad es el elemento neutro.
 
 \textbf{Def:} Un monoide es un semigrupo con un elemento neutro.
@@ -114,6 +224,14 @@ Ejemplo:
 (M_{2\times2}(\mathbb{Z}),\cdot,I)
 \]
 es un monoide.
+
+\begin{tcolorbox}[iabox]
+\textbf{Neutros laterales:} Nótese que la definición exige $e\cdot a = a = a\cdot e$ (neutro \emph{bilateral}). Pueden existir neutros solo por la izquierda o solo por la derecha sin ser neutros bilaterales. Sin embargo, si $e_L$ es neutro por la izquierda y $e_R$ es neutro por la derecha, entonces:
+\[
+  e_L = e_L \cdot e_R = e_R,
+\]
+de modo que coinciden y son un único neutro bilateral.
+\end{tcolorbox}
 
 %--------------------------------------------------
 \section*{Conmutatividad}
@@ -130,16 +248,35 @@ Ejemplo:
 
 Son monoides abelianos distintos.
 
+\begin{tcolorbox}[iabox]
+\textbf{¿Por qué son ``distintos'' estos monoides?}
+
+Son estructuralmente distintos como monoides (no isomorfos): en $(\mathbb{N},+,0)$ la operación es la suma y el neutro es $0$; en $(\mathbb{N},\cdot,1)$ la operación es el producto y el neutro es $1$. Más aún, en $(\mathbb{N},\cdot,1)$ el elemento $0$ no es invertible (no existe $n\in\mathbb{N}$ con $0\cdot n=1$), mientras que en $(\mathbb{N},+,0)$ tampoco hay invertibles salvo el propio $0$. Ninguno de los dos es grupo.
+\end{tcolorbox}
+
 %--------------------------------------------------
 \section*{Unicidad del neutro}
 
 Ejercicio: Probar que el elemento neutro es único.
 
-\textbf{Sol:}  
+\textbf{Sol:}
 Sean $e,e'$ neutros:
 \[
 e=e\cdot e'=e'
 \]
+
+\begin{tcolorbox}[iabox]
+\textbf{Prueba con más detalle:}
+
+Supongamos que $e$ y $e'$ son ambos elementos neutros de $(A,\cdot)$.
+\begin{itemize}
+  \item Como $e$ es neutro: $e \cdot e' = e'$.
+  \item Como $e'$ es neutro: $e \cdot e' = e$.
+\end{itemize}
+Por tanto $e = e \cdot e' = e'$. \quad$\square$
+
+Esta demostración solo usa que cada elemento actúa como neutro \emph{bilateral}; no requiere asociatividad.
+\end{tcolorbox}
 
 %--------------------------------------------------
 \section*{Elemento inverso}
@@ -155,6 +292,10 @@ En este caso $b$ es el inverso de $a$.
 \[
 a^{-1}=b
 \]
+
+\begin{tcolorbox}[iabox]
+\textbf{Inversos laterales en semigrupos:} En un semigrupo con neutro (monoide) basta pedir inversos \emph{bilaterales}. En un grupo se puede demostrar que si $ab=e$ \emph{y} $ba=e$, entonces $b=a^{-1}$. Pero ojo: en un monoide general, la existencia de un inverso por la izquierda no implica la existencia de un inverso por la derecha. Un clásico contraejemplo es el monoide de funciones $f:\mathbb{N}\to\mathbb{N}$ con la composición: la función $s(n)=n+1$ (sucesor) tiene inverso por la izquierda ($\pi(0)=0$, $\pi(n)=n-1$ para $n\geq 1$) pero no por la derecha.
+\end{tcolorbox}
 
 %--------------------------------------------------
 \section*{Unicidad del inverso}
@@ -172,6 +313,18 @@ Entonces:
 \[
 b=b\cdot e=b(ab')=(ba)b'=e b'=b'
 \]
+
+\begin{tcolorbox}[iabox]
+\textbf{Corolario útil:} De la misma cadena de igualdades se deduce la identidad
+\[
+  (ab)^{-1}=b^{-1}a^{-1},
+\]
+que vale en todo grupo. La demostración es:
+\[
+  (ab)(b^{-1}a^{-1}) = a(bb^{-1})a^{-1} = a e\, a^{-1} = aa^{-1} = e,
+\]
+y análogamente por la izquierda. Este hecho, conocido como \emph{regla del calcetín-zapato}, es de uso frecuente.
+\end{tcolorbox}
 
 %--------------------------------------------------
 \section*{Ejemplo matrices (invertibilidad)}
@@ -213,32 +366,73 @@ Contradicción. Luego $2I$ no es invertible.
 (M_{2\times2}(\mathbb{Z}),\cdot) \text{ no es grupo}
 \]
 
+\begin{tcolorbox}[iabox]
+\textbf{Caracterización de invertibles en $M_{2\times2}(\mathbb{Z})$:}
+
+En $M_{n\times n}(\mathbb{Z})$, una matriz $M$ es invertible como elemento del monoide $(M_{n\times n}(\mathbb{Z}),\cdot)$ si y solo si $\det(M)\in\{1,-1\}$.
+
+\textbf{Razón:} si $MN=I$ con $M,N\in M_{n\times n}(\mathbb{Z})$, tomando determinantes: $\det(M)\det(N)=1$ con $\det(M),\det(N)\in\mathbb{Z}$, luego ambos deben ser $\pm 1$. Recíprocamente, la fórmula de la matriz adjunta da $M^{-1}=\frac{1}{\det M}\operatorname{adj}(M)$, que pertenece a $M_{n\times n}(\mathbb{Z})$ precisamente cuando $\det M=\pm 1$.
+
+El conjunto de estas matrices forma el \emph{grupo lineal especial} $SL_n(\mathbb{Z})$ (para determinante $1$) y el \emph{grupo lineal general} $GL_n(\mathbb{Z})$ (para determinante $\pm 1$).
+\end{tcolorbox}
+
 %--------------------------------------------------
 \section*{Grupo}
 
 \textbf{Def:} Un monoide donde todos sus elementos son invertibles es llamado \textbf{grupo}.
+
+\begin{tcolorbox}[iabox]
+\textbf{Ejemplos básicos de grupos:}
+\begin{itemize}
+  \item $(\mathbb{Z},+,0)$: grupo abeliano. Inverso de $n$: $-n$.
+  \item $(\mathbb{Q}\setminus\{0\},\cdot,1)$: grupo abeliano. Inverso de $p/q$: $q/p$.
+  \item $(GL_n(\mathbb{R}),\cdot,I)$: grupo (no abeliano para $n\geq 2$). Inverso: matriz inversa.
+  \item $(\mathbb{Z}/n\mathbb{Z},+,[0])$: grupo abeliano finito de orden $n$.
+\end{itemize}
+
+\textbf{Axiomas equivalentes (presentación alternativa):} Un grupo es un par $(G,\cdot)$ donde $\cdot$ es asociativa y se cumplen:
+\begin{enumerate}
+  \item Existe $e\in G$ con $e\cdot a=a$ para todo $a$ (\emph{neutro por la izquierda}).
+  \item Para cada $a$ existe $b$ con $b\cdot a=e$ (\emph{inverso por la izquierda}).
+\end{enumerate}
+Estos dos axiomas implican los bilaterales. Esto simplifica algunas verificaciones.
+\end{tcolorbox}
 
 %--------------------------------------------------
 \section*{Ejemplo}
 
 Sea $X$ un conjunto no vacío:
 \[
-\text{Bij}(X)=\{f:X\to X \mid f \text{ biyectiva}\}
+\text{Biy}(X)=\{f:X\to X \mid f \text{ biyectiva}\}
 \]
 
 Entonces:
 \[
-(\text{Bij}(X),\circ) \text{ es grupo}
+(\text{Biy}(X),\circ) \text{ es grupo}
 \]
 
 Si $|X|=n$:
 \[
-\Sigma_n=(\text{Bij}(X),\circ)
+\Sigma_n=(\text{Biy}(X),\circ)
 \]
 
 \[
 |\Sigma_n|=n!
 \]
+
+\begin{tcolorbox}[iabox]
+\textbf{Verificación de que $(\operatorname{Biy}(X),\circ)$ es grupo:}
+\begin{enumerate}
+  \item \textbf{Cierre:} Si $f,g$ son biyecciones, $f\circ g$ también lo es.
+  \item \textbf{Asociatividad:} La composición de funciones siempre es asociativa: $(f\circ g)\circ h = f\circ(g\circ h)$.
+  \item \textbf{Neutro:} La identidad $\operatorname{id}_X:x\mapsto x$ es biyectiva y cumple $f\circ\operatorname{id}_X=f=\operatorname{id}_X\circ f$.
+  \item \textbf{Inverso:} Toda biyección $f$ tiene inversa $f^{-1}$ que también es biyección, con $f\circ f^{-1}=\operatorname{id}_X=f^{-1}\circ f$.
+\end{enumerate}
+
+\textbf{Notación:} $\Sigma_n$ se llama el \emph{grupo simétrico} de grado $n$. Todo grupo finito de orden $n$ se puede incrustar en $\Sigma_n$ (\emph{Teorema de Cayley}).
+
+\textbf{Teorema de Cayley (enunciado):} Todo grupo $G$ es isomorfo a un subgrupo de $\operatorname{Biy}(G)$. El isomorfismo envía $g\mapsto \lambda_g$ donde $\lambda_g(x)=gx$ (multiplicación por la izquierda).
+\end{tcolorbox}
 
 %--------------------------------------------------
 \section*{Álgebras universales}
@@ -272,6 +466,29 @@ donde:
 (A,\Omega,\varphi)\equiv (A,\varphi)
 \]
 
+\begin{tcolorbox}[iabox]
+\textbf{Intuición del tipo $\Omega$:}
+
+El conjunto $\Omega$ es el \emph{tipo de similitud} o \emph{signatura} de la álgebra. Cada $\omega\in\Omega$ es un \emph{símbolo de operación} y $a(\omega)$ es su \emph{aridad}. La función $\varphi$ asigna a cada símbolo una operación concreta sobre $A$.
+
+\medskip
+\textbf{Ejemplos de signaturas:}
+\begin{center}
+\begin{tabular}{l|l|l}
+Estructura & $\Omega$ & aridades \\\hline
+Grupo & $\{\cdot,{}^{-1},e\}$ & $2,1,0$ \\
+Anillo & $\{+,\cdot,-,0,1\}$ & $2,2,1,0,0$ \\
+Módulo sobre $R$ & $\{+,-,0\}\cup\{r\cdot\}_{r\in R}$ & $2,1,0,1,\dots$ \\
+Retículo & $\{\vee,\wedge\}$ & $2,2$
+\end{tabular}
+\end{center}
+
+\textbf{Homomorfismos:} Un homomorfismo de $\Omega$-álgebras $(A,\varphi)\to(B,\psi)$ es una función $h:A\to B$ que \emph{preserva todas las operaciones}: para cada $\omega\in\Omega(n)$ y $a_1,\dots,a_n\in A$,
+\[
+  h(\varphi(\omega)(a_1,\dots,a_n)) = \psi(\omega)(h(a_1),\dots,h(a_n)).
+\]
+\end{tcolorbox}
+
 %--------------------------------------------------
 \section*{Interpretación}
 
@@ -295,6 +512,16 @@ Grupo:
 \item $^{-1}$ : 1-aria
 \item $e$ : 0-aria
 \end{itemize}
+
+\begin{tcolorbox}[iabox]
+\textbf{¿Por qué incluir ${}^{-1}$ como operación 1-aria en la signatura del grupo?}
+
+Desde el punto de vista de álgebras universales conviene que la signatura capture \emph{toda} la estructura. Si solo ponemos $\Omega=\{\cdot,e\}$, los grupos son monoides con propiedad extra (no una clase definida puramente por ecuaciones en esa signatura). Al añadir ${}^{-1}$ como operación 1-aria, los grupos pasan a ser una \emph{variedad ecuacional}: quedan definidos por las identidades
+\[
+  (x\cdot y)\cdot z = x\cdot(y\cdot z),\quad e\cdot x=x,\quad x\cdot e=x,\quad x\cdot x^{-1}=e,\quad x^{-1}\cdot x=e,
+\]
+lo cual permite aplicar el \emph{Teorema de Birkhoff} y toda la teoría de variedades.
+\end{tcolorbox}
 
 %--------------------------------------------------
 \section*{Ejemplo final: espacio vectorial}
@@ -321,5 +548,28 @@ Entonces:
 \]
 
 es un álgebra universal.
+
+\begin{tcolorbox}[iabox]
+\textbf{Signatura del espacio vectorial:}
+
+La familia $\{w_\alpha\}_{\alpha\in K}$ es una colección de operaciones 1-arias parametrizada por $K$, una por cada escalar. La signatura es:
+\[
+  \Omega = \{+\} \cup \{w_\alpha\}_{\alpha\in K} \cup \{0\},
+\]
+con aridades $2$, $1$ (para cada $\alpha$) y $0$ respectivamente.
+
+\textbf{Axiomas como ecuaciones en esta signatura:}
+\begin{itemize}
+  \item $(V,+,0)$ es grupo abeliano.
+  \item $w_1(v)=v$.
+  \item $w_\alpha(w_\beta(v))=w_{\alpha\beta}(v)$.
+  \item $w_\alpha(u+v)=w_\alpha(u)+w_\alpha(v)$.
+  \item $w_{\alpha+\beta}(v)=w_\alpha(v)+w_\beta(v)$.
+\end{itemize}
+Estos son exactamente los axiomas de espacio vectorial escritos como identidades en la signatura $\Omega$. Esto muestra que los $K$-espacios vectoriales forman una variedad ecuacional (para $K$ fijo).
+
+\medskip
+\textbf{Diferencia con módulos:} Si $K$ es solo un anillo (no necesariamente cuerpo), la misma construcción da la noción de \emph{$K$-módulo}, que es la generalización natural de espacio vectorial al contexto de anillos.
+\end{tcolorbox}
 
 \end{document}
