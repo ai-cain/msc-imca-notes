@@ -15,7 +15,7 @@ Courses taken before officially entering the Master’s program, serving as foun
 Core courses of the first semester:
 
 - **Analysis I**
-- **Algebra**
+- **Algebra** — Originally written by Henrri Quino Huerta (2025-I), completed by Gerald (2026-I)
 
 ## Notes Format
 
